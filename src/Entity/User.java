@@ -61,6 +61,15 @@ public class User {
         this.admin = admin;
     }
 
+    public void reset(){
+        this.setAdmin(null);
+        this.setSurname(null);
+        this.setName(null);
+        this.setEmail(null);
+        this.setPassword(null);
+        this.setUsername(null);
+    }
+
     public boolean validate() {
         // Controllo sintattico
         if (this.username == null || this.password == null) {

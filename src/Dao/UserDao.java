@@ -1,7 +1,7 @@
 package Dao;
 
-import Entity.User;
 import Constants.Constants;
+import Entity.User;
 
 import java.sql.*;
 
@@ -16,11 +16,16 @@ public class UserDao {
 
             // STEP 3: apertura connessione
             conn = DriverManager.getConnection(Constants.DB_URL, Constants.DB_USER, Constants.DB_PASS);
-            conn.setAutoCommit(false);
+            /*
+            TODO
+            controllo posizione commit
+             */
+            //conn.setAutoCommit(false);
 
             // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement();
             String sql = String.format(Constants.strLogin, user.getUsername(), user.getPassword());
+            System.out.println(sql);
 
                     /*"SELECT * FROM utenti where username = '" + user.getUsername()
                     + "' AND password = '" + user.getPassword() + "';";*/
@@ -57,7 +62,7 @@ public class UserDao {
             rs.close();
             stmt.close();
 
-            conn.commit();
+            //conn.commit();
             conn.close();
         } catch (SQLException se) {
             // Errore durante l'apertura della connessione

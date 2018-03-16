@@ -1,5 +1,7 @@
 package Boundary;
 
+import Dao.UserDao;
+import Entity.User;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,9 +24,17 @@ public class Login extends Application {
 
     public void LoginMethod(ActionEvent actionEvent) {
 
-        String user = loginUserTextField.getText();
-        String pass = loginPassowrdField.getText();
-        System.out.println("hai inserito :\n user " + user + "\npass:" + pass);
+        String username = loginUserTextField.getText();
+        String password = loginPassowrdField.getText();
+        //System.out.println("hai inserito :\nuser " + username + "\npass:" + password);
+
+        User user = new User();
+        user.reset();
+        user.setUsername(username);
+        user.setPassword(password);
+        boolean result = user.validate();
+        System.out.println(result);
+        System.out.println(user.getEmail());
     }
 
     @Override
