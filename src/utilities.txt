@@ -1,3 +1,3 @@
 1)  TODO
-    formato query per inserimento da lato admin. così non da errore, ma salva negli attributi anche le graffe:
-    INSERT INTO users VALUES('{Rossi}','{Mario}','{mario_rossi}','{mr}','{mario.rossi@mail.it}','false');
+    conn.setAutoCommit(false);
+    conn.commit();
