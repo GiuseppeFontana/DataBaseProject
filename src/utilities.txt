@@ -1,3 +1,24 @@
+UTILITIES
+
+TODO        +------------------------------+
+TODO        |          IMPORTANTE          |
+TODO        +------------------------------+
+TODO
+TODO    A OGNI PUSH CHE FATE STATE ATTENTI A NON INCLUDERE IL FILE Constants CHE CONTIENE
+TODO    I DATI E I PERCORSI RELATIVI AI PROPRI PC
+
+
+psql postgresql://localhost:5432/dbserver -U postgres
+sudo /etc/init.d/postgresql restart
+sudo service postgresql restart
+
 1)  TODO
+    cambiare i percorsi del driver sql e aggiungerlo al classpath, scaricatelo da questo link:
+    https://jdbc.postgresql.org/download/postgresql-42.2.2.jar
+
+    cambiare anche i dati dentro Constants;
+
+
+2)  TODO
     conn.setAutoCommit(false);
     conn.commit();
