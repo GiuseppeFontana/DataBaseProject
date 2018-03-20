@@ -1,12 +1,24 @@
 UTILITIES
 
+
+        MODELLO LOGICO
+---------------AGENZIA(NomeAgenzia)
+SATELLITE (NomeSatellite, InizioAttività, FineAttività*, Agenzia)
+STRUMENTO (NomeStrumento, Satellite)
+BANDA(Lunghezzad’onda, Strumento)
+FILAMENTO (IDFilamento, NomeFilamento, FlussoTot, DensitàMedia, Ellitticità, ContrastoContorno, TemperaturaMedia, Satellite, Strumento)
+CONTORNO (IDFilamento, Latitudine, Longitudine)
+PUNTO (Latitudine, Longitudine)
+SCHELETRO (IDFilamento, IDSegmento, TipoRamo, Longitudine, Latitudine, NumeroProgressivo, FlussoMis)
+SEGMENTO (IDSegmento)
+STELLA (IDSorgente, NomeSorgente, Tipologia, ValoreFlusso, Latitudine, Longitudine)
+
+
+
 TODO        +------------------------------+
 TODO        |          IMPORTANTE          |
 TODO        +------------------------------+
-TODO
-TODO    A OGNI PUSH CHE FATE STATE ATTENTI A NON INCLUDERE IL FILE Constants CHE CONTIENE
-TODO    I DATI E I PERCORSI RELATIVI AI PROPRI PC
-
+TODO    I PUSH E I PULL VANNO FATI SUI PROPRI BRANCH
 
 psql postgresql://localhost:5432/dbserver -U postgres
 sudo /etc/init.d/postgresql restart
@@ -22,3 +34,9 @@ sudo service postgresql restart
 2)  TODO
     conn.setAutoCommit(false);
     conn.commit();
+
+
+3) TODO progettazione fisica
+    valutare se ridondare l'attributo nomefilamento di filamento dentro contorno, per la req.5
+    valutare se creare l'attributo numerosegmenti dentro filamento, per la req.7
+    
