@@ -1,6 +1,6 @@
 package Entity;
 
-import Control.UserController;
+import Control.DBController;
 
 public class User {
     private String name;
@@ -76,7 +76,7 @@ public class User {
             return false;
         }
 
-        UserController controller = new UserController();
+        DBController controller = new DBController();
         return controller.login(this);
     }
 }

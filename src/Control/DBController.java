@@ -3,12 +3,12 @@ package Control;
 import Dao.UserDao;
 import Entity.User;
 
-public class UserController {
+public class DBController {
 
     /*
     TODO singleton
      */
-    public UserController(){
+    public DBController(){
 
     }
 

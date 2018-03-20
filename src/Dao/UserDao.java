@@ -1,6 +1,7 @@
 package Dao;
 
 import Constants.Constants;
+import Control.GraphicController;
 import Entity.User;
 import java.sql.*;
 
@@ -32,6 +33,8 @@ public class UserDao {
             // rs empty
             if (!rs.first()){
                 System.out.println("empty resultset;");
+                GraphicController graphicController = new GraphicController();
+                graphicController.incorrect();
                 return false;
             }
 
