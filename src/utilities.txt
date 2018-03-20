@@ -28,7 +28,7 @@ sudo service postgresql restart
     cambiare i percorsi del driver sql e aggiungerlo al classpath, scaricatelo da questo link:
     https://jdbc.postgresql.org/download/postgresql-42.2.2.jar
 
-    cambiare anche i dati dentro Constants;
+    cambiare anche i dati dentro Utils;
 
 
 2)  TODO

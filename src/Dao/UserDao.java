@@ -1,6 +1,6 @@
 package Dao;
 
-import Constants.Constants;
+import Utils.Strings;
 import Control.GraphicController;
 import Entity.User;
 import java.sql.*;
@@ -15,12 +15,12 @@ public class UserDao {
             Class.forName("org.postgresql.Driver");
 
             // STEP 3: apertura connessione
-            conn = DriverManager.getConnection(Constants.DB_URL,Constants.DB_USER, Constants.DB_PASS);
+            conn = DriverManager.getConnection(Strings.DB_URL, Strings.DB_USER, Strings.DB_PASS);
 
 
             // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement();
-            String sql = String.format(Constants.strLogin, user.getUsername(), user.getPassword());
+            String sql = String.format(Strings.strLogin, user.getUsername(), user.getPassword());
             System.out.println("query:\n"+sql);
 
             /*

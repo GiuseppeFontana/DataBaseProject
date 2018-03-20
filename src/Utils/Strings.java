@@ -1,10 +1,8 @@
-package Constants;
+package Utils;
 
-public class Constants {
+public class Strings {
 
-    public static String DB_URL = "jdbc:postgresql://localhost:5432/postgres";
-    public static String DB_USER = "postgres";
-    public static String DB_PASS = "postgres";
+
 
     public static String st_type1 = "UNBOUND";
     public static String st_type2 = "PRESTELLAR";
@@ -13,5 +11,7 @@ public class Constants {
     // query
     public static String strLogin = "SELECT * FROM users WHERE username = '%s' AND password = '%s';";
 
+
+    ///dgbdxv
 
 }
