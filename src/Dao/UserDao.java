@@ -1,5 +1,6 @@
 package Dao;
 
+import Utils.Credenziali;
 import Utils.Strings;
 import Control.GraphicController;
 import Entity.User;
@@ -15,7 +16,7 @@ public class UserDao {
             Class.forName("org.postgresql.Driver");
 
             // STEP 3: apertura connessione
-            conn = DriverManager.getConnection(Strings.DB_URL, Strings.DB_USER, Strings.DB_PASS);
+            conn = DriverManager.getConnection(Credenziali.G_DB_URL, Credenziali.G_DB_USER, Credenziali.G_DB_PASS);
 
 
             // STEP 4: creazione ed esecuzione della query
