@@ -10,5 +10,6 @@
       <Label fx:id="HomeNameLabel" layoutX="129.0" layoutY="137.0" text="Nome :" />
       <Label fx:id="HomeSurnameLabel" layoutX="105.0" layoutY="177.0" text="Cognome :" />
       <Label fx:id="HomeEmailLabel" layoutX="123.0" layoutY="215.0" text="email:" />
+      <Label fx:id="HomeTitleLabel" layoutX="253.0" layoutY="50.0" prefHeight="26.0" prefWidth="163.0" text="Label" />
    </children>
 </AnchorPane>

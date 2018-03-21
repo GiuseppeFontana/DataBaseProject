@@ -10,7 +10,7 @@ FILAMENTO (IDFilamento, NomeFilamento, FlussoTot, DensitàMedia, Ellitticità, C
 CONTORNO (IDFilamento, Latitudine, Longitudine)
 PUNTO (Latitudine, Longitudine)
 SCHELETRO (IDFilamento, IDSegmento, TipoRamo, Longitudine, Latitudine, NumeroProgressivo, FlussoMis)
-SEGMENTO (IDSegmento)
+---------------SEGMENTO (IDSegmento)
 STELLA (IDSorgente, NomeSorgente, Tipologia, ValoreFlusso, Latitudine, Longitudine)
 
 
