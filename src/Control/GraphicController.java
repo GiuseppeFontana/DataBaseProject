@@ -5,21 +5,12 @@ import Boundary.Login;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-public class GraphicController /*extends Application*/ {
+public class GraphicController extends Application {
 
-    private static GraphicController instance;
-
-    private GraphicController(){
+    public GraphicController(){
 
     }
 
-    public static GraphicController getInstance(){
-        if (instance == null)
-            instance = new GraphicController();
-        return instance;
-    }
-
-    /*
     @Override
     public void start(Stage primaryStage) throws Exception {
 
@@ -27,7 +18,6 @@ public class GraphicController /*extends Application*/ {
         login.start(primaryStage);
 
     }
-    */
 
     public void incorrect() throws Exception{
         IncorrectLoginFields incorrectLoginFields = new IncorrectLoginFields();

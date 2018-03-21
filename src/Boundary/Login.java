@@ -26,15 +26,15 @@ public class Login extends Application {
 
         String username = loginUserTextField.getText();
         String password = loginPassowrdField.getText();
-        //System.out.println("hai inserito :\nuser " + username + "\npass:" + password);
 
         User user = new User();
         user.reset();
         user.setUsername(username);
         user.setPassword(password);
-        boolean result = user.validate();
-        System.out.println("result:\n"+result);
-        System.out.println("admin:\n"+user.getAdmin());
+        if (user.validate()){
+
+            // TODO passa alla schermata successiva
+        }
     }
 
     @Override

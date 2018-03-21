@@ -76,7 +76,7 @@ public class User {
             return false;
         }
 
-        DBController controller = DBController.getInstance();
+        DBController controller = new DBController();
         return controller.login(this);
     }
 }
