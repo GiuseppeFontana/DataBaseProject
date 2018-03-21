@@ -18,17 +18,15 @@ STELLA (IDSorgente, NomeSorgente, Tipologia, ValoreFlusso, Latitudine, Longitudi
 TODO        +------------------------------+
 TODO        |          IMPORTANTE          |
 TODO        +------------------------------+
-TODO    I PUSH E I PULL VANNO FATI SUI PROPRI BRANCH
+TODO    quando modificate qualcosa mettete la versione vecchia in un commento e metteteci
+TODO    un TODO tipo 'update 01'
 
 psql postgresql://localhost:5432/dbserver -U postgres
 sudo /etc/init.d/postgresql restart
 sudo service postgresql restart
 
 1)  TODO
-    cambiare i percorsi del driver sql e aggiungerlo al classpath, scaricatelo da questo link:
-    https://jdbc.postgresql.org/download/postgresql-42.2.2.jar
-
-    cambiare anche i dati dentro Utils;
+    riempire le credenziali
 
 
 2)  TODO
