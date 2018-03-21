@@ -77,6 +77,6 @@ public class User {
         }
 
         DBController controller = new DBController();
-        return controller.login(this);
+        return controller.login(username, password);
     }
 }
