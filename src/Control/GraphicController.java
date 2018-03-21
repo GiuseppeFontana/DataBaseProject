@@ -1,5 +1,6 @@
 package Control;
 
+import Boundary.Home_User;
 import Boundary.IncorrectLoginFields;
 import Boundary.Login;
 import javafx.application.Application;
@@ -22,6 +23,11 @@ public class GraphicController extends Application {
     public void incorrect() throws Exception{
         IncorrectLoginFields incorrectLoginFields = new IncorrectLoginFields();
         incorrectLoginFields.incorrectLoginField();
+    }
+
+    public void homeUser() throws Exception{
+        Home_User home_user = new Home_User();
+        home_user.start();
     }
 
 }

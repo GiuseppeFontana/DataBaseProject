@@ -71,6 +71,12 @@ public class UserDao {
             Controller controller = new Controller();
             controller.createUser(u, p, email, name, surname, admin);
 
+            if(!admin){
+                GraphicController graphicController = new GraphicController();
+                graphicController.homeUser();
+
+            }
+
 
 
             //assert (usernameLoaded.equals(username));
