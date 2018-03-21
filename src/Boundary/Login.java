@@ -34,7 +34,7 @@ public class Login extends Application {
         user.setPassword(password);
         boolean result = user.validate();
         System.out.println("result:\n"+result);
-        System.out.println("email:\n"+user.getEmail());
+        System.out.println("admin:\n"+user.getAdmin());
     }
 
     @Override

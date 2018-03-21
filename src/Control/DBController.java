@@ -5,17 +5,19 @@ import Entity.User;
 
 public class DBController {
 
-    /*
-    TODO singleton
-     */
-    public DBController(){
+    private static DBController instance;
 
+    private DBController(){
+
+    }
+
+    public static DBController getInstance(){
+        if (instance == null)
+            instance = new DBController();
+        return instance;
     }
 
     public boolean login(User user) {
         return UserDao.daoLogin(user);
     }
-
-
-
 }

@@ -8,7 +8,7 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private Boolean admin;          //1 se admin, 0 utente generico
+    private Boolean admin;          //true se admin, false utente generico
 
     public User() {
     }
@@ -76,7 +76,7 @@ public class User {
             return false;
         }
 
-        DBController controller = new DBController();
+        DBController controller = DBController.getInstance();
         return controller.login(this);
     }
 }

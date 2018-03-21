@@ -34,7 +34,7 @@ public class UserDao {
             // rs empty
             if (!rs.first()){
                 System.out.println("empty resultset;");
-                GraphicController graphicController = new GraphicController();
+                GraphicController graphicController = GraphicController.getInstance();
                 graphicController.incorrect();
                 return false;
             }
