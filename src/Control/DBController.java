@@ -10,7 +10,7 @@ public class DBController {
     }
 
 
-    public boolean login(User user) {
-        return UserDao.daoLogin(user);
+    public boolean login(String username, String password) {
+        return UserDao.daoLogin(username, password);
     }
 }

@@ -1,5 +1,6 @@
 package Boundary;
 
+import Control.DBController;
 import Dao.UserDao;
 import Entity.User;
 import javafx.application.Application;
@@ -27,14 +28,17 @@ public class Login extends Application {
         String username = loginUserTextField.getText();
         String password = loginPassowrdField.getText();
 
-        User user = new User();
+        DBController dbController = new DBController();
+        dbController.login(username, password);
+
+        /*User user = new User();
         user.reset();
         user.setUsername(username);
         user.setPassword(password);
         if (user.validate()){
 
             // TODO passa alla schermata successiva
-        }
+        }*/
     }
 
     @Override

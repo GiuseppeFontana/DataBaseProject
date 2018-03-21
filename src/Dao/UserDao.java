@@ -1,5 +1,6 @@
 package Dao;
 
+import Control.Controller;
 import Utils.Credenziali;
 import Utils.Strings;
 import Control.GraphicController;
@@ -7,7 +8,7 @@ import Entity.User;
 import java.sql.*;
 
 public class UserDao {
-    public static boolean daoLogin(User user){
+    public static boolean daoLogin(String u, String p){
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -21,7 +22,7 @@ public class UserDao {
 
             // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement();
-            String sql = String.format(Strings.strLogin, user.getUsername(), user.getPassword());
+            String sql = String.format(Strings.strLogin, u, p);
             System.out.println("query:\n"+sql);
 
             /*
@@ -55,10 +56,26 @@ public class UserDao {
             // lettura delle colonne "by name"
 
 
-            user.setEmail(rs.getString("email"));
+            /*user.setEmail(rs.getString("email"));
             user.setName(rs.getString("name"));
             user.setSurname(rs.getString("surname"));
-            user.setAdmin(rs.getBoolean("admin"));
+            user.setAdmin(rs.getBoolean("admin"));*/
+
+            /*String username = rs.getString("username");
+            String password = rs.getString("password");*/
+            String name = rs.getString("name");
+            String email = rs.getString("email");
+            String surname = rs.getString("surname");
+            Boolean admin = rs.getBoolean("admin");
+
+            Controller controller = new Controller();
+            controller.createUser(u, p, email, name, surname, admin);
+
+            if(!admin){
+                GraphicController graphicController = new GraphicController();
+                graphicController.homeUser();
+
+            }
 
 
 
