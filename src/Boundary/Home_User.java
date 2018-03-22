@@ -1,23 +1,52 @@
 package Boundary;
 
+import Entity.User;
+import Utils.ClassicSingleton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+import java.awt.*;
 
 public class Home_User {
-    public Label HomeNameLabel;
-    public Label HomeSurnameLabel;
-    public Label HomeEmailLabel;
-    public Label HomeTitleLabel;
+    @FXML
+    private Button btnInformation;
     @FXML
     private Button HomeBtnLogOut;
 
-    public void LogoutMethod(ActionEvent actionEvent) {
 
+    public void start() throws Exception{
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/home_user.fxml"));
+        AnchorPane root = loader.load();
+        Scene scene = new Scene(root, 686, 649 );
+
+        User user = ClassicSingleton.getInstance().getUser();
+        String name = user.getName();
+
+        final Label HomeLabel1 = new Label();
+
+        HomeLabel1.setText("Benvenuto " + name);
+        HomeLabel1.setLayoutX(320);
+        HomeLabel1.setLayoutY(42);
+        root.getChildren().addAll(HomeLabel1);
+
+        stage.setResizable(false);
+        stage.setScene(scene);
+        stage.show();
     }
 
-    public void start() {
+
+    public void information(ActionEvent actionEvent) throws Exception {
+
+        User_Information user_information = new User_Information();
+        user_information.start();
 
     }
 }
