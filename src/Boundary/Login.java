@@ -47,7 +47,7 @@ public class Login extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/login.fxml"));
         AnchorPane root = loader.load();
         thirdStage.setTitle("DB Project");
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root, 600, 400);
         thirdStage.setScene(scene);
         thirdStage.show();
     }
