@@ -3,6 +3,8 @@ package Entity;
 import Control.DBController;
 
 public class User {
+    //private static User instance;
+
     private String name;
     private String surname;
     private String username;
@@ -12,6 +14,12 @@ public class User {
 
     public User() {
     }
+
+    /*public static User getInstance(){
+        if (instance == null)
+            instance = new User();
+        return instance;
+    }*/
 
     public String getName() {
         return name;
