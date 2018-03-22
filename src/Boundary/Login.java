@@ -30,15 +30,6 @@ public class Login extends Application {
 
         DBController dbController = new DBController();
         dbController.login(username, password);
-
-        /*User user = new User();
-        user.reset();
-        user.setUsername(username);
-        user.setPassword(password);
-        if (user.validate()){
-
-            // TODO passa alla schermata successiva
-        }*/
     }
 
     @Override
@@ -47,7 +38,7 @@ public class Login extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/login.fxml"));
         AnchorPane root = loader.load();
         thirdStage.setTitle("DB Project");
-        Scene scene = new Scene(root, 600, 400);
+        Scene scene = new Scene(root, 600, 338);
         thirdStage.setScene(scene);
         thirdStage.show();
     }

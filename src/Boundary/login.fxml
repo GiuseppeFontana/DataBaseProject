@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Login">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="338.0" prefWidth="600.0" styleClass="anchor" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Login">
+   <stylesheets>
+      <URL value="@../images/css.css" />
+   </stylesheets>
    <children>
-      <TextField fx:id="loginUserTextField" layoutX="241.0" layoutY="137.0" prefHeight="26.0" prefWidth="232.0" promptText="enter here the username" />
+      <TextField fx:id="loginUserTextField" layoutX="204.0" layoutY="104.0" prefHeight="26.0" prefWidth="232.0" promptText="enter here the username" />
       <Text layoutX="252.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="67.7294921875" />
-      <Text layoutX="84.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
-      <Text layoutX="94.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-      <PasswordField fx:id="loginPassowrdField" layoutX="241.0" layoutY="205.0" prefHeight="26.0" prefWidth="232.0" />
-      <Button fx:id="LoginButton" layoutX="411.0" layoutY="299.0" mnemonicParsing="false" onAction="#LoginMethod" text="Login" />
+      <Text fill="RED" layoutX="89.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
+      <Text fill="RED" layoutX="92.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+      <PasswordField fx:id="loginPassowrdField" layoutX="204.0" layoutY="169.0" prefHeight="26.0" prefWidth="232.0" />
+      <Button fx:id="LoginButton" layoutX="409.0" layoutY="250.0" mnemonicParsing="false" onAction="#LoginMethod" text="Login" />
    </children>
 </AnchorPane>
