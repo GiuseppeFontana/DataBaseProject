@@ -8,10 +8,6 @@ import javafx.stage.Stage;
 
 public class GraphicController extends Application {
 
-    public GraphicController(){
-
-    }
-
     @Override
     public void start(Stage primaryStage) throws Exception {
 

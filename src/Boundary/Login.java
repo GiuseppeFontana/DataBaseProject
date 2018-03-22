@@ -7,6 +7,7 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -22,6 +23,8 @@ public class Login extends Application {
     @FXML
     private Button LoginButton;
 
+    private boolean b;
+
 
     public void LoginMethod(ActionEvent actionEvent) {
 
@@ -29,7 +32,10 @@ public class Login extends Application {
         String password = loginPassowrdField.getText();
 
         DBController dbController = new DBController();
-        dbController.login(username, password);
+
+        if (dbController.login(username, password)){
+            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        }
     }
 
     @Override
@@ -37,7 +43,7 @@ public class Login extends Application {
         Stage thirdStage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/login.fxml"));
         AnchorPane root = loader.load();
-        thirdStage.setTitle("DB Project");
+        thirdStage.setTitle("Interstellar");
         Scene scene = new Scene(root, 600, 338);
         thirdStage.setScene(scene);
         thirdStage.show();

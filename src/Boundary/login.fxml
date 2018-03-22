@@ -13,7 +13,6 @@
    </stylesheets>
    <children>
       <TextField fx:id="loginUserTextField" layoutX="204.0" layoutY="104.0" prefHeight="26.0" prefWidth="232.0" promptText="enter here the username" />
-      <Text layoutX="252.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" wrappingWidth="67.7294921875" />
       <Text fill="RED" layoutX="89.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
       <Text fill="RED" layoutX="92.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
       <PasswordField fx:id="loginPassowrdField" layoutX="204.0" layoutY="169.0" prefHeight="26.0" prefWidth="232.0" />
