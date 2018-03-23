@@ -1,5 +1,7 @@
 package Boundary;
 
+import Control.Controller;
+import Control.GraphicController;
 import Entity.User;
 import Utils.ClassicSingleton;
 import javafx.event.ActionEvent;
@@ -16,6 +18,8 @@ import javafx.stage.Stage;
 import java.awt.*;
 
 public class Home_User {
+    @FXML
+    private Button btnSystemExit;
     @FXML
     private Button btnInformation;
     @FXML
@@ -44,6 +48,8 @@ public class Home_User {
     }
 
 
+    //-----------------INFORMAZIONI USER LOGGATO-----------------//
+
     public void information(ActionEvent actionEvent) throws Exception {
 
         User_Information user_information = new User_Information();
@@ -51,17 +57,25 @@ public class Home_User {
 
     }
 
-    public void Logout(ActionEvent actionEvent) throws Exception{
+    //---------------PULSANTE LOGOUT---------------------//
 
-        User user = ClassicSingleton.getInstance().getUser();
-        user.reset();
-        System.out.println("Logged out\n");
+    public void logout(ActionEvent actionEvent) throws Exception {
 
+        Controller controller = new Controller();
+        controller.resetEntiy();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        Stage stage = null;
+        graphicController.start(stage);
 
-        Login login = new Login();
-        Stage stage = new Stage();
-        login.start(stage);
+
+    }
+
+    //-----------------PULSANTE CHIUSURA APPLICAZIONE-------------------//
+
+    public void systemExit(ActionEvent actionEvent) {
+
+        System.exit(0);
 
     }
 }

@@ -33,9 +33,9 @@ public class Login extends Application {
 
         DBController dbController = new DBController();
 
-        if (dbController.login(username, password)){
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-        }
+        if (dbController.login(username, password)){                           //Se il login va a buon fine, chiude
+            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();   //la pagina di login e lancia home user
+        }                                                                      //altrimenti lancia messaggio di incorect fields
     }
 
     @Override
