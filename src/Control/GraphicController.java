@@ -1,8 +1,6 @@
 package Control;
 
-import Boundary.Home_User;
-import Boundary.IncorrectLoginFields;
-import Boundary.Login;
+import Boundary.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -26,4 +24,13 @@ public class GraphicController extends Application {
         home_user.start();
     }
 
+    public void homeAdmin() throws Exception {
+        Home_Admin home_admin = new Home_Admin();
+        home_admin.start();
+    }
+
+    public void adminReqs() throws Exception{
+        Req_3_Page req_3_page = new Req_3_Page();
+        req_3_page.start();
+    }
 }

@@ -15,7 +15,8 @@
                   <Image url="@../images/logout.png" />
                </image>
             </ImageView>
-         </graphic></Button>
+         </graphic>
+      </Button>
       <Button fx:id="btnInformation" layoutX="568.0" layoutY="31.0" mnemonicParsing="false" onAction="#information" prefHeight="38.0" prefWidth="41.0">
          <graphic>
             <ImageView fitHeight="26.0" fitWidth="31.0">

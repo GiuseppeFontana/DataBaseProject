@@ -22,8 +22,11 @@ public class Controller {
 
     }
 
-
     public void resetUser() {
         ClassicSingleton.getInstance().getUser().reset();
+    }
+
+    public ClassicSingleton getSingleton(){
+        return ClassicSingleton.getInstance();
     }
 }

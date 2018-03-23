@@ -77,6 +77,11 @@ public class UserDao {
 
             }
 
+            if (admin){
+                GraphicController graphicController = new GraphicController();
+                graphicController.homeAdmin();
+            }
+
 
 
             //assert (usernameLoaded.equals(username));

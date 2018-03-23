@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Home_Admin">
+   <children>
+      <Button fx:id="HomeBtnLogOut" layoutX="84.0" layoutY="542.0" mnemonicParsing="false" onAction="#logout" prefHeight="38.0" prefWidth="41.0">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="31.0">
+               <image>
+                  <Image url="@../images/logout.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btnInformation" layoutX="568.0" layoutY="31.0" mnemonicParsing="false" onAction="#information" prefHeight="38.0" prefWidth="41.0">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="31.0">
+               <image>
+                  <Image url="@../images/Punto_interrogativo_2.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="btnSystemExit" layoutX="558.0" layoutY="549.0" mnemonicParsing="false" onAction="#systemExit" prefHeight="38.0" prefWidth="41.0">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="31.0">
+               <image>
+                  <Image url="@../images/application_exit.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="HomeAdminReq5Button" layoutX="223.0" layoutY="97.0" mnemonicParsing="false" onAction="#jumpReq5Page" text="per ID o designazione" />
+      <Button fx:id="HomeAdminReq6Button" layoutX="224.0" layoutY="137.0" mnemonicParsing="false" onAction="#jumpReq6Page" text="per contrasto ed ellitticità" />
+      <Button fx:id="HomeAdminReq7Button" layoutX="225.0" layoutY="180.0" mnemonicParsing="false" onAction="#jumpReq7Page" text="per numero di segmenti" />
+      <Label fx:id="HomeAdminStructureLabel" layoutX="91.0" layoutY="99.0" text="Ricerca Strutture:" />
+      <Button fx:id="HomeAdminReq8Button" layoutX="225.0" layoutY="221.0" mnemonicParsing="false" onAction="#jumpReq8Page" text="all'interno di una regione" />
+      <Label fx:id="HomeAdminStarLabel" layoutX="86.0" layoutY="317.0" text="Ricerca Stelle:" />
+      <Button fx:id="HomeAdminReq9Button" layoutX="220.0" layoutY="310.0" mnemonicParsing="false" onAction="#jumpReq9Page" text="all'interno di una Struttura" />
+      <Button fx:id="HomeAdminReq10Button" layoutX="220.0" layoutY="346.0" mnemonicParsing="false" onAction="#jumpReq10Page" text="all'interno di una regione" />
+      <Label fx:id="HomeAdminDistanceLabel" layoutX="84.0" layoutY="431.0" text="Calcola distanze:" />
+      <Button fx:id="HomeAdminReq11Button" layoutX="223.0" layoutY="426.0" mnemonicParsing="false" onAction="#jumpReq11Page" text="tra Segmento e Contorno" />
+      <Button fx:id="HomeAdminReq12Button" layoutX="221.0" layoutY="465.0" mnemonicParsing="false" onAction="#jumpReq12Page" text="tra Stelle e spina dorsale della stessa Struttura" />
+      <Button fx:id="AdminAdminSettingsButton" layoutX="568.0" layoutY="102.0" mnemonicParsing="false" onAction="#jumpReq3Page" prefHeight="57.0" prefWidth="59.0" />
+      <ImageView fitHeight="61.0" fitWidth="49.0" layoutX="573.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/settings.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
