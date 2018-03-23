@@ -11,13 +11,29 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.awt.*;
-
 public class Home_User {
+    
+
+    @FXML
+    private Button HomeUserReq5Button;
+    @FXML
+    private Button HomeUserReq6Button;
+    @FXML
+    private Button HomeUserReq7Button;
+    @FXML
+    private Button HomeUserReq8Button;
+    @FXML
+    private Button HomeUserReq9Button;
+    @FXML
+    private Button HomeUserReq10Button;
+    @FXML
+    private Button HomeUserReq11Button;
+    @FXML
+    private Button HomeUserReq12Button;
+
     @FXML
     private Button btnSystemExit;
     @FXML
@@ -62,7 +78,7 @@ public class Home_User {
     public void logout(ActionEvent actionEvent) throws Exception {
 
         Controller controller = new Controller();
-        controller.resetEntiy();
+        controller.resetUser();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         GraphicController graphicController = new GraphicController();
         Stage stage = null;
@@ -77,5 +93,31 @@ public class Home_User {
 
         System.exit(0);
 
+    }
+
+    //--------------Requisiti funzionali-------------------//
+
+    public void jumpReq5Page(ActionEvent actionEvent) {
+    }
+
+    public void jumpReq6Page(ActionEvent actionEvent) {
+    }
+
+    public void jumpReq7Page(ActionEvent actionEvent) {
+    }
+
+    public void jumpReq8Page(ActionEvent actionEvent) {
+    }
+
+    public void jumpReq9Page(ActionEvent actionEvent) {
+    }
+
+    public void jumpReq10Page(ActionEvent actionEvent) {
+    }
+
+    public void jumpReq11Page(ActionEvent actionEvent) {
+    }
+
+    public void jumpReq12Page(ActionEvent actionEvent) {
     }
 }

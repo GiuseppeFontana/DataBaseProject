@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -31,5 +32,16 @@
                </image>
             </ImageView>
          </graphic></Button>
+      <Button fx:id="HomeUserReq5Button" onAction="#jumpReq5Page" layoutX="223.0" layoutY="97.0" mnemonicParsing="false" text="per ID o designazione" />
+      <Button fx:id="HomeUserReq6Button" onAction="#jumpReq6Page" layoutX="224.0" layoutY="137.0" mnemonicParsing="false" text="per contrasto ed ellitticità" />
+      <Button fx:id="HomeUserReq7Button" onAction="#jumpReq7Page" layoutX="225.0" layoutY="180.0" mnemonicParsing="false" text="per numero di segmenti" />
+      <Label fx:id="HomeUserStructureLabel" layoutX="91.0" layoutY="99.0" text="Ricerca Strutture:" />
+      <Button fx:id="HomeUserReq8Button" onAction="#jumpReq8Page" layoutX="225.0" layoutY="221.0" mnemonicParsing="false" text="all'interno di una regione" />
+      <Label fx:id="HomeUserStarLabel" layoutX="86.0" layoutY="317.0" text="Ricerca Stelle:" />
+      <Button fx:id="HomeUserReq9Button" onAction="#jumpReq9Page" layoutX="220.0" layoutY="310.0" mnemonicParsing="false" text="all'interno di una Struttura" />
+      <Button fx:id="HomeUserReq10Button" onAction="#jumpReq10Page" layoutX="220.0" layoutY="346.0" mnemonicParsing="false" text="all'interno di una regione" />
+      <Label fx:id="HomeUserDistanceLabel" layoutX="84.0" layoutY="431.0" text="Calcola distanze:" />
+      <Button fx:id="HomeUserReq11Button" onAction="#jumpReq11Page" layoutX="223.0" layoutY="426.0" mnemonicParsing="false" text="tra Segmento e Contorno" />
+      <Button fx:id="HomeUserReq12Button" onAction="#jumpReq12Page" layoutX="221.0" layoutY="465.0" mnemonicParsing="false" text="tra Stelle e spina dorsale della stessa Struttura" />
    </children>
 </AnchorPane>
