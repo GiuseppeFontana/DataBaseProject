@@ -5,6 +5,7 @@ import Utils.ClassicSingleton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -47,6 +48,20 @@ public class Home_User {
 
         User_Information user_information = new User_Information();
         user_information.start();
+
+    }
+
+    public void Logout(ActionEvent actionEvent) throws Exception{
+
+        User user = ClassicSingleton.getInstance().getUser();
+        user.reset();
+        System.out.println("Logged out\n");
+
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+
+        Login login = new Login();
+        Stage stage = new Stage();
+        login.start(stage);
 
     }
 }

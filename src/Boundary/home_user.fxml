@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Home_User">
    <children>
-      <Button fx:id="HomeBtnLogOut" layoutX="84.0" layoutY="542.0" mnemonicParsing="false" text="Logout" />
+      <Button fx:id="HomeBtnLogOut" layoutX="84.0" layoutY="542.0" mnemonicParsing="false" text="Logout" onAction="#Logout"/>
       <Button fx:id="btnInformation" layoutX="568.0" layoutY="31.0" mnemonicParsing="false" onAction="#information" prefHeight="38.0" prefWidth="41.0" />
       <ImageView fitHeight="26.0" fitWidth="31.0" layoutX="573.0" layoutY="37.0">
          <image>
