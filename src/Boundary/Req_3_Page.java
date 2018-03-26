@@ -7,6 +7,7 @@ import Utils.ClassicSingleton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -39,6 +40,7 @@ public class Req_3_Page {
     }
 
     public void backHome(ActionEvent actionEvent) throws Exception{
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
         boolean admin = controller.getSingleton().getUser().getAdmin();
         if(!admin){
@@ -50,5 +52,11 @@ public class Req_3_Page {
             GraphicController graphicController = new GraphicController();
             graphicController.homeAdmin();
         }
+    }
+
+    public void jumpReq32Page(ActionEvent actionEvent) throws Exception{
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        graphicController.req32Page();
     }
 }

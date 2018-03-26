@@ -10,6 +10,6 @@ public class Strings {
 
     // query
     public static String strLogin = "SELECT * FROM users WHERE username = '%s' AND password = '%s';";
-
+    public static String strRegister = "INSERT INTO users VALUES ('%s','%s','%s','%s','%s','%s')";
     
 }

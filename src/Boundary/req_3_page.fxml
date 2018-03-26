@@ -18,7 +18,7 @@
             </graphic></Button>
       <Label layoutX="266.0" layoutY="91.0" text="Opzioni Amministratore" />
       <Button fx:id="Req3PageReq1Button" layoutX="109.0" layoutY="179.0" mnemonicParsing="false" text="Importa nuovo File" />
-      <Button fx:id="Req3PageReq2Button" layoutX="109.0" layoutY="230.0" mnemonicParsing="false" text="Registra un Nuovo Utente" />
+      <Button fx:id="Req3PageReq2Button" onAction="#jumpReq32Page" layoutX="109.0" layoutY="230.0" mnemonicParsing="false" text="Registra un Nuovo Utente" />
       <Button fx:id="Req3PageReq3Button" layoutX="109.0" layoutY="287.0" mnemonicParsing="false" text="Inserisci dati Nuovo Satellite" />
       <Button fx:id="Req3PageReq4Button" layoutX="109.0" layoutY="348.0" mnemonicParsing="false" text="Inserisci dati Nuovo Strumento" />
     </children>

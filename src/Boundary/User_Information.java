@@ -2,7 +2,6 @@ package Boundary;
 
 import Entity.User;
 import Utils.ClassicSingleton;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,7 +22,7 @@ public class User_Information{
 
     public void start() throws Exception {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/userInformation.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("user_Information.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 326, 189 );
 

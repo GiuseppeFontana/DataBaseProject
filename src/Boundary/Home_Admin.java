@@ -120,9 +120,14 @@ public class Home_Admin {
     public void jumpReq12Page(ActionEvent actionEvent) {
     }
 
-    public void jumpReq3Page(ActionEvent actionEvent) throws Exception{     //Requisiti Admin
+    /*
+    TODO
+    sistemare l'immagine del pulsante admin
+     */
+
+    public void jumpReq3Page(ActionEvent actionEvent) throws Exception{     //Funzionalità Admin
         GraphicController graphicController = new GraphicController();
-        graphicController.adminReqs();
+        graphicController.adminReqsPage();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 }

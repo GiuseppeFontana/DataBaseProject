@@ -14,7 +14,7 @@ public class GraphicController extends Application {
 
     }
 
-    public void incorrect() throws Exception{
+    public void incorrectLogin() throws Exception{
         IncorrectLoginFields incorrectLoginFields = new IncorrectLoginFields();
         incorrectLoginFields.incorrectLoginField();
     }
@@ -29,8 +29,23 @@ public class GraphicController extends Application {
         home_admin.start();
     }
 
-    public void adminReqs() throws Exception{
+    public void adminReqsPage() throws Exception{
         Req_3_Page req_3_page = new Req_3_Page();
         req_3_page.start();
+    }
+
+    public void incorrectPasswords() throws Exception {
+        IncorrectPasswords incorrectPasswords = new IncorrectPasswords();
+        incorrectPasswords.incorrectPasswordsField();
+    }
+
+    public void req32Page() throws Exception{
+        RegisterPage register_page = new RegisterPage();
+        register_page.start();
+    }
+
+    public void incorrectFields() throws Exception {
+        IncorrectFields incorrectFields = new IncorrectFields();
+        incorrectFields.incorrectField();
     }
 }

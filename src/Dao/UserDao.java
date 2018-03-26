@@ -4,7 +4,7 @@ import Control.Controller;
 import Utils.Credenziali;
 import Utils.Strings;
 import Control.GraphicController;
-import Entity.User;
+
 import java.sql.*;
 
 public class UserDao {
@@ -36,7 +36,7 @@ public class UserDao {
             if (!rs.first()){
                 System.out.println("empty resultset;");
                 GraphicController graphicController = new GraphicController();
-                graphicController.incorrect();
+                graphicController.incorrectLogin();
                 return false;
             }
 
