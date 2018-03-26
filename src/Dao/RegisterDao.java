@@ -39,7 +39,7 @@ public class RegisterDao {
             stmt.close();
             conn.close();
 
-            System.out.println("Query effettuata con successo");
+            System.out.println("Registrazione effettuata con successo");
             return true;
 
         } catch (SQLException se) {

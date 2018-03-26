@@ -15,6 +15,15 @@ public class GraphicController extends Application {
     }
 
     public void incorrectLogin() throws Exception{
+
+        /*
+        TODO MATTIA GUARDA QUA, prova quello commentato
+        */
+
+        /*String prova = "stampato.";
+        Alert alert = new Alert();
+        alert.showAlert(prova);*/
+
         IncorrectLoginFields incorrectLoginFields = new IncorrectLoginFields();
         incorrectLoginFields.incorrectLoginField();
     }
