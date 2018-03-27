@@ -15,11 +15,6 @@ public class GraphicController extends Application {
     }
 
     public void incorrectLogin(String message) throws Exception{
-
-        //String prova = "stampato.";
-        /*Alert alert = new Alert();
-        alert.showAlert(message);*/
-
         IncorrectLoginFields incorrectLoginFields = new IncorrectLoginFields();
         incorrectLoginFields.incorrectLoginField(message);
     }

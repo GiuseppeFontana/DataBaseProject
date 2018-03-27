@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Req_5_Page">
+    <children>
+        <Button fx:id="Req5PageBackButton" layoutX="84.0" layoutY="542.0" mnemonicParsing="false" onAction="#backHome" prefHeight="38.0" prefWidth="41.0">
+            <graphic>
+                <ImageView fx:id="Req5PageBackImg" fitHeight="31.0" fitWidth="31.0">
+                    <image>
+                        <Image url="@../images/back.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
+      <Label layoutX="212.0" layoutY="80.0" text="Ricerca Informazioni Derivate Filamento" />
+      <Label layoutX="152.0" layoutY="309.0" text="Immetti ID/Nome:" />
+      <RadioButton fx:id="Req5PageRadio1" onAction="#check1" layoutX="290.0" layoutY="217.0" mnemonicParsing="false" text=" ricerca per ID" />
+      <RadioButton fx:id="Req5PageRadio2" onAction="#check2" layoutX="290.0" layoutY="255.0" mnemonicParsing="false" text=" ricerca per Nome" />
+      <TextField fx:id="Req5PageText" layoutX="290.0" layoutY="305.0" prefHeight="26.0" prefWidth="295.0" />
+      <Button fx:id="Req5PageSearchButton" onAction="#search" layoutX="475.0" layoutY="540.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="74.0" text="Cerca" />
+    </children>
+</AnchorPane>

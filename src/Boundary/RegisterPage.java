@@ -32,7 +32,7 @@ public class RegisterPage {
     @FXML
     private Button Req32RegisterButton;
 
-    private boolean type;
+    private boolean type;   //true:admin
 
     public void Registra(ActionEvent actionEvent) throws Exception{
         String name = Req32NameText.getText();
@@ -42,22 +42,35 @@ public class RegisterPage {
         String pass2 = Req32Password2Text.getText();
         String email = Req32EmailText.getText();
 
-/*
+
         if (name.equals("") || surname.equals("") || username.equals("") ||
                 pass1.equals("") || pass2.equals("") || email.equals("") ||
                 (!(Req32Radio1.isSelected()) && (!Req32Radio2.isSelected()))){
             GraphicController graphicController = new GraphicController();
-            graphicController.incorrectFields();
+            String msg1 = "Dati non corretti!";
+            graphicController.incorrectLogin(msg1);
         }
 
-        else if (!pass1.equals(pass2)){
+        if (!pass1.equals(pass2)){
             GraphicController graphicController = new GraphicController();
-            graphicController.incorrectPasswords();
+            String msg2 = "Le password non coincidono.";
+            graphicController.incorrectLogin(msg2);
+        }
+        if (username.length()<6 || pass1.length()<6){
+            String msg3 = "Username o password troppo corti\n(min. 6 caratteri)";
+            GraphicController graphicController = new GraphicController();
+            graphicController.incorrectLogin(msg3);
         }
         else {
             DBController dbController = new DBController();
-            dbController.registraUtente(name,surname,username,pass1,email,type);
-        }*/
+            if (dbController.registraUtente(name,surname,username,pass1,email,type)){
+                GraphicController graphicController = new GraphicController();
+                ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+                graphicController.adminReqsPage();
+                String msg4 = "Registrazione effettuata con successo.";
+                graphicController.incorrectLogin(msg4);
+            }
+        }
     }
 
     public void start() throws Exception{
