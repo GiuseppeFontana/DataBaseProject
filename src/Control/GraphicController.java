@@ -14,18 +14,14 @@ public class GraphicController extends Application {
 
     }
 
-    public void incorrectLogin() throws Exception{
+    public void incorrectLogin(String message) throws Exception{
 
-        /*
-        TODO MATTIA GUARDA QUA, prova quello commentato
-        */
-
-        /*String prova = "stampato.";
-        Alert alert = new Alert();
-        alert.showAlert(prova);*/
+        //String prova = "stampato.";
+        /*Alert alert = new Alert();
+        alert.showAlert(message);*/
 
         IncorrectLoginFields incorrectLoginFields = new IncorrectLoginFields();
-        incorrectLoginFields.incorrectLoginField();
+        incorrectLoginFields.incorrectLoginField(message);
     }
 
     public void homeUser() throws Exception{
@@ -43,18 +39,18 @@ public class GraphicController extends Application {
         req_3_page.start();
     }
 
-    public void incorrectPasswords() throws Exception {
+    /*public void incorrectPasswords() throws Exception {
         IncorrectPasswords incorrectPasswords = new IncorrectPasswords();
         incorrectPasswords.incorrectPasswordsField();
-    }
+    }*/
 
     public void req32Page() throws Exception{
         RegisterPage register_page = new RegisterPage();
         register_page.start();
     }
 
-    public void incorrectFields() throws Exception {
+    /*public void incorrectFields() throws Exception {
         IncorrectFields incorrectFields = new IncorrectFields();
         incorrectFields.incorrectField();
-    }
+    }*/
 }

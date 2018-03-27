@@ -1,6 +1,7 @@
 package Boundary;
 
 import Control.DBController;
+import Control.GraphicController;
 import Dao.UserDao;
 import Entity.User;
 import javafx.application.Application;
@@ -26,16 +27,22 @@ public class Login extends Application {
     private boolean b;
 
 
-    public void LoginMethod(ActionEvent actionEvent) {
+    public void LoginMethod(ActionEvent actionEvent) throws Exception {
 
         String username = loginUserTextField.getText();
         String password = loginPassowrdField.getText();
 
         DBController dbController = new DBController();
 
-        if (dbController.login(username, password)){                           //Se il login va a buon fine, chiude
-            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();   //la pagina di login e lancia home user
-        }                                                                      //altrimenti lancia messaggio di incorect fields
+        if(username.isEmpty() || password.isEmpty()){
+            GraphicController graphicController = new GraphicController();
+            String message = "Completare tutti i campi!";
+            graphicController.incorrectLogin(message);
+        }else {
+            if (dbController.login(username, password)){                           //Se il login va a buon fine, chiude
+                ((Node)(actionEvent.getSource())).getScene().getWindow().hide();   //la pagina di login e lancia home user
+            }                                                                      //altrimenti lancia messaggio di incorect fields
+        }
     }
 
     @Override

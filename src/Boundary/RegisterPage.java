@@ -42,7 +42,7 @@ public class RegisterPage {
         String pass2 = Req32Password2Text.getText();
         String email = Req32EmailText.getText();
 
-
+/*
         if (name.equals("") || surname.equals("") || username.equals("") ||
                 pass1.equals("") || pass2.equals("") || email.equals("") ||
                 (!(Req32Radio1.isSelected()) && (!Req32Radio2.isSelected()))){
@@ -57,7 +57,7 @@ public class RegisterPage {
         else {
             DBController dbController = new DBController();
             dbController.registraUtente(name,surname,username,pass1,email,type);
-        }
+        }*/
     }
 
     public void start() throws Exception{

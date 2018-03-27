@@ -83,7 +83,6 @@ public class Home_Admin {
         Stage stage = null;
         graphicController.start(stage);
 
-
     }
 
     //-----------------PULSANTE CHIUSURA APPLICAZIONE-------------------//

@@ -36,7 +36,8 @@ public class UserDao {
             if (!rs.first()){
                 System.out.println("empty resultset;");
                 GraphicController graphicController = new GraphicController();
-                graphicController.incorrectLogin();
+                String message = "Username o password incorretti";
+                graphicController.incorrectLogin(message);
                 return false;
             }
 
@@ -82,10 +83,7 @@ public class UserDao {
                 graphicController.homeAdmin();
             }
 
-
-
             //assert (usernameLoaded.equals(username));
-
 
             // STEP 6: Clean-up dell'ambiente
             rs.close();
