@@ -22,8 +22,16 @@ public class DBController {
     }
 
 
-    public boolean ricercaFilamentoPerIdONome(boolean type, String input) {
-        ArrayList<Structure> structures = Req5Dao.req5(type, input);
-
+    public boolean ricercaFilamentoPerIdONome(String type, String instrument, String input) {
+        ArrayList<Structure> structures = Req5Dao.req51(type,instrument, input);
+        if (structures == null){
+            return false;
+        }
+        else {
+            for (int i = 0; i<structures.size(); i++ ){
+                System.out.println(structures.get(i).getInstrument());
+            }
+        }
+        return  true;
     }
 }

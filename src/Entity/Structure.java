@@ -2,13 +2,13 @@ package Entity;
 
 public class Structure {
 
-    private Integer id;
+    private int id;
     private String name;
     private Double flux;
     private Double meanDens;
-    private Integer meanTemp;
-    private Integer ellipt;
-    private Integer contrast;
+    private int meanTemp;
+    private int ellipt;
+    private int contrast;
     private String satellite;
     private String instrument;
 

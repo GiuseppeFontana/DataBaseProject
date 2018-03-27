@@ -2,12 +2,27 @@ package Dao;
 
 import Entity.Structure;
 import Utils.Credenziali;
+import Utils.Strings;
 
 import java.sql.*;
 import java.util.ArrayList;
 
+
+/*
+TODO questo non risponde al requisito 5
+
+REQ-FN-5	Recupero	informazioni	derivate	di	un	filamento
+Un	utente	registrato	potrà	ricercare	un	filamento	per	id	o	designazione,	e	di	questo
+visualizzare:
+1) La	posizione	del	centroide	del	contorno.	Il	centroide	sarà	calcolato	come	media	delle
+latitudini	e	delle	longitudini.
+2) L’estensione	del	contorno.	L’estensione	sarà	calcolata	come	la	distanza	tra	il	minimo
+massimo	delle	posizioni	longitudinali,	e	tra	il	minimo	e	massimo	delle	posizioni	latitudinali.
+3) Il	numero	di	segmenti	relativi.
+*/
+
 public class Req5Dao {
-    public static boolean req5(boolean type, String input) {
+    public static ArrayList<Structure> req51(String type, String strumento, String input) {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -19,90 +34,77 @@ public class Req5Dao {
             // STEP 3: apertura connessione
             conn = DriverManager.getConnection(Credenziali.G_DB_URL, Credenziali.G_DB_USER, Credenziali.G_DB_PASS);
 
+            conn.setAutoCommit(false);
+
+
             // STEP 4: creazione ed esecuzione della query
-            stmt = conn.createStatement();
-            String sql = "SELECT * FROM prodotti where venditore = '"
-                    + vendor + "'";
+            //stmt = conn.createStatement();
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            String arg = type;
+
+            String sql = String.format(Strings.strReq51, arg, input);
             System.out.println(sql);
             ResultSet rs = stmt.executeQuery(sql);
 
             if (!rs.first()) {// rs empty
-                System.out.println("Accesso Prodotti fallito");
+                System.out.println("Accesso Strutture fallito");
                 return null;
             }
 
 
-            Prodotto prodotto;
-            FactoryProdotti factoryProdotti = FactoryProdotti.getIstanza();
-            String scollo = null;
-            String chiusura = null;
-            String puntale = null;
-            String vestibilità = null;
+            Structure struttura1 = new Structure();
 
             //-----------PRIMA ENTRY-----------//
-            int id1 = rs.getInt("ID");
-            String venditore1 = rs.getString("venditore");
-            String nome1 = rs.getString("nome");
-            String categoria1 = rs.getString("categoria");
-            String colore1 = rs.getString("colore");
-            String taglia1 = rs.getString("taglia");
-            int prezzo1 = rs.getInt("prezzo");
-            int disponibilità1 = rs.getInt("disponibilità");
-            String descrizione1 = rs.getString("descrizione");
-            String materiale1 = rs.getString("materiale");
-            switch (categoria1) {
-                case Constants.CAT_MAGLIETTA:{
-                    scollo = rs.getString("maglietta_scollo");
-                }
-                case Constants.CAT_CINTURA:{
-                    chiusura = rs.getString("cinta_chiusura");
-                }
-                case Constants.CAT_SCARPE:{
-                    puntale = rs.getString("scarpa_puntale");
-                }
-                case Constants.CAT_PANTALONE:{
-                    vestibilità = rs.getString("pantalone_vestibilità");
-                }
+            int id1 = rs.getInt("id");
+            String name1 = rs.getString("name");
+            Double flux1 = rs.getDouble("flux");
+            Double meanDens1 = rs.getDouble("meandens");
+            int meanTemp1 = rs.getInt("meantemp");
+            int ellipt1 = rs.getInt("ellipt");
+            int contrast1 = rs.getInt("contrast");
+            String satellite1 = rs.getString("satellite");
+            String instrument1 = rs.getString("instrument");
 
-            }
-            prodotto = factoryProdotti.creaProdotto(id1, venditore1, nome1, categoria1, colore1, taglia1,
-                    prezzo1, disponibilità1, descrizione1, materiale1,
-                    puntale, scollo, chiusura, vestibilità);
-            prodotti.add(prodotto);
+            struttura1.setId(id1);
+            struttura1.setName(name1);
+            struttura1.setFlux(flux1);
+            struttura1.setMeanDens(meanDens1);
+            struttura1.setMeanTemp(meanTemp1);
+            struttura1.setEllipt(ellipt1);
+            struttura1.setContrast(contrast1);
+            struttura1.setSatellite(satellite1);
+            struttura1.setInstrument(instrument1);
+
+            strutture.add(struttura1);
             //-----------FINE PRIMA ENTRY-----------//
 
             while (rs.next()){
-                int id = rs.getInt("ID");
-                String venditore = rs.getString("venditore");
-                String nome = rs.getString("nome");
-                String categoria = rs.getString("categoria");
-                String colore = rs.getString("colore");
-                String taglia = rs.getString("taglia");
-                int prezzo = rs.getInt("prezzo");
-                int disponibilità = rs.getInt("disponibilità");
-                String descrizione = rs.getString("descrizione");
-                String materiale = rs.getString("materiale");
-                switch (categoria) {
-                    case Constants.CAT_MAGLIETTA:{
-                        scollo = rs.getString("maglietta_scollo");
-                    }
-                    case Constants.CAT_CINTURA:{
-                        chiusura = rs.getString("cinta_chiusura");
-                    }
-                    case Constants.CAT_SCARPE:{
-                        puntale = rs.getString("scarpa_puntale");
-                    }
-                    case Constants.CAT_PANTALONE:{
-                        vestibilità = rs.getString("pantalone_vestibilità");
-                    }
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                Double flux = rs.getDouble("flux");
+                Double meanDens = rs.getDouble("meandens");
+                int meanTemp = rs.getInt("meantemp");
+                int ellipt = rs.getInt("ellipt");
+                int contrast = rs.getInt("contrast");
+                String satellite = rs.getString("satellite");
+                String instrument = rs.getString("instrument");
 
-                }
-                prodotto = factoryProdotti.creaProdotto(id, venditore, nome, categoria, colore, taglia,
-                        prezzo, disponibilità, descrizione, materiale,
-                        puntale, scollo, chiusura, vestibilità);
-                prodotti.add(prodotto);
+                Structure structure = new Structure();
+
+                structure.setId(id);
+                structure.setName(name);
+                structure.setFlux(flux);
+                structure.setMeanDens(meanDens);
+                structure.setMeanTemp(meanTemp);
+                structure.setEllipt(ellipt);
+                structure.setContrast(contrast);
+                structure.setSatellite(satellite);
+                structure.setInstrument(instrument);
+
+                strutture.add(structure);
             }
 
+            conn.commit();
 
             // STEP 6: Clean-up dell'ambiente
             rs.close();
@@ -128,7 +130,7 @@ public class Req5Dao {
                 se.printStackTrace();
             }
         }
-        System.out.println("Accesso Prodotti effettuato con successo");
-        return prodotti;
+        System.out.println("Accesso Strutture effettuato con successo");
+        return strutture;
     }
 }
