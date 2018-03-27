@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Home_Admin">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Home_Admin">
    <children>
       <Button fx:id="HomeBtnLogOut" layoutX="84.0" layoutY="542.0" mnemonicParsing="false" onAction="#logout" prefHeight="38.0" prefWidth="41.0">
          <graphic>
@@ -43,11 +43,13 @@
       <Label fx:id="HomeAdminDistanceLabel" layoutX="84.0" layoutY="431.0" text="Calcola distanze:" />
       <Button fx:id="HomeAdminReq11Button" layoutX="223.0" layoutY="426.0" mnemonicParsing="false" onAction="#jumpReq11Page" text="tra Segmento e Contorno" />
       <Button fx:id="HomeAdminReq12Button" layoutX="221.0" layoutY="465.0" mnemonicParsing="false" onAction="#jumpReq12Page" text="tra Stelle e spina dorsale della stessa Struttura" />
-      <Button fx:id="AdminAdminSettingsButton" layoutX="568.0" layoutY="102.0" mnemonicParsing="false" onAction="#jumpReq3Page" prefHeight="57.0" prefWidth="59.0" />
-      <ImageView fitHeight="61.0" fitWidth="49.0" layoutX="573.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/settings.png" />
-         </image>
-      </ImageView>
+      <Button fx:id="AdminAdminSettingsButton" layoutX="569.0" layoutY="103.0" mnemonicParsing="false" onAction="#jumpReq3Page" prefHeight="41.0" prefWidth="49.0">
+         <graphic>
+            <ImageView fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/settings.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
    </children>
 </AnchorPane>
