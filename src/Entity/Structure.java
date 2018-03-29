@@ -1,6 +1,6 @@
 package Entity;
 
-public class Structure {
+public class    Structure {
 
     private int id;
     private String name;

@@ -27,10 +27,6 @@ massimo	delle	posizioni	longitudinali,	e	tra	il	minimo	e	massimo	delle	posizioni
 
 public class Req_5_Page {
     @FXML
-    private RadioButton Req5PageRadio3;
-    @FXML
-    private RadioButton Req5PageRadio4;
-    @FXML
     private RadioButton Req5PageRadio1;
     @FXML
     private RadioButton Req5PageRadio2;
@@ -39,8 +35,7 @@ public class Req_5_Page {
     @FXML
     private Button Req5PageSearchButton;
 
-    private String satellite;         // false: Herschel; true: Spitzer
-    private String typeSearch;       // false: ricerca per ID; true: ricerca per nome
+    private String satellite;         // Herschel o Spitzer
 
     public void start() throws Exception{
         Stage stage = new Stage();
@@ -72,43 +67,30 @@ public class Req_5_Page {
         if (Req5PageRadio2.isSelected()){
             Req5PageRadio2.setSelected(false);
         }
-        typeSearch = "id";
+        satellite = "herschel";
     }
 
     public void check2(ActionEvent actionEvent) throws Exception {
         if (Req5PageRadio1.isSelected()){
             Req5PageRadio1.setSelected(false);
         }
-        typeSearch = "name";
+        satellite = "spitzer";
     }
 
-    public void check3(ActionEvent actionEvent) throws Exception{
-        if (Req5PageRadio4.isSelected()){
-            Req5PageRadio4.setSelected(false);
-        }
-        satellite = "herschel";     //satellite = Herschel
-    }
-
-    public void check4(ActionEvent actionEvent) throws Exception{
-        if (Req5PageRadio3.isSelected()){
-            Req5PageRadio3.setSelected(false);
-        }
-        satellite = "spitzer";     //satellite = Spitzer
-    }
 
     public void search(ActionEvent actionEvent) throws Exception {
         String input = Req5PageText.getText();
         if (input.equals("") || (!Req5PageRadio1.isSelected() && !Req5PageRadio2.isSelected())){
             String msg1 = "Input non valido.";
             GraphicController graphicController = new GraphicController();
-            graphicController.incorrectLogin(msg1);
+            graphicController.alertError(msg1);
         }
         else {
             DBController dbController = new DBController();
-            if(!dbController.ricercaFilamentoPerIdONome(typeSearch, satellite, input)){
+            if(!dbController.infoDerivateFilamento(satellite, input)){
                 String msg2 = "Filamento non trovato.";
                 GraphicController graphicController = new GraphicController();
-                graphicController.incorrectLogin(msg2);
+                graphicController.alertError(msg2);
             }
         }
     }

@@ -3,6 +3,8 @@ package Control;
 import Dao.RegisterDao;
 import Dao.Req5Dao;
 import Dao.UserDao;
+import Entity.Bound;
+import Entity.SkeletonPoint;
 import Entity.Structure;
 
 import java.util.ArrayList;
@@ -22,16 +24,17 @@ public class DBController {
     }
 
 
-    public boolean ricercaFilamentoPerIdONome(String type, String instrument, String input) {
-        ArrayList<Structure> structures = Req5Dao.req51(type,instrument, input);
-        if (structures == null){
+    public boolean infoDerivateFilamento(String instrument, String input) {
+        ArrayList<Bound> bounds = Req5Dao.req51(instrument, input);
+        int nBranches = Req5Dao.req52(instrument, input);
+        if (bounds == null || nBranches == 0){
             return false;
         }
         else {
-            for (int i = 0; i<structures.size(); i++ ){
-                System.out.println(structures.get(i).getInstrument());
+
+            //TODO calcola centroide, max e min coordinate e crea l'interfaccia
             }
+            return  true;
         }
-        return  true;
+
     }
-}

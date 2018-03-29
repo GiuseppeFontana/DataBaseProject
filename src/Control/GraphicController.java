@@ -14,7 +14,7 @@ public class GraphicController extends Application {
 
     }
 
-    public void incorrectLogin(String message) throws Exception{
+    public void alertError(String message) throws Exception{
         IncorrectLoginFields incorrectLoginFields = new IncorrectLoginFields();
         incorrectLoginFields.incorrectLoginField(message);
     }

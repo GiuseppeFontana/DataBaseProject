@@ -37,7 +37,7 @@ public class UserDao {
                 System.out.println("empty resultset;");
                 GraphicController graphicController = new GraphicController();
                 String message = "Username o password incorretti";
-                graphicController.incorrectLogin(message);
+                graphicController.alertError(message);
                 return false;
             }
 

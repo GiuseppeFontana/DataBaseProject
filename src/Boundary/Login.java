@@ -2,8 +2,6 @@ package Boundary;
 
 import Control.DBController;
 import Control.GraphicController;
-import Dao.UserDao;
-import Entity.User;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,7 +35,7 @@ public class Login extends Application {
         if(username.isEmpty() || password.isEmpty()){
             GraphicController graphicController = new GraphicController();
             String message = "Completare tutti i campi!";
-            graphicController.incorrectLogin(message);
+            graphicController.alertError(message);
         }else {
             if (dbController.login(username, password)){                           //Se il login va a buon fine, chiude
                 ((Node)(actionEvent.getSource())).getScene().getWindow().hide();   //la pagina di login e lancia home user

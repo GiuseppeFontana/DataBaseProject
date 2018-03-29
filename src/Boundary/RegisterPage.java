@@ -48,18 +48,18 @@ public class RegisterPage {
                 (!(Req32Radio1.isSelected()) && (!Req32Radio2.isSelected()))){
             GraphicController graphicController = new GraphicController();
             String msg1 = "Dati non corretti!";
-            graphicController.incorrectLogin(msg1);
+            graphicController.alertError(msg1);
         }
 
         if (!pass1.equals(pass2)){
             GraphicController graphicController = new GraphicController();
             String msg2 = "Le password non coincidono.";
-            graphicController.incorrectLogin(msg2);
+            graphicController.alertError(msg2);
         }
         if (username.length()<6 || pass1.length()<6){
             String msg3 = "Username o password troppo corti\n(min. 6 caratteri)";
             GraphicController graphicController = new GraphicController();
-            graphicController.incorrectLogin(msg3);
+            graphicController.alertError(msg3);
         }
         else {
             DBController dbController = new DBController();
@@ -68,7 +68,7 @@ public class RegisterPage {
                 ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
                 graphicController.adminReqsPage();
                 String msg4 = "Registrazione effettuata con successo.";
-                graphicController.incorrectLogin(msg4);
+                graphicController.alertError(msg4);
             }
         }
     }

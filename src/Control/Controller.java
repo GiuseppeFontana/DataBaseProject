@@ -1,6 +1,6 @@
 package Control;
 
-import Entity.User;
+import Entity.*;
 import Utils.ClassicSingleton;
 
 public class Controller {
@@ -28,5 +28,62 @@ public class Controller {
 
     public ClassicSingleton getSingleton(){
         return ClassicSingleton.getInstance();
+    }
+
+
+    public Structure createStructure(int id, String name, double flux, double meanDens, int meanTemp, int ellipt, int cotrast, String satellite, String instrument){
+
+        Structure structure = new Structure();
+
+        structure.setId(id);
+        structure.setName(name);
+        structure.setFlux(flux);
+        structure.setMeanDens(meanDens);
+        structure.setMeanTemp(meanTemp);
+        structure.setEllipt(ellipt);
+        structure.setContrast(cotrast);
+        structure.setSatellite(satellite);
+        structure.setInstrument(instrument);
+
+        return structure;
+    }
+
+    public Bound createBound (int id, double longitude, double latitude){
+
+        Bound bound = new Bound();
+
+        bound.setId(id);
+        bound.setLongitude(longitude);
+        bound.setLatitude(latitude);
+
+        return bound;
+    }
+
+    public SkeletonPoint createSkeletonPoint(int idStructure, int idBranch, int nProgressive, char type, double longitude, double latitude, double flux){
+
+        SkeletonPoint skeletonPoint = new SkeletonPoint();
+        skeletonPoint.setIdStructure(idStructure);
+        skeletonPoint.setIdBranch(idBranch);
+        skeletonPoint.setnProgressive(nProgressive);
+        skeletonPoint.setType(type);
+        skeletonPoint.setLongitude(longitude);
+        skeletonPoint.setLatitude(latitude);
+        skeletonPoint.setFlux(flux);
+
+        return skeletonPoint;
+    }
+
+    public Star createStar(long id, String name, float gLon, float gLat, double flux, String type){
+
+        Star star = new Star();
+
+        star.setId(id);
+        star.setName(name);
+        star.setgLon(gLon);
+        star.setgLat(gLat);
+        star.setFlux(flux);
+        star.setType(type);
+
+        return star;
     }
 }
