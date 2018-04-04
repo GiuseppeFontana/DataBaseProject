@@ -119,10 +119,6 @@ public class Home_Admin {
     public void jumpReq12Page(ActionEvent actionEvent) {
     }
 
-    /*
-    TODO
-    sistemare l'immagine del pulsante admin
-     */
 
     public void jumpReq3Page(ActionEvent actionEvent) throws Exception{     //Funzionalità Admin
         GraphicController graphicController = new GraphicController();

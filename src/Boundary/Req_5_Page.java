@@ -92,6 +92,9 @@ public class Req_5_Page {
                 GraphicController graphicController = new GraphicController();
                 graphicController.alertError(msg2);
             }
+            else {
+                ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+            }
         }
     }
 

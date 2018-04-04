@@ -15,10 +15,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Req_3_Page {
-    /* TODO funziona anche senza
-    @FXML
-    private Button Req3PageBackButton;
-    */
 
     public void start() throws Exception{
         Stage stage = new Stage();

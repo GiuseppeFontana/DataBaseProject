@@ -125,7 +125,7 @@ public class Req5Dao {
                 return number;
             }
 
-            number = rs.getInt(0);
+            number = rs.getInt("count");
 
             conn.commit();
 

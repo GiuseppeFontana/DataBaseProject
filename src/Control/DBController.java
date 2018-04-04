@@ -28,7 +28,7 @@ public class DBController {
 
         ArrayList<Bound> bounds = Req5Dao.req51(instrument, input);
         int nBranches = Req5Dao.req52(instrument, input);
-        if (bounds == null || nBranches == 0){
+        if (/*bounds == null|| */nBranches == 0){
             return false;
         }
         else {  //calcola centroide, max e min coordinate e crea l'interfaccia
@@ -51,7 +51,7 @@ public class DBController {
             infoContorno[6] = 0.0;      //estensione longitudinale
             infoContorno[7] = 0.0;      //estensione latitudinale
 
-            infoContorno[8] = (double) nBranches;      // n segmenti (da castare)
+            infoContorno[8] = (double) nBranches;      // n segmenti
 
             for (int k=0; k < size; k++){
                 longitude = bounds.get(k).getLongitude();
@@ -77,7 +77,6 @@ public class DBController {
 
             GraphicController graphicController = new GraphicController();
             graphicController.req5result(input, infoContorno);
-
             return  true;
         }
     }

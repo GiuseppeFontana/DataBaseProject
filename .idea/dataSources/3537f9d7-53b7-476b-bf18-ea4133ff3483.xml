@@ -19,8 +19,8 @@
     </role>
     <schema id="4" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-03-27.18:34:24.066</IntrospectionTimestamp>
-      <IntrospectionStateNumber>791</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-04-04.17:41:08.605</IntrospectionTimestamp>
+      <IntrospectionStateNumber>813</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -40,12 +40,12 @@
       <ObjectId>11522</ObjectId>
     </schema>
     <table id="10" parent="4" name="herschel_boundaries">
-      <ObjectId>16480</ObjectId>
-      <StateNumber>786</StateNumber>
+      <ObjectId>16522</ObjectId>
+      <StateNumber>806</StateNumber>
     </table>
     <table id="11" parent="4" name="herschel_skeletons">
-      <ObjectId>16490</ObjectId>
-      <StateNumber>789</StateNumber>
+      <ObjectId>16512</ObjectId>
+      <StateNumber>799</StateNumber>
     </table>
     <table id="12" parent="4" name="herschel_stars">
       <ObjectId>16498</ObjectId>
@@ -53,35 +53,35 @@
     </table>
     <table id="13" parent="4" name="herschel_structures">
       <ObjectId>16465</ObjectId>
-      <StateNumber>788</StateNumber>
+      <StateNumber>813</StateNumber>
     </table>
     <table id="14" parent="4" name="users">
       <ObjectId>16404</ObjectId>
       <StateNumber>747</StateNumber>
     </table>
-    <column id="15" parent="10" name="lon">
+    <column id="15" parent="10" name="id">
       <Position>1</Position>
-      <DataType>double precision|0</DataType>
+      <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>768</StateNumber>
-      <TypeId>701</TypeId>
+      <StateNumber>806</StateNumber>
+      <TypeId>23</TypeId>
     </column>
-    <column id="16" parent="10" name="lat">
+    <column id="16" parent="10" name="lon">
       <Position>2</Position>
       <DataType>double precision|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>769</StateNumber>
+      <StateNumber>806</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="17" parent="10" name="id">
+    <column id="17" parent="10" name="lat">
       <Position>3</Position>
-      <DataType>integer|0</DataType>
+      <DataType>double precision|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>776</StateNumber>
-      <TypeId>23</TypeId>
+      <StateNumber>806</StateNumber>
+      <TypeId>701</TypeId>
     </column>
     <foreign-key id="18" parent="10" name="boundaries_herschel_structures_herschel_id_fk">
-      <ObjectId>16485</ObjectId>
+      <ObjectId>16525</ObjectId>
       <ColNames>id</ColNames>
       <RefTableId>16465</RefTableId>
       <RefColPositions>1</RefColPositions>
@@ -89,64 +89,64 @@
       <RefKeyName>structures_herschel_id_pk</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="19" parent="11" name="type">
+    <column id="19" parent="11" name="idfil">
       <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>795</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="20" parent="11" name="idbranch">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>795</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <column id="21" parent="11" name="type">
+      <Position>3</Position>
       <DataType>varchar|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>778</StateNumber>
+      <StateNumber>795</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="20" parent="11" name="lon">
-      <Position>2</Position>
-      <DataType>double precision|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>779</StateNumber>
-      <TypeId>701</TypeId>
-    </column>
-    <column id="21" parent="11" name="lat">
-      <Position>3</Position>
-      <DataType>double precision|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>780</StateNumber>
-      <TypeId>701</TypeId>
-    </column>
-    <column id="22" parent="11" name="flux">
+    <column id="22" parent="11" name="lon">
       <Position>4</Position>
       <DataType>double precision|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>781</StateNumber>
+      <StateNumber>795</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="23" parent="11" name="n">
+    <column id="23" parent="11" name="lat">
       <Position>5</Position>
-      <DataType>integer|0</DataType>
+      <DataType>double precision|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>782</StateNumber>
-      <TypeId>23</TypeId>
+      <StateNumber>795</StateNumber>
+      <TypeId>701</TypeId>
     </column>
-    <column id="24" parent="11" name="idbranch">
+    <column id="24" parent="11" name="n">
       <Position>6</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>783</StateNumber>
+      <StateNumber>795</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="25" parent="11" name="idfil">
+    <column id="25" parent="11" name="flux">
       <Position>7</Position>
-      <DataType>integer|0</DataType>
+      <DataType>double precision|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>784</StateNumber>
-      <TypeId>23</TypeId>
+      <StateNumber>795</StateNumber>
+      <TypeId>701</TypeId>
     </column>
     <index id="26" parent="11" name="skeletonstructure_herschel_idfil_idbranch_n_pk">
-      <ObjectId>16496</ObjectId>
+      <ObjectId>16520</ObjectId>
       <ColNames>idfil
 idbranch
 n</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="27" parent="11" name="skeletonstructure_herschel_idfil_idbranch_n_pk">
-      <ObjectId>16497</ObjectId>
+      <ObjectId>16521</ObjectId>
       <ColNames>idfil
 idbranch
 n</ColNames>
@@ -240,24 +240,24 @@ n</ColNames>
     </column>
     <column id="41" parent="13" name="meantemp">
       <Position>5</Position>
-      <DataType>integer|0</DataType>
+      <DataType>double precision|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>761</StateNumber>
-      <TypeId>23</TypeId>
+      <StateNumber>810</StateNumber>
+      <TypeId>701</TypeId>
     </column>
     <column id="42" parent="13" name="ellipt">
       <Position>6</Position>
-      <DataType>integer|0</DataType>
+      <DataType>double precision|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>761</StateNumber>
-      <TypeId>23</TypeId>
+      <StateNumber>812</StateNumber>
+      <TypeId>701</TypeId>
     </column>
     <column id="43" parent="13" name="contrast">
       <Position>7</Position>
-      <DataType>integer|0</DataType>
+      <DataType>double precision|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>761</StateNumber>
-      <TypeId>23</TypeId>
+      <StateNumber>813</StateNumber>
+      <TypeId>701</TypeId>
     </column>
     <column id="44" parent="13" name="satellite">
       <Position>8</Position>
