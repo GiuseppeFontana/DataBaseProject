@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 
 /*
-TODO questo non risponde al requisito 5
+TODO questo non risponde al requisito 5, req 51 deve soddisfare i punti 1 e 2, req52 il punto 3
 
 REQ-FN-5	Recupero	informazioni	derivate	di	un	filamento
 Un	utente	registrato	potrà	ricercare	un	filamento	per	id	o	designazione,	e	di	questo
@@ -96,6 +96,64 @@ public class Req5Dao {
         }
 
     public static int req52(String instrument, String input) {
-        return 0;
+
+        int number = 0;
+
+        // STEP 1: dichiarazioni
+        Statement stmt = null;
+        Connection conn = null;
+        try {
+            // STEP 2: loading dinamico del driver
+            Class.forName("org.postgresql.Driver");
+
+            // STEP 3: apertura connessione
+            conn = DriverManager.getConnection(Credenziali.G_DB_URL, Credenziali.G_DB_USER, Credenziali.G_DB_PASS);
+
+            conn.setAutoCommit(false);
+
+
+            // STEP 4: creazione ed esecuzione della query
+            //stmt = conn.createStatement();
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            String sql = String.format(Strings.strReq52, instrument, input);
+            System.out.println(sql);
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if (!rs.first()) {// rs empty
+                System.out.println("Accesso Scheletri fallito");
+                return number;
+            }
+
+            number = rs.getInt(0);
+
+            conn.commit();
+
+            // STEP 6: Clean-up dell'ambiente
+            rs.close();
+            stmt.close();
+            conn.close();
+        } catch (SQLException se) {
+            // Errore durante l'apertura della connessione
+            se.printStackTrace();
+        } catch (Exception e) {
+            // Errore nel loading del driver
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt != null)
+                    stmt.close();
+            } catch (SQLException se2) {
+                se2.printStackTrace();
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+        System.out.println("Accesso Scheletri effettuato con successo");
+        return number;
     }
 }

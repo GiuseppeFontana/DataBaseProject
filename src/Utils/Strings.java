@@ -13,5 +13,6 @@ public class Strings {
     public static String strRegister = "INSERT INTO users VALUES ('%s','%s','%s','%s','%s','%s')";
 
     public static String strReq51 = "SELECT * FROM %s_boundaries WHERE id = '%s'";
+    public static String strReq52 = ""; // TODO stringa Alessia
     
 }

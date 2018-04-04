@@ -15,6 +15,11 @@ STELLA (IDSorgente, NomeSorgente, Tipologia, ValoreFlusso, Latitudine, Longitudi
 
 
 
+COPY country FROM '/usr1/proj/bray/sql/country_data';
+COPY country TO STDOUT (DELIMITER '|');
+
+
+
 TODO        +------------------------------+
 TODO        |          IMPORTANTE          |
 TODO        +------------------------------+
