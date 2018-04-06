@@ -32,10 +32,10 @@ public class Req_5_Page {
     private RadioButton Req5PageRadio2;
     @FXML
     private TextField Req5PageText;
-    @FXML
-    private Button Req5PageSearchButton;
+    /*@FXML
+    private Button Req5PageSearchButton;*/
 
-    private String satellite;         // Herschel o Spitzer
+    private String satellite;         // "Herschel" o "Spitzer"
 
     public void start() throws Exception{
         Stage stage = new Stage();
@@ -92,9 +92,9 @@ public class Req_5_Page {
                 GraphicController graphicController = new GraphicController();
                 graphicController.alertError(msg2);
             }
-            else {
+            /*else {
                 ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-            }
+            }*/
         }
     }
 

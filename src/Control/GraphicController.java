@@ -49,9 +49,9 @@ public class GraphicController extends Application {
         req_5_page.start();
     }
 
-    public void req5result(String input, double[] infoContorno) throws Exception{
+    public void req5result(String input, double[] infoContorno, int n) throws Exception{
         Req_5_Result req_5_result = new Req_5_Result();
-        req_5_result.start(input, infoContorno);
+        req_5_result.start(input, infoContorno, n);
     }
 
     /*public void incorrectFields() throws Exception {

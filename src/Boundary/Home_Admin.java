@@ -88,14 +88,15 @@ public class Home_Admin {
     //-----------------PULSANTE CHIUSURA APPLICAZIONE-------------------//
 
     public void systemExit(ActionEvent actionEvent) {
-
         System.exit(0);
-
     }
 
     //--------------Requisiti funzionali-------------------//
 
-    public void jumpReq5Page(ActionEvent actionEvent) {
+    public void jumpReq5Page(ActionEvent actionEvent) throws Exception{
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        graphicController.req5page();
     }
 
     public void jumpReq6Page(ActionEvent actionEvent) {
