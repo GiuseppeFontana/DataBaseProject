@@ -19,24 +19,10 @@ COPY country FROM '/usr1/proj/bray/sql/country_data';
 COPY country TO STDOUT (DELIMITER '|');
 
 
-
-TODO        +------------------------------+
-TODO        |          IMPORTANTE          |
-TODO        +------------------------------+
-TODO    quando modificate qualcosa mettete la versione vecchia in un commento e metteteci
-TODO    un TODO tipo 'update 01'
-
 psql postgresql://localhost:5432/dbserver -U postgres
 sudo /etc/init.d/postgresql restart
 sudo service postgresql restart
 
-1)  TODO
-    riempire le credenziali
-
-
-2)  TODO
-    conn.setAutoCommit(false);
-    conn.commit();
 
 
 3) TODO progettazione fisica

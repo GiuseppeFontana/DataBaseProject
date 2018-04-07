@@ -6,9 +6,28 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Home_User">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Home_User">
    <children>
-      <Button fx:id="HomeBtnLogOut" layoutX="84.0" layoutY="542.0" mnemonicParsing="false" onAction="#logout" prefHeight="38.0" prefWidth="41.0">
+      <Button fx:id="btnInformation" layoutX="560.0" layoutY="30.0" mnemonicParsing="false" onAction="#information" prefHeight="38.0" prefWidth="41.0">
+         <graphic>
+            <ImageView fitHeight="26.0" fitWidth="31.0">
+               <image>
+                  <Image url="@../images/Punto_interrogativo_2.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="HomeUserReq5Button" layoutX="220.0" layoutY="90.0" mnemonicParsing="false" onAction="#jumpReq5Page" text="info derivate Filamento" />
+      <Label fx:id="HomeUserStructureLabel" layoutX="90.0" layoutY="155.0" text="Ricerca Strutture:" />
+      <Button fx:id="HomeUserReq6Button" layoutX="220.0" layoutY="150.0" mnemonicParsing="false" onAction="#jumpReq6Page" text="per contrasto ed ellitticità" />
+      <Button fx:id="HomeUserReq7Button" layoutX="220.0" layoutY="185.0" mnemonicParsing="false" onAction="#jumpReq7Page" text="per numero di segmenti" />
+      <Button fx:id="HomeUserReq8Button" layoutX="220.0" layoutY="220.0" mnemonicParsing="false" onAction="#jumpReq8Page" text="all'interno di una regione" />
+      <Label fx:id="HomeUserStarLabel" layoutX="90.0" layoutY="285.0" text="Ricerca Stelle:" />
+      <Button fx:id="HomeUserReq9Button" layoutX="220.0" layoutY="280.0" mnemonicParsing="false" onAction="#jumpReq9Page" text="all'interno di una Struttura" />
+      <Button fx:id="HomeUserReq10Button" layoutX="220.0" layoutY="315.0" mnemonicParsing="false" onAction="#jumpReq10Page" text="all'interno di una regione" />
+      <Label fx:id="HomeUserDistanceLabel" layoutX="90.0" layoutY="380.0" text="Calcola distanze:" />
+      <Button fx:id="HomeUserReq11Button" layoutX="220.0" layoutY="375.0" mnemonicParsing="false" onAction="#jumpReq11Page" text="tra Segmento e Contorno" />
+      <Button fx:id="HomeUserReq12Button" layoutX="220.0" layoutY="410.0" mnemonicParsing="false" onAction="#jumpReq12Page" text="tra Stelle e spina dorsale della stessa Struttura" />
+      <Button fx:id="HomeBtnLogOut" layoutX="90.0" layoutY="540.0" mnemonicParsing="false" onAction="#logout" prefHeight="38.0" prefWidth="41.0">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="31.0">
                <image>
@@ -17,15 +36,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnInformation" layoutX="568.0" layoutY="31.0" mnemonicParsing="false" onAction="#information" prefHeight="38.0" prefWidth="41.0">
-         <graphic>
-            <ImageView fitHeight="26.0" fitWidth="31.0">
-               <image>
-                  <Image url="@../images/Punto_interrogativo_2.png" />
-               </image>
-            </ImageView>
-         </graphic></Button>
-      <Button fx:id="btnSystemExit" layoutX="558.0" layoutY="549.0" mnemonicParsing="false" onAction="#systemExit" prefHeight="38.0" prefWidth="41.0">
+      <Button fx:id="btnSystemExit" layoutX="560.0" layoutY="540.0" mnemonicParsing="false" onAction="#systemExit" prefHeight="38.0" prefWidth="41.0">
          <graphic>
             <ImageView fitHeight="31.0" fitWidth="31.0">
                <image>
@@ -33,16 +44,5 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button fx:id="HomeUserReq5Button" onAction="#jumpReq5Page" layoutX="223.0" layoutY="97.0" mnemonicParsing="false" text="per ID o designazione" />
-      <Button fx:id="HomeUserReq6Button" onAction="#jumpReq6Page" layoutX="224.0" layoutY="137.0" mnemonicParsing="false" text="per contrasto ed ellitticità" />
-      <Button fx:id="HomeUserReq7Button" onAction="#jumpReq7Page" layoutX="225.0" layoutY="180.0" mnemonicParsing="false" text="per numero di segmenti" />
-      <Label fx:id="HomeUserStructureLabel" layoutX="91.0" layoutY="99.0" text="Ricerca Strutture:" />
-      <Button fx:id="HomeUserReq8Button" onAction="#jumpReq8Page" layoutX="225.0" layoutY="221.0" mnemonicParsing="false" text="all'interno di una regione" />
-      <Label fx:id="HomeUserStarLabel" layoutX="86.0" layoutY="317.0" text="Ricerca Stelle:" />
-      <Button fx:id="HomeUserReq9Button" onAction="#jumpReq9Page" layoutX="220.0" layoutY="310.0" mnemonicParsing="false" text="all'interno di una Struttura" />
-      <Button fx:id="HomeUserReq10Button" onAction="#jumpReq10Page" layoutX="220.0" layoutY="346.0" mnemonicParsing="false" text="all'interno di una regione" />
-      <Label fx:id="HomeUserDistanceLabel" layoutX="84.0" layoutY="431.0" text="Calcola distanze:" />
-      <Button fx:id="HomeUserReq11Button" onAction="#jumpReq11Page" layoutX="223.0" layoutY="426.0" mnemonicParsing="false" text="tra Segmento e Contorno" />
-      <Button fx:id="HomeUserReq12Button" onAction="#jumpReq12Page" layoutX="221.0" layoutY="465.0" mnemonicParsing="false" text="tra Stelle e spina dorsale della stessa Struttura" />
    </children>
 </AnchorPane>

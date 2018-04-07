@@ -53,8 +53,8 @@ public class Home_Admin {
         final Label HomeLabel1 = new Label();
 
         HomeLabel1.setText("Benvenuto " + name);
-        HomeLabel1.setLayoutX(320);
-        HomeLabel1.setLayoutY(42);
+        HomeLabel1.setLayoutX(220);
+        HomeLabel1.setLayoutY(40);
         root.getChildren().addAll(HomeLabel1);
 
         stage.setResizable(false);
