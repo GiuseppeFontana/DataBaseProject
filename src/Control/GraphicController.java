@@ -54,6 +54,11 @@ public class GraphicController extends Application {
         req_5_result.start(input, infoContorno, n);
     }
 
+    public void req6page() throws Exception{
+        Req_6_Page req_6_page = new Req_6_Page();
+        req_6_page.start();
+    }
+
     /*public void incorrectFields() throws Exception {
         IncorrectFields incorrectFields = new IncorrectFields();
         incorrectFields.incorrectField();

@@ -42,7 +42,6 @@ public class Req_5_Page {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/req_5_page.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
-
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

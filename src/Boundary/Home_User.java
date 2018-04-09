@@ -103,7 +103,10 @@ public class Home_User {
         graphicController.req5page();
     }
 
-    public void jumpReq6Page(ActionEvent actionEvent) {
+    public void jumpReq6Page(ActionEvent actionEvent) throws Exception{
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        graphicController.req6page();
     }
 
     public void jumpReq7Page(ActionEvent actionEvent) {
