@@ -40,16 +40,22 @@ public class DBController {
         }
     }
 
-    public boolean ricercaPerContrastoEdEllitticita(String satellite, double percBrillanza, double elliptMin, double elliptMax) {
-        //TODO finire
-        ArrayList<Structure> structures = Req6Dao.req6(satellite, percBrillanza, elliptMin, elliptMax);
-        if (structures == null){
+    public boolean ricercaPerContrastoEdEllitticita(String satellite, double percBrillanza, double elliptMin, double elliptMax) throws Exception {
+        ArrayList<Structure> structures = new ArrayList<>();
+
+        if(!Req6Dao.req6(structures, satellite, percBrillanza, elliptMin, elliptMax)){
+            GraphicController graphicController = new GraphicController();
+            String msg = "Nessuna Struttura trovata\ncon queste caratteristiche.";
+            graphicController.alertError(msg);
             return false;
         }
-        else {
-            GraphicController graphicController = new GraphicController();
-            graphicController.req6result(structures);
-            return true;
-        }
+
+        /*
+        TODO finire
+         */
+        GraphicController graphicController = new GraphicController();
+        //graphicController.req6result(structures);
+        return true;
+
     }
 }

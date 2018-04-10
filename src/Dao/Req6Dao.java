@@ -1,5 +1,6 @@
 package Dao;
 
+import Control.Controller;
 import Entity.Structure;
 import Utils.Credenziali;
 import Utils.Strings;
@@ -8,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Req6Dao {
-    public static ArrayList<Structure> req6(String satellite, double percBrillanza, double elliptMin, double elliptMax) {
+    public static boolean req6(ArrayList<Structure> structures, String satellite, double percBrillanza, double elliptMin, double elliptMax) {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -25,68 +26,41 @@ public class Req6Dao {
             // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
-            double contrast = (percBrillanza/100) + 1.0;
+            double contrast = (percBrillanza/100.0) + 1.0;
 
-            String sql = String.format(Strings.strReq6, satellite, contrast, elliptMin, elliptMax);
+            String sql = String.format(Strings.strReq6, satellite, Double.toString(contrast), Double.toString(elliptMin), Double.toString(elliptMax));
             System.out.println(sql);
 
             ResultSet rs = stmt.executeQuery(sql);
             if (!rs.first()){
-                return null;
+                System.out.println("Resultset vuoto.");
+                return false;
             }
             else {
-                ArrayList<Structure> structures = new ArrayList<>();
-                /*
-                TODO finire
-                 */
-            }
+                Controller controller = new Controller();
+                Structure struttura1 = controller.createStructure(rs.getInt("id"), rs.getString("name"),
+                        rs.getDouble("flux"), rs.getDouble("meandens"), rs.getDouble("meantemp"),
+                        rs.getDouble("ellipt"), rs.getDouble("contrast"), rs.getString("satellite"),
+                        rs.getString("instrument"));
 
+                structures.add(struttura1);
 
-            /*k[6] = String.format(Strings.strReq52, strumento, input);
+                while (rs.next()){
+                    Structure struttura = controller.createStructure(rs.getInt("id"), rs.getString("name"),
+                            rs.getDouble("flux"), rs.getDouble("meandens"), rs.getDouble("meantemp"),
+                            rs.getDouble("ellipt"), rs.getDouble("contrast"), rs.getString("satellite"),
+                            rs.getString("instrument"));
 
-            String sql;
-            ResultSet resultSets[] = new ResultSet[7];
-
-            for (int i = 0; i < 6; i++) {
-                sql = String.format(Strings.strReq51, k[i], strumento, input);
-                System.out.println(sql);
-                resultSets[i] = stmt.executeQuery(sql);
-
-                if (!resultSets[i].first()) {// rs empty
-                    System.out.println("Accesso Contorni fallito");
-                    return false;
+                    structures.add(struttura);
                 }
-
-                infoFilamento[i] = resultSets[i].getFloat(1);
-                System.out.println(k[i] + ": " + infoFilamento[i]);
-            }
-
-            System.out.println(k[6]);
-            resultSets[6] = stmt.executeQuery(k[6]);
-            if (!resultSets[6].first()) {// rs empty
-                System.out.println("Accesso Scheletri fallito");
-                return false;
-            }
-
-            nSegmenti[0] = resultSets[6].getInt("count");
-            System.out.println("nSegmenti: " + nSegmenti[0]);
-
-            if (infoFilamento[2] == infoFilamento[4] || infoFilamento[3] == infoFilamento[5] || nSegmenti[0] == 0) {
-                System.out.println("errore imprevisto accesso db, risultati nulli (filamento non presente?");
-                return false;
             }
 
             conn.commit();
 
             // STEP 6: Clean-up dell'ambiente
-            for (int i = 0; i < 7; i++) {
-                resultSets[i].close();
-            }
+            rs.close();
             stmt.close();
             conn.close();
-        } catch (SQLException se) {
-            // Errore durante l'apertura della connessione
-            se.printStackTrace();
         } catch (Exception e) {
             // Errore nel loading del driver
             e.printStackTrace();
@@ -104,7 +78,7 @@ public class Req6Dao {
                 se.printStackTrace();
             }
         }
-        System.out.println("Accesso Contorni e Scheletri effettuato con successo");
-        return true;*/
+        System.out.println("Accesso Strutture effettuato con successo");
+        return true;
     }
 }

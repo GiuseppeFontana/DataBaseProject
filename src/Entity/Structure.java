@@ -6,9 +6,9 @@ public class    Structure {
     private String name;
     private Double flux;
     private Double meanDens;
-    private float meanTemp;
-    private float ellipt;
-    private float contrast;
+    private Double meanTemp;
+    private Double ellipt;
+    private Double contrast;
     private String satellite;
     private String instrument;
 
@@ -48,27 +48,27 @@ public class    Structure {
         this.meanDens = meanDens;
     }
 
-    public float getMeanTemp() {
+    public Double getMeanTemp() {
         return meanTemp;
     }
 
-    public void setMeanTemp(float meanTemp) {
+    public void setMeanTemp(Double meanTemp) {
         this.meanTemp = meanTemp;
     }
 
-    public float getEllipt() {
+    public Double getEllipt() {
         return ellipt;
     }
 
-    public void setEllipt(float ellipt) {
+    public void setEllipt(Double ellipt) {
         this.ellipt = ellipt;
     }
 
-    public float getContrast() {
+    public Double getContrast() {
         return contrast;
     }
 
-    public void setContrast(float contrast) {
+    public void setContrast(Double contrast) {
         this.contrast = contrast;
     }
 

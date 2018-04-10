@@ -31,7 +31,7 @@ public class Controller {
     }
 
 
-    public Structure createStructure(int id, String name, double flux, double meanDens, int meanTemp, int ellipt, int cotrast, String satellite, String instrument){
+    public Structure createStructure(int id, String name, double flux, double meanDens, Double meanTemp, Double ellipt, Double cotrast, String satellite, String instrument){
 
         Structure structure = new Structure();
 
