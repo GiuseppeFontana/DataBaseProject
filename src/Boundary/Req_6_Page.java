@@ -67,7 +67,6 @@ public class Req_6_Page {
 
     public void search(ActionEvent actionEvent) {
         try {
-            // TODO check dell'input, l'utente deve scrivere solo numeri
             double percBrillanza = Double.parseDouble(Req6PageBrillanzaText.getText());
             double elliptMax = Double.parseDouble(Req6PageElliptMaxText.getText());
             double elliptMin = Double.parseDouble(Req6PageElliptMinText.getText());
@@ -79,7 +78,11 @@ public class Req_6_Page {
             }
             else {
                 DBController dbController = new DBController();
-
+                if(!dbController.ricercaPerContrastoEdEllitticita(satellite, percBrillanza, elliptMin, elliptMax)){
+                    String msg2 = "Nessun filamento trovato.";
+                    GraphicController graphicController = new GraphicController();
+                    graphicController.alertError(msg2);
+                }
             }
         }
         catch (NumberFormatException nfe){

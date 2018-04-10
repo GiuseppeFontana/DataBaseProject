@@ -2,7 +2,9 @@ package Control;
 
 import Dao.RegisterDao;
 import Dao.Req5Dao;
+import Dao.Req6Dao;
 import Dao.UserDao;
+import Entity.Structure;
 
 import java.util.ArrayList;
 
@@ -29,13 +31,24 @@ public class DBController {
             return false;
         } else {  //calcola centroide, max e min coordinate e crea l'interfaccia
 
-
             infoFilamento[6] = infoFilamento[4] - infoFilamento[2];     //estensione longitudinale
             infoFilamento[7] = infoFilamento[5] - infoFilamento[3];     //estensione latitudinale
 
-
             GraphicController graphicController = new GraphicController();
             graphicController.req5result(input, infoFilamento, nSegmenti[0]);
+            return true;
+        }
+    }
+
+    public boolean ricercaPerContrastoEdEllitticita(String satellite, double percBrillanza, double elliptMin, double elliptMax) {
+        //TODO finire
+        ArrayList<Structure> structures = Req6Dao.req6(satellite, percBrillanza, elliptMin, elliptMax);
+        if (structures == null){
+            return false;
+        }
+        else {
+            GraphicController graphicController = new GraphicController();
+            graphicController.req6result(structures);
             return true;
         }
     }
