@@ -83,6 +83,11 @@ public class Req_6_Page {
                     GraphicController graphicController = new GraphicController();
                     graphicController.alertError(msg2);
                 }
+                else {
+                    /*
+                    TODO finire con gui
+                     */
+                }
             }
         }
         catch (NumberFormatException nfe){
