@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Req6Dao {
-    public static boolean req6(ArrayList<Structure> structures, String satellite, double percBrillanza, double elliptMin, double elliptMax) {
+    public static boolean req6(ArrayList<Structure> structures, String satellite, double percBrillanza, double elliptMin, double elliptMax, int[] sruttureTotali) {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -28,37 +28,44 @@ public class Req6Dao {
 
             double contrast = (percBrillanza/100.0) + 1.0;
 
-            String sql = String.format(Strings.strReq6, satellite, Double.toString(contrast), Double.toString(elliptMin), Double.toString(elliptMax));
+            String sql = String.format(Strings.strReq61, satellite, Double.toString(contrast), Double.toString(elliptMin), Double.toString(elliptMax));
+            String sql2 = String.format(Strings.strReq62,satellite);
             System.out.println(sql);
+            System.out.println(sql2);
+            ResultSet rs[] = new ResultSet[2];
 
-            ResultSet rs = stmt.executeQuery(sql);
-            if (!rs.first()){
+            rs[0]= stmt.executeQuery(sql);
+            rs[1]= stmt.executeQuery(sql2);
+            if (!rs[0].first() || !rs[1].first()){
                 System.out.println("Resultset vuoto.");
                 return false;
             }
             else {
                 Controller controller = new Controller();
-                Structure struttura1 = controller.createStructure(rs.getInt("id"), rs.getString("name"),
-                        rs.getDouble("flux"), rs.getDouble("meandens"), rs.getDouble("meantemp"),
-                        rs.getDouble("ellipt"), rs.getDouble("contrast"), rs.getString("satellite"),
-                        rs.getString("instrument"));
+                Structure struttura1 = controller.createStructure(rs[0].getInt("id"), rs[0].getString("name"),
+                        rs[0].getDouble("flux"), rs[0].getDouble("meandens"), rs[0].getDouble("meantemp"),
+                        rs[0].getDouble("ellipt"), rs[0].getDouble("contrast"), rs[0].getString("satellite"),
+                        rs[0].getString("instrument"));
 
                 structures.add(struttura1);
 
-                while (rs.next()){
-                    Structure struttura = controller.createStructure(rs.getInt("id"), rs.getString("name"),
-                            rs.getDouble("flux"), rs.getDouble("meandens"), rs.getDouble("meantemp"),
-                            rs.getDouble("ellipt"), rs.getDouble("contrast"), rs.getString("satellite"),
-                            rs.getString("instrument"));
+                while (rs[0].next()){
+                    Structure struttura = controller.createStructure(rs[0].getInt("id"), rs[0].getString("name"),
+                            rs[0].getDouble("flux"), rs[0].getDouble("meandens"), rs[0].getDouble("meantemp"),
+                            rs[0].getDouble("ellipt"), rs[0].getDouble("contrast"), rs[0].getString("satellite"),
+                            rs[0].getString("instrument"));
 
                     structures.add(struttura);
                 }
+
+                sruttureTotali[0] = rs[1].getInt("count");
             }
 
             conn.commit();
 
             // STEP 6: Clean-up dell'ambiente
-            rs.close();
+            rs[0].close();
+            rs[1].close();
             stmt.close();
             conn.close();
         } catch (Exception e) {

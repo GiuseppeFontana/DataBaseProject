@@ -1,5 +1,6 @@
 package Control;
 
+import Bean.Req7Bean;
 import Entity.*;
 import Utils.ClassicSingleton;
 
@@ -31,7 +32,7 @@ public class Controller {
     }
 
 
-    public Structure createStructure(int id, String name, double flux, double meanDens, Double meanTemp, Double ellipt, Double cotrast, String satellite, String instrument){
+    public Structure createStructure(int id, String name, double flux, double meanDens, Double meanTemp, Double ellipt, Double contrast, String satellite, String instrument){
 
         Structure structure = new Structure();
 
@@ -41,7 +42,7 @@ public class Controller {
         structure.setMeanDens(meanDens);
         structure.setMeanTemp(meanTemp);
         structure.setEllipt(ellipt);
-        structure.setContrast(cotrast);
+        structure.setContrast(contrast);
         structure.setSatellite(satellite);
         structure.setInstrument(instrument);
 
@@ -85,5 +86,18 @@ public class Controller {
         star.setType(type);
 
         return star;
+    }
+
+
+
+    public Req7Bean createReq7Bean(int id, String name, double flux, double meanDens, double meanTemp, double ellipt, double contrast, String satellite, String instrument, int nSegmenti){
+        Structure structure = createStructure(id,name,flux,meanDens,meanTemp,ellipt,contrast,satellite,instrument);
+
+        Req7Bean req7Bean = new Req7Bean();
+
+        req7Bean.setStructure(structure);
+        req7Bean.setnSegmenti(nSegmenti);
+
+        return req7Bean;
     }
 }

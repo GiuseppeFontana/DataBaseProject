@@ -27,6 +27,20 @@ public class Req_6_Page {
     private TextField Req6PageElliptMaxText;
     private String satellite;
 
+/*
+REQ-FN-6	Ricerca	di	una	struttura	per	contrasto	ed	ellitticità
+Un	utente	registrato	potrà	effettuare	una	ricerca	di	una	struttura	estesa	la	cui	brillanza	è
+maggiore	di	una	certa	percentuale	rispetto	al	bordo	esterno	e	la	cui	ellitticità	è	compresa
+all’interno	di	un	range	selezionabile.
+Si	consideri	che	il	valore	del	contrasto	è	pari	a	[1+(%Brillanza/100)].	Ad	esempio,	richiedere
+una	luminosità	maggiore	del	10%,	vorrà	dire	ricercare	le	strutture	che	hanno	un	contrasto
+maggiore	1.1.
+L’applicazione	dovrà	rifiutare	valori	percentuali	minore	di	0	e	i	valori	di	ellitticità	dovranno
+essere	compresi	tra	1	e	10	esclusi.
+La	GUI	visualizzerà	al	massimo	20	oggetti	per	volta.
+L’applicazione	dovrà	restituire	anche	la	frazione	di	filamenti	trovati	rispetto	l’intero	catalogo.
+ */
+
     public void start() throws Exception{
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/req_6_page.fxml"));

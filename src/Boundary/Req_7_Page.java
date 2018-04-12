@@ -57,8 +57,7 @@ public class Req_7_Page {
             }
             else {
                 DBController dbController = new DBController();
-                ArrayList<Structure> structures = new ArrayList<>();
-                if(!dbController.ricercaPerNumeroSegmenti(structures, satellite, Min, Max)){
+                if(!dbController.ricercaPerNumeroSegmenti(satellite, Min, Max)){
                     String msg2 = "Nessun filamento trovato.";
                     GraphicController graphicController = new GraphicController();
                     graphicController.alertError(msg2);

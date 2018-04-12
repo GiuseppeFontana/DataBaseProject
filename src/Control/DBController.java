@@ -1,9 +1,6 @@
 package Control;
 
-import Dao.RegisterDao;
-import Dao.Req5Dao;
-import Dao.Req6Dao;
-import Dao.UserDao;
+import Dao.*;
 import Entity.Structure;
 
 import java.util.ArrayList;
@@ -42,8 +39,9 @@ public class DBController {
 
     public boolean ricercaPerContrastoEdEllitticita(String satellite, double percBrillanza, double elliptMin, double elliptMax) throws Exception {
         ArrayList<Structure> structures = new ArrayList<>();
+        int sruttureTotali[] = new int[1];
 
-        if(!Req6Dao.req6(structures, satellite, percBrillanza, elliptMin, elliptMax)){
+        if(!Req6Dao.req6(structures, satellite, percBrillanza, elliptMin, elliptMax, sruttureTotali)){
             GraphicController graphicController = new GraphicController();
             String msg = "Nessuna Struttura trovata\ncon queste caratteristiche.";
             graphicController.alertError(msg);
@@ -57,5 +55,18 @@ public class DBController {
         //graphicController.req6result(structures);
         return true;
 
+    }
+
+    public boolean ricercaPerNumeroSegmenti(String satellite, int min, int max) throws Exception{
+        /*ArrayList<Structure> structures = new ArrayList<>();
+        if (!Req7Dao.req7(structures, satellite, min, max)){
+            return false;
+        }
+        else {
+            GraphicController graphicController = new GraphicController();
+            //graphicController.req7result(structures);
+            return true;
+        }*/
+        return false;
     }
 }
