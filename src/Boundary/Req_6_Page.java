@@ -52,16 +52,16 @@ public class Req_6_Page {
     }
 
     public void check1(ActionEvent actionEvent) throws Exception {
-        if (Req6PageRadio2.isSelected()){
+        /*if (Req6PageRadio2.isSelected()){
             Req6PageRadio2.setSelected(false);
-        }
+        }*/
         satellite = "herschel";
     }
 
     public void check2(ActionEvent actionEvent) throws Exception {
-        if (Req6PageRadio1.isSelected()){
+        /*if (Req6PageRadio1.isSelected()){
             Req6PageRadio1.setSelected(false);
-        }
+        }*/
         satellite = "spitzer";
     }
 

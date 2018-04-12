@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,8 +20,11 @@
                 </ImageView>
             </graphic></Button>
       <Label layoutX="212.0" layoutY="80.0" text="Ricerca Filamento per Numero Segmenti" />
-      <RadioButton fx:id="Req7PageRadio1" layoutX="290.0" layoutY="116.0" mnemonicParsing="false" onAction="#check1" text=" Herschel" />
-      <RadioButton fx:id="Req7PageRadio2" layoutX="290.0" layoutY="154.0" mnemonicParsing="false" onAction="#check2" text=" Spitzer" />
+      <RadioButton fx:id="Req7PageRadio1" layoutX="290.0" layoutY="116.0" mnemonicParsing="false" onAction="#check1" text=" Herschel">
+         <toggleGroup>
+            <ToggleGroup fx:id="Toggle1" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="Req7PageRadio2" layoutX="290.0" layoutY="154.0" mnemonicParsing="false" onAction="#check2" text=" Spitzer" toggleGroup="$Toggle1" />
       <Button fx:id="Req7PageSearchButton" layoutX="475.0" layoutY="540.0" mnemonicParsing="false" onAction="#search" prefHeight="41.0" prefWidth="74.0" text="Cerca" />
       <Label layoutX="110.0" layoutY="134.0" text="Seleziona Strumento:" />
       <Label layoutX="123.0" layoutY="296.0" text="Numero minimo di segmenti :" />

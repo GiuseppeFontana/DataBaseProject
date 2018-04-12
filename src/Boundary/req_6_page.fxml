@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,8 +21,11 @@
             </graphic></Button>
       <Label layoutX="212.0" layoutY="80.0" text="Ricerca Filamento per Contrasto ed Ellitticità" />
       <Label layoutX="110.0" layoutY="300.0" text="Lower-bound Brillanza:" />
-      <RadioButton fx:id="Req6PageRadio1" layoutX="290.0" layoutY="116.0" mnemonicParsing="false" onAction="#check1" text=" Herschel" />
-      <RadioButton fx:id="Req6PageRadio2" layoutX="290.0" layoutY="154.0" mnemonicParsing="false" onAction="#check2" text=" Spitzer" />
+      <RadioButton fx:id="Req6PageRadio1" layoutX="290.0" layoutY="116.0" mnemonicParsing="false" onAction="#check1" text=" Herschel">
+         <toggleGroup>
+            <ToggleGroup fx:id="Toggle1" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="Req6PageRadio2" layoutX="290.0" layoutY="154.0" mnemonicParsing="false" onAction="#check2" text=" Spitzer" toggleGroup="$Toggle1" />
       <TextField fx:id="Req6PageBrillanzaText" layoutX="270.0" layoutY="295.0" prefHeight="26.0" prefWidth="74.0" />
       <Button fx:id="Req6PageSearchButton" layoutX="475.0" layoutY="540.0" mnemonicParsing="false" onAction="#search" prefHeight="41.0" prefWidth="74.0" text="Cerca" />
       <Label layoutX="110.0" layoutY="134.0" text="Seleziona Strumento:" />
