@@ -2,7 +2,7 @@ package Control;
 
 import Dao.*;
 import Entity.Structure;
-
+import Bean.Req7Bean;
 import java.util.ArrayList;
 
 public class DBController {
@@ -58,15 +58,12 @@ public class DBController {
     }
 
     public boolean ricercaPerNumeroSegmenti(String satellite, int min, int max) throws Exception{
-        /*ArrayList<Structure> structures = new ArrayList<>();
-        if (!Req7Dao.req7(structures, satellite, min, max)){
+        ArrayList<Req7Bean> beans = new ArrayList<>();
+        if (!Req7Dao.req7(beans, satellite, min, max)){
             return false;
         }
-        else {
-            GraphicController graphicController = new GraphicController();
-            //graphicController.req7result(structures);
-            return true;
-        }*/
-        return false;
+        GraphicController graphicController = new GraphicController();
+        graphicController.req7result(beans);
+        return true;
     }
 }

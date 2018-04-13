@@ -3,18 +3,27 @@ package Bean;
 import Entity.Structure;
 
 public class Req7Bean {
-    private Structure structure;
+    private int idStructure;
+    private String nameStructure;
     private int nSegmenti;
 
     public Req7Bean(){
     }
 
-    public Structure getStructure() {
-        return structure;
+    public int getIdStructure() {
+        return idStructure;
     }
 
-    public void setStructure(Structure structure) {
-        this.structure = structure;
+    public void setIdStructure(int idStructure) {
+        this.idStructure = idStructure;
+    }
+
+    public String getNameStructure() {
+        return nameStructure;
+    }
+
+    public void setNameStructure(String nameStructure) {
+        this.nameStructure = nameStructure;
     }
 
     public int getnSegmenti() {

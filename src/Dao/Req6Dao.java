@@ -9,7 +9,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Req6Dao {
-    public static boolean req6(ArrayList<Structure> structures, String satellite, double percBrillanza, double elliptMin, double elliptMax, int[] sruttureTotali) {
+    public static boolean req6(ArrayList<Structure> structures, String satellite, double percBrillanza, double elliptMin, double elliptMax, int[] struttureTotali) {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -58,7 +58,7 @@ public class Req6Dao {
                     structures.add(struttura);
                 }
 
-                sruttureTotali[0] = rs[1].getInt("count");
+                struttureTotali[0] = rs[1].getInt("count");
             }
 
             conn.commit();

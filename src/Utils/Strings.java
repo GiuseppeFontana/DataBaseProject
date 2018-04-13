@@ -19,7 +19,10 @@ public class Strings {
     /*
     TODO sistemare la query
      */
-    public static String strReq71 = "SELECT idfil, name, count(DISTINCT idbranch) FROM %s_skeletons JOIN %s_structures WHERE idfil=id GROUP BY idfil HAVING (count(DISTINCT idbranch)>= %s AND count(DISTINCT idbranch)<= %s";
+    public static String strReq7 = "SELECT skeleton.idfil, structure.name, count(DISTINCT skeleton.idbranch)\n" +
+            "FROM (%s_skeletons AS skeleton JOIN %s_structures AS structure ON skeleton.idfil = structure.id)\n" +
+            "GROUP BY skeleton.idfil, structure.name\n" +
+            "HAVING (count(DISTINCT skeleton.idbranch)>= %s AND count(DISTINCT skeleton.idbranch)<= %s)";
 
     public static String strDelete = "DELETE FROM %s_%s";
     public static String strImport = "COPY %s_%s FROM '%s' DELIMITER ','";

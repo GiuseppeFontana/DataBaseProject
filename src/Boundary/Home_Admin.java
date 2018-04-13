@@ -106,7 +106,9 @@ public class Home_Admin {
     }
 
     public void jumpReq7Page(ActionEvent actionEvent)  throws Exception{
-
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        graphicController.req7page();
     }
 
     public void jumpReq8Page(ActionEvent actionEvent) {

@@ -90,12 +90,11 @@ public class Controller {
 
 
 
-    public Req7Bean createReq7Bean(int id, String name, double flux, double meanDens, double meanTemp, double ellipt, double contrast, String satellite, String instrument, int nSegmenti){
-        Structure structure = createStructure(id,name,flux,meanDens,meanTemp,ellipt,contrast,satellite,instrument);
+    public Req7Bean createReq7Bean(int id, String name, int nSegmenti){
 
         Req7Bean req7Bean = new Req7Bean();
-
-        req7Bean.setStructure(structure);
+        req7Bean.setIdStructure(id);
+        req7Bean.setNameStructure(name);
         req7Bean.setnSegmenti(nSegmenti);
 
         return req7Bean;

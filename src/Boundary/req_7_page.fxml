@@ -30,6 +30,6 @@
       <Label layoutX="109.0" layoutY="348.0" text="Numero minimo:" />
       <Label layoutX="109.0" layoutY="388.0" text="Numero massimo:" />
       <TextField fx:id="Req7PageMinText" layoutX="270.0" layoutY="343.0" prefHeight="26.0" prefWidth="114.0" />
-      <TextField fx:id="Req7PageEMaxText" layoutX="270.0" layoutY="383.0" prefHeight="26.0" prefWidth="114.0" />
+      <TextField fx:id="Req7PageMaxText" layoutX="270.0" layoutY="383.0" prefHeight="26.0" prefWidth="114.0" />
     </children>
 </AnchorPane>

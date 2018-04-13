@@ -1,8 +1,11 @@
 package Control;
 
+import Bean.Req7Bean;
 import Boundary.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 public class GraphicController extends Application {
 
@@ -59,9 +62,16 @@ public class GraphicController extends Application {
         req_6_page.start();
     }
 
+    public void req7result(ArrayList<Req7Bean> beans) {
+        /*
+        TODO gui
+         */
 
-    /*public void incorrectFields() throws Exception {
-        IncorrectFields incorrectFields = new IncorrectFields();
-        incorrectFields.incorrectField();
-    }*/
+    }
+
+
+    public void req7page() throws Exception{
+        Req_7_Page req_7_page = new Req_7_Page();
+            req_7_page.start();
+    }
 }
