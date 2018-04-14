@@ -32,17 +32,11 @@ public class Req_7_Page {
     @FXML
     private Button Req7PageBackButton;
     @FXML
-    private RadioButton Req7PageRadio1;
-    @FXML
-    private RadioButton Req7PageRadio2;
-    @FXML
     private Button Req7PageSearchButton;
     @FXML
     private TextField Req7PageMinText;
     @FXML
     private TextField Req7PageMaxText;
-
-    private String satellite;
 
     public void backHome(ActionEvent actionEvent) throws Exception{
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
@@ -58,13 +52,6 @@ public class Req_7_Page {
         }
     }
 
-    public void check1(ActionEvent actionEvent) {
-        satellite = "herschel";
-    }
-
-    public void check2(ActionEvent actionEvent) {
-        satellite = "spitzer";
-    }
 
     public void search(ActionEvent actionEvent){
         try {
@@ -75,14 +62,14 @@ public class Req_7_Page {
 
             int Max = Integer.parseInt(Req7PageMaxText.getText());
 
-            if (Min < 2 || Min > Max || (!Req7PageRadio1.isSelected() && !Req7PageRadio2.isSelected())){
+            if (Min < 2 || Min > Max){
                 String msg1 = "Input non valido.\n(Il minimo deve essere >1\ne un satellite dev'essere scelto)";
                 GraphicController graphicController = new GraphicController();
                 graphicController.alertError(msg1);
             }
             else {
                 DBController dbController = new DBController();
-                if(!dbController.ricercaPerNumeroSegmenti(satellite, Min, Max)){
+                if(!dbController.ricercaPerNumeroSegmenti(Min, Max)){
                     String msg2 = "Nessun filamento trovato.";
                     GraphicController graphicController = new GraphicController();
                     graphicController.alertError(msg2);

@@ -16,16 +16,11 @@ import javafx.stage.Stage;
 public class Req_6_Page {
 
     @FXML
-    private RadioButton Req6PageRadio1;
-    @FXML
-    private RadioButton Req6PageRadio2;
-    @FXML
     private TextField Req6PageBrillanzaText;
     @FXML
     private TextField Req6PageElliptMinText;
     @FXML
     private TextField Req6PageElliptMaxText;
-    private String satellite;
 
 /*
 REQ-FN-6	Ricerca	di	una	struttura	per	contrasto	ed	ellitticità
@@ -65,19 +60,6 @@ L’applicazione	dovrà	restituire	anche	la	frazione	di	filamenti	trovati	rispet
         }
     }
 
-    public void check1(ActionEvent actionEvent) throws Exception {
-        /*if (Req6PageRadio2.isSelected()){
-            Req6PageRadio2.setSelected(false);
-        }*/
-        satellite = "herschel";
-    }
-
-    public void check2(ActionEvent actionEvent) throws Exception {
-        /*if (Req6PageRadio1.isSelected()){
-            Req6PageRadio1.setSelected(false);
-        }*/
-        satellite = "spitzer";
-    }
 
     public void search(ActionEvent actionEvent) {
         try {
@@ -85,22 +67,20 @@ L’applicazione	dovrà	restituire	anche	la	frazione	di	filamenti	trovati	rispet
             double elliptMax = Double.parseDouble(Req6PageElliptMaxText.getText());
             double elliptMin = Double.parseDouble(Req6PageElliptMinText.getText());
 
-            if (percBrillanza<0.0 || elliptMin <= 1.0 || elliptMax >= 10.0 || elliptMin > elliptMax || (!Req6PageRadio1.isSelected() && !Req6PageRadio2.isSelected())){
+            if (percBrillanza<0.0 || elliptMin <= 1.0 || elliptMax >= 10.0 || elliptMin > elliptMax){
                 String msg1 = "Input non valido.";
                 GraphicController graphicController = new GraphicController();
                 graphicController.alertError(msg1);
             }
             else {
                 DBController dbController = new DBController();
-                if(!dbController.ricercaPerContrastoEdEllitticita(satellite, percBrillanza, elliptMin, elliptMax)){
+                if(!dbController.ricercaPerContrastoEdEllitticita(percBrillanza, elliptMin, elliptMax)){
                     String msg2 = "Nessun filamento trovato.";
                     GraphicController graphicController = new GraphicController();
                     graphicController.alertError(msg2);
                 }
                 else {
-                    /*
-                    TODO finire con gui
-                     */
+                    ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
                 }
             }
         }

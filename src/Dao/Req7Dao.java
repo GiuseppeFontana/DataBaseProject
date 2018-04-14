@@ -10,7 +10,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Req7Dao {
-    public static boolean req7(ArrayList<Req7Bean> beans, String satellite, int min, int max) throws Exception {
+    public static boolean req7(ArrayList<Req7Bean> beans, int min, int max) throws Exception {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -27,7 +27,8 @@ public class Req7Dao {
             // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
-            String sql = String.format(Strings.strReq7, satellite, satellite, Integer.toString(min), Integer.toString(max));
+            String sql = String.format(Strings.strReq7, "herschel","herschel", Integer.toString(min), Integer.toString(max),
+                    "spitzer","spitzer", Integer.toString(min), Integer.toString(max));
             System.out.println(sql);
 
             ResultSet rs = stmt.executeQuery(sql);

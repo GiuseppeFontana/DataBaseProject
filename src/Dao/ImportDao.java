@@ -29,11 +29,13 @@ public class ImportDao {
             // STEP 4: creazione ed esecuzione della query
             //"DELETE FROM herschel_skeletons"
             String sql1 = String.format(Strings.strDelete, instrument, table);
+            System.out.println(sql1);
             ps1 = conn.prepareStatement(sql1);
             System.out.println(ps1.executeUpdate());
 
             //"COPY herschel_skeletons FROM '/home/giuseppe/Scrivania/basedati/modded_csv/scheletro_filamenti_Herschel.csv' DELIMITER ','"
             String sql2 =String.format(Strings.strImport, instrument, table, path);
+            System.out.println(sql2);
             ps2 = conn.prepareStatement(sql2);
             System.out.println(ps2.executeUpdate());
 

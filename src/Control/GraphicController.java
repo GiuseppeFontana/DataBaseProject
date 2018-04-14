@@ -2,6 +2,7 @@ package Control;
 
 import Bean.Req7Bean;
 import Boundary.*;
+import Entity.Structure;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -72,6 +73,11 @@ public class GraphicController extends Application {
 
     public void req7page() throws Exception{
         Req_7_Page req_7_page = new Req_7_Page();
-            req_7_page.start();
+        req_7_page.start();
+    }
+
+    public void req6result(ArrayList<Structure> structures, int[] struttureTotali) throws Exception{
+        Prova_Req_6_Res prova_req_6_res = new Prova_Req_6_Res();
+        prova_req_6_res.start(structures, struttureTotali);
     }
 }

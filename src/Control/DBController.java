@@ -37,29 +37,26 @@ public class DBController {
         }
     }
 
-    public boolean ricercaPerContrastoEdEllitticita(String satellite, double percBrillanza, double elliptMin, double elliptMax) throws Exception {
+    public boolean ricercaPerContrastoEdEllitticita(double percBrillanza, double elliptMin, double elliptMax) throws Exception {
         ArrayList<Structure> structures = new ArrayList<>();
-        int sruttureTotali[] = new int[1];
+        int struttureTotali[] = new int[1];
 
-        if(!Req6Dao.req6(structures, satellite, percBrillanza, elliptMin, elliptMax, sruttureTotali)){
+        if(!Req6Dao.req6(structures, percBrillanza, elliptMin, elliptMax, struttureTotali)){
             GraphicController graphicController = new GraphicController();
             String msg = "Nessuna Struttura trovata\ncon queste caratteristiche.";
             graphicController.alertError(msg);
             return false;
         }
 
-        /*
-        TODO finire
-         */
         GraphicController graphicController = new GraphicController();
-        //graphicController.req6result(structures);
+        graphicController.req6result(structures, struttureTotali);
         return true;
 
     }
 
-    public boolean ricercaPerNumeroSegmenti(String satellite, int min, int max) throws Exception{
+    public boolean ricercaPerNumeroSegmenti(int min, int max) throws Exception{
         ArrayList<Req7Bean> beans = new ArrayList<>();
-        if (!Req7Dao.req7(beans, satellite, min, max)){
+        if (!Req7Dao.req7(beans, min, max)){
             return false;
         }
         GraphicController graphicController = new GraphicController();

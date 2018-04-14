@@ -9,9 +9,11 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Req6Dao {
-    public static boolean req6(ArrayList<Structure> structures, String satellite, double percBrillanza, double elliptMin, double elliptMax, int[] struttureTotali) {
+    public static boolean req6(ArrayList<Structure> structures, double percBrillanza, double elliptMin, double elliptMax, int[] struttureTotali) {
         // STEP 1: dichiarazioni
-        Statement stmt = null;
+        Statement stmt1 = null;
+        Statement stmt2 = null;
+        Statement stmt3 = null;
         Connection conn = null;
         try {
             // STEP 2: loading dinamico del driver
@@ -24,19 +26,25 @@ public class Req6Dao {
 
 
             // STEP 4: creazione ed esecuzione della query
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            stmt2 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            stmt3 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
             double contrast = (percBrillanza/100.0) + 1.0;
 
-            String sql = String.format(Strings.strReq61, satellite, Double.toString(contrast), Double.toString(elliptMin), Double.toString(elliptMax));
-            String sql2 = String.format(Strings.strReq62,satellite);
-            System.out.println(sql);
+            String sql1 = String.format(Strings.strReq61, Double.toString(contrast), Double.toString(elliptMin), Double.toString(elliptMax), Double.toString(contrast), Double.toString(elliptMin), Double.toString(elliptMax));
+            String sql2 = String.format(Strings.strReq62, "herschel");
+            String sql3 = String.format(Strings.strReq62, "spitzer");
+            System.out.println(sql1);
             System.out.println(sql2);
-            ResultSet rs[] = new ResultSet[2];
+            System.out.println(sql3);
 
-            rs[0]= stmt.executeQuery(sql);
-            rs[1]= stmt.executeQuery(sql2);
-            if (!rs[0].first() || !rs[1].first()){
+            ResultSet rs[] = new ResultSet[3];
+
+            rs[0]= stmt1.executeQuery(sql1);
+            rs[1]= stmt2.executeQuery(sql2);
+            rs[2]= stmt3.executeQuery(sql3);
+            if (!rs[0].first() || !rs[1].first() || !rs[2].first()){
                 System.out.println("Resultset vuoto.");
                 return false;
             }
@@ -58,7 +66,10 @@ public class Req6Dao {
                     structures.add(struttura);
                 }
 
-                struttureTotali[0] = rs[1].getInt("count");
+                int n1 = rs[1].getInt("count");
+                int n2 = rs[2].getInt("count");
+
+                struttureTotali[0] = n1 + n2;
             }
 
             conn.commit();
@@ -66,18 +77,34 @@ public class Req6Dao {
             // STEP 6: Clean-up dell'ambiente
             rs[0].close();
             rs[1].close();
-            stmt.close();
+            rs[2].close();
+            stmt1.close();
+            stmt2.close();
+            stmt3.close();
             conn.close();
         } catch (Exception e) {
             // Errore nel loading del driver
             e.printStackTrace();
         } finally {
             try {
-                if (stmt != null)
-                    stmt.close();
+                if (stmt1 != null)
+                    stmt1.close();
             } catch (SQLException se2) {
                 se2.printStackTrace();
             }
+            try {
+                if (stmt2 != null)
+                    stmt2.close();
+            } catch (SQLException se2) {
+                se2.printStackTrace();
+            }
+            try {
+                if (stmt3 != null)
+                    stmt3.close();
+            } catch (SQLException se2) {
+                se2.printStackTrace();
+            }
+
             try {
                 if (conn != null)
                     conn.close();
