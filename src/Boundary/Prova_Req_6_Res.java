@@ -22,27 +22,39 @@ public class Prova_Req_6_Res {
     public Label labelResult;
     public Label labelPage;
 
-    private int nCurrentPage;
-    private int nTotalPages;
+    public int nCurrentPage;
+    public int nTotalPages;
 
-    public void start(ArrayList<Structure> structures, int[] struttureTotali) throws Exception{
+    public ArrayList<Structure> strutture;
+    public int struttTotali;
+
+    public void start(ArrayList<Structure> structures, int[] struttureTotali, int[]page) throws Exception{
+
+        this.strutture = new ArrayList<>();
+        this.strutture = structures;
+        this.struttTotali = struttureTotali[0];
+
+        /*
+        TODO strutture non se lo prende
+         */
+
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/prova_req_6_res.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
 
         labelResult = new Label();
-        labelResult.setText("Trovate "+structures.size()+" strutture su "+struttureTotali[0]);
+        labelResult.setText("Trovate "+strutture.size()+" strutture su "+ this.struttTotali);
         labelResult.setLayoutX(220);
         labelResult.setLayoutY(50);
         root.getChildren().addAll(labelResult);
 
-        nCurrentPage = 1;
-        if (structures.size()%20!=0){
-            nTotalPages = structures.size()/20 + 1;
+        this.nCurrentPage = page[0];
+        if (strutture.size()%20!=0){
+            nTotalPages = strutture.size()/20 + 1;
         }
         else {
-            nTotalPages = structures.size()/20;
+            nTotalPages = strutture.size()/20;
         }
         labelPage = new Label();
         labelPage.setText("Pagina "+nCurrentPage+" di "+nTotalPages);
@@ -56,8 +68,18 @@ public class Prova_Req_6_Res {
     }
 
 
-    public void next(ActionEvent actionEvent) {
+    public void next(ActionEvent actionEvent) throws Exception{
+        int[] nextPage = new int[1];
+        nextPage[0] = this.nCurrentPage +1;
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
 
+        int[] newTotali = new int[1];
+        newTotali[0] = this.struttTotali;
+        int[] newPage = new int[1];
+        newPage[0] = this.nCurrentPage+1;
+
+        GraphicController graphicController = new GraphicController();
+        graphicController.req6result(this.strutture, newTotali, newPage);
     }
 
     public void prev(ActionEvent actionEvent) {

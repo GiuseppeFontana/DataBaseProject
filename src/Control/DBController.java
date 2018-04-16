@@ -48,8 +48,11 @@ public class DBController {
             return false;
         }
 
+        int[] page = new int[1];
+        page[0]=1;
+        System.out.println(page[0]);
         GraphicController graphicController = new GraphicController();
-        graphicController.req6result(structures, struttureTotali);
+        graphicController.req6result(structures, struttureTotali, page);
         return true;
 
     }

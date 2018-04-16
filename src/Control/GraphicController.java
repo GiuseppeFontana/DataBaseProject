@@ -76,8 +76,8 @@ public class GraphicController extends Application {
         req_7_page.start();
     }
 
-    public void req6result(ArrayList<Structure> structures, int[] struttureTotali) throws Exception{
+    public void req6result(ArrayList<Structure> structures, int[] struttureTotali, int[]page) throws Exception{
         Prova_Req_6_Res prova_req_6_res = new Prova_Req_6_Res();
-        prova_req_6_res.start(structures, struttureTotali);
+        prova_req_6_res.start(structures, struttureTotali, page);
     }
 }
