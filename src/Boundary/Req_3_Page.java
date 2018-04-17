@@ -63,6 +63,11 @@ public class Req_3_Page {
         GraphicController graphicController = new GraphicController();
         graphicController.req33Page();
     }
+    public void jumpReq34Page(ActionEvent actionEvent) throws Exception {
+        ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        graphicController.req34Page();
+    }
 }
 
 

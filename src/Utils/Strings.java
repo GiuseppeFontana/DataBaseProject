@@ -11,7 +11,8 @@ public class Strings {
     // query
     public static String strLogin = "SELECT * FROM users WHERE username = '%s' AND password = '%s';";
     public static String strRegister = "INSERT INTO users VALUES ('%s','%s','%s','%s','%s','%s')";
-    public static String strInsertSatellite = "INSERT INTO satellite VALUES ('%s','%s','%s','%s')";
+    public static String strInsertSatellite = "INSERT INTO satellite VALUES ('%s','%s','%s','%s')"; //inserimento nuovo satellite
+    public static String strInsertInstrument = "INSERT INTO instrument VALUES ('%s','%s','%s')"; //inserimento nuovo strumento
 
     public static String strReq51 = "SELECT %s FROM %s_boundaries WHERE id = '%s'";
     public static String strReq52 = "SELECT COUNT(DISTINCT idbranch) FROM %s_skeletons WHERE idfil = '%s'";
@@ -32,5 +33,6 @@ public class Strings {
 
     public static String strDelete = "DELETE FROM %s_%s";
     public static String strImport = "COPY %s_%s FROM '%s' DELIMITER ','";
-    
+
+
 }

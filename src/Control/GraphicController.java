@@ -53,6 +53,11 @@ public class GraphicController extends Application {
         insert_satellite.start();
     }
 
+    public void req34Page() throws Exception{
+        InsertInstrument insert_Instrument =new InsertInstrument();
+        insert_Instrument.start();
+    }
+
 
     public void req5page() throws Exception{
         Req_5_Page req_5_page = new Req_5_Page();

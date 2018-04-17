@@ -22,15 +22,15 @@ public class InsertSatellite {
     @FXML
     private TextField Req33SatelliteText;
     @FXML
-    public DatePicker Req33BeginActDate;
+    private DatePicker Req33BeginActDate;
     @FXML
-    public DatePicker Req33EndActDate;
+    private DatePicker Req33EndActDate;
     @FXML
     private TextField Req33AgencyText;
     @FXML
-    public Button Req33InsertButton;
+    private Button Req33InsertButton;
     @FXML
-    public Button Req33BackButton;
+    private Button Req33BackButton;
 
 
 

@@ -26,6 +26,9 @@ public class DBController {
         return InsertSatelliteDao.req33(satellite, beginact,endact,agency);
     }
 
+    public boolean inserimentoStrumento(String instrument, String sat, String strip ) {
+        return InsertInstrumentDao.req34(instrument, sat, strip);
+    }
     public boolean infoDerivateFilamento(String instrument, String input) throws Exception {
 
         int nSegmenti[] = new int[1];
