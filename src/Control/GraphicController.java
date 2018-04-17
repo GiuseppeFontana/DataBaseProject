@@ -48,6 +48,12 @@ public class GraphicController extends Application {
         register_page.start();
     }
 
+    public void req33Page() throws  Exception {
+        InsertSatellite insert_satellite = new InsertSatellite();
+        insert_satellite.start();
+    }
+
+
     public void req5page() throws Exception{
         Req_5_Page req_5_page = new Req_5_Page();
         req_5_page.start();
@@ -80,4 +86,6 @@ public class GraphicController extends Application {
         Prova_Req_6_Res prova_req_6_res = new Prova_Req_6_Res();
         prova_req_6_res.start(structures, struttureTotali, page);
     }
+
+
 }

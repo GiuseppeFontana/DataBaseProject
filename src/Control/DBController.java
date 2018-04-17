@@ -3,6 +3,9 @@ package Control;
 import Dao.*;
 import Entity.Structure;
 import Bean.Req7Bean;
+import javafx.scene.control.DatePicker;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class DBController {
@@ -19,6 +22,9 @@ public class DBController {
         return RegisterDao.req32(name, surname, username, pass1, email, type);
     }
 
+    public boolean inserimentoSatellite(String satellite, LocalDate beginact, LocalDate endact, String agency) {
+        return InsertSatelliteDao.req33(satellite, beginact,endact,agency);
+    }
 
     public boolean infoDerivateFilamento(String instrument, String input) throws Exception {
 
@@ -66,4 +72,7 @@ public class DBController {
         graphicController.req7result(beans);
         return true;
     }
+
+
+
 }
