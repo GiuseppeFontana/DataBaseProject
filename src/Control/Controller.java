@@ -2,7 +2,7 @@ package Control;
 
 import Bean.Req7Bean;
 import Entity.*;
-import Utils.ClassicSingleton;
+import Singletons.UserSingleton;
 
 public class Controller {
 
@@ -18,17 +18,17 @@ public class Controller {
 
         //--------CREAZIONE DEL SINGLETON-----------//
 
-        ClassicSingleton singleton = ClassicSingleton.getInstance();
+        UserSingleton singleton = UserSingleton.getInstance();
         singleton.setUser(user);
 
     }
 
     public void resetUser() {
-        ClassicSingleton.getInstance().getUser().reset();
+        UserSingleton.getInstance().getUser().reset();
     }
 
-    public ClassicSingleton getSingleton(){
-        return ClassicSingleton.getInstance();
+    public UserSingleton getSingleton(){
+        return UserSingleton.getInstance();
     }
 
 

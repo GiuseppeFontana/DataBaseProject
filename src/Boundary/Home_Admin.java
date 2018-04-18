@@ -3,7 +3,7 @@ package Boundary;
 import Control.Controller;
 import Control.GraphicController;
 import Entity.User;
-import Utils.ClassicSingleton;
+import Singletons.UserSingleton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,13 +41,19 @@ public class Home_Admin {
     private Button HomeBtnLogOut;
 
 
+    /*
+    https://stackoverflow.com/questions/34755630/javafx-location-is-not-set-error
+
+    TODO risistemare i refactor
+     */
+
     public void start() throws Exception{
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/home_admin.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
 
-        User user = ClassicSingleton.getInstance().getUser();
+        User user = UserSingleton.getInstance().getUser();
         String name = user.getName();
 
         final Label HomeLabel1 = new Label();

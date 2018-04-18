@@ -88,6 +88,23 @@ public class    Structure {
         this.instrument = instrument;
     }
 
+    public Structure create(int id, String name, double flux, double meanDens, Double meanTemp, Double ellipt, Double contrast, String satellite, String instrument) {
+
+        Structure structure = new Structure();
+
+        structure.setId(id);
+        structure.setName(name);
+        structure.setFlux(flux);
+        structure.setMeanDens(meanDens);
+        structure.setMeanTemp(meanTemp);
+        structure.setEllipt(ellipt);
+        structure.setContrast(contrast);
+        structure.setSatellite(satellite);
+        structure.setInstrument(instrument);
+
+        return structure;
+    }
+
     /*
     1) Id	della	struttura	nella	mappa	HIGAL
 2) Nome	identificativo

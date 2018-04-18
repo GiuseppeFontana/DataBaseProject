@@ -1,4 +1,4 @@
-package Boundary;
+package Boundary.Requisito_07;
 
 import Control.Controller;
 import Control.DBController;
@@ -94,7 +94,7 @@ public class Req_7_Page {
 
     public void start() throws Exception{
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/req_7_page.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/Requisito_07/req_7_page.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
         stage.setResizable(false);

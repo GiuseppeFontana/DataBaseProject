@@ -2,7 +2,17 @@ package Control;
 
 import Bean.Req7Bean;
 import Boundary.*;
+import Boundary.Requisito_03.InsertInstrument;
+import Boundary.Requisito_03.InsertSatellite;
+import Boundary.Requisito_03.RegisterPage;
+import Boundary.Requisito_03.Req_3_Page;
+import Boundary.Requisito_05.Req_5_Page;
+import Boundary.Requisito_05.Req_5_Result;
+import Boundary.Requisito_06.Req_6_Page;
+import Boundary.Requisito_07.Req_7_Page;
 import Entity.Structure;
+import Prove.Prova2Req6res;
+import Prove.Prova_Req_6_Res;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -72,6 +82,12 @@ public class GraphicController extends Application {
     public void req6page() throws Exception{
         Req_6_Page req_6_page = new Req_6_Page();
         req_6_page.start();
+    }
+
+    //TODO PROVA
+    public void req6Res(Double percBrillanza, Double elliptMin, Double elliptMax) throws Exception{
+        Prova2Req6res prova2Req6res = new Prova2Req6res();
+        prova2Req6res.start(percBrillanza,elliptMin,elliptMax);
     }
 
     public void req7result(ArrayList<Req7Bean> beans) {

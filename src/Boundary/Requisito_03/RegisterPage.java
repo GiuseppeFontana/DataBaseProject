@@ -1,4 +1,4 @@
-package Boundary;
+package Boundary.Requisito_03;
 
 import Control.*;
 import javafx.event.ActionEvent;
@@ -75,7 +75,7 @@ public class RegisterPage {
 
     public void start() throws Exception{
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("registerPage.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Requisito_03/registerPage.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
 

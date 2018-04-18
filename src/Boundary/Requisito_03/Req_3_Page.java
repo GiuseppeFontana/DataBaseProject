@@ -1,15 +1,13 @@
-package Boundary;
+package Boundary.Requisito_03;
 
 import Control.Controller;
 import Control.GraphicController;
 import Entity.User;
-import Utils.ClassicSingleton;
+import Singletons.UserSingleton;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -18,11 +16,11 @@ public class Req_3_Page {
 
     public void start() throws Exception {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/req_3_page.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/Requisito_03/req_3_page.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649);
 
-        User user = ClassicSingleton.getInstance().getUser();
+        User user = UserSingleton.getInstance().getUser();
         String name = user.getName();
 
         final Label HomeLabel1 = new Label();

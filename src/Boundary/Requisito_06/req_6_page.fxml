@@ -7,13 +7,13 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Req_6_Page">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_06.Req_6_Page">
     <children>
         <Button fx:id="Req6PageBackButton" layoutX="84.0" layoutY="542.0" mnemonicParsing="false" onAction="#backHome" prefHeight="38.0" prefWidth="41.0">
             <graphic>
                 <ImageView fx:id="Req6PageBackImg" fitHeight="31.0" fitWidth="31.0">
                     <image>
-                        <Image url="@../images/back.png" />
+                        <Image url="@../../images/back.png" />
                     </image>
                 </ImageView>
             </graphic></Button>

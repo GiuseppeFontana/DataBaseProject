@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.RegisterPage">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_03.RegisterPage">
    <children>
       <Label fx:id="Req32TitleLabel" layoutX="231.0" layoutY="28.0" text="Registrazione Nuovo Utente" />
       <Label fx:id="Req32NameLabel" layoutX="88.0" layoutY="87.0" text="Nome:" />
@@ -31,7 +31,7 @@
          <graphic>
             <ImageView fx:id="Req32BackImage" fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/back.png" />
+                  <Image url="@../../images/back.png" />
                </image>
             </ImageView>
          </graphic>

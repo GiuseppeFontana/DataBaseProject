@@ -1,17 +1,17 @@
-package Utils;
+package Singletons;
 
 import Entity.User;
 
-public class ClassicSingleton {
-   private static ClassicSingleton instance = null;
+public class UserSingleton {
+   private static UserSingleton instance = null;
    private User user;
 
-   protected ClassicSingleton() {
+   protected UserSingleton() {
       // Exists only to defeat instantiation.
    }
-   public static ClassicSingleton getInstance() {
+   public static UserSingleton getInstance() {
       if(instance == null) {
-         instance = new ClassicSingleton();
+         instance = new UserSingleton();
       }
       return instance;
    }

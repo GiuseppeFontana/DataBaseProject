@@ -1,4 +1,4 @@
-package Boundary;
+package Boundary.Requisito_06;
 
 import Control.Controller;
 import Control.DBController;
@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -22,23 +23,13 @@ public class Req_6_Page {
     @FXML
     private TextField Req6PageElliptMaxText;
 
-/*
-REQ-FN-6	Ricerca	di	una	struttura	per	contrasto	ed	ellitticità
-Un	utente	registrato	potrà	effettuare	una	ricerca	di	una	struttura	estesa	la	cui	brillanza	è
-maggiore	di	una	certa	percentuale	rispetto	al	bordo	esterno	e	la	cui	ellitticità	è	compresa
-all’interno	di	un	range	selezionabile.
-Si	consideri	che	il	valore	del	contrasto	è	pari	a	[1+(%Brillanza/100)].	Ad	esempio,	richiedere
-una	luminosità	maggiore	del	10%,	vorrà	dire	ricercare	le	strutture	che	hanno	un	contrasto
-maggiore	1.1.
-L’applicazione	dovrà	rifiutare	valori	percentuali	minore	di	0	e	i	valori	di	ellitticità	dovranno
-essere	compresi	tra	1	e	10	esclusi.
-La	GUI	visualizzerà	al	massimo	20	oggetti	per	volta.
-L’applicazione	dovrà	restituire	anche	la	frazione	di	filamenti	trovati	rispetto	l’intero	catalogo.
- */
-
     public void start() throws Exception{
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/req_6_page.fxml"));
+/*
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/home/giuseppe/IdeaProjects/DataBaseProject2/src/Boundary/Requisito_06/req_6_page.fxml"));
+*/
+        FXMLLoader loader = new FXMLLoader(Req_6_Page.class.getResource("req_6_page.fxml"));
+
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
         stage.setResizable(false);
@@ -63,25 +54,27 @@ L’applicazione	dovrà	restituire	anche	la	frazione	di	filamenti	trovati	rispet
 
     public void search(ActionEvent actionEvent) {
         try {
-            double percBrillanza = Double.parseDouble(Req6PageBrillanzaText.getText());
-            double elliptMax = Double.parseDouble(Req6PageElliptMaxText.getText());
-            double elliptMin = Double.parseDouble(Req6PageElliptMinText.getText());
+            Double percBrillanza = Double.parseDouble(Req6PageBrillanzaText.getText());
+            Double elliptMax = Double.parseDouble(Req6PageElliptMaxText.getText());
+            Double elliptMin = Double.parseDouble(Req6PageElliptMinText.getText());
+            GraphicController graphicController = new GraphicController();
 
             if (percBrillanza<0.0 || elliptMin <= 1.0 || elliptMax >= 10.0 || elliptMin > elliptMax){
                 String msg1 = "Input non valido.";
-                GraphicController graphicController = new GraphicController();
                 graphicController.alertError(msg1);
             }
             else {
-                DBController dbController = new DBController();
-                if(!dbController.ricercaPerContrastoEdEllitticita(percBrillanza, elliptMin, elliptMax)){
+                graphicController.req6Res(percBrillanza,elliptMin, elliptMax);
+
+                /*DBController dbController = new DBController();
+                if(!dbController.ricercaReq6(percBrillanza, elliptMin, elliptMax)){
                     String msg2 = "Nessun filamento trovato.";
                     GraphicController graphicController = new GraphicController();
                     graphicController.alertError(msg2);
                 }
                 else {
                     ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-                }
+                }*/
             }
         }
         catch (NumberFormatException nfe){

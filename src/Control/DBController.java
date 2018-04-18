@@ -1,14 +1,18 @@
 package Control;
 
+import Prove.Req6Bean;
+import Prove.Prova2Req6res;
 import Dao.*;
 import Entity.Structure;
 import Bean.Req7Bean;
-import javafx.scene.control.DatePicker;
+import Prove.provaReq6Dao;
+import Singletons.SingletonReq6;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class DBController {
+
 
     public DBController() {
 
@@ -64,6 +68,46 @@ public class DBController {
         graphicController.req6result(structures, struttureTotali, page);
         return true;
 
+    }
+
+    public void ricercaReq6(double percBrillanza, double elliptMin, double elliptMax) throws Exception {
+        SingletonReq6.getInstance().setBeans(provaReq6Dao.req6(percBrillanza, elliptMin, elliptMax));
+        if (SingletonReq6.getInstance() == null){
+            GraphicController graphicController = new GraphicController();
+            String msg = "Nessuna Struttura trovata\ncon queste caratteristiche.";
+            graphicController.alertError(msg);
+        }
+        else {
+            nextResult(1);
+            /*Prova2Req6res prova2Req6res = new Prova2Req6res();
+            prova2Req6res.setCounterPage(1);
+            for (int i = 0; i< beans.size(); i++){
+                prova2Req6res.parseBean(beans.get(i).getId(),beans.get(i).getName(),beans.get(i).getSatellite(), beans.get(i).getTotaleStrutture());
+
+            }*/
+            /*Prova2Req6res prova2Req6res = new Prova2Req6res();
+            int i = 0;
+            for (Req6Bean bean : beans){
+                if (i < 20){
+                    prova2Req6res.parseBean(bean.getId(),bean.getName(),bean.getSatellite(), bean.getTotaleStrutture());
+                    i++;
+                }
+
+            }*/
+        }
+    }
+
+    public void nextResult(Integer counter){
+        System.out.println("counter:"+counter);
+        Prova2Req6res prova2Req6res = new Prova2Req6res();
+        prova2Req6res.setCounterPage(counter);
+        for (int i = (counter-1)*20; i< 20*(counter-1)+20; i++){
+            System.out.println("iterator:"+i);
+            prova2Req6res.parseBean(SingletonReq6.getInstance().getBeans().get(i).getId(),
+                    SingletonReq6.getInstance().getBeans().get(i).getName(),
+                    SingletonReq6.getInstance().getBeans().get(i).getSatellite(),
+                    SingletonReq6.getInstance().getBeans().get(i).getTotaleStrutture());
+        }
     }
 
     public boolean ricercaPerNumeroSegmenti(int min, int max) throws Exception{
