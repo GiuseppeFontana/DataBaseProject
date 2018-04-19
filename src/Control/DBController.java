@@ -98,11 +98,18 @@ public class DBController {
     }
 
     public void nextResult(Integer counter){
-        System.out.println("counter:"+counter);
         Prova2Req6res prova2Req6res = new Prova2Req6res();
         prova2Req6res.setCounterPage(counter);
+        int size = SingletonReq6.getInstance().getBeans().size();
+        if (size % 20 != 0){
+            prova2Req6res.setTotalPages(size/20+1);
+        }
+        else {
+            prova2Req6res.setTotalPages(size/20);
+        }
+        System.out.println("totalPages: "+prova2Req6res.getTotalPages());
+        System.out.println("currentPage: "+prova2Req6res.getCounterPage());
         for (int i = (counter-1)*20; i< 20*(counter-1)+20; i++){
-            System.out.println("iterator:"+i);
             prova2Req6res.parseBean(SingletonReq6.getInstance().getBeans().get(i).getId(),
                     SingletonReq6.getInstance().getBeans().get(i).getName(),
                     SingletonReq6.getInstance().getBeans().get(i).getSatellite(),
