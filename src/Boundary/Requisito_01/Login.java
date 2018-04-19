@@ -1,5 +1,6 @@
-package Boundary;
+package Boundary.Requisito_01;
 
+import Boundary.Requisito_06.Req_6_Page;
 import Control.DBController;
 import Control.GraphicController;
 import javafx.application.Application;
@@ -46,7 +47,8 @@ public class Login extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Stage thirdStage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/login.fxml"));
+        FXMLLoader loader = new FXMLLoader(Login.class.getResource("login.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/login.fxml"));
         AnchorPane root = loader.load();
         thirdStage.setTitle("Interstellar");
         Scene scene = new Scene(root, 600, 338);

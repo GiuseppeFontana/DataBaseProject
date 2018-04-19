@@ -10,14 +10,14 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class IncorrectLoginFields {
+public class Alert {
     @FXML
     private Button btnTurnBack;
 
     public void incorrectLoginField(String message) throws Exception {
 
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("incorrectLoginFields.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("alert.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 321, 182 );
 

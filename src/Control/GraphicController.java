@@ -2,6 +2,7 @@ package Control;
 
 import Bean.Req7Bean;
 import Boundary.*;
+import Boundary.Requisito_01.Login;
 import Boundary.Requisito_03.InsertInstrument;
 import Boundary.Requisito_03.InsertSatellite;
 import Boundary.Requisito_03.RegisterPage;
@@ -29,8 +30,8 @@ public class GraphicController extends Application {
     }
 
     public void alertError(String message) throws Exception{
-        IncorrectLoginFields incorrectLoginFields = new IncorrectLoginFields();
-        incorrectLoginFields.incorrectLoginField(message);
+        Alert alert = new Alert();
+        alert.incorrectLoginField(message);
     }
 
     public void homeUser() throws Exception{

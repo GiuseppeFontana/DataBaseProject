@@ -62,7 +62,8 @@ public class InsertSatellite {
 
     public void start() throws Exception{
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Requisito_03/insertSatellite.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Requisito_03/insertSatellite.fxml"));
+        FXMLLoader loader = new FXMLLoader(InsertSatellite.class.getResource("insertSatellite.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
 

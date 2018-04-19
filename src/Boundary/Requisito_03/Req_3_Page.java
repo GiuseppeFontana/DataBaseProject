@@ -1,5 +1,6 @@
 package Boundary.Requisito_03;
 
+import Boundary.Requisito_06.Req_6_Page;
 import Control.Controller;
 import Control.GraphicController;
 import Entity.User;
@@ -16,7 +17,8 @@ public class Req_3_Page {
 
     public void start() throws Exception {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/Requisito_03/req_3_page.fxml"));
+        FXMLLoader loader = new FXMLLoader(Req_3_Page.class.getResource("req_3_page.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/Requisito_03/req_3_page.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649);
 

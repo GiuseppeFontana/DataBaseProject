@@ -1,5 +1,6 @@
 package Boundary.Requisito_05;
 
+import Boundary.Requisito_06.Req_6_Page;
 import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;
@@ -15,14 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /*
-REQ-FN-5	Recupero	informazioni	derivate	di	un	filamento
-Un	utente	registrato	potrà	ricercare	un	filamento	per	id	o	designazione,	e	di	questo
-visualizzare:
-1) La	posizione	del	centroide	del	contorno.	Il	centroide	sarà	calcolato	come	media	delle
-latitudini	e	delle	longitudini.
-2) L’estensione	del	contorno.	L’estensione	sarà	calcolata	come	la	distanza	tra	il	minimo
-massimo	delle	posizioni	longitudinali,	e	tra	il	minimo	e	massimo	delle	posizioni	latitudinali.
-3) Il	numero	di	segmenti	relativi.
+TODO non funziona su spitzer
  */
 
 public class Req_5_Page {
@@ -39,7 +33,8 @@ public class Req_5_Page {
 
     public void start() throws Exception{
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/../Requisito_03/5/req_5_page.fxml"));
+        FXMLLoader loader = new FXMLLoader(Req_5_Page.class.getResource("req_5_page.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/../Requisito_03/5/req_5_page.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
         stage.setResizable(false);

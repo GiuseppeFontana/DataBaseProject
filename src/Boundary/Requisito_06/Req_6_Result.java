@@ -42,7 +42,8 @@ public class Req_6_Result {
 
     public void start() throws Exception {
         Stage thirdStage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Boundary/Requisito_06/req_6_result.fxml"));
+        FXMLLoader loader = new FXMLLoader(Req_6_Result.class.getResource("req_6_result.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("Boundary/Requisito_06/req_6_result.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 800, 800);
         //thirdStage.setScene(new Scene(root, 488, 277));

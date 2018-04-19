@@ -17,7 +17,8 @@ public class Req_5_Result {
 
     public void start(String input, double[] infoContorno, int nSegmenti) throws Exception {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/Requisito_05/req_5_result.fxml"));
+        FXMLLoader loader = new FXMLLoader(Req_5_Result.class.getResource("req_5_result.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/Requisito_05/req_5_result.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
 

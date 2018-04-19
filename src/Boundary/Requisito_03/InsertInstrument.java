@@ -1,5 +1,6 @@
 package Boundary.Requisito_03;
 
+import Boundary.Requisito_06.Req_6_Page;
 import Control.DBController;
 import Control.GraphicController;
 import javafx.event.ActionEvent;
@@ -28,7 +29,8 @@ public class InsertInstrument {
 
     public void start() throws Exception {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Requisito_03/insertInstrument.fxml"));
+        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Requisito_03/insertInstrument.fxml"));
+        FXMLLoader loader = new FXMLLoader(InsertInstrument.class.getResource("insertInstrument.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649);
 
