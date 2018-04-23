@@ -1,15 +1,18 @@
 package Dao;
 
 import Control.Controller;
-import Entity.Structure;
+
+import Bean.Req6Bean;
+import Singletons.SingletonReq6;
 import Utils.Credenziali;
 import Utils.Strings;
 
 import java.sql.*;
 import java.util.ArrayList;
 
+
 public class Req6Dao {
-    public static boolean req6(ArrayList<Structure> structures, double percBrillanza, double elliptMin, double elliptMax, int[] struttureTotali) {
+    public static boolean req6(double percBrillanza, double elliptMin, double elliptMax) {
         // STEP 1: dichiarazioni
         Statement stmt1 = null;
         Statement stmt2 = null;
@@ -50,26 +53,33 @@ public class Req6Dao {
             }
             else {
                 Controller controller = new Controller();
-                Structure struttura1 = controller.createStructure(rs[0].getInt("id"), rs[0].getString("name"),
+                ArrayList<Req6Bean> beans = new ArrayList<>();
+                SingletonReq6.getInstance().setBeans(beans);
+
+                Req6Bean bean1 = controller.createReq6Bean(rs[0].getInt("id"), rs[0].getString("name"),rs[0].getString("satellite"));
+                SingletonReq6.getInstance().getBeans().add(bean1);
+
+                /*Structure struttura1 = controller.createStructure(rs[0].getInt("id"), rs[0].getString("name"),
                         rs[0].getDouble("flux"), rs[0].getDouble("meandens"), rs[0].getDouble("meantemp"),
                         rs[0].getDouble("ellipt"), rs[0].getDouble("contrast"), rs[0].getString("satellite"),
-                        rs[0].getString("instrument"));
-
-                structures.add(struttura1);
+                        rs[0].getString("instrument"));*/
 
                 while (rs[0].next()){
-                    Structure struttura = controller.createStructure(rs[0].getInt("id"), rs[0].getString("name"),
+                    Req6Bean bean = controller.createReq6Bean(rs[0].getInt("id"), rs[0].getString("name"),rs[0].getString("satellite"));
+                    SingletonReq6.getInstance().getBeans().add(bean);
+
+                    /*Structure struttura = controller.createStructure(rs[0].getInt("id"), rs[0].getString("name"),
                             rs[0].getDouble("flux"), rs[0].getDouble("meandens"), rs[0].getDouble("meantemp"),
                             rs[0].getDouble("ellipt"), rs[0].getDouble("contrast"), rs[0].getString("satellite"),
                             rs[0].getString("instrument"));
 
-                    structures.add(struttura);
+                    structures.add(struttura);*/
                 }
 
                 int n1 = rs[1].getInt("count");
                 int n2 = rs[2].getInt("count");
 
-                struttureTotali[0] = n1 + n2;
+                SingletonReq6.getInstance().setTotaleStrutture(n1+n2);
             }
 
             conn.commit();
@@ -82,6 +92,10 @@ public class Req6Dao {
             stmt2.close();
             stmt3.close();
             conn.close();
+
+            System.out.println("Accesso Strutture effettuato con successo");
+            return true;
+
         } catch (Exception e) {
             // Errore nel loading del driver
             e.printStackTrace();
@@ -112,7 +126,7 @@ public class Req6Dao {
                 se.printStackTrace();
             }
         }
-        System.out.println("Accesso Strutture effettuato con successo");
-        return true;
+        System.out.println("Accesso Strutture fallito.");
+        return false;
     }
 }

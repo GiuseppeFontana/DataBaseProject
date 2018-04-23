@@ -64,7 +64,9 @@ public class Req_6_Page {
                 graphicController.alertError(msg1);
             }
             else {
-                graphicController.req6Res(percBrillanza,elliptMin, elliptMax);
+                DBController dbController = new DBController();
+                dbController.ricercaPerContrastoEdEllitticita(percBrillanza, elliptMin,elliptMax);
+                //graphicController.req6Res(percBrillanza,elliptMin, elliptMax);
 
                 /*DBController dbController = new DBController();
                 if(!dbController.ricercaReq6(percBrillanza, elliptMin, elliptMax)){

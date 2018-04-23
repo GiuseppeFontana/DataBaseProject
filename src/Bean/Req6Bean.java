@@ -1,10 +1,9 @@
-package Prove;
+package Bean;
 
 public class Req6Bean {
     private Integer id;
     private String name;
     private String satellite;
-    private Integer totaleStrutture;
 
 
     public Integer getId() {
@@ -31,18 +30,9 @@ public class Req6Bean {
         this.satellite = satellite;
     }
 
-    public Integer getTotaleStrutture() {
-        return totaleStrutture;
-    }
-
-    public void setTotaleStrutture(Integer totaleStrutture) {
-        this.totaleStrutture = totaleStrutture;
-    }
-
-    public Req6Bean(Integer id, String name, String satellite, Integer totaleStrutture) {
+    public Req6Bean(Integer id, String name, String satellite) {
         this.id = id;
         this.name = name;
         this.satellite = satellite;
-        this.totaleStrutture = totaleStrutture;
     }
 }

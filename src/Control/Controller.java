@@ -2,6 +2,7 @@ package Control;
 
 import Bean.Req7Bean;
 import Entity.*;
+import Bean.Req6Bean;
 import Singletons.UserSingleton;
 
 public class Controller {
@@ -47,6 +48,11 @@ public class Controller {
         structure.setInstrument(instrument);
 
         return structure;
+    }
+
+    public Req6Bean createReq6Bean(Integer id, String name, String satellite){
+        Req6Bean bean = new Req6Bean(id, name, satellite);
+        return bean;
     }
 
     public Bound createBound (int id, double longitude, double latitude){

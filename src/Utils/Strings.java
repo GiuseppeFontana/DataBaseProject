@@ -17,8 +17,8 @@ public class Strings {
     public static String strReq51 = "SELECT %s FROM %s_boundaries WHERE id = '%s'";
     public static String strReq52 = "SELECT COUNT(DISTINCT idbranch) FROM %s_skeletons WHERE idfil = '%s'";
 
-    public static String strReq61 = "SELECT * FROM herschel_structures WHERE (contrast > %s AND ellipt >= %s AND ellipt <= %s)\n"
-            + "UNION SELECT * FROM spitzer_structures WHERE (contrast > %s AND ellipt >= %s AND ellipt <= %s)";
+    public static String strReq61 = "SELECT id, name, satellite FROM herschel_structures WHERE (contrast > %s AND ellipt >= %s AND ellipt <= %s)\n"
+            + "UNION SELECT id, name, satellite FROM spitzer_structures WHERE (contrast > %s AND ellipt >= %s AND ellipt <= %s)";
     public static String strReq62 = "SELECT count(*) FROM %s_structures";
 
     public static String strReq7 = "(SELECT skeleton.idfil, structure.name, count(DISTINCT skeleton.idbranch)\n" +

@@ -11,9 +11,7 @@ import Boundary.Requisito_05.Req_5_Page;
 import Boundary.Requisito_05.Req_5_Result;
 import Boundary.Requisito_06.Req_6_Page;
 import Boundary.Requisito_07.Req_7_Page;
-import Entity.Structure;
-import Prove.Prova2Req6res;
-import Prove.Prova_Req_6_Res;
+import Boundary.Requisito_06.Req_6_Result;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -85,10 +83,14 @@ public class GraphicController extends Application {
         req_6_page.start();
     }
 
-    //TODO PROVA
-    public void req6Res(Double percBrillanza, Double elliptMin, Double elliptMax) throws Exception{
-        Prova2Req6res prova2Req6res = new Prova2Req6res();
-        prova2Req6res.start(percBrillanza,elliptMin,elliptMax);
+    public void req6result() throws Exception{
+        Req_6_Result prova_req_6_res = new Req_6_Result();
+        prova_req_6_res.start();
+    }
+
+    public void req7page() throws Exception{
+        Req_7_Page req_7_page = new Req_7_Page();
+        req_7_page.start();
     }
 
     public void req7result(ArrayList<Req7Bean> beans) {
@@ -96,17 +98,6 @@ public class GraphicController extends Application {
         TODO gui
          */
 
-    }
-
-
-    public void req7page() throws Exception{
-        Req_7_Page req_7_page = new Req_7_Page();
-        req_7_page.start();
-    }
-
-    public void req6result(ArrayList<Structure> structures, int[] struttureTotali, int[]page) throws Exception{
-        Prova_Req_6_Res prova_req_6_res = new Prova_Req_6_Res();
-        prova_req_6_res.start(structures, struttureTotali, page);
     }
 
 

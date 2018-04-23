@@ -12,7 +12,7 @@ public class Main {
     public static void main(String args[]){
         Application.launch(GraphicController.class);
 
-       // Application.launch(LabelProva.class);
+        // Application.launch(LabelProva.class);
 
         /* TODO finire gli import
         ImportDao dao = new ImportDao();

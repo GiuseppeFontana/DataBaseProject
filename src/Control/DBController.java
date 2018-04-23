@@ -1,12 +1,7 @@
 package Control;
 
-import Prove.Req6Bean;
-import Prove.Prova2Req6res;
 import Dao.*;
-import Entity.Structure;
 import Bean.Req7Bean;
-import Prove.provaReq6Dao;
-import Singletons.SingletonReq6;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -51,70 +46,17 @@ public class DBController {
     }
 
     public boolean ricercaPerContrastoEdEllitticita(double percBrillanza, double elliptMin, double elliptMax) throws Exception {
-        ArrayList<Structure> structures = new ArrayList<>();
-        int struttureTotali[] = new int[1];
 
-        if(!Req6Dao.req6(structures, percBrillanza, elliptMin, elliptMax, struttureTotali)){
+        if(!Req6Dao.req6(percBrillanza, elliptMin, elliptMax)){
             GraphicController graphicController = new GraphicController();
             String msg = "Nessuna Struttura trovata\ncon queste caratteristiche.";
             graphicController.alertError(msg);
             return false;
         }
-
-        int[] page = new int[1];
-        page[0]=1;
-        System.out.println(page[0]);
         GraphicController graphicController = new GraphicController();
-        graphicController.req6result(structures, struttureTotali, page);
+        graphicController.req6result();
         return true;
 
-    }
-
-    public void ricercaReq6(double percBrillanza, double elliptMin, double elliptMax) throws Exception {
-        SingletonReq6.getInstance().setBeans(provaReq6Dao.req6(percBrillanza, elliptMin, elliptMax));
-        if (SingletonReq6.getInstance() == null){
-            GraphicController graphicController = new GraphicController();
-            String msg = "Nessuna Struttura trovata\ncon queste caratteristiche.";
-            graphicController.alertError(msg);
-        }
-        else {
-            nextResult(1);
-            /*Prova2Req6res prova2Req6res = new Prova2Req6res();
-            prova2Req6res.setCounterPage(1);
-            for (int i = 0; i< beans.size(); i++){
-                prova2Req6res.parseBean(beans.get(i).getId(),beans.get(i).getName(),beans.get(i).getSatellite(), beans.get(i).getTotaleStrutture());
-
-            }*/
-            /*Prova2Req6res prova2Req6res = new Prova2Req6res();
-            int i = 0;
-            for (Req6Bean bean : beans){
-                if (i < 20){
-                    prova2Req6res.parseBean(bean.getId(),bean.getName(),bean.getSatellite(), bean.getTotaleStrutture());
-                    i++;
-                }
-
-            }*/
-        }
-    }
-
-    public void nextResult(Integer counter){
-        Prova2Req6res prova2Req6res = new Prova2Req6res();
-        prova2Req6res.setCounterPage(counter);
-        int size = SingletonReq6.getInstance().getBeans().size();
-        if (size % 20 != 0){
-            prova2Req6res.setTotalPages(size/20+1);
-        }
-        else {
-            prova2Req6res.setTotalPages(size/20);
-        }
-        System.out.println("totalPages: "+prova2Req6res.getTotalPages());
-        System.out.println("currentPage: "+prova2Req6res.getCounterPage());
-        for (int i = (counter-1)*20; i< 20*(counter-1)+20; i++){
-            prova2Req6res.parseBean(SingletonReq6.getInstance().getBeans().get(i).getId(),
-                    SingletonReq6.getInstance().getBeans().get(i).getName(),
-                    SingletonReq6.getInstance().getBeans().get(i).getSatellite(),
-                    SingletonReq6.getInstance().getBeans().get(i).getTotaleStrutture());
-        }
     }
 
     public boolean ricercaPerNumeroSegmenti(int min, int max) throws Exception{
@@ -126,7 +68,5 @@ public class DBController {
         graphicController.req7result(beans);
         return true;
     }
-
-
 
 }
