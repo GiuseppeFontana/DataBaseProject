@@ -5,6 +5,7 @@ import Entity.Structure;
 public class Req7Bean {
     private int idStructure;
     private String nameStructure;
+    private String satellite;
     private int nSegmenti;
 
     public Req7Bean(){
@@ -24,6 +25,14 @@ public class Req7Bean {
 
     public void setNameStructure(String nameStructure) {
         this.nameStructure = nameStructure;
+    }
+
+    public String getSatellite() {
+        return satellite;
+    }
+
+    public void setSatellite(String satellite) {
+        this.satellite = satellite;
     }
 
     public int getnSegmenti() {

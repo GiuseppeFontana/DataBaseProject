@@ -12,6 +12,7 @@ import Boundary.Requisito_05.Req_5_Result;
 import Boundary.Requisito_06.Req_6_Page;
 import Boundary.Requisito_07.Req_7_Page;
 import Boundary.Requisito_06.Req_6_Result;
+import Boundary.Requisito_07.Req_7_Result;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -93,11 +94,9 @@ public class GraphicController extends Application {
         req_7_page.start();
     }
 
-    public void req7result(ArrayList<Req7Bean> beans) {
-        /*
-        TODO gui
-         */
-
+    public void req7result() throws Exception{
+        Req_7_Result req_7_result = new Req_7_Result();
+        req_7_result.start();
     }
 
 

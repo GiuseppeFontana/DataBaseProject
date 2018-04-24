@@ -1,6 +1,5 @@
 package Boundary.Requisito_05;
 
-import Boundary.Requisito_06.Req_6_Page;
 import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;
@@ -9,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -45,7 +43,7 @@ public class Req_5_Page {
     public void backHome(ActionEvent actionEvent) throws Exception{
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
-        boolean admin = controller.getSingleton().getUser().getAdmin();
+        boolean admin = controller.getUserSingleton().getUser().getAdmin();
         if(!admin){
             GraphicController graphicController = new GraphicController();
             graphicController.homeUser();

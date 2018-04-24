@@ -1,23 +1,17 @@
 package Boundary.Requisito_07;
 
-import Boundary.Requisito_06.Req_6_Page;
 import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;
-import Entity.Structure;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 /*
 REQ-FN-7	Ricerca	di	un	strutture	estese	per	numero	di	segmenti
 L’applicazione	permetterà	di	ricercare	tutte	le	strutture	estese	che	hanno	un	numero	di
@@ -42,7 +36,7 @@ public class Req_7_Page {
     public void backHome(ActionEvent actionEvent) throws Exception{
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
-        boolean admin = controller.getSingleton().getUser().getAdmin();
+        boolean admin = controller.getUserSingleton().getUser().getAdmin();
         if(!admin){
             GraphicController graphicController = new GraphicController();
             graphicController.homeUser();
@@ -58,13 +52,10 @@ public class Req_7_Page {
         try {
 
             int Min = Integer.parseInt(Req7PageMinText.getText());
-
-
-
             int Max = Integer.parseInt(Req7PageMaxText.getText());
 
-            if (Min < 2 || Min > Max){
-                String msg1 = "Input non valido.\n(Il minimo deve essere >1\ne un satellite dev'essere scelto)";
+            if (Min <= 2 || Min > Max){
+                String msg1 = "Input non valido.\n(Il minimo deve essere >2\ncontrolla min e max)";
                 GraphicController graphicController = new GraphicController();
                 graphicController.alertError(msg1);
             }
@@ -96,7 +87,6 @@ public class Req_7_Page {
     public void start() throws Exception{
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(Req_7_Page.class.getResource("req_7_page.fxml"));
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/Requisito_07/req_7_page.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
         stage.setResizable(false);

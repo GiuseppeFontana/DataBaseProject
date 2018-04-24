@@ -1,9 +1,9 @@
-package Boundary.Requisito_06;
+package Boundary.Requisito_07;
 
-import Bean.Req6Bean;
+import Bean.Req7Bean;
 import Control.Controller;
 import Control.GraphicController;
-import Singletons.SingletonReq6;
+import Singletons.SingletonReq7;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,13 +19,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class Req_6_Result {
-    @FXML
-    private Button Req6ResBackButton;
-    @FXML
-    private Button Req6ResNext;
-    @FXML
-    private Button Req6ResPrev;
+public class Req_7_Result {
+
+    public Button ButtonNext;
+    public Button ButtonPrev;
+    public Button BackButton;
+
     @FXML
     private Label labelResult;
     @FXML
@@ -33,45 +32,46 @@ public class Req_6_Result {
     @FXML
     private static int nTotalPages;
 
+    @FXML
+    private javafx.scene.control.TableView<Req7Bean> tableView = new TableView<>();
+    @FXML
+    private TableColumn<Req7Bean, Integer> columnId = new TableColumn<>("id");
+    @FXML
+    private TableColumn<Req7Bean, String> columnName = new TableColumn<>("name");
+    @FXML
+    private TableColumn<Req7Bean, String> columnSatellite = new TableColumn<>("satellite");
+    @FXML
+    private TableColumn<Req7Bean, Integer> columnNumeroSegmenti = new TableColumn<>("n. segmenti");
+    @FXML
+    private static ObservableList<Req7Bean> list = FXCollections.observableArrayList();
 
-    @FXML
-    private javafx.scene.control.TableView<Req6Bean> tableView = new TableView<>();
-    @FXML
-    private TableColumn<Req6Bean, Integer> columnId = new TableColumn<>("id");
-    @FXML
-    private TableColumn<Req6Bean, String> columnName = new TableColumn<>("name");
-    @FXML
-    private TableColumn<Req6Bean, String> columnSatellite = new TableColumn<>("satellite");
-    @FXML
-    private static ObservableList<Req6Bean> list = FXCollections.observableArrayList();
 
-    public int getnCurrentPage() {
+    public static int getnCurrentPage() {
         return nCurrentPage;
     }
 
-    public void setnCurrentPage(int n) {
+    public static void setnCurrentPage(int n) {
         nCurrentPage = n;
     }
 
-    public int getnTotalPages() {
+    public static int getnTotalPages() {
         return nTotalPages;
     }
 
-    public void setnTotalPages(int n) {
+    public static void setnTotalPages(int n) {
         nTotalPages = n;
     }
 
-    public void start() throws Exception{
-
+    public void start() throws Exception {
         setnCurrentPage(1);
-        int size = SingletonReq6.getInstance().getBeans().size();
+        int size = SingletonReq7.getInstance().getBeans().size();
 
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(Req_6_Result.class.getResource("req_6_result.fxml"));        AnchorPane root = loader.load();
+        FXMLLoader loader = new FXMLLoader(Req_7_Result.class.getResource("req_7_result.fxml"));        AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
 
         labelResult = new Label();
-        labelResult.setText("Trovate "+ size +" strutture su "+ SingletonReq6.getInstance().getTotaleStrutture());
+        labelResult.setText("Trovate "+ SingletonReq7.getInstance().getStruttureTrovate() +" strutture.");
         labelResult.setLayoutX(220);
         labelResult.setLayoutY(50);
         root.getChildren().addAll(labelResult);
@@ -94,13 +94,16 @@ public class Req_6_Result {
         columnSatellite.setMinWidth(140);
         columnSatellite.setCellValueFactory(new PropertyValueFactory<>("satellite"));
 
-        tableView.setPrefSize(437, 510);
+        columnNumeroSegmenti.setMinWidth(140);
+        columnNumeroSegmenti.setCellValueFactory(new PropertyValueFactory<>("count"));
+
+        tableView.setPrefSize(537, 510);
         tableView.setLayoutX(100);
         tableView.setLayoutY(65);
 
         ((AnchorPane) scene.getRoot()).getChildren().addAll(tableView);
         tableView.setItems(list);
-        tableView.getColumns().addAll(columnId,columnName, columnSatellite);
+        tableView.getColumns().addAll(columnId,columnName, columnSatellite, columnNumeroSegmenti);
 
         riempi();
 
@@ -113,27 +116,7 @@ public class Req_6_Result {
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
-
     }
-
-    private void riempi() {
-        if (getnTotalPages() != getnCurrentPage() || (getnTotalPages() == getnCurrentPage() && SingletonReq6.getInstance().getBeans().size() %20 == 0)) {
-            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + 20; i++) {
-                parseBean(SingletonReq6.getInstance().getBeans().get(i).getId(),
-                        SingletonReq6.getInstance().getBeans().get(i).getName(),
-                        SingletonReq6.getInstance().getBeans().get(i).getSatellite());
-            }
-        }
-        else {
-            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + SingletonReq6.getInstance().getBeans().size() %20; i++) {
-                parseBean(SingletonReq6.getInstance().getBeans().get(i).getId(),
-                        SingletonReq6.getInstance().getBeans().get(i).getName(),
-                        SingletonReq6.getInstance().getBeans().get(i).getSatellite());
-            }
-        }
-        System.out.println("Pagina " + getnCurrentPage() + " di " + getnTotalPages());
-    }
-
 
     public void next(ActionEvent actionEvent) throws Exception{
         if (getnCurrentPage()<getnTotalPages()){
@@ -151,6 +134,26 @@ public class Req_6_Result {
         }
     }
 
+    private void riempi() {
+        if (getnTotalPages() != getnCurrentPage() || (getnTotalPages() == getnCurrentPage() && SingletonReq7.getInstance().getBeans().size() %20 == 0)) {
+            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + 20; i++) {
+                parseBean(SingletonReq7.getInstance().getBeans().get(i).getIdStructure(),
+                        SingletonReq7.getInstance().getBeans().get(i).getNameStructure(),
+                        SingletonReq7.getInstance().getBeans().get(i).getSatellite(),
+                        SingletonReq7.getInstance().getBeans().get(i).getnSegmenti());
+            }
+        }
+        else {
+            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + SingletonReq7.getInstance().getBeans().size() %20; i++) {
+                parseBean(SingletonReq7.getInstance().getBeans().get(i).getIdStructure(),
+                        SingletonReq7.getInstance().getBeans().get(i).getNameStructure(),
+                        SingletonReq7.getInstance().getBeans().get(i).getSatellite(),
+                        SingletonReq7.getInstance().getBeans().get(i).getnSegmenti());
+            }
+        }
+        System.out.println("Pagina " + getnCurrentPage() + " di " + getnTotalPages());
+    }
+
     public void backHome(ActionEvent actionEvent) throws Exception{
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
@@ -165,12 +168,13 @@ public class Req_6_Result {
         }
     }
 
-    public void parseBean(Integer id, String name, String satellite){
+    public void parseBean(Integer id, String name, String satellite, Integer n){
         Controller controller = new Controller();
-        list.add(controller.createReq6Bean(id,name,satellite));
+        list.add(controller.createReq7Bean(id,name,satellite, n));
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnSatellite.setCellValueFactory(new PropertyValueFactory<>("satellite"));
+        columnNumeroSegmenti.setCellValueFactory(new PropertyValueFactory<>("count"));
         tableView.setItems(list);
     }
 }

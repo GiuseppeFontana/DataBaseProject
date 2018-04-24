@@ -3,6 +3,7 @@ package Dao;
 import Bean.Req7Bean;
 import Control.Controller;
 import Entity.Structure;
+import Singletons.SingletonReq7;
 import Utils.Credenziali;
 import Utils.Strings;
 
@@ -10,7 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Req7Dao {
-    public static boolean req7(ArrayList<Req7Bean> beans, int min, int max) throws Exception {
+    public static boolean req7(int min, int max) throws Exception {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -22,7 +23,6 @@ public class Req7Dao {
             conn = DriverManager.getConnection(Credenziali.G_DB_URL, Credenziali.G_DB_USER, Credenziali.G_DB_PASS);
 
             conn.setAutoCommit(false);
-
 
             // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
@@ -36,13 +36,13 @@ public class Req7Dao {
                 System.out.println("Resultset vuoto.");
                 return false;
             } else {
+                ArrayList<Req7Bean> beans = new ArrayList<>();
+                SingletonReq7.getInstance().setBeans(beans);
                 Controller controller = new Controller();
-                Req7Bean bean1 = controller.createReq7Bean(rs.getInt("idfil"), rs.getString("name"), rs.getInt("count"));
-                beans.add(bean1);
+                SingletonReq7.getInstance().getBeans().add(controller.createReq7Bean(rs.getInt("idfil"), rs.getString("name"), rs.getString("satellite"), rs.getInt("count")));
 
                 while (rs.next()) {
-                    Req7Bean bean = controller.createReq7Bean(rs.getInt("idfil"), rs.getString("name"), rs.getInt("count"));
-                    beans.add(bean);
+                    SingletonReq7.getInstance().getBeans().add(controller.createReq7Bean(rs.getInt("idfil"), rs.getString("name"), rs.getString("satellite"), rs.getInt("count")));
                 }
             }
             conn.commit();

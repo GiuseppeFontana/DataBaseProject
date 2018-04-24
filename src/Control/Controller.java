@@ -28,7 +28,7 @@ public class Controller {
         UserSingleton.getInstance().getUser().reset();
     }
 
-    public UserSingleton getSingleton(){
+    public UserSingleton getUserSingleton(){
         return UserSingleton.getInstance();
     }
 
@@ -50,10 +50,7 @@ public class Controller {
         return structure;
     }
 
-    public Req6Bean createReq6Bean(Integer id, String name, String satellite){
-        Req6Bean bean = new Req6Bean(id, name, satellite);
-        return bean;
-    }
+
 
     public Bound createBound (int id, double longitude, double latitude){
 
@@ -94,14 +91,20 @@ public class Controller {
         return star;
     }
 
+    ///////////////     BEANS
 
+    public Req6Bean createReq6Bean(Integer id, String name, String satellite){
+        Req6Bean bean = new Req6Bean(id, name, satellite);
+        return bean;
+    }
 
-    public Req7Bean createReq7Bean(int id, String name, int nSegmenti){
+    public Req7Bean createReq7Bean(int id, String name, String satellite, int nSegmenti){
 
         Req7Bean req7Bean = new Req7Bean();
         req7Bean.setIdStructure(id);
         req7Bean.setNameStructure(name);
         req7Bean.setnSegmenti(nSegmenti);
+        req7Bean.setSatellite(satellite);
 
         return req7Bean;
     }

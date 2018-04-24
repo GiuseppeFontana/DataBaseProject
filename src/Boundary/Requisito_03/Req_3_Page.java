@@ -1,6 +1,5 @@
 package Boundary.Requisito_03;
 
-import Boundary.Requisito_06.Req_6_Page;
 import Control.Controller;
 import Control.GraphicController;
 import Entity.User;
@@ -40,7 +39,7 @@ public class Req_3_Page {
     public void backHome(ActionEvent actionEvent) throws Exception {
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
-        boolean admin = controller.getSingleton().getUser().getAdmin();
+        boolean admin = controller.getUserSingleton().getUser().getAdmin();
         if (!admin) {
             GraphicController graphicController = new GraphicController();
             graphicController.homeUser();

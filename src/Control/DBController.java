@@ -60,12 +60,14 @@ public class DBController {
     }
 
     public boolean ricercaPerNumeroSegmenti(int min, int max) throws Exception{
-        ArrayList<Req7Bean> beans = new ArrayList<>();
-        if (!Req7Dao.req7(beans, min, max)){
+        if (!Req7Dao.req7(min, max)){
+            GraphicController graphicController = new GraphicController();
+            String msg = "Nessuna Struttura trovata\ncon queste caratteristiche.";
+            graphicController.alertError(msg);
             return false;
         }
         GraphicController graphicController = new GraphicController();
-        graphicController.req7result(beans);
+        graphicController.req7result();
         return true;
     }
 
