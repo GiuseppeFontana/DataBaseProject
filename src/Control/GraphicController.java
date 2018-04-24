@@ -13,6 +13,7 @@ import Boundary.Requisito_06.Req_6_Page;
 import Boundary.Requisito_07.Req_7_Page;
 import Boundary.Requisito_06.Req_6_Result;
 import Boundary.Requisito_07.Req_7_Result;
+import Boundary.ShowElement.ShowStruct;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -100,4 +101,8 @@ public class GraphicController extends Application {
     }
 
 
+    public void showStruct() throws Exception {
+        ShowStruct showStruct = new ShowStruct();
+        showStruct.show();
+    }
 }

@@ -3,9 +3,14 @@ package Control;
 import Bean.Req7Bean;
 import Entity.*;
 import Bean.Req6Bean;
-import Singletons.UserSingleton;
+import Singletons.SingletonReq6;
+import Singletons.SingletonReq7;
+import Singletons.SingletonStruct;
+import Singletons.SingletonUser;
 
 public class Controller {
+
+    /////////////////// SINGLETONS
 
     public void createUser(String username, String password, String email, String name, String surname, Boolean admin){
 
@@ -19,19 +24,35 @@ public class Controller {
 
         //--------CREAZIONE DEL SINGLETON-----------//
 
-        UserSingleton singleton = UserSingleton.getInstance();
-        singleton.setUser(user);
-
+        SingletonUser.getInstance().setUser(user);
     }
 
     public void resetUser() {
-        UserSingleton.getInstance().getUser().reset();
+        SingletonUser.getInstance().getUser().reset();
     }
 
-    public UserSingleton getUserSingleton(){
-        return UserSingleton.getInstance();
+    public SingletonUser getUserSingleton(){
+        return SingletonUser.getInstance();
     }
 
+    public void resetStructSingleton(){
+        SingletonStruct.getInstance().setStructure(null);
+        SingletonStruct.getInstance().setNumeroSegmenti(0);
+    }
+
+    public void resetSingleton6(){
+        SingletonReq6.getInstance().setBeans(null);
+        SingletonReq6.getInstance().setTotaleStrutture(null);
+    }
+
+    public void resetSingleton7(){
+        SingletonReq7.getInstance().setBeans(null);
+        SingletonReq7.getInstance().setStruttureTrovate(null);
+    }
+
+
+
+    ////////////////// ENTITY
 
     public Structure createStructure(int id, String name, double flux, double meanDens, Double meanTemp, Double ellipt, Double contrast, String satellite, String instrument){
 
@@ -49,8 +70,6 @@ public class Controller {
 
         return structure;
     }
-
-
 
     public Bound createBound (int id, double longitude, double latitude){
 
@@ -90,6 +109,10 @@ public class Controller {
 
         return star;
     }
+
+
+
+
 
     ///////////////     BEANS
 

@@ -2,6 +2,8 @@ package Utils;
 
 public class Strings {
 
+    // show
+    public static String strShowStruct = "SELECT * FROM %s_structures WHERE id = '%s'";
 
 
     /*public static String st_type1 = "UNBOUND";

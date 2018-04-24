@@ -71,4 +71,12 @@ public class DBController {
         return true;
     }
 
+    public void showStruct(int id, String satellite) throws Exception{
+        if(!StructDao.searchStruct1(id, satellite)){
+            System.out.println("something' gone wrong.");
+        }else {
+            GraphicController graphicController = new GraphicController();
+            graphicController.showStruct();
+        }
+    }
 }

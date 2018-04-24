@@ -3,7 +3,7 @@ package Boundary;
 import Control.Controller;
 import Control.GraphicController;
 import Entity.User;
-import Singletons.UserSingleton;
+import Singletons.SingletonUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,7 +53,7 @@ public class Home_Admin {
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
 
-        User user = UserSingleton.getInstance().getUser();
+        User user = SingletonUser.getInstance().getUser();
         String name = user.getName();
 
         final Label HomeLabel1 = new Label();

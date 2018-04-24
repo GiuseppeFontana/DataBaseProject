@@ -1,7 +1,7 @@
 package Boundary;
 
 import Entity.User;
-import Singletons.UserSingleton;
+import Singletons.SingletonUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +26,7 @@ public class User_Information{
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 326, 189 );
 
-        User user = UserSingleton.getInstance().getUser();
+        User user = SingletonUser.getInstance().getUser();
         String name = user.getName();
         String surname = user.getSurname();
         String email = user.getEmail();

@@ -2,6 +2,7 @@ package Boundary.Requisito_06;
 
 import Bean.Req6Bean;
 import Control.Controller;
+import Control.DBController;
 import Control.GraphicController;
 import Singletons.SingletonReq6;
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -104,11 +106,16 @@ public class Req_6_Result {
 
         riempi();
 
-        /*tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
+        tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
             String satellite = tableView.getSelectionModel().getSelectedItem().getSatellite();
             int id = tableView.getSelectionModel().getSelectedItem().getId();
-            System.out.println("id:"+Integer.toString(id)+";\t satellite: "+satellite);
-        }));*/
+            DBController dbController = new DBController();
+            try {
+                dbController.showStruct(id, satellite);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }));
 
         stage.setResizable(false);
         stage.setScene(scene);
@@ -154,6 +161,7 @@ public class Req_6_Result {
     public void backHome(ActionEvent actionEvent) throws Exception{
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
+        controller.resetSingleton6();
         boolean admin = controller.getUserSingleton().getUser().getAdmin();
         if(!admin){
             GraphicController graphicController = new GraphicController();

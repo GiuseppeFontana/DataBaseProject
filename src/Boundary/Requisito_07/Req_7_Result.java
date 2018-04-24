@@ -107,7 +107,10 @@ public class Req_7_Result {
 
         riempi();
 
-        /*tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
+
+        /*
+        //TODO implementare la view come nel requisito 6
+        tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
             String satellite = tableView.getSelectionModel().getSelectedItem().getSatellite();
             int id = tableView.getSelectionModel().getSelectedItem().getId();
             System.out.println("id:"+Integer.toString(id)+";\t satellite: "+satellite);
@@ -157,6 +160,7 @@ public class Req_7_Result {
     public void backHome(ActionEvent actionEvent) throws Exception{
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
+        controller.resetSingleton7();
         boolean admin = controller.getUserSingleton().getUser().getAdmin();
         if(!admin){
             GraphicController graphicController = new GraphicController();

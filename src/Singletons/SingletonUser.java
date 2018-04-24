@@ -2,16 +2,16 @@ package Singletons;
 
 import Entity.User;
 
-public class UserSingleton {
-   private static UserSingleton instance = null;
+public class SingletonUser {
+   private static SingletonUser instance = null;
    private User user;
 
-   protected UserSingleton() {
+   protected SingletonUser() {
       // Exists only to defeat instantiation.
    }
-   public static UserSingleton getInstance() {
+   public static SingletonUser getInstance() {
       if(instance == null) {
-         instance = new UserSingleton();
+         instance = new SingletonUser();
       }
       return instance;
    }
