@@ -12,12 +12,15 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import static tableView;
 public class LabelProva extends Application{
     public Label label = new Label("count: ");
     public int count=1;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+
 
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Prove/label.fxml"));
