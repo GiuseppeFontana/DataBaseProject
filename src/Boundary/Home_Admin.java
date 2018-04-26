@@ -40,13 +40,6 @@ public class Home_Admin {
     @FXML
     private Button HomeBtnLogOut;
 
-
-    /*
-    https://stackoverflow.com/questions/34755630/javafx-location-is-not-set-error
-
-    TODO risistemare i refactor
-     */
-
     public void start() throws Exception{
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/home_admin.fxml"));

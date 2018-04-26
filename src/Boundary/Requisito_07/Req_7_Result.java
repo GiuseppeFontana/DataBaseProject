@@ -63,6 +63,9 @@ public class Req_7_Result {
     }
 
     public void start() throws Exception {
+        /*
+        TODO sistemare la tableview
+         */
         setnCurrentPage(1);
         int size = SingletonReq7.getInstance().getBeans().size();
 

@@ -23,6 +23,8 @@ public class Strings {
             + "UNION SELECT id, name, satellite FROM spitzer_structures WHERE (contrast > %s AND ellipt >= %s AND ellipt <= %s)";
     public static String strReq62 = "SELECT count(*) FROM %s_structures";
 
+
+    // TODO rivedere la stringa
     public static String strReq7 = "(SELECT skeleton.idfil, structure.name, structure.satellite, count(DISTINCT skeleton.idbranch)\n" +
             "FROM (%s_skeletons AS skeleton JOIN %s_structures AS structure ON skeleton.idfil = structure.id)\n" +
             "GROUP BY skeleton.idfil, structure.name\n" +
