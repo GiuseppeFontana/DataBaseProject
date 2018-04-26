@@ -47,7 +47,6 @@ public class Controller {
 
     public void resetSingleton7(){
         SingletonReq7.getInstance().setBeans(null);
-        SingletonReq7.getInstance().setStruttureTrovate(null);
     }
 
 
@@ -126,7 +125,7 @@ public class Controller {
         Req7Bean req7Bean = new Req7Bean();
         req7Bean.setIdStructure(id);
         req7Bean.setNameStructure(name);
-        req7Bean.setnSegmenti(nSegmenti);
+        req7Bean.setSegmenti(nSegmenti);
         req7Bean.setSatellite(satellite);
 
         return req7Bean;

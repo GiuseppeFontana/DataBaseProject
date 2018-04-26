@@ -24,14 +24,13 @@ public class Strings {
     public static String strReq62 = "SELECT count(*) FROM %s_structures";
 
 
-    // TODO rivedere la stringa
     public static String strReq7 = "(SELECT skeleton.idfil, structure.name, structure.satellite, count(DISTINCT skeleton.idbranch)\n" +
             "FROM (%s_skeletons AS skeleton JOIN %s_structures AS structure ON skeleton.idfil = structure.id)\n" +
-            "GROUP BY skeleton.idfil, structure.name\n" +
+            "GROUP BY skeleton.idfil, structure.name, structure.satellite\n" +
             "HAVING (count(DISTINCT skeleton.idbranch)>= %s AND count(DISTINCT skeleton.idbranch)<= %s))\n"+
             "UNION "+"(SELECT skeleton.idfil, structure.name, structure.satellite, count(DISTINCT skeleton.idbranch)\n" +
             "FROM (%s_skeletons AS skeleton JOIN %s_structures AS structure ON skeleton.idfil = structure.id)\n" +
-            "GROUP BY skeleton.idfil, structure.name\n" +
+            "GROUP BY skeleton.idfil, structure.name, structure.satellite\n" +
             "HAVING (count(DISTINCT skeleton.idbranch)>= %s AND count(DISTINCT skeleton.idbranch)<= %s))";
 
     public static String strDelete = "DELETE FROM %s_%s";

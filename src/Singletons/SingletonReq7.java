@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class SingletonReq7 {
     private static SingletonReq7 instance = null;
     private ArrayList<Req7Bean> beans;
-    private Integer struttureTrovate;
 
     protected SingletonReq7() {
         // Exists only to defeat instantiation.
@@ -25,13 +24,5 @@ public class SingletonReq7 {
 
     public void setBeans(ArrayList<Req7Bean> beans) {
         this.beans = beans;
-    }
-
-    public Integer getStruttureTrovate() {
-        return struttureTrovate;
-    }
-
-    public void setStruttureTrovate(Integer struttureTrovate) {
-        this.struttureTrovate = struttureTrovate;
     }
 }

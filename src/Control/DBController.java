@@ -79,4 +79,21 @@ public class DBController {
             graphicController.showStruct();
         }
     }
+
+    public void ricercaInRegione(String tipoRicerca, Double dimension, Double longitude, Double latitude) throws Exception {
+        if (tipoRicerca.equals("square")){
+            if (!Req8Dao.req8Square(longitude, latitude, dimension)){
+                GraphicController graphicController = new GraphicController();
+                String msg = "Nessuna Struttura trovata\ncon queste caratteristiche.";
+                graphicController.alertError(msg);
+                return;
+            }
+            GraphicController graphicController = new GraphicController();
+            graphicController.req8result();
+            return;
+        }
+        else {
+            //TODO finire
+        }
+    }
 }

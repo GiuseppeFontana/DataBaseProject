@@ -13,6 +13,7 @@ import Boundary.Requisito_06.Req_6_Page;
 import Boundary.Requisito_07.Req_7_Page;
 import Boundary.Requisito_06.Req_6_Result;
 import Boundary.Requisito_07.Req_7_Result;
+import Boundary.Requisito_08.Req_8_Page;
 import Boundary.ShowElement.ShowStruct;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -49,11 +50,6 @@ public class GraphicController extends Application {
         req_3_page.start();
     }
 
-    /*public void incorrectPasswords() throws Exception {
-        IncorrectPasswords incorrectPasswords = new IncorrectPasswords();
-        incorrectPasswords.incorrectPasswordsField();
-    }*/
-
     public void req32Page() throws Exception{
         RegisterPage register_page = new RegisterPage();
         register_page.start();
@@ -68,7 +64,6 @@ public class GraphicController extends Application {
         InsertInstrument insert_Instrument =new InsertInstrument();
         insert_Instrument.start();
     }
-
 
     public void req5page() throws Exception{
         Req_5_Page req_5_page = new Req_5_Page();
@@ -90,6 +85,11 @@ public class GraphicController extends Application {
         prova_req_6_res.start();
     }
 
+    public void showStruct() throws Exception {
+        ShowStruct showStruct = new ShowStruct();
+        showStruct.show();
+    }
+
     public void req7page() throws Exception{
         Req_7_Page req_7_page = new Req_7_Page();
         req_7_page.start();
@@ -100,9 +100,12 @@ public class GraphicController extends Application {
         req_7_result.start();
     }
 
+    public void req8page()  throws Exception{
+        Req_8_Page req_8_page = new Req_8_Page();
+        req_8_page.start();
+    }
 
-    public void showStruct() throws Exception {
-        ShowStruct showStruct = new ShowStruct();
-        showStruct.show();
+    public void req8result() {
+        //TODO finire
     }
 }
