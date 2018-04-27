@@ -1,8 +1,82 @@
 package Dao;
 
+import Bean.Req6_8Bean;
+import Control.Controller;
+import Singletons.SingletonReq8;
+import Utils.Credenziali;
+import Utils.Strings;
+
+import java.sql.*;
+import java.util.ArrayList;
+
 public class Req8Dao {
-    public static boolean req8Square(Double longitude, Double latitude, Double dimension) {
-        // TODO finire
+    public static boolean req8Square(Double minLong, Double maxLong, Double minLat, Double maxLat) {
+        // STEP 1: dichiarazioni
+        Statement stmt1 = null;
+        Connection conn = null;
+        try {
+            // STEP 2: loading dinamico del driver
+            Class.forName("org.postgresql.Driver");
+
+            // STEP 3: apertura connessione
+            conn = DriverManager.getConnection(Credenziali.G_DB_URL, Credenziali.G_DB_USER, Credenziali.G_DB_PASS);
+
+            conn.setAutoCommit(false);
+
+            // STEP 4: creazione ed esecuzione della query
+            stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            String sql1 = String.format(Strings.strReq81, Double.toString(minLong), Double.toString(maxLong), Double.toString(minLat), Double.toString(maxLat));
+            System.out.println(sql1);
+
+            ResultSet rs = stmt1.executeQuery(sql1);
+
+            if (!rs.first()){
+                System.out.println("Resultset vuoto.");
+                return false;
+            }
+            else {
+                Controller controller = new Controller();
+                ArrayList<Req6_8Bean> beans = new ArrayList<>();
+                SingletonReq8.getInstance().setBeans(beans);
+
+                Req6_8Bean bean1 = controller.createReq6_8Bean(rs.getInt("id"), rs.getString("name"),rs.getString("satellite"));
+                SingletonReq8.getInstance().getBeans().add(bean1);
+
+                while (rs.next()){
+                    Req6_8Bean bean = controller.createReq6_8Bean(rs.getInt("id"), rs.getString("name"),rs.getString("satellite"));
+                    SingletonReq8.getInstance().getBeans().add(bean);
+                }
+            }
+
+            conn.commit();
+
+            // STEP 6: Clean-up dell'ambiente
+            rs.close();
+            stmt1.close();
+            conn.close();
+
+            System.out.println("Accesso Strutture e Contorni effettuato con successo");
+            return true;
+
+        } catch (Exception e) {
+            // Errore nel loading del driver
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stmt1 != null)
+                    stmt1.close();
+            } catch (SQLException se2) {
+                se2.printStackTrace();
+            }
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+        System.out.println("Accesso Strutture e Contorni fallito.");
         return false;
     }
 }

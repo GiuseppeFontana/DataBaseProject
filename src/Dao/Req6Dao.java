@@ -2,7 +2,7 @@ package Dao;
 
 import Control.Controller;
 
-import Bean.Req6Bean;
+import Bean.Req6_8Bean;
 import Singletons.SingletonReq6;
 import Utils.Credenziali;
 import Utils.Strings;
@@ -53,10 +53,10 @@ public class Req6Dao {
             }
             else {
                 Controller controller = new Controller();
-                ArrayList<Req6Bean> beans = new ArrayList<>();
+                ArrayList<Req6_8Bean> beans = new ArrayList<>();
                 SingletonReq6.getInstance().setBeans(beans);
 
-                Req6Bean bean1 = controller.createReq6Bean(rs[0].getInt("id"), rs[0].getString("name"),rs[0].getString("satellite"));
+                Req6_8Bean bean1 = controller.createReq6_8Bean(rs[0].getInt("id"), rs[0].getString("name"),rs[0].getString("satellite"));
                 SingletonReq6.getInstance().getBeans().add(bean1);
 
                 /*Structure struttura1 = controller.createStructure(rs[0].getInt("id"), rs[0].getString("name"),
@@ -65,7 +65,7 @@ public class Req6Dao {
                         rs[0].getString("instrument"));*/
 
                 while (rs[0].next()){
-                    Req6Bean bean = controller.createReq6Bean(rs[0].getInt("id"), rs[0].getString("name"),rs[0].getString("satellite"));
+                    Req6_8Bean bean = controller.createReq6_8Bean(rs[0].getInt("id"), rs[0].getString("name"),rs[0].getString("satellite"));
                     SingletonReq6.getInstance().getBeans().add(bean);
 
                     /*Structure struttura = controller.createStructure(rs[0].getInt("id"), rs[0].getString("name"),

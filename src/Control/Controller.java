@@ -1,12 +1,8 @@
 package Control;
 
-import Bean.Req7Bean;
+import Bean.*;
 import Entity.*;
-import Bean.Req6Bean;
-import Singletons.SingletonReq6;
-import Singletons.SingletonReq7;
-import Singletons.SingletonStruct;
-import Singletons.SingletonUser;
+import Singletons.*;
 
 public class Controller {
 
@@ -47,6 +43,10 @@ public class Controller {
 
     public void resetSingleton7(){
         SingletonReq7.getInstance().setBeans(null);
+    }
+
+    public void resetSingleton8(){
+        SingletonReq8.getInstance().setBeans(null);
     }
 
 
@@ -115,8 +115,8 @@ public class Controller {
 
     ///////////////     BEANS
 
-    public Req6Bean createReq6Bean(Integer id, String name, String satellite){
-        Req6Bean bean = new Req6Bean(id, name, satellite);
+    public Req6_8Bean createReq6_8Bean(Integer id, String name, String satellite){
+        Req6_8Bean bean = new Req6_8Bean(id, name, satellite);
         return bean;
     }
 

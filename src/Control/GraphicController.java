@@ -70,9 +70,9 @@ public class GraphicController extends Application {
         req_5_page.start();
     }
 
-    public void req5result(String input, double[] infoContorno, int n) throws Exception{
+    public void req5result() throws Exception{
         Req_5_Result req_5_result = new Req_5_Result();
-        req_5_result.start(input, infoContorno, n);
+        req_5_result.start();
     }
 
     public void req6page() throws Exception{

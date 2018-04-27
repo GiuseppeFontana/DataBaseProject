@@ -1,5 +1,6 @@
 package Boundary.Requisito_05;
 
+import Singletons.SingletonReq5;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -15,7 +16,7 @@ public class Req_5_Result {
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
-    public void start(String input, double[] infoContorno, int nSegmenti) throws Exception {
+    public void start() throws Exception {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(Req_5_Result.class.getResource("req_5_result.fxml"));
         //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/Requisito_05/req_5_result.fxml"));
@@ -23,32 +24,32 @@ public class Req_5_Result {
         Scene scene = new Scene(root, 686, 649 );
 
         final Label id = new Label();
-        id.setText("ID Filamento: "+ input);
+        id.setText("ID Filamento: "+ SingletonReq5.getInstance().getBean().getId());
         id.setLayoutX(60);
         id.setLayoutY(100);
 
         final Label centroide1 = new Label();
-        centroide1.setText("Longitudine centroide: "+ infoContorno[0]);
+        centroide1.setText("Longitudine centroide: "+ SingletonReq5.getInstance().getBean().getLonCenter());
         centroide1.setLayoutX(60);
         centroide1.setLayoutY(150);
 
         final Label centroide2 = new Label();
-        centroide2.setText("Latitudine centroide: "+ infoContorno[1]);
+        centroide2.setText("Latitudine centroide: "+ SingletonReq5.getInstance().getBean().getLatCenter());
         centroide2.setLayoutX(60);
         centroide2.setLayoutY(180);
 
         final Label estensione1 = new Label();
-        estensione1.setText("Estensione longitudinale: "+ infoContorno[6]);
+        estensione1.setText("Estensione longitudinale: "+ SingletonReq5.getInstance().getBean().getLonExtension());
         estensione1.setLayoutX(60);
         estensione1.setLayoutY(250);
 
         final Label estensione2 = new Label();
-        estensione2.setText("Estensione latitudinale: "+ infoContorno[7]);
+        estensione2.setText("Estensione latitudinale: "+ SingletonReq5.getInstance().getBean().getLatExtension());
         estensione2.setLayoutX(60);
         estensione2.setLayoutY(280);
 
         final Label segmenti = new Label();
-        segmenti.setText("Numero complessivo di segmenti: "+ nSegmenti);
+        segmenti.setText("Numero complessivo di segmenti: "+ SingletonReq5.getInstance().getBean().getnSegmenti());
         segmenti.setLayoutX(60);
         segmenti.setLayoutY(350);
 

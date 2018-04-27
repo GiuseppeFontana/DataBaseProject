@@ -33,6 +33,10 @@ public class Strings {
             "GROUP BY skeleton.idfil, structure.name, structure.satellite\n" +
             "HAVING (count(DISTINCT skeleton.idbranch)>= %s AND count(DISTINCT skeleton.idbranch)<= %s))";
 
+    /*TODO req82 è la stringa ricerca circolare*/
+    public static String strReq81 = "";
+    public static String strReq82 = "";
+
     public static String strDelete = "DELETE FROM %s_%s";
     public static String strImport = "COPY %s_%s FROM '%s' DELIMITER ','";
 

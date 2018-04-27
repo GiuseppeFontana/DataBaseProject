@@ -13,10 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-/*
-TODO non funziona su spitzer
- */
-
 public class Req_5_Page {
     @FXML
     private RadioButton Req5PageRadio1;
@@ -70,27 +66,36 @@ public class Req_5_Page {
     }
 
 
-    public void search(ActionEvent actionEvent) throws Exception {
-        String input = Req5PageText.getText();
-        if (input.equals("") || (!Req5PageRadio1.isSelected() && !Req5PageRadio2.isSelected())){
-            String msg1 = "Input non valido.";
-            GraphicController graphicController = new GraphicController();
-            graphicController.alertError(msg1);
-        }
-        else {
-            DBController dbController = new DBController();
-            if(!dbController.infoDerivateFilamento(satellite, input)){
-                String msg2 = "Filamento non trovato.";
+    public void search(ActionEvent actionEvent) {
+        try {
+            int input = Integer.parseInt(Req5PageText.getText());
+            if (input<1 || (!Req5PageRadio1.isSelected() && !Req5PageRadio2.isSelected())) {
+                String msg1 = "Input non valido.";
                 GraphicController graphicController = new GraphicController();
-                graphicController.alertError(msg2);
+                graphicController.alertError(msg1);
+            } else {
+                DBController dbController = new DBController();
+                if (!dbController.infoDerivateFilamento(satellite, input)) {
+                    String msg2 = "Filamento non trovato.";
+                    GraphicController graphicController = new GraphicController();
+                    graphicController.alertError(msg2);
+                }
             }
-            /*else {
-                ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-            }*/
+        }catch (NumberFormatException nfe){
+            try {
+                String msg1 = "Input numerico scoretto.";
+                GraphicController graphicController = new GraphicController();
+                graphicController.alertError(msg1);
+                nfe.printStackTrace();
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
     }
-
-
 }
 
 

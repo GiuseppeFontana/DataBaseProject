@@ -11,7 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Req7Dao {
-    public static boolean req7(int min, int max) throws Exception {
+    public static boolean req7(int min, int max) {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;

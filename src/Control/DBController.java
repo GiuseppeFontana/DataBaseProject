@@ -28,19 +28,17 @@ public class DBController {
     public boolean inserimentoStrumento(String instrument, String sat, String strip ) {
         return InsertInstrumentDao.req34(instrument, sat, strip);
     }
-    public boolean infoDerivateFilamento(String instrument, String input) throws Exception {
+    public boolean infoDerivateFilamento(String instrument, int input) throws Exception {
 
-        int nSegmenti[] = new int[1];
-        double infoFilamento[] = new double[8];
-        if (!Req5Dao.req5(instrument, input, infoFilamento, nSegmenti)) {
+        if (!Req5Dao.req5(instrument, input)) {
             return false;
         } else {  //calcola centroide, max e min coordinate e crea l'interfaccia
 
-            infoFilamento[6] = infoFilamento[4] - infoFilamento[2];     //estensione longitudinale
-            infoFilamento[7] = infoFilamento[5] - infoFilamento[3];     //estensione latitudinale
+            /*infoFilamento[6] = infoFilamento[4] - infoFilamento[2];     //estensione longitudinale
+            infoFilamento[7] = infoFilamento[5] - infoFilamento[3];     //estensione latitudinale*/
 
             GraphicController graphicController = new GraphicController();
-            graphicController.req5result(input, infoFilamento, nSegmenti[0]);
+            graphicController.req5result();
             return true;
         }
     }
@@ -82,7 +80,11 @@ public class DBController {
 
     public void ricercaInRegione(String tipoRicerca, Double dimension, Double longitude, Double latitude) throws Exception {
         if (tipoRicerca.equals("square")){
-            if (!Req8Dao.req8Square(longitude, latitude, dimension)){
+            Double minLong = longitude - dimension/2;
+            Double maxLong = longitude + dimension/2;
+            Double minLat = latitude - dimension/2;
+            Double maxLat = latitude + dimension/2;
+            if (!Req8Dao.req8Square(minLong, maxLong, minLat, maxLat)){
                 GraphicController graphicController = new GraphicController();
                 String msg = "Nessuna Struttura trovata\ncon queste caratteristiche.";
                 graphicController.alertError(msg);
@@ -92,8 +94,8 @@ public class DBController {
             graphicController.req8result();
             return;
         }
-        else {
-            //TODO finire
+        if (tipoRicerca.equals("circular")){
+            //TODO ricerca circolare
         }
     }
 }
