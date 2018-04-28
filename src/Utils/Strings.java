@@ -6,16 +6,19 @@ public class Strings {
     public static String strShowStruct = "SELECT * FROM %s_structures WHERE id = '%s'";
 
 
-    /*public static String st_type1 = "UNBOUND";
-    public static String st_type2 = "PRESTELLAR";
-    public static String st_type3 = "PRESTELLAR";*/
-
-    // query
+    // admin query
     public static String strLogin = "SELECT * FROM users WHERE username = '%s' AND password = '%s';";
     public static String strRegister = "INSERT INTO users VALUES ('%s','%s','%s','%s','%s','%s')";
     public static String strInsertSatellite = "INSERT INTO satellite VALUES ('%s','%s','%s','%s')"; //inserimento nuovo satellite
     public static String strInsertInstrument = "INSERT INTO instrument VALUES ('%s','%s','%s')"; //inserimento nuovo strumento
 
+    // import
+    public static String strDelete = "DELETE FROM %s_%s";
+    public static String strImport = "COPY %s_%s FROM '%s' DELIMITER ','";
+
+
+
+    // requisiti
     public static String strReq51 = "SELECT %s FROM %s_boundaries WHERE id = '%s'";
     public static String strReq52 = "SELECT COUNT(DISTINCT idbranch) FROM %s_skeletons WHERE idfil = '%s'";
 
@@ -33,12 +36,21 @@ public class Strings {
             "GROUP BY skeleton.idfil, structure.name, structure.satellite\n" +
             "HAVING (count(DISTINCT skeleton.idbranch)>= %s AND count(DISTINCT skeleton.idbranch)<= %s))";
 
-    /*TODO req82 è la stringa ricerca circolare*/
-    public static String strReq81 = "";
-    public static String strReq82 = "";
-
-    public static String strDelete = "DELETE FROM %s_%s";
-    public static String strImport = "COPY %s_%s FROM '%s' DELIMITER ','";
 
 
+    public static String strReq81 = "(SELECT s.id, s.name, s.satellite FROM herschel_structures s EXCEPT " +
+            "(SELECT s2.id, s2.name, s2.satellite FROM herschel_structures AS s2 JOIN herschel_boundaries AS b ON s2.id = b.id " +
+            "WHERE (b.lon < %s OR b.lon > %s OR b.lat < %s OR b.lat > %s))) " +
+            "UNION (SELECT s.id, s.name, s.satellite FROM spitzer_structures s EXCEPT " +
+            "(SELECT s2.id, s2.name, s2.satellite FROM spitzer_structures AS s2 JOIN spitzer_boundaries AS b ON s2.id = b.id " +
+            "WHERE (b.lon < %s OR b.lon > %s OR b.lat < %s OR b.lat > %s)))";
+
+    public static String strReq82 = "(SELECT s.id, s.name, s.satellite, b.lon, b.lat FROM herschel_structures AS s " +
+            "JOIN herschel_boundaries AS b ON s.id = b.id EXCEPT " +
+            "(SELECT s2.id, s2.name, s2.satellite, b2.lon, b2.lat FROM herschel_structures AS s2 " +
+            "JOIN herschel_boundaries AS b2 ON s2.id = b2.id WHERE (b2.lon < %s OR b2.lon > %s OR b2.lat < %s OR b2.lat > %s))) " +
+            "UNION (SELECT s.id, s.name, s.satellite, b.lon, b.lat FROM spitzer_structures AS s " +
+            "JOIN spitzer_boundaries AS b ON s.id = b.id EXCEPT (SELECT s2.id, s2.name, s2.satellite, b2.lon, b2.lat " +
+            "FROM spitzer_structures AS s2 JOIN spitzer_boundaries AS b2 ON s2.id = b2.id " +
+            "WHERE (b2.lon < %s OR b2.lon > %s OR b2.lat < %s OR b2.lat > %s)))";
 }

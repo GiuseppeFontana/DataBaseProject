@@ -3,6 +3,8 @@ package Control;
 import Bean.*;
 import Entity.*;
 import Singletons.*;
+import java.math.*;
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -47,6 +49,7 @@ public class Controller {
 
     public void resetSingleton8(){
         SingletonReq8.getInstance().setBeans(null);
+        SingletonReq8.getInstance().setReq8CircularBeans(null);
     }
 
 
@@ -115,8 +118,13 @@ public class Controller {
 
     ///////////////     BEANS
 
-    public Req6_8Bean createReq6_8Bean(Integer id, String name, String satellite){
-        Req6_8Bean bean = new Req6_8Bean(id, name, satellite);
+    public Req_6_8Square_Bean createReq6_8Bean(Integer id, String name, String satellite){
+        Req_6_8Square_Bean bean = new Req_6_8Square_Bean(id, name, satellite);
+        return bean;
+    }
+
+    public Req8CircularBean createReq8CircBean(Integer id, String name, String satellite, Double longitude, Double latitude){
+        Req8CircularBean bean = new Req8CircularBean(id,name, satellite, longitude, latitude);
         return bean;
     }
 
@@ -130,4 +138,40 @@ public class Controller {
 
         return req7Bean;
     }
+
+    public boolean circSearch(Double dimension, Double longitude, Double latitude) {
+        ArrayList<Req8CircularBean> array = new ArrayList<>();      //array degli oggetti da eliminare
+        // scansione e cancellazione
+        for (int i = 0; i<SingletonReq8.getInstance().getReq8CircularBeans().size(); i++){
+
+            Double boundlon = SingletonReq8.getInstance().getReq8CircularBeans().get(i).getBoundLong();
+            Double boundlat = SingletonReq8.getInstance().getReq8CircularBeans().get(i).getBoundLat();
+
+            if (!circCheck(boundlon, boundlat, longitude, latitude, dimension)){
+                for (int k = 0; k < SingletonReq8.getInstance().getReq8CircularBeans().size(); k++){
+                    if (SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId() ==
+                            SingletonReq8.getInstance().getReq8CircularBeans().get(k).getId() &&
+                            SingletonReq8.getInstance().getReq8CircularBeans().get(i).getSatellite().equals(
+                                    SingletonReq8.getInstance().getReq8CircularBeans().get(k).getSatellite())){
+                        SingletonReq8.getInstance().getReq8CircularBeans().remove(k);
+                    }
+                }
+            }
+        }
+        // TODO cancellazione duplicati
+
+
+        if (SingletonReq8.getInstance().getReq8CircularBeans().size() != 0){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean circCheck(Double boundlon, Double boundlat, Double centreLongitude, Double centreLatitude, Double dimension) {
+        if (Math.sqrt((boundlon-centreLongitude)*(boundlon-centreLongitude)+(boundlat-centreLongitude)*(boundlat-centreLongitude))> dimension){
+            return false;
+        }
+        return true;
+    }
+
 }

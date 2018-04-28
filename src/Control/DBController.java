@@ -1,7 +1,9 @@
 package Control;
 
+import Bean.Req_6_8Square_Bean;
 import Dao.*;
 import Bean.Req7Bean;
+import Singletons.SingletonReq8;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -95,7 +97,39 @@ public class DBController {
             return;
         }
         if (tipoRicerca.equals("circular")){
-            //TODO ricerca circolare
+            Double minLong = longitude - dimension;
+            Double maxLong = longitude + dimension;
+            Double minLat = latitude - dimension;
+            Double maxLat = latitude + dimension;
+            if (!Req8Dao.req8Circ(minLong, maxLong, minLat, maxLat)){
+                GraphicController graphicController = new GraphicController();
+                String msg = "Nessuna Struttura trovata\ncon queste caratteristiche.";
+                graphicController.alertError(msg);
+                return;
+            }
+            Controller controller = new Controller();
+            if (!controller.circSearch(dimension, longitude, latitude)){
+                GraphicController graphicController = new GraphicController();
+                String msg = "Nessuna Struttura trovata\ncon queste caratteristiche.";
+                graphicController.alertError(msg);
+                return;
+            }
+            ArrayList<Req_6_8Square_Bean> beans = new ArrayList<>();
+            SingletonReq8.getInstance().setBeans(beans);
+
+            for (int i=0; i<SingletonReq8.getInstance().getReq8CircularBeans().size(); i++){
+                Req_6_8Square_Bean bean = controller.createReq6_8Bean(SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId(),
+                        SingletonReq8.getInstance().getReq8CircularBeans().get(i).getName(),
+                        SingletonReq8.getInstance().getReq8CircularBeans().get(i).getSatellite());
+
+                SingletonReq8.getInstance().getBeans().add(bean);
+            }
+
+            GraphicController graphicController = new GraphicController();
+            graphicController.req8result();
+            return;
+
         }
     }
+
 }

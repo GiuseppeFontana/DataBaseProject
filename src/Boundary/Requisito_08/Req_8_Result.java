@@ -1,6 +1,6 @@
 package Boundary.Requisito_08;
 
-import Bean.Req6_8Bean;
+import Bean.Req_6_8Square_Bean;
 import Control.Controller;
 import Control.DBController;
 import Singletons.SingletonReq8;
@@ -12,7 +12,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -35,15 +34,15 @@ public class Req_8_Result {
 
 
     @FXML
-    private javafx.scene.control.TableView<Req6_8Bean> tableView = new TableView<>();
+    private javafx.scene.control.TableView<Req_6_8Square_Bean> tableView = new TableView<>();
     @FXML
-    private TableColumn<Req6_8Bean, Integer> columnId = new TableColumn<>("id");
+    private TableColumn<Req_6_8Square_Bean, Integer> columnId = new TableColumn<>("id");
     @FXML
-    private TableColumn<Req6_8Bean, String> columnName = new TableColumn<>("name");
+    private TableColumn<Req_6_8Square_Bean, String> columnName = new TableColumn<>("name");
     @FXML
-    private TableColumn<Req6_8Bean, String> columnSatellite = new TableColumn<>("satellite");
+    private TableColumn<Req_6_8Square_Bean, String> columnSatellite = new TableColumn<>("satellite");
     @FXML
-    private static ObservableList<Req6_8Bean> list = FXCollections.observableArrayList();
+    private static ObservableList<Req_6_8Square_Bean> list = FXCollections.observableArrayList();
 
     public int getnCurrentPage() {
         return nCurrentPage;
