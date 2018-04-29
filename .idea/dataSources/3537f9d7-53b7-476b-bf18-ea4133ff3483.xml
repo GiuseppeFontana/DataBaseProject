@@ -3,7 +3,7 @@
   <database-model serializer="dbm" rdbms="POSTGRES" format-version="4.7">
     <root id="1"/>
     <database id="2" parent="1" name="postgres">
-      <ObjectId>12070</ObjectId>
+      <ObjectId>12415</ObjectId>
       <Current>1</Current>
       <Visible>1</Visible>
     </database>
@@ -16,11 +16,12 @@
       <CanLogin>1</CanLogin>
       <Replication>1</Replication>
       <ConnectionLimit>-1</ConnectionLimit>
+      <BypassRls>1</BypassRls>
     </role>
     <schema id="4" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-04-26.10:25:25.463</IntrospectionTimestamp>
-      <IntrospectionStateNumber>25311</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-04-29.18:27:51.908</IntrospectionTimestamp>
+      <IntrospectionStateNumber>25475</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -31,542 +32,578 @@
       <ObjectId>99</ObjectId>
     </schema>
     <schema id="7" parent="2" name="pg_temp_1">
-      <ObjectId>11215</ObjectId>
+      <ObjectId>11816</ObjectId>
     </schema>
     <schema id="8" parent="2" name="pg_toast_temp_1">
-      <ObjectId>11216</ObjectId>
+      <ObjectId>11817</ObjectId>
     </schema>
     <schema id="9" parent="2" name="information_schema">
-      <ObjectId>11522</ObjectId>
+      <ObjectId>12123</ObjectId>
     </schema>
     <table id="10" parent="4" name="herschel_boundaries">
-      <ObjectId>16522</ObjectId>
-      <StateNumber>806</StateNumber>
+      <ObjectId>16401</ObjectId>
+      <StateNumber>685</StateNumber>
     </table>
     <table id="11" parent="4" name="herschel_skeletons">
-      <ObjectId>16512</ObjectId>
-      <StateNumber>799</StateNumber>
+      <ObjectId>16407</ObjectId>
+      <StateNumber>25392</StateNumber>
     </table>
     <table id="12" parent="4" name="herschel_stars">
-      <ObjectId>16498</ObjectId>
-      <StateNumber>823</StateNumber>
+      <ObjectId>16451</ObjectId>
+      <StateNumber>25408</StateNumber>
     </table>
     <table id="13" parent="4" name="herschel_structures">
-      <ObjectId>16465</ObjectId>
-      <StateNumber>813</StateNumber>
+      <ObjectId>16425</ObjectId>
+      <StateNumber>25391</StateNumber>
     </table>
     <table id="14" parent="4" name="instrument">
-      <ObjectId>16598</ObjectId>
-      <StateNumber>25307</StateNumber>
+      <ObjectId>16525</ObjectId>
+      <StateNumber>25475</StateNumber>
     </table>
     <table id="15" parent="4" name="satellite">
-      <ObjectId>16609</ObjectId>
-      <StateNumber>25310</StateNumber>
+      <ObjectId>16460</ObjectId>
+      <StateNumber>25457</StateNumber>
     </table>
     <table id="16" parent="4" name="spitzer_boundaries">
-      <ObjectId>16617</ObjectId>
-      <StateNumber>25311</StateNumber>
+      <ObjectId>16404</ObjectId>
+      <StateNumber>25393</StateNumber>
     </table>
     <table id="17" parent="4" name="spitzer_skeletons">
-      <ObjectId>16590</ObjectId>
-      <StateNumber>856</StateNumber>
+      <ObjectId>16416</ObjectId>
+      <StateNumber>25394</StateNumber>
     </table>
     <table id="18" parent="4" name="spitzer_structures">
-      <ObjectId>16569</ObjectId>
-      <StateNumber>25311</StateNumber>
+      <ObjectId>16434</ObjectId>
+      <StateNumber>25403</StateNumber>
     </table>
-    <table id="19" parent="4" name="users">
-      <ObjectId>16404</ObjectId>
-      <StateNumber>747</StateNumber>
+    <table id="19" parent="4" name="strip">
+      <ObjectId>16555</ObjectId>
+      <StateNumber>25475</StateNumber>
     </table>
-    <column id="20" parent="10" name="id">
+    <table id="20" parent="4" name="users">
+      <ObjectId>16384</ObjectId>
+      <StateNumber>678</StateNumber>
+    </table>
+    <column id="21" parent="10" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>806</StateNumber>
+      <StateNumber>685</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="21" parent="10" name="lon">
+    <column id="22" parent="10" name="lon">
       <Position>2</Position>
       <DataType>double precision|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>806</StateNumber>
+      <StateNumber>866</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="22" parent="10" name="lat">
+    <column id="23" parent="10" name="lat">
       <Position>3</Position>
       <DataType>double precision|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>806</StateNumber>
+      <StateNumber>685</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <foreign-key id="23" parent="10" name="boundaries_herschel_structures_herschel_id_fk">
-      <ObjectId>16525</ObjectId>
-      <ColNames>id</ColNames>
-      <RefTableId>16465</RefTableId>
-      <RefColPositions>1</RefColPositions>
-      <RefTableName>herschel_structures</RefTableName>
-      <RefKeyName>structures_herschel_id_pk</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
     <column id="24" parent="11" name="idfil">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>795</StateNumber>
+      <StateNumber>868</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="25" parent="11" name="idbranch">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>795</StateNumber>
+      <StateNumber>868</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="26" parent="11" name="type">
       <Position>3</Position>
       <DataType>varchar|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>795</StateNumber>
+      <StateNumber>868</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="27" parent="11" name="lon">
       <Position>4</Position>
       <DataType>double precision|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>795</StateNumber>
+      <StateNumber>868</StateNumber>
       <TypeId>701</TypeId>
     </column>
     <column id="28" parent="11" name="lat">
       <Position>5</Position>
       <DataType>double precision|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>795</StateNumber>
+      <StateNumber>868</StateNumber>
       <TypeId>701</TypeId>
     </column>
     <column id="29" parent="11" name="n">
       <Position>6</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>795</StateNumber>
+      <StateNumber>868</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="30" parent="11" name="flux">
       <Position>7</Position>
       <DataType>double precision|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>795</StateNumber>
+      <StateNumber>868</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <index id="31" parent="11" name="skeletonstructure_herschel_idfil_idbranch_n_pk">
-      <ObjectId>16520</ObjectId>
+    <index id="31" parent="11" name="herschel_skeleton_idfil_idbranch_n_pk">
+      <ObjectId>16413</ObjectId>
       <ColNames>idfil
 idbranch
 n</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="32" parent="11" name="skeletonstructure_herschel_idfil_idbranch_n_pk">
-      <ObjectId>16521</ObjectId>
+    <index id="32" parent="11" name="herschel_skeleton_idfil_idbranch_n_uindex">
+      <ObjectId>16415</ObjectId>
       <ColNames>idfil
 idbranch
 n</ColNames>
-      <UnderlyingIndexName>skeletonstructure_herschel_idfil_idbranch_n_pk</UnderlyingIndexName>
+      <Unique>1</Unique>
+    </index>
+    <key id="33" parent="11" name="herschel_skeleton_idfil_idbranch_n_pk">
+      <ObjectId>16414</ObjectId>
+      <ColNames>idfil
+idbranch
+n</ColNames>
+      <UnderlyingIndexName>herschel_skeleton_idfil_idbranch_n_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
     </key>
-    <column id="33" parent="12" name="id">
+    <column id="34" parent="12" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>791</StateNumber>
+      <StateNumber>25408</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="34" parent="12" name="name">
+    <column id="35" parent="12" name="name">
       <Position>2</Position>
       <DataType>varchar|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>791</StateNumber>
+      <StateNumber>25408</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="35" parent="12" name="lon">
+    <column id="36" parent="12" name="lon">
       <Position>3</Position>
       <DataType>double precision|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>791</StateNumber>
+      <StateNumber>25408</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="36" parent="12" name="lat">
+    <column id="37" parent="12" name="lat">
       <Position>4</Position>
       <DataType>double precision|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>791</StateNumber>
+      <StateNumber>25408</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="37" parent="12" name="flux">
+    <column id="38" parent="12" name="flux">
       <Position>5</Position>
       <DataType>double precision|0</DataType>
-      <StateNumber>823</StateNumber>
+      <StateNumber>25408</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="38" parent="12" name="type">
-      <Position>7</Position>
+    <column id="39" parent="12" name="type">
+      <Position>6</Position>
       <DataType>varchar|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>791</StateNumber>
+      <StateNumber>25408</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="39" parent="12" name="herschel_stars_pkey">
-      <ObjectId>16504</ObjectId>
+    <index id="40" parent="12" name="herschel_stars_id_uindex">
+      <ObjectId>16459</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="40" parent="12" name="herschel_stars_pkey">
-      <ObjectId>16505</ObjectId>
+    <index id="41" parent="12" name="herschel_stars_pkey">
+      <ObjectId>16457</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="42" parent="12" name="herschel_stars_pkey">
+      <ObjectId>16458</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>herschel_stars_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="41" parent="13" name="id">
+    <column id="43" parent="13" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>761</StateNumber>
+      <StateNumber>25383</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="42" parent="13" name="name">
+    <column id="44" parent="13" name="name">
       <Position>2</Position>
       <DataType>varchar|0</DataType>
-      <StateNumber>761</StateNumber>
+      <StateNumber>25383</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="43" parent="13" name="flux">
+    <column id="45" parent="13" name="flux">
       <Position>3</Position>
       <DataType>double precision|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>761</StateNumber>
+      <StateNumber>25383</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="44" parent="13" name="meandens">
+    <column id="46" parent="13" name="meandens">
       <Position>4</Position>
       <DataType>double precision|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>762</StateNumber>
+      <StateNumber>25383</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="45" parent="13" name="meantemp">
+    <column id="47" parent="13" name="meantemp">
       <Position>5</Position>
       <DataType>double precision|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>810</StateNumber>
+      <StateNumber>25383</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="46" parent="13" name="ellipt">
+    <column id="48" parent="13" name="ellipt">
       <Position>6</Position>
       <DataType>double precision|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>812</StateNumber>
+      <StateNumber>25383</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="47" parent="13" name="contrast">
+    <column id="49" parent="13" name="contrast">
       <Position>7</Position>
       <DataType>double precision|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>813</StateNumber>
+      <StateNumber>25383</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="48" parent="13" name="satellite">
+    <column id="50" parent="13" name="satellite">
       <Position>8</Position>
       <DataType>varchar|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>761</StateNumber>
+      <StateNumber>25383</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="49" parent="13" name="instrument">
+    <column id="51" parent="13" name="instrument">
       <Position>9</Position>
       <DataType>varchar|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>761</StateNumber>
+      <StateNumber>25383</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="50" parent="13" name="structures_herschel_id_pk">
-      <ObjectId>16483</ObjectId>
+    <index id="52" parent="13" name="herschel_structure_id_uindex">
+      <ObjectId>16433</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="51" parent="13" name="structures_herschel_id_pk">
-      <ObjectId>16484</ObjectId>
+    <index id="53" parent="13" name="herschel_structure_pkey">
+      <ObjectId>16431</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>structures_herschel_id_pk</UnderlyingIndexName>
+      <Unique>1</Unique>
+    </index>
+    <key id="54" parent="13" name="herschel_structure_pkey">
+      <ObjectId>16432</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>herschel_structure_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="52" parent="14" name="name">
+    <column id="55" parent="14" name="name">
       <Position>1</Position>
       <DataType>varchar|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>25307</StateNumber>
+      <StateNumber>25457</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="53" parent="14" name="satellite">
+    <column id="56" parent="14" name="satellite">
       <Position>2</Position>
       <DataType>varchar|0</DataType>
-      <StateNumber>25307</StateNumber>
+      <StateNumber>25457</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="54" parent="14" name="strip">
-      <Position>3</Position>
-      <DataType>double precision|0</DataType>
-      <StateNumber>25307</StateNumber>
-      <TypeId>701</TypeId>
-    </column>
-    <index id="55" parent="14" name="instrument_pkey">
-      <ObjectId>16604</ObjectId>
+    <index id="57" parent="14" name="instrument_pkey">
+      <ObjectId>16531</ObjectId>
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="56" parent="14" name="instrument_pkey">
-      <ObjectId>16605</ObjectId>
+    <key id="58" parent="14" name="instrument_pkey">
+      <ObjectId>16532</ObjectId>
       <ColNames>name</ColNames>
       <UnderlyingIndexName>instrument_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="57" parent="15" name="name">
+    <foreign-key id="59" parent="14" name="instrument_satellite_name_fk">
+      <ObjectId>16533</ObjectId>
+      <ColNames>satellite</ColNames>
+      <RefTableId>16460</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>satellite</RefTableName>
+      <RefKeyName>satellite_pkey</RefKeyName>
+      <RefColNames>name</RefColNames>
+    </foreign-key>
+    <column id="60" parent="15" name="name">
       <Position>1</Position>
       <DataType>varchar|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>25310</StateNumber>
+      <StateNumber>25426</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="58" parent="15" name="actbegin">
+    <column id="61" parent="15" name="actbegin">
       <Position>2</Position>
       <DataType>date|0</DataType>
-      <StateNumber>25310</StateNumber>
+      <StateNumber>25426</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <column id="59" parent="15" name="actend">
+    <column id="62" parent="15" name="actend">
       <Position>3</Position>
       <DataType>date|0</DataType>
-      <StateNumber>25310</StateNumber>
+      <StateNumber>25426</StateNumber>
       <TypeId>1082</TypeId>
     </column>
-    <column id="60" parent="15" name="agency">
+    <column id="63" parent="15" name="agency">
       <Position>4</Position>
       <DataType>varchar|0</DataType>
-      <StateNumber>25310</StateNumber>
+      <StateNumber>25426</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="61" parent="15" name="satellite_pkey">
-      <ObjectId>16615</ObjectId>
+    <index id="64" parent="15" name="satellite_pkey">
+      <ObjectId>16466</ObjectId>
       <ColNames>name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="62" parent="15" name="satellite_pkey">
-      <ObjectId>16616</ObjectId>
+    <key id="65" parent="15" name="satellite_pkey">
+      <ObjectId>16467</ObjectId>
       <ColNames>name</ColNames>
       <UnderlyingIndexName>satellite_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="63" parent="16" name="id">
+    <column id="66" parent="16" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
-      <StateNumber>25311</StateNumber>
+      <StateNumber>721</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="64" parent="16" name="lon">
+    <column id="67" parent="16" name="lon">
       <Position>2</Position>
       <DataType>double precision|0</DataType>
-      <StateNumber>25311</StateNumber>
+      <StateNumber>867</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="65" parent="16" name="lat">
+    <column id="68" parent="16" name="lat">
       <Position>3</Position>
       <DataType>double precision|0</DataType>
-      <StateNumber>25311</StateNumber>
+      <StateNumber>721</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <foreign-key id="66" parent="16" name="spitzer_boundaries_spitzer_structures_id_fk">
-      <ObjectId>16620</ObjectId>
-      <ColNames>id</ColNames>
-      <RefTableId>16569</RefTableId>
-      <RefColPositions>1</RefColPositions>
-      <RefTableName>spitzer_structures</RefTableName>
-      <RefKeyName>spitzer_structures_pkey</RefKeyName>
-      <RefColNames>id</RefColNames>
-    </foreign-key>
-    <column id="67" parent="17" name="idfil">
+    <column id="69" parent="17" name="idfil">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>856</StateNumber>
+      <StateNumber>941</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="68" parent="17" name="idbranch">
+    <column id="70" parent="17" name="idbranch">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>856</StateNumber>
+      <StateNumber>941</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="69" parent="17" name="type">
+    <column id="71" parent="17" name="type">
       <Position>3</Position>
       <DataType>varchar|0</DataType>
-      <StateNumber>856</StateNumber>
+      <StateNumber>941</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="70" parent="17" name="lon">
+    <column id="72" parent="17" name="lon">
       <Position>4</Position>
       <DataType>double precision|0</DataType>
-      <StateNumber>856</StateNumber>
+      <StateNumber>941</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="71" parent="17" name="lat">
+    <column id="73" parent="17" name="lat">
       <Position>5</Position>
       <DataType>double precision|0</DataType>
-      <StateNumber>856</StateNumber>
+      <StateNumber>941</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="72" parent="17" name="n">
+    <column id="74" parent="17" name="n">
       <Position>6</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>856</StateNumber>
+      <StateNumber>941</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="73" parent="17" name="flux">
+    <column id="75" parent="17" name="flux">
       <Position>7</Position>
       <DataType>double precision|0</DataType>
-      <StateNumber>856</StateNumber>
+      <StateNumber>941</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <index id="74" parent="17" name="spitzer_skeletons_idfil_idbranch_n_pk">
-      <ObjectId>16596</ObjectId>
+    <index id="76" parent="17" name="spitzer_skeleton_idfil_idbranch_n_pk">
+      <ObjectId>16422</ObjectId>
       <ColNames>idfil
 idbranch
 n</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="75" parent="17" name="spitzer_skeletons_idfil_idbranch_n_pk">
-      <ObjectId>16597</ObjectId>
+    <index id="77" parent="17" name="spitzer_skeleton_idfil_idbranch_n_uindex">
+      <ObjectId>16424</ObjectId>
       <ColNames>idfil
 idbranch
 n</ColNames>
-      <UnderlyingIndexName>spitzer_skeletons_idfil_idbranch_n_pk</UnderlyingIndexName>
+      <Unique>1</Unique>
+    </index>
+    <key id="78" parent="17" name="spitzer_skeleton_idfil_idbranch_n_pk">
+      <ObjectId>16423</ObjectId>
+      <ColNames>idfil
+idbranch
+n</ColNames>
+      <UnderlyingIndexName>spitzer_skeleton_idfil_idbranch_n_pk</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="76" parent="18" name="id">
+    <column id="79" parent="18" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>837</StateNumber>
+      <StateNumber>25395</StateNumber>
       <TypeId>23</TypeId>
     </column>
-    <column id="77" parent="18" name="name">
+    <column id="80" parent="18" name="name">
       <Position>2</Position>
       <DataType>varchar|0</DataType>
-      <StateNumber>837</StateNumber>
+      <StateNumber>25395</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="78" parent="18" name="flux">
+    <column id="81" parent="18" name="flux">
       <Position>3</Position>
       <DataType>double precision|0</DataType>
-      <StateNumber>837</StateNumber>
+      <StateNumber>25395</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="79" parent="18" name="meandens">
+    <column id="82" parent="18" name="meandens">
       <Position>4</Position>
       <DataType>double precision|0</DataType>
-      <StateNumber>837</StateNumber>
+      <StateNumber>25403</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="80" parent="18" name="meantemp">
+    <column id="83" parent="18" name="meantemp">
       <Position>5</Position>
       <DataType>double precision|0</DataType>
-      <StateNumber>837</StateNumber>
+      <StateNumber>25397</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="81" parent="18" name="ellipt">
+    <column id="84" parent="18" name="ellipt">
       <Position>6</Position>
       <DataType>double precision|0</DataType>
-      <StateNumber>837</StateNumber>
+      <StateNumber>25398</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="82" parent="18" name="contrast">
+    <column id="85" parent="18" name="contrast">
       <Position>7</Position>
       <DataType>double precision|0</DataType>
-      <StateNumber>837</StateNumber>
+      <StateNumber>25399</StateNumber>
       <TypeId>701</TypeId>
     </column>
-    <column id="83" parent="18" name="satellite">
+    <column id="86" parent="18" name="satellite">
       <Position>8</Position>
       <DataType>varchar|0</DataType>
-      <StateNumber>837</StateNumber>
+      <StateNumber>25400</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="84" parent="18" name="instrument">
+    <column id="87" parent="18" name="instrument">
       <Position>9</Position>
       <DataType>varchar|0</DataType>
-      <StateNumber>837</StateNumber>
+      <StateNumber>25401</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <index id="85" parent="18" name="spitzer_structures_pkey">
-      <ObjectId>16575</ObjectId>
+    <index id="88" parent="18" name="spitzer_structures_id_uindex">
+      <ObjectId>16442</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="86" parent="18" name="spitzer_structures_pkey">
-      <ObjectId>16576</ObjectId>
+    <index id="89" parent="18" name="spitzer_structures_pkey">
+      <ObjectId>16440</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="90" parent="18" name="spitzer_structures_pkey">
+      <ObjectId>16441</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>spitzer_structures_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="87" parent="19" name="name">
+    <column id="91" parent="19" name="wavelenght">
+      <Position>1</Position>
+      <DataType>double precision|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>25475</StateNumber>
+      <TypeId>701</TypeId>
+    </column>
+    <column id="92" parent="19" name="instrument">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>25475</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="93" parent="19" name="strip_pkey">
+      <ObjectId>16561</ObjectId>
+      <ColNames>wavelenght</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="94" parent="19" name="strip_pkey">
+      <ObjectId>16562</ObjectId>
+      <ColNames>wavelenght</ColNames>
+      <UnderlyingIndexName>strip_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="95" parent="19" name="strip_instrument_name_fk">
+      <ObjectId>16563</ObjectId>
+      <ColNames>instrument</ColNames>
+      <RefTableId>16525</RefTableId>
+      <RefColPositions>1</RefColPositions>
+      <RefTableName>instrument</RefTableName>
+      <RefKeyName>instrument_pkey</RefKeyName>
+      <RefColNames>name</RefColNames>
+    </foreign-key>
+    <column id="96" parent="20" name="name">
       <Position>1</Position>
       <DataType>varchar|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>743</StateNumber>
+      <StateNumber>665</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="88" parent="19" name="surname">
+    <column id="97" parent="20" name="surname">
       <Position>2</Position>
       <DataType>varchar|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>744</StateNumber>
+      <StateNumber>666</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="89" parent="19" name="username">
+    <column id="98" parent="20" name="email">
       <Position>3</Position>
       <DataType>varchar|0</DataType>
-      <StateNumber>745</StateNumber>
+      <StateNumber>667</StateNumber>
       <TypeId>1043</TypeId>
     </column>
-    <column id="90" parent="19" name="password">
+    <column id="99" parent="20" name="admin">
       <Position>4</Position>
-      <DataType>varchar|0</DataType>
-      <StateNumber>746</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="91" parent="19" name="email">
-      <Position>5</Position>
-      <DataType>varchar|0</DataType>
-      <StateNumber>747</StateNumber>
-      <TypeId>1043</TypeId>
-    </column>
-    <column id="92" parent="19" name="admin">
-      <Position>7</Position>
       <DataType>boolean|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>735</StateNumber>
-      <DefaultExpression>false</DefaultExpression>
+      <StateNumber>668</StateNumber>
       <TypeId>16</TypeId>
     </column>
-    <index id="93" parent="19" name="users_user_pass_pk">
-      <ObjectId>16448</ObjectId>
+    <column id="100" parent="20" name="password">
+      <Position>7</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>681</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <column id="101" parent="20" name="username">
+      <Position>8</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>678</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="102" parent="20" name="users_username_password_pk">
+      <ObjectId>16396</ObjectId>
       <ColNames>username
 password</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="94" parent="19" name="users_user_pass_pk">
-      <ObjectId>16449</ObjectId>
+    <key id="103" parent="20" name="users_username_password_pk">
+      <ObjectId>16397</ObjectId>
       <ColNames>username
 password</ColNames>
-      <UnderlyingIndexName>users_user_pass_pk</UnderlyingIndexName>
+      <UnderlyingIndexName>users_username_password_pk</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>

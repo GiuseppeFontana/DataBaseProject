@@ -6,7 +6,7 @@ import Utils.Strings;
 import java.sql.*;
 
 public class InsertInstrumentDao {
-    public static boolean req34(String instrument, String sat, String strip) {
+    public static boolean req34(String instrument, String sat, Double strip) {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -20,8 +20,9 @@ public class InsertInstrumentDao {
 
             // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement();
-            String sql = String.format(Strings.strInsertInstrument,instrument,sat,strip);
-            System.out.println("query:\n"+sql);
+            String sql = String.format(Strings.strInsertInstrument,instrument,sat);
+            String sql1 = String.format(Strings.strInsertStrip, strip, instrument);
+            System.out.println("query:\n"+sql+"\n"+sql1);
 
             /*
             se non metto questo la seguente riga mi da l'errore:
@@ -39,7 +40,7 @@ public class InsertInstrumentDao {
             stmt.close();
             conn.close();
 
-            System.out.println("Registrazione effettuata con successo");
+            System.out.println("Inserimento effettuato con successo");
             return true;
 
         } catch (SQLException se) {

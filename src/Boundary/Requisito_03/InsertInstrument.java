@@ -46,25 +46,40 @@ public class InsertInstrument {
         graphicController.adminReqsPage();
     }
 
-    public void Inserisci(ActionEvent actionEvent) throws Exception {
-        String instrument = Req34InstrumentText.getText();
-        String sat = Req34SatText.getText();
-        String strip = Req34StripText.getText();
+    public void Inserisci(ActionEvent actionEvent) {
+        try {
+            String instrument = Req34InstrumentText.getText();
+            String sat = Req34SatText.getText();
+            Double strip = Double.parseDouble(Req34StripText.getText());
 
-        if ((instrument.equals("") || sat.equals("") || strip.equals(""))){
-            GraphicController graphicController = new GraphicController();
-            String msg1 = "Inserire tutti i campi";
-            graphicController.alertError(msg1);
-        } else {
+            if ((instrument.equals("") || sat.equals(""))|| strip.equals("")){
+                GraphicController graphicController = new GraphicController();
+                String msg1 = "Inserire tutti i campi";
+                graphicController.alertError(msg1);
+            } else {
 
+            }
+            DBController dbController = new DBController();
+            if (dbController.inserimentoStrumento(instrument,sat, strip)) {
+                GraphicController graphicController = new GraphicController();
+                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+                graphicController.adminReqsPage();
+                String msg2 = "Inserimento effettuato con successo.";
+                graphicController.alertError(msg2);
+            }
         }
-        DBController dbController = new DBController();
-        if (dbController.inserimentoStrumento(instrument,sat,strip)) {
-            GraphicController graphicController = new GraphicController();
-            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-            graphicController.adminReqsPage();
-            String msg2 = "Inserimento effettuato con successo.";
-            graphicController.alertError(msg2);
+        catch (NumberFormatException nfe){
+            String msg = "Input non valido";
+            try {
+                GraphicController graphicController = new GraphicController();
+                graphicController.alertError(msg);
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
     }
 }

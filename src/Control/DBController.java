@@ -27,8 +27,14 @@ public class DBController {
         return InsertSatelliteDao.req33(satellite, beginact,endact,agency);
     }
 
-    public boolean inserimentoStrumento(String instrument, String sat, String strip ) {
-        return InsertInstrumentDao.req34(instrument, sat, strip);
+    public boolean inserimentoStrumento(String instrument, String sat, Double strip) throws Exception{
+        if (!InsertInstrumentDao.req34(instrument, sat, strip)){
+            GraphicController graphicController = new GraphicController();
+            String msg = "Inserimento fallito.\nStrumento già presente\no Satellite non ancora\ninserito";
+            graphicController.alertError(msg);
+            return false;
+        }
+        return true;
     }
     public boolean infoDerivateFilamento(String instrument, int input) throws Exception {
 
