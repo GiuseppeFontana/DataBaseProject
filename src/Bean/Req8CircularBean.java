@@ -1,18 +1,18 @@
 package Bean;
 
 public class Req8CircularBean {
-    private Integer id;
+    private int id;
     private String name;
     private String satellite;
-    private Double boundLong;
-    private Double boundLat;
+    private double boundLong;
+    private double boundLat;
 
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -32,19 +32,19 @@ public class Req8CircularBean {
         this.satellite = satellite;
     }
 
-    public Double getBoundLong() {
+    public double getBoundLong() {
         return boundLong;
     }
 
-    public void setBoundLong(Double boundLong) {
+    public void setBoundLong(double boundLong) {
         this.boundLong = boundLong;
     }
 
-    public Double getBoundLat() {
+    public double getBoundLat() {
         return boundLat;
     }
 
-    public void setBoundLat(Double boundLat) {
+    public void setBoundLat(double boundLat) {
         this.boundLat = boundLat;
     }
 

@@ -1,16 +1,16 @@
 package Bean;
 
 public class Req_6_8Square_Bean {
-    private Integer id;
+    private int id;
     private String name;
     private String satellite;
 
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 

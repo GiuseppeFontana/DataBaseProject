@@ -103,6 +103,7 @@ public class Req8Dao {
                     Double.toString(minLat), Double.toString(maxLat), Double.toString(minLong), Double.toString(maxLong),
                     Double.toString(minLat), Double.toString(maxLat));
             System.out.println(sql1);
+            System.out.println("scansione nel quadrato circoscritto alla regione;\nAttendere...");
 
             ResultSet rs = stmt1.executeQuery(sql1);
 

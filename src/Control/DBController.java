@@ -128,7 +128,6 @@ public class DBController {
             GraphicController graphicController = new GraphicController();
             graphicController.req8result();
             return;
-
         }
     }
 

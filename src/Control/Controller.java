@@ -3,7 +3,7 @@ package Control;
 import Bean.*;
 import Entity.*;
 import Singletons.*;
-import java.math.*;
+
 import java.util.ArrayList;
 
 public class Controller {
@@ -140,14 +140,11 @@ public class Controller {
     }
 
     public boolean circSearch(Double dimension, Double longitude, Double latitude) {
-        ArrayList<Req8CircularBean> array = new ArrayList<>();      //array degli oggetti da eliminare
+        //TODO per mattia, ottimizzare
         // scansione e cancellazione
+        System.out.println("scansione punti inscritti alla regione;\nAttendere...");
         for (int i = 0; i<SingletonReq8.getInstance().getReq8CircularBeans().size(); i++){
-
-            Double boundlon = SingletonReq8.getInstance().getReq8CircularBeans().get(i).getBoundLong();
-            Double boundlat = SingletonReq8.getInstance().getReq8CircularBeans().get(i).getBoundLat();
-
-            if (!circCheck(boundlon, boundlat, longitude, latitude, dimension)){
+            if (!circCheck(SingletonReq8.getInstance().getReq8CircularBeans().get(i), longitude, latitude, dimension)){
                 for (int k = 0; k < SingletonReq8.getInstance().getReq8CircularBeans().size(); k++){
                     if (SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId() ==
                             SingletonReq8.getInstance().getReq8CircularBeans().get(k).getId() &&
@@ -158,8 +155,20 @@ public class Controller {
                 }
             }
         }
-        // TODO cancellazione duplicati
 
+        // cancellazione duplicati      TODO resta qualche duplicato
+        System.out.println("Cancellazione duplicati;\nAttendere...");
+        for (int i = 0; i<SingletonReq8.getInstance().getReq8CircularBeans().size(); i++){
+            for (int k = 0; k<SingletonReq8.getInstance().getReq8CircularBeans().size(); k++){
+                if (k!=i &&
+                        SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId() ==
+                                SingletonReq8.getInstance().getReq8CircularBeans().get(k).getId() &&
+                        SingletonReq8.getInstance().getReq8CircularBeans().get(i).getSatellite().equals(
+                                SingletonReq8.getInstance().getReq8CircularBeans().get(k).getSatellite())){
+                    SingletonReq8.getInstance().getReq8CircularBeans().remove(k);
+                }
+            }
+        }
 
         if (SingletonReq8.getInstance().getReq8CircularBeans().size() != 0){
             return true;
@@ -167,8 +176,9 @@ public class Controller {
         return false;
     }
 
-    private boolean circCheck(Double boundlon, Double boundlat, Double centreLongitude, Double centreLatitude, Double dimension) {
-        if (Math.sqrt((boundlon-centreLongitude)*(boundlon-centreLongitude)+(boundlat-centreLongitude)*(boundlat-centreLongitude))> dimension){
+    private boolean circCheck(Req8CircularBean bean, Double centreLongitude, Double centreLatitude, Double dimension) {
+        if (Math.sqrt((bean.getBoundLong()-centreLongitude)*(bean.getBoundLong()-centreLongitude)+
+                (bean.getBoundLat() -centreLatitude)*(bean.getBoundLat()-centreLatitude))> dimension){
             return false;
         }
         return true;
