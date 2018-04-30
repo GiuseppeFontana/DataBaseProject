@@ -1,7 +1,9 @@
 package Boundary.Requisito_09;
 
 import Control.Controller;
+import Control.DBController;
 import Control.GraphicController;
+import Singletons.SingletonReq9;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -28,6 +30,14 @@ public class Req_9_Page {
 
     private String satellite;
 
+    public String getSatellite() {
+        return satellite;
+    }
+
+    public void setSatellite(String satellite) {
+        this.satellite = satellite;
+    }
+
     public void start() throws Exception{
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(Req_9_Page.class.getResource("req_9_page.fxml"));
@@ -37,7 +47,46 @@ public class Req_9_Page {
         stage.setScene(scene);
         stage.show();
     }
+
     public void search(ActionEvent actionEvent) {
+        try{
+            GraphicController graphicController = new GraphicController();
+            Controller controller = new Controller();
+            if ((!RadioHerschel.isSelected() && !RadioSpitzer.isSelected()) ||
+                    IDStructuresText.getText().equals("")){
+                String msg = "Input non valido.\nSeleziona un satellite e\nimmetti un ID.";
+                graphicController.alertError(msg);
+            }
+            else {
+                String satellite = getSatellite();
+                int id = Integer.parseInt(IDStructuresText.getText());
+                DBController dbController = new DBController();
+                if (!dbController.ricercaStelleInStruttura(satellite, id)){
+                    if (SingletonReq9.getInstance().getStars().size() == 0){
+                        String msg = "Nessuna stella presente\nnella struttura.";
+                        graphicController.alertError(msg);
+                    }
+                    if (SingletonReq9.getInstance().getStructureBounds().size() == 0){
+                        String msg = "Punti contorno non trovati.";
+                        graphicController.alertError(msg);
+                    }
+                    controller.resetSingleton9();
+                }
+            }
+        }
+        catch (NumberFormatException nfe){
+            try{
+                String msg = "Input non valido.\nScrivi un numero intero positivo.";
+                GraphicController graphicController = new GraphicController();
+                graphicController.alertError(msg);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     public void backHome(ActionEvent actionEvent) throws Exception  {
@@ -55,10 +104,10 @@ public class Req_9_Page {
     }
 
     public void checkSpitzer(ActionEvent actionEvent) throws Exception{
-        satellite = "spitzer";
+        setSatellite("spitzer");
     }
 
     public void checkHerschel(ActionEvent actionEvent) throws Exception {
-        satellite = "herschel";
+        setSatellite("herschel");
     }
 }

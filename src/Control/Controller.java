@@ -3,7 +3,7 @@ package Control;
 import Bean.*;
 import Entity.*;
 import Singletons.*;
-
+import java.math.*;
 import java.util.ArrayList;
 
 public class Controller {
@@ -38,6 +38,10 @@ public class Controller {
         SingletonStruct.getInstance().setNumeroSegmenti(0);
     }
 
+    public void resetStarSingleton() {
+        SingletonStar.getInstance().setStar(null);
+    }
+
     public void resetSingleton6(){
         SingletonReq6.getInstance().setBeans(null);
         SingletonReq6.getInstance().setTotaleStrutture(null);
@@ -51,6 +55,60 @@ public class Controller {
         SingletonReq8.getInstance().setBeans(null);
         SingletonReq8.getInstance().setReq8CircularBeans(null);
     }
+
+    public void resetSingleton9(){
+        SingletonReq9.getInstance().setStructureBounds(null);
+        SingletonReq9.getInstance().setStars(null);
+        SingletonReq9.getInstance().setBeans(null);
+    }
+
+
+
+
+    // requisito 9
+    public void scanStars() {
+        for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
+            if (!isInStruct(SingletonReq9.getInstance().getStars().get(i))){
+                SingletonReq9.getInstance().getStars().remove(i);
+            }
+        }
+
+        SingletonReq9.getInstance().setBeans(new ArrayList<>());
+        for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
+            SingletonReq9.getInstance().getBeans().add(
+                    createReq9Bean(SingletonReq9.getInstance().getStars().get(i).getId(),
+                            SingletonReq9.getInstance().getStars().get(i).getName()));
+        }
+    }
+    private boolean isInStruct(Star star) {         //TODO non funziona, ricontrollare
+        ArrayList<Bound> array = SingletonReq9.getInstance().getStructureBounds();
+        double k = 0;
+        for (int i = 0; i < array.size()-1; i++){
+            double j = Math.atan(((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())-
+                    (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLongitude()-star.getgLon()))/
+                    ((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())+
+                            (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLatitude()-star.getgLat())));
+            j = Math.abs(j);
+            k += j;
+        }
+
+        /*
+        for (int i = 0; i < SingletonReq9.getInstance().getStructureBounds().size()-1; i++){
+            double j = Math.atan(((SingletonReq9.getInstance().getStructureBounds().get(i).getLongitude()-star.getgLon())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())-
+                    (SingletonReq9.getInstance().getStructureBounds().get(i).getLatitude()-star.getgLat())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLongitude()-star.getgLon()))/
+                    ((SingletonReq9.getInstance().getStructureBounds().get(i).getLongitude()-star.getgLon())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())+
+                            (SingletonReq9.getInstance().getStructureBounds().get(i).getLatitude()-star.getgLat())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())));
+            j = Math.abs(j);
+            k += j;
+        }
+         */
+
+        if (Math.abs(k) >= 0.01){
+            return true;
+        }
+        return false;
+    }
+
 
 
 
@@ -98,7 +156,7 @@ public class Controller {
         return skeletonPoint;
     }
 
-    public Star createStar(long id, String name, float gLon, float gLat, double flux, String type){
+    public Star createStar(int id, String name, double gLon, double gLat, double flux, String type){
 
         Star star = new Star();
 
@@ -139,9 +197,19 @@ public class Controller {
         return req7Bean;
     }
 
+    public Req9Bean createReq9Bean(int id, String name){
+        Req9Bean bean = new Req9Bean();
+        bean.setId(id);
+        bean.setName(name);
+
+        return bean;
+    }
+
     public boolean circSearch(Double dimension, Double longitude, Double latitude) {
-        //TODO per mattia, ottimizzare
-        // scansione e cancellazione
+        /*
+        TODO per mattia, ottimizzare
+        scansione e cancellazione
+        */
         System.out.println("scansione punti inscritti alla regione;\nAttendere...");
         for (int i = 0; i<SingletonReq8.getInstance().getReq8CircularBeans().size(); i++){
             if (!circCheck(SingletonReq8.getInstance().getReq8CircularBeans().get(i), longitude, latitude, dimension)){
@@ -178,10 +246,12 @@ public class Controller {
 
     private boolean circCheck(Req8CircularBean bean, Double centreLongitude, Double centreLatitude, Double dimension) {
         if (Math.sqrt((bean.getBoundLong()-centreLongitude)*(bean.getBoundLong()-centreLongitude)+
-                (bean.getBoundLat() -centreLatitude)*(bean.getBoundLat()-centreLatitude))> dimension){
+                (bean.getBoundLat()-centreLatitude)*(bean.getBoundLat()-centreLatitude))> dimension){
             return false;
         }
         return true;
     }
+
+
 
 }

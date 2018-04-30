@@ -4,6 +4,7 @@ import Bean.Req_6_8Square_Bean;
 import Dao.*;
 import Bean.Req7Bean;
 import Singletons.SingletonReq8;
+import Singletons.SingletonReq9;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -36,6 +37,7 @@ public class DBController {
         }
         return true;
     }
+
     public boolean infoDerivateFilamento(String instrument, int input) throws Exception {
 
         if (!Req5Dao.req5(instrument, input)) {
@@ -137,4 +139,47 @@ public class DBController {
         }
     }
 
+    public boolean ricercaStelleInStruttura(String satellite, int id) throws Exception{
+        if (!Req9Dao.getStars()){
+            /*GraphicController graphicController = new GraphicController();
+            String msg = "Stelle non trovate.";
+            graphicController.alertError(msg);
+            Controller controller = new Controller();
+            controller.resetSingleton9();*/
+            return false;
+        }
+        if (!Req9Dao.getBounds(id, satellite)){
+            /*GraphicController graphicController = new GraphicController();
+            String msg = "Contorni Struttura non trovati.";
+            graphicController.alertError(msg);
+            Controller controller = new Controller();
+            controller.resetSingleton9();*/
+            return false;
+        }
+
+        Controller controller = new Controller();
+        controller.scanStars();
+
+        if (SingletonReq9.getInstance().getStars().size() == 0){
+            /*String msg = "Nessuna stella presente\nnella struttura.";
+            GraphicController graphicController = new GraphicController();
+            graphicController.alertError(msg);
+
+            controller.resetSingleton9();*/
+            return false;
+        }
+
+        GraphicController graphicController = new GraphicController();
+        graphicController.req9result();
+        return true;
+    }
+
+    public void showStar(int id) throws Exception{
+        if(!StarDao.searchStar(id)){
+            System.out.println("something's gone wrong.");
+        }else {
+            GraphicController graphicController = new GraphicController();
+            graphicController.showStar();
+        }
+    }
 }

@@ -15,6 +15,9 @@ import Boundary.Requisito_06.Req_6_Result;
 import Boundary.Requisito_07.Req_7_Result;
 import Boundary.Requisito_08.Req_8_Page;
 import Boundary.Requisito_08.Req_8_Result;
+import Boundary.Requisito_09.Req_9_Page;
+import Boundary.Requisito_09.Req_9_Result;
+import Boundary.ShowElement.ShowStar;
 import Boundary.ShowElement.ShowStruct;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -109,6 +112,20 @@ public class GraphicController extends Application {
     public void req8result() throws Exception{
         Req_8_Result req_8_result = new Req_8_Result();
         req_8_result.start();
-        //TODO finire
+    }
+
+    public void req9page() throws Exception{
+        Req_9_Page req_9_page = new Req_9_Page();
+        req_9_page.start();
+    }
+
+    public void req9result() throws Exception{
+        Req_9_Result req_9_result = new Req_9_Result();
+        req_9_result.start();
+    }
+
+    public void showStar() throws Exception{
+        ShowStar showStar = new ShowStar();
+        showStar.show();
     }
 }
