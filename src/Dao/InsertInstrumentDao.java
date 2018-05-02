@@ -19,17 +19,20 @@ public class InsertInstrumentDao {
 
 
             // STEP 4: creazione ed esecuzione della query
-            stmt = conn.createStatement();
             String sql = String.format(Strings.strInsertInstrument,instrument,sat);
             String sql1 = String.format(Strings.strInsertStrip, strip, instrument);
-            System.out.println("query:\n"+sql+"\n"+sql1);
+            System.out.println(sql);
+            System.out.println(sql1);
 
-            /*
-            se non metto questo la seguente riga mi da l'errore:
-            org.postgresql.util.PSQLException: L'operazione richiete un «ResultSet» scorribile mentre questo è «FORWARD_ONLY».
-             */
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             int rs = stmt.executeUpdate(sql);
+
+            if (rs != 1) {
+                System.out.println("Errore nella Query.");
+                return false;
+            }
+
+            rs = stmt.executeUpdate(sql1);
 
             if (rs != 1) {
                 System.out.println("Errore nella Query.");

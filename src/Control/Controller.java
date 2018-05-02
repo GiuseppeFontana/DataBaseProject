@@ -76,7 +76,7 @@ public class Controller {
                 SingletonReq9.getInstance().getStars().remove(i);
             }
         }
-        //TODO dopo lo scan il numero di stelle è sempre lo stesso
+        //TODO dopo lo scan il numero di stelle è quasi sempre lo stesso
         //System.out.println("stars after scan:" + SingletonReq9.getInstance().getStars().size());
 
         SingletonReq9.getInstance().setBeans(new ArrayList<>());

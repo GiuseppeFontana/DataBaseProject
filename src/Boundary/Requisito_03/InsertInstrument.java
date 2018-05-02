@@ -26,6 +26,9 @@ public class InsertInstrument {
     @FXML
     public Button Req34BackButton;
 
+    /*
+    TODO rivedere completamente l'inserimento strumento e satellite
+     */
 
     public void start() throws Exception {
         Stage stage = new Stage();
