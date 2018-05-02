@@ -49,7 +49,6 @@ public class Strings {
             "UNION (SELECT s.id, s.name, s.satellite FROM spitzer_structures s EXCEPT " +
             "(SELECT s2.id, s2.name, s2.satellite FROM spitzer_structures AS s2 JOIN spitzer_boundaries AS b ON s2.id = b.id " +
             "WHERE (b.lon < %s OR b.lon > %s OR b.lat < %s OR b.lat > %s)))";
-    //TODO forse è da migliorare
     public static String strReq82 = "(SELECT s.id, s.name, s.satellite, b.lon, b.lat FROM herschel_structures AS s " +
             "JOIN herschel_boundaries AS b ON s.id = b.id EXCEPT " +
             "(SELECT s2.id, s2.name, s2.satellite, b2.lon, b2.lat FROM herschel_structures AS s2 " +

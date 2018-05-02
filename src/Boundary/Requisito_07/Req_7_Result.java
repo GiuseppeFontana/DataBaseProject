@@ -2,6 +2,7 @@ package Boundary.Requisito_07;
 
 import Bean.Req7Bean;
 import Control.Controller;
+import Control.DBController;
 import Control.GraphicController;
 import Singletons.SingletonReq7;
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -108,14 +110,16 @@ public class Req_7_Result {
 
         riempi();
 
-
-        /*
-        //TODO implementare la view come nel requisito 6
         tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
             String satellite = tableView.getSelectionModel().getSelectedItem().getSatellite();
-            int id = tableView.getSelectionModel().getSelectedItem().getId();
-            System.out.println("id:"+Integer.toString(id)+";\t satellite: "+satellite);
-        }));*/
+            int id = tableView.getSelectionModel().getSelectedItem().getIdStructure();
+            DBController dbController = new DBController();
+            try {
+                dbController.showStruct(id, satellite);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }));
 
         stage.setResizable(false);
         stage.setScene(scene);

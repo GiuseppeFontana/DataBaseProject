@@ -35,6 +35,12 @@ public class Req_9_Result {
 
     @FXML
     private Label labelTotal;
+    @FXML
+    private Label labelUnbound;
+    @FXML
+    private Label labelPrestellar;
+    @FXML
+    private Label labelProtostellar;
 
 
     @FXML
@@ -64,8 +70,12 @@ public class Req_9_Result {
 
     public void start() throws Exception{
 
+        Controller controller = new Controller();
+        controller.calcolaTipi();
 
-        //TODO calcolo percentuali
+        System.out.println("unbound: " + SingletonReq9.getInstance().getUnbound() +
+                "\nprestellar: " + SingletonReq9.getInstance().getPrestellar() +
+                "\nprotostellar: " + SingletonReq9.getInstance().getProtostellar());
 
         setnCurrentPage(1);
         int size = SingletonReq9.getInstance().getBeans().size();
@@ -76,8 +86,23 @@ public class Req_9_Result {
 
         labelTotal = new Label();
         labelTotal.relocate(450, 100);
-        labelTotal.setText("Stelle trovate:\n\n"+ SingletonReq9.getInstance().getBeans().size());
+        labelTotal.setText("Stelle trovate: "+ SingletonReq9.getInstance().getBeans().size());
         root.getChildren().add(labelTotal);
+
+        labelUnbound = new Label();
+        labelUnbound.relocate(450, 150);
+        labelUnbound.setText("Unbound: "+ controller.round((double)SingletonReq9.getInstance().getUnbound()/(double)(SingletonReq9.getInstance().getBeans().size())*100.0) + " %");
+        root.getChildren().addAll(labelUnbound);
+
+        labelPrestellar = new Label();
+        labelPrestellar.relocate(450, 170);
+        labelPrestellar.setText("Prestellar: "+ controller.round((double)SingletonReq9.getInstance().getPrestellar()/(double)SingletonReq9.getInstance().getBeans().size()*100.0) + " %");
+        root.getChildren().addAll(labelPrestellar);
+
+        labelProtostellar = new Label();
+        labelProtostellar.relocate(450, 190);
+        labelProtostellar.setText("Protostellar: "+ controller.round((double)SingletonReq9.getInstance().getProtostellar()/(double)SingletonReq9.getInstance().getBeans().size()*100.0)+" %");
+        root.getChildren().addAll(labelProtostellar);
 
         setnCurrentPage(1);
 

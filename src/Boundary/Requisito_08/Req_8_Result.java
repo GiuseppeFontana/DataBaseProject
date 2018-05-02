@@ -102,7 +102,6 @@ public class Req_8_Result {
             int id = tableView.getSelectionModel().getSelectedItem().getId();
             DBController dbController = new DBController();
             try {
-                //TODO forse va cambiato cosa viene mostrato
                 dbController.showStruct(id, satellite);
             } catch (Exception e) {
                 e.printStackTrace();

@@ -60,6 +60,9 @@ public class Controller {
         SingletonReq9.getInstance().setStructureBounds(null);
         SingletonReq9.getInstance().setStars(null);
         SingletonReq9.getInstance().setBeans(null);
+        SingletonReq9.getInstance().setUnbound(0);
+        SingletonReq9.getInstance().setPrestellar(0);
+        SingletonReq9.getInstance().setProtostellar(0);
     }
 
 
@@ -67,11 +70,14 @@ public class Controller {
 
     // requisito 9
     public void scanStars() {
+        //System.out.println("stars before scan:" + SingletonReq9.getInstance().getStars().size());
         for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
             if (!isInStruct(SingletonReq9.getInstance().getStars().get(i))){
                 SingletonReq9.getInstance().getStars().remove(i);
             }
         }
+        //TODO dopo lo scan il numero di stelle è sempre lo stesso
+        //System.out.println("stars after scan:" + SingletonReq9.getInstance().getStars().size());
 
         SingletonReq9.getInstance().setBeans(new ArrayList<>());
         for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
@@ -80,15 +86,18 @@ public class Controller {
                             SingletonReq9.getInstance().getStars().get(i).getName()));
         }
     }
-    private boolean isInStruct(Star star) {         //TODO non funziona, ricontrollare
-        ArrayList<Bound> array = SingletonReq9.getInstance().getStructureBounds();
+
+    private boolean isInStruct(Star star) {
+
         double k = 0;
+        ArrayList<Bound> array = SingletonReq9.getInstance().getStructureBounds();
+
         for (int i = 0; i < array.size()-1; i++){
             double j = Math.atan(((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())-
-                    (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLongitude()-star.getgLon()))/
-                    ((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())+
+                    (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLongitude()-star.getgLon()))
+                    /
+                    ((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLongitude()-star.getgLon())+
                             (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLatitude()-star.getgLat())));
-            j = Math.abs(j);
             k += j;
         }
 
@@ -98,7 +107,6 @@ public class Controller {
                     (SingletonReq9.getInstance().getStructureBounds().get(i).getLatitude()-star.getgLat())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLongitude()-star.getgLon()))/
                     ((SingletonReq9.getInstance().getStructureBounds().get(i).getLongitude()-star.getgLon())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())+
                             (SingletonReq9.getInstance().getStructureBounds().get(i).getLatitude()-star.getgLat())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())));
-            j = Math.abs(j);
             k += j;
         }
          */
@@ -107,6 +115,10 @@ public class Controller {
             return true;
         }
         return false;
+    }
+
+    public double round (double n){
+        return (double) ((int)(n*100))/100;
     }
 
 
@@ -253,5 +265,39 @@ public class Controller {
     }
 
 
+    public void calcolaTipi() {
+        for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
+            if (SingletonReq9.getInstance().getStars().get(i).getType().equals("UNBOUND")){
+                SingletonReq9.getInstance().setUnbound(SingletonReq9.getInstance().getUnbound()+1);
+            }
+            if (SingletonReq9.getInstance().getStars().get(i).getType().equals("PRESTELLAR")){
+                SingletonReq9.getInstance().setPrestellar(SingletonReq9.getInstance().getPrestellar()+1);
+            }
+            if (SingletonReq9.getInstance().getStars().get(i).getType().equals("PROTOSTELLAR")) {
+                SingletonReq9.getInstance().setProtostellar(SingletonReq9.getInstance().getProtostellar() + 1);
+            }
 
+            /*switch (SingletonReq9.getInstance().getStars().get(i).getType()){
+                case "PROTOSTELLAR":
+                SingletonReq9.getInstance().setProtostellar(SingletonReq9.getInstance().getProtostellar()+1);
+                case "UNBOUND":
+                    SingletonReq9.getInstance().setUnbound(SingletonReq9.getInstance().getUnbound()+1);
+                case "PRESTELLAR":
+                    SingletonReq9.getInstance().setPrestellar(SingletonReq9.getInstance().getPrestellar()+1);
+
+            }*/
+        }
+
+        /*for (Star star : SingletonReq9.getInstance().getStars()){
+            if (star.getType().equals("UNBOUND")){
+                SingletonReq9.getInstance().setUnbound(SingletonReq9.getInstance().getUnbound()+1);
+            }
+            if (star.getType().equals("PRESTELLAR")){
+                SingletonReq9.getInstance().setPrestellar(SingletonReq9.getInstance().getPrestellar()+1);
+            }
+            if (star.getType().equals("PROTOSTELLAR")){
+                SingletonReq9.getInstance().setProtostellar(SingletonReq9.getInstance().getProtostellar()+1);
+            }
+        }*/
+    }
 }

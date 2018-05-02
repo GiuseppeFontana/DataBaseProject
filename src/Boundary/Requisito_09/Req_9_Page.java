@@ -66,7 +66,7 @@ public class Req_9_Page {
                         String msg = "Nessuna stella presente\nnella struttura.";
                         graphicController.alertError(msg);
                     }
-                    if (SingletonReq9.getInstance().getStructureBounds().size() == 0){
+                    if (SingletonReq9.getInstance().getStructureBounds() == null){
                         String msg = "Punti contorno non trovati.";
                         graphicController.alertError(msg);
                     }

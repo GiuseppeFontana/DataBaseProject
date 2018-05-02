@@ -141,19 +141,9 @@ public class DBController {
 
     public boolean ricercaStelleInStruttura(String satellite, int id) throws Exception{
         if (!Req9Dao.getStars()){
-            /*GraphicController graphicController = new GraphicController();
-            String msg = "Stelle non trovate.";
-            graphicController.alertError(msg);
-            Controller controller = new Controller();
-            controller.resetSingleton9();*/
             return false;
         }
         if (!Req9Dao.getBounds(id, satellite)){
-            /*GraphicController graphicController = new GraphicController();
-            String msg = "Contorni Struttura non trovati.";
-            graphicController.alertError(msg);
-            Controller controller = new Controller();
-            controller.resetSingleton9();*/
             return false;
         }
 
@@ -161,11 +151,6 @@ public class DBController {
         controller.scanStars();
 
         if (SingletonReq9.getInstance().getStars().size() == 0){
-            /*String msg = "Nessuna stella presente\nnella struttura.";
-            GraphicController graphicController = new GraphicController();
-            graphicController.alertError(msg);
-
-            controller.resetSingleton9();*/
             return false;
         }
 

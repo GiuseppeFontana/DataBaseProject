@@ -12,6 +12,10 @@ public class SingletonReq9 {
     private ArrayList<Bound> structureBounds;
     private ArrayList<Req9Bean> beans;
 
+    private int unbound;
+    private int prestellar;
+    private int protostellar;
+
     protected SingletonReq9() {
         // Exists only to defeat instantiation.
     }
@@ -45,5 +49,29 @@ public class SingletonReq9 {
 
     public void setBeans(ArrayList<Req9Bean> beans) {
         this.beans = beans;
+    }
+
+    public int getUnbound() {
+        return unbound;
+    }
+
+    public void setUnbound(int unbound) {
+        this.unbound = unbound;
+    }
+
+    public int getPrestellar() {
+        return prestellar;
+    }
+
+    public void setPrestellar(int prestellar) {
+        this.prestellar = prestellar;
+    }
+
+    public int getProtostellar() {
+        return protostellar;
+    }
+
+    public void setProtostellar(int protostellar) {
+        this.protostellar = protostellar;
     }
 }

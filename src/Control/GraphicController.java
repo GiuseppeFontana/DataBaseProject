@@ -1,6 +1,5 @@
 package Control;
 
-import Bean.Req7Bean;
 import Boundary.*;
 import Boundary.Requisito_01.Login;
 import Boundary.Requisito_03.InsertInstrument;
@@ -17,12 +16,10 @@ import Boundary.Requisito_08.Req_8_Page;
 import Boundary.Requisito_08.Req_8_Result;
 import Boundary.Requisito_09.Req_9_Page;
 import Boundary.Requisito_09.Req_9_Result;
-import Boundary.ShowElement.ShowStar;
-import Boundary.ShowElement.ShowStruct;
+import Boundary.ShowElement.Show_Star;
+import Boundary.ShowElement.Show_Struct;
 import javafx.application.Application;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
 
 public class GraphicController extends Application {
 
@@ -90,7 +87,7 @@ public class GraphicController extends Application {
     }
 
     public void showStruct() throws Exception {
-        ShowStruct showStruct = new ShowStruct();
+        Show_Struct showStruct = new Show_Struct();
         showStruct.show();
     }
 
@@ -125,7 +122,7 @@ public class GraphicController extends Application {
     }
 
     public void showStar() throws Exception{
-        ShowStar showStar = new ShowStar();
+        Show_Star showStar = new Show_Star();
         showStar.show();
     }
 }

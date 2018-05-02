@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class ShowStruct {
+public class Show_Struct {
     @FXML
     private Button btnTurnBack;
 
