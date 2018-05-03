@@ -13,6 +13,7 @@
       <Button fx:id="Req3PageReq2Button" layoutX="100.0" layoutY="230.0" mnemonicParsing="false" onAction="#jumpReq32Page" text="Registra un Nuovo Utente" />
       <Button fx:id="Req3PageReq3Button" layoutX="100.0" layoutY="300.0" mnemonicParsing="false" onAction="#jumpReq33Page" text="Inserisci dati Nuovo Satellite" />
       <Button fx:id="Req3PageReq4Button" layoutX="100.0" layoutY="370.0" mnemonicParsing="false" onAction="#jumpReq34Page" text="Inserisci dati Nuovo Strumento" />
+      <Button fx:id="InsertStripButton" layoutX="100.0" layoutY="440.0" mnemonicParsing="false" onAction="#insertStrip" text="Inserisci nuova banda per Strumento già esistente" />
         <Button fx:id="Req3PageBackButton" layoutX="84.0" layoutY="542.0" mnemonicParsing="false" onAction="#backHome" prefHeight="38.0" prefWidth="41.0">
             <graphic>
                 <ImageView fx:id="Req3PageBackImg" fitHeight="31.0" fitWidth="31.0">
@@ -21,6 +22,5 @@
                     </image>
                 </ImageView>
             </graphic></Button>
-      <Button fx:id="InsertStripButton" onAction="#insertStrip" layoutX="100.0" layoutY="440.0" mnemonicParsing="false" text="Inserisci nuova banda per Strumento già esistente" />
     </children>
 </AnchorPane>

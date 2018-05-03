@@ -32,3 +32,5 @@ sudo service postgresql restart
 TODO pagina importazione csv lato admin
 
 TODO valutare la creazione degli indici aggiuntivi
+
+TODO inserire chiave esterne al database

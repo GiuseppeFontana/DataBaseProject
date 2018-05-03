@@ -11,14 +11,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_05.Req_5_Page">
     <children>
-        <Button fx:id="Req5PageBackButton" layoutX="84.0" layoutY="542.0" mnemonicParsing="false" onAction="#backHome" prefHeight="38.0" prefWidth="41.0">
-            <graphic>
-                <ImageView fx:id="Req5PageBackImg" fitHeight="31.0" fitWidth="31.0">
-                    <image>
-                        <Image url="@../../images/back.png" />
-                    </image>
-                </ImageView>
-            </graphic></Button>
       <Label layoutX="212.0" layoutY="80.0" text="Ricerca Informazioni Derivate Filamento" />
       <Label layoutX="152.0" layoutY="309.0" text="Immetti ID:" />
       <RadioButton fx:id="Req5PageRadio1" layoutX="290.0" layoutY="116.0" mnemonicParsing="false" onAction="#check1" text=" Herschel">
@@ -27,7 +19,15 @@
          </toggleGroup></RadioButton>
       <RadioButton fx:id="Req5PageRadio2" layoutX="290.0" layoutY="154.0" mnemonicParsing="false" onAction="#check2" text=" Spitzer" toggleGroup="$Toggle1" />
       <TextField fx:id="Req5PageText" layoutX="290.0" layoutY="305.0" prefHeight="26.0" prefWidth="295.0" />
-      <Button fx:id="Req5PageSearchButton" layoutX="475.0" layoutY="540.0" mnemonicParsing="false" onAction="#search" prefHeight="41.0" prefWidth="74.0" text="Cerca" />
+      <Button fx:id="Req5PageSearchButton" layoutX="548.0" layoutY="542.0" mnemonicParsing="false" onAction="#search" prefHeight="41.0" prefWidth="74.0" text="Cerca" />
       <Label layoutX="116.0" layoutY="134.0" text="Seleziona Strumento:" />
+        <Button fx:id="Req5PageBackButton" layoutX="84.0" layoutY="542.0" mnemonicParsing="false" onAction="#backHome" prefHeight="38.0" prefWidth="41.0">
+            <graphic>
+                <ImageView fx:id="Req5PageBackImg" fitHeight="31.0" fitWidth="31.0">
+                    <image>
+                        <Image url="@../../images/back.png" />
+                    </image>
+                </ImageView>
+            </graphic></Button>
     </children>
 </AnchorPane>

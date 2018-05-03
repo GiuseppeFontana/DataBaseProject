@@ -128,7 +128,10 @@ public class Home_User {
         graphicController.req9page();
     }
 
-    public void jumpReq10Page(ActionEvent actionEvent) {
+    public void jumpReq10Page(ActionEvent actionEvent) throws Exception {
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        graphicController.req10page();
     }
 
     public void jumpReq11Page(ActionEvent actionEvent) {

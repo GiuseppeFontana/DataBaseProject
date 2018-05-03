@@ -7,7 +7,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_03.InsertInstrument">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_03.InsertInstrument">
    <children>
       <Label fx:id="Req34TitleLabel" layoutX="253.0" layoutY="62.0" text="Inserimento Nuovo Strumento" />
       <Label fx:id="Req34NameLabel" ellipsisString="" layoutX="81.0" layoutY="132.0" text="Nome Strumento:" />
@@ -15,6 +15,7 @@
       <TextField fx:id="Req34InstrumentText" layoutX="231.0" layoutY="127.0" prefHeight="26.0" prefWidth="198.0" />
 
       <TextField fx:id="Req34SatText" layoutX="231.0" layoutY="188.0" prefHeight="26.0" prefWidth="198.0" />
+      <Button fx:id="Req34InsertButton" layoutX="532.0" layoutY="453.0" mnemonicParsing="false" onAction="#Inserisci" text="Inserisci" />
       <Button fx:id="Req34BackButton" layoutX="91.0" layoutY="441.0" mnemonicParsing="false" onAction="#backHome">
          <graphic>
             <ImageView fx:id="Req33BackImage" fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
@@ -24,7 +25,6 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="Req34InsertButton" layoutX="532.0" layoutY="453.0" mnemonicParsing="false" onAction="#Inserisci" text="Inserisci" />
 
    </children>
 </AnchorPane>
