@@ -2,10 +2,7 @@ package Control;
 
 import Boundary.*;
 import Boundary.Requisito_01.Login;
-import Boundary.Requisito_03.InsertInstrument;
-import Boundary.Requisito_03.InsertSatellite;
-import Boundary.Requisito_03.RegisterPage;
-import Boundary.Requisito_03.Req_3_Page;
+import Boundary.Requisito_03.*;
 import Boundary.Requisito_05.Req_5_Page;
 import Boundary.Requisito_05.Req_5_Result;
 import Boundary.Requisito_06.Req_6_Page;
@@ -64,6 +61,11 @@ public class GraphicController extends Application {
     public void req34Page() throws Exception{
         InsertInstrument insert_Instrument =new InsertInstrument();
         insert_Instrument.start();
+    }
+
+    public void InserisciBanda() throws Exception{
+        InsertStrip insertStrip = new InsertStrip();
+        insertStrip.start();
     }
 
     public void req5page() throws Exception{
@@ -125,4 +127,6 @@ public class GraphicController extends Application {
         Show_Star showStar = new Show_Star();
         showStar.show();
     }
+
+
 }

@@ -20,19 +20,13 @@ public class InsertInstrument {
     @FXML
     public TextField Req34SatText;
     @FXML
-    public TextField Req34StripText;
-    @FXML
     public Button Req34InsertButton;
     @FXML
     public Button Req34BackButton;
 
-    /*
-    TODO rivedere completamente l'inserimento strumento e satellite
-     */
 
     public void start() throws Exception {
         Stage stage = new Stage();
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Requisito_03/insertInstrument.fxml"));
         FXMLLoader loader = new FXMLLoader(InsertInstrument.class.getResource("insertInstrument.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649);
@@ -53,32 +47,24 @@ public class InsertInstrument {
         try {
             String instrument = Req34InstrumentText.getText();
             String sat = Req34SatText.getText();
-            Double strip = Double.parseDouble(Req34StripText.getText());
 
-            if ((instrument.equals("") || sat.equals(""))|| strip.equals("")){
+            if ((instrument.equals("") || sat.equals(""))){
                 GraphicController graphicController = new GraphicController();
                 String msg1 = "Inserire tutti i campi";
                 graphicController.alertError(msg1);
             } else {
-
-            }
-            DBController dbController = new DBController();
-            if (dbController.inserimentoStrumento(instrument,sat, strip)) {
-                GraphicController graphicController = new GraphicController();
-                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-                graphicController.adminReqsPage();
-                String msg2 = "Inserimento effettuato con successo.";
-                graphicController.alertError(msg2);
-            }
-        }
-        catch (NumberFormatException nfe){
-            String msg = "Input non valido";
-            try {
-                GraphicController graphicController = new GraphicController();
-                graphicController.alertError(msg);
-            }
-            catch (Exception e) {
-                e.printStackTrace();
+                DBController dbController = new DBController();
+                if (!dbController.inserimentoStrumento(instrument,sat)) {
+                    String msg = "Inserimento Strumento fallito.";
+                    GraphicController graphicController = new GraphicController();
+                    graphicController.alertError(msg);
+                } else {
+                    GraphicController graphicController = new GraphicController();
+                    ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+                    graphicController.adminReqsPage();
+                    String msg2 = "Inserimento effettuato\n con successo.";
+                    graphicController.alertError(msg2);
+                }
             }
         }
         catch (Exception e){

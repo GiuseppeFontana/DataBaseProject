@@ -2,7 +2,7 @@ package Control;
 
 import Bean.Req_6_8Square_Bean;
 import Dao.*;
-import Bean.Req7Bean;
+import Dao.SatelliteDao;
 import Singletons.SingletonReq8;
 import Singletons.SingletonReq9;
 
@@ -25,14 +25,18 @@ public class DBController {
     }
 
     public boolean inserimentoSatellite(String satellite, LocalDate beginact, LocalDate endact, String agency) {
-        return InsertSatelliteDao.req33(satellite, beginact,endact,agency);
+        return SatelliteDao.insertSatellite(satellite, beginact,endact,agency);
     }
 
-    public boolean inserimentoStrumento(String instrument, String sat, Double strip) throws Exception{
-        if (!InsertInstrumentDao.req34(instrument, sat, strip)){
-            GraphicController graphicController = new GraphicController();
-            String msg = "Inserimento fallito.\nStrumento già presente\no Satellite non ancora\ninserito";
-            graphicController.alertError(msg);
+    public boolean inserimentoStrumento(String instrument, String sat) throws Exception{
+        if (!SatelliteDao.insertInstrument(instrument, sat)){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean inserimentoBanda(String instrument, double strip) {
+        if (!SatelliteDao.insertStrip(instrument, strip)){
             return false;
         }
         return true;
@@ -167,4 +171,6 @@ public class DBController {
             graphicController.showStar();
         }
     }
+
+
 }
