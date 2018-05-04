@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import static tableView;
+
 public class LabelProva extends Application{
     public Label label = new Label("count: ");
     public int count=1;

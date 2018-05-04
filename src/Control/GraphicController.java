@@ -138,4 +138,12 @@ public class GraphicController extends Application {
     public void req10result() {
         //TODO finire
     }
+
+    public void CSVImport() throws Exception{
+
+        Import Import = new Import();
+        Import.start();
+
+    }
+
 }

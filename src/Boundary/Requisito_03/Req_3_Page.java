@@ -75,6 +75,12 @@ public class Req_3_Page {
         GraphicController graphicController = new GraphicController();
         graphicController.InserisciBanda();
     }
+
+    public void newCsv(ActionEvent actionEvent) throws Exception {
+
+        Import imp = new Import();
+        imp.start();
+    }
 }
 
 
