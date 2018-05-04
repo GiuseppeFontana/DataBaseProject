@@ -1,12 +1,10 @@
 package Control;
 
-import Bean.Req7Bean;
+import Bean.*;
 import Entity.*;
-import Bean.Req6Bean;
-import Singletons.SingletonReq6;
-import Singletons.SingletonReq7;
-import Singletons.SingletonStruct;
-import Singletons.SingletonUser;
+import Singletons.*;
+
+import java.util.ArrayList;
 
 public class Controller {
 
@@ -40,6 +38,10 @@ public class Controller {
         SingletonStruct.getInstance().setNumeroSegmenti(0);
     }
 
+    public void resetStarSingleton() {
+        SingletonStar.getInstance().setStar(null);
+    }
+
     public void resetSingleton6(){
         SingletonReq6.getInstance().setBeans(null);
         SingletonReq6.getInstance().setTotaleStrutture(null);
@@ -47,8 +49,96 @@ public class Controller {
 
     public void resetSingleton7(){
         SingletonReq7.getInstance().setBeans(null);
-        SingletonReq7.getInstance().setStruttureTrovate(null);
     }
+
+    public void resetSingleton8(){
+        SingletonReq8.getInstance().setBeans(null);
+        SingletonReq8.getInstance().setReq8CircularBeans(null);
+    }
+
+    public void resetSingleton9(){
+        SingletonReq9.getInstance().setStructureBounds(null);
+        SingletonReq9.getInstance().setStars(null);
+        SingletonReq9.getInstance().setBeans(null);
+        SingletonReq9.getInstance().setUnbound(0);
+        SingletonReq9.getInstance().setPrestellar(0);
+        SingletonReq9.getInstance().setProtostellar(0);
+    }
+
+    public void resetSingleton10(){
+        SingletonReq10.getInstance().setAllBoundsBeans(null);
+        SingletonReq10.getInstance().setBeansToShow(null);
+        SingletonReq10.getInstance().setStarBeans(null);
+        SingletonReq10.getInstance().setStructureBounds(null);
+
+        SingletonReq10.getInstance().setUnbound_false(0);
+        SingletonReq10.getInstance().setUnbound_true(0);
+        SingletonReq10.getInstance().setPrestellar_false(0);
+        SingletonReq10.getInstance().setPrestellar_true(0);
+        SingletonReq10.getInstance().setProtostellar_false(0);
+        SingletonReq10.getInstance().setProtostellar_true(0);
+    }
+
+
+
+
+    // requisito 9
+    public void scanStars9() {
+        //System.out.println("stars before scan:" + SingletonReq9.getInstance().getStars().size());
+        for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
+            if (!isInStruct9(SingletonReq9.getInstance().getStars().get(i))){
+                SingletonReq9.getInstance().getStars().remove(i);
+            }
+        }
+        //TODO dopo lo scan il numero di stelle è quasi sempre lo stesso
+        //System.out.println("stars after scan:" + SingletonReq9.getInstance().getStars().size());
+
+        SingletonReq9.getInstance().setBeans(new ArrayList<>());
+        for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
+            SingletonReq9.getInstance().getBeans().add(
+                    createReq9Bean(SingletonReq9.getInstance().getStars().get(i).getId(),
+                            SingletonReq9.getInstance().getStars().get(i).getName()));
+        }
+    }
+
+    private boolean isInStruct9(Star star) {
+
+        double k = 0;
+        ArrayList<Bound> array = SingletonReq9.getInstance().getStructureBounds();
+
+        for (int i = 0; i < array.size()-1; i++){
+            double j = Math.atan(((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())-
+                    (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLongitude()-star.getgLon()))
+                    /
+                    ((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLongitude()-star.getgLon())+
+                            (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLatitude()-star.getgLat())));
+            k += j;
+        }
+
+//        for (int i = 0; i < SingletonReq9.getInstance().getStructureBounds().size()-1; i++){
+//            double j = Math.atan(((SingletonReq9.getInstance().getStructureBounds().get(i).getLongitude()-star.getgLon())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())-
+//                    (SingletonReq9.getInstance().getStructureBounds().get(i).getLatitude()-star.getgLat())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLongitude()-star.getgLon()))/
+//                    ((SingletonReq9.getInstance().getStructureBounds().get(i).getLongitude()-star.getgLon())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())+
+//                            (SingletonReq9.getInstance().getStructureBounds().get(i).getLatitude()-star.getgLat())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())));
+//            k += j;
+//        }
+
+        if (Math.abs(k) >= 0.01){
+            return true;
+        }
+        return false;
+    }
+
+    public double round (double n){
+        return (double) ((int)(n*100))/100;
+    }
+
+
+
+
+    // requisito 10
+
+
 
 
 
@@ -96,7 +186,7 @@ public class Controller {
         return skeletonPoint;
     }
 
-    public Star createStar(long id, String name, float gLon, float gLat, double flux, String type){
+    public Star createStar(int id, String name, double gLon, double gLat, double flux, String type){
 
         Star star = new Star();
 
@@ -116,8 +206,13 @@ public class Controller {
 
     ///////////////     BEANS
 
-    public Req6Bean createReq6Bean(Integer id, String name, String satellite){
-        Req6Bean bean = new Req6Bean(id, name, satellite);
+    public Req6_8SquareBean createReq6_8Bean(Integer id, String name, String satellite){
+        Req6_8SquareBean bean = new Req6_8SquareBean(id, name, satellite);
+        return bean;
+    }
+
+    public Req8CircularBean createReq8CircBean(Integer id, String name, String satellite, Double longitude, Double latitude){
+        Req8CircularBean bean = new Req8CircularBean(id,name, satellite, longitude, latitude);
         return bean;
     }
 
@@ -126,9 +221,117 @@ public class Controller {
         Req7Bean req7Bean = new Req7Bean();
         req7Bean.setIdStructure(id);
         req7Bean.setNameStructure(name);
-        req7Bean.setnSegmenti(nSegmenti);
+        req7Bean.setSegmenti(nSegmenti);
         req7Bean.setSatellite(satellite);
 
         return req7Bean;
+    }
+
+    public Req9_10Bean createReq9Bean(int id, String name){
+        Req9_10Bean bean = new Req9_10Bean();
+        bean.setId(id);
+        bean.setName(name);
+
+        return bean;
+    }
+
+    public Req10AllBoundsBean createReq10AllBoundsBean(Bound bound, String satellite){
+        Req10AllBoundsBean bean = new Req10AllBoundsBean();
+        bean.setBound(bound);
+        bean.setSatellite(satellite);
+
+        return  bean;
+    }
+
+    public Req10StarBean createReq10StarBean (Star star){
+        // non devo mettere il boolean perchè me lo calcolo dopo la creazione
+        Req10StarBean bean = new Req10StarBean();
+        bean.setStar(star);
+
+        return bean;
+    }
+
+    public boolean circSearch(Double dimension, Double longitude, Double latitude) {
+        /*
+        TODO per mattia, ottimizzare
+        scansione e cancellazione
+        */
+        System.out.println("scansione punti inscritti alla regione;\nAttendere...");
+        for (int i = 0; i<SingletonReq8.getInstance().getReq8CircularBeans().size(); i++){
+            if (!circCheck(SingletonReq8.getInstance().getReq8CircularBeans().get(i), longitude, latitude, dimension)){
+                for (int k = 0; k < SingletonReq8.getInstance().getReq8CircularBeans().size(); k++){
+                    if (SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId() ==
+                            SingletonReq8.getInstance().getReq8CircularBeans().get(k).getId() &&
+                            SingletonReq8.getInstance().getReq8CircularBeans().get(i).getSatellite().equals(
+                                    SingletonReq8.getInstance().getReq8CircularBeans().get(k).getSatellite())){
+                        SingletonReq8.getInstance().getReq8CircularBeans().remove(k);
+                    }
+                }
+            }
+        }
+
+        // cancellazione duplicati      TODO resta qualche duplicato
+        System.out.println("Cancellazione duplicati;\nAttendere...");
+        for (int i = 0; i<SingletonReq8.getInstance().getReq8CircularBeans().size(); i++){
+            for (int k = 0; k<SingletonReq8.getInstance().getReq8CircularBeans().size(); k++){
+                if (k!=i &&
+                        SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId() ==
+                                SingletonReq8.getInstance().getReq8CircularBeans().get(k).getId() &&
+                        SingletonReq8.getInstance().getReq8CircularBeans().get(i).getSatellite().equals(
+                                SingletonReq8.getInstance().getReq8CircularBeans().get(k).getSatellite())){
+                    SingletonReq8.getInstance().getReq8CircularBeans().remove(k);
+                }
+            }
+        }
+
+        if (SingletonReq8.getInstance().getReq8CircularBeans().size() != 0){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean circCheck(Req8CircularBean bean, Double centreLongitude, Double centreLatitude, Double dimension) {
+        if (Math.sqrt((bean.getBoundLong()-centreLongitude)*(bean.getBoundLong()-centreLongitude)+
+                (bean.getBoundLat()-centreLatitude)*(bean.getBoundLat()-centreLatitude))> dimension){
+            return false;
+        }
+        return true;
+    }
+
+
+    public void calcolaTipi() {
+        for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
+            if (SingletonReq9.getInstance().getStars().get(i).getType().equals("UNBOUND")){
+                SingletonReq9.getInstance().setUnbound(SingletonReq9.getInstance().getUnbound()+1);
+            }
+            if (SingletonReq9.getInstance().getStars().get(i).getType().equals("PRESTELLAR")){
+                SingletonReq9.getInstance().setPrestellar(SingletonReq9.getInstance().getPrestellar()+1);
+            }
+            if (SingletonReq9.getInstance().getStars().get(i).getType().equals("PROTOSTELLAR")) {
+                SingletonReq9.getInstance().setProtostellar(SingletonReq9.getInstance().getProtostellar() + 1);
+            }
+
+            /*switch (SingletonReq9.getInstance().getStars().get(i).getType()){
+                case "PROTOSTELLAR":
+                SingletonReq9.getInstance().setProtostellar(SingletonReq9.getInstance().getProtostellar()+1);
+                case "UNBOUND":
+                    SingletonReq9.getInstance().setUnbound(SingletonReq9.getInstance().getUnbound()+1);
+                case "PRESTELLAR":
+                    SingletonReq9.getInstance().setPrestellar(SingletonReq9.getInstance().getPrestellar()+1);
+
+            }*/
+        }
+
+        /*for (Star star : SingletonReq9.getInstance().getStars()){
+            if (star.getType().equals("UNBOUND")){
+                SingletonReq9.getInstance().setUnbound(SingletonReq9.getInstance().getUnbound()+1);
+            }
+            if (star.getType().equals("PRESTELLAR")){
+                SingletonReq9.getInstance().setPrestellar(SingletonReq9.getInstance().getPrestellar()+1);
+            }
+            if (star.getType().equals("PROTOSTELLAR")){
+                SingletonReq9.getInstance().setProtostellar(SingletonReq9.getInstance().getProtostellar()+1);
+            }
+        }*/
     }
 }

@@ -36,7 +36,6 @@ public class InsertSatellite {
 
     public void Inserisci(ActionEvent actionEvent) throws Exception{
 
-
         String satellite = Req33SatelliteText.getText();
         LocalDate beginact = Req33BeginActDate.getValue();
         LocalDate endact = Req33EndActDate.getValue();
@@ -47,9 +46,19 @@ public class InsertSatellite {
             String msg1 = "Inserire tutti i campi";
             graphicController.alertError(msg1);
         }
+        if (beginact.isAfter(endact)){
+            GraphicController graphicController = new GraphicController();
+            String msg1 = "Date cronologicamente scorrette.";
+            graphicController.alertError(msg1);
+        }
         else {
             DBController dbController = new DBController();
-            if (dbController.inserimentoSatellite(satellite, beginact, endact, agency)) {
+            if (!dbController.inserimentoSatellite(satellite, beginact, endact, agency)){
+                GraphicController graphicController = new GraphicController();
+                String msg1 = "Inserimento Satellite fallito.";
+                graphicController.alertError(msg1);
+            }
+            else {
                 GraphicController graphicController = new GraphicController();
                 ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
                 graphicController.adminReqsPage();
@@ -62,7 +71,6 @@ public class InsertSatellite {
 
     public void start() throws Exception{
         Stage stage = new Stage();
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Requisito_03/insertSatellite.fxml"));
         FXMLLoader loader = new FXMLLoader(InsertSatellite.class.getResource("insertSatellite.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
@@ -71,6 +79,7 @@ public class InsertSatellite {
         stage.setScene(scene);
         stage.show();
     }
+
     public void backHome(ActionEvent actionEvent) throws Exception {
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         GraphicController graphicController = new GraphicController();

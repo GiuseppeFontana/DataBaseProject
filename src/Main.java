@@ -13,10 +13,10 @@ public class Main {
         Application.launch(GraphicController.class);
 
         // Application.launch(LabelProva.class);
-
-        /* TODO finire gli import
+/*
+        // TODO finire gli import
         ImportDao dao = new ImportDao();
-        dao.importa("skeletons", "spitzer", "/home/giuseppe/Scrivania/basedati/modded_csv/scheletro_filamenti_Spitzer.csv");
-        */
+        dao.importa("boundaries", "spitzer", "/home/giuseppe/Scrivania/basedati/modded_csv/contorni_filamenti_Spitzer.csv");
+*/
     }
 }

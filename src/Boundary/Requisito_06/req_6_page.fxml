@@ -7,8 +7,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_06.Req_6_Page">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_06.Req_6_Page">
     <children>
+      <Label layoutX="212.0" layoutY="80.0" text="Ricerca Filamento per Contrasto ed Ellitticità" />
+      <Label layoutX="110.0" layoutY="300.0" text="Lower-bound Brillanza:" />
+      <TextField fx:id="Req6PageBrillanzaText" layoutX="270.0" layoutY="295.0" prefHeight="26.0" prefWidth="74.0" />
+      <Label layoutX="350.0" layoutY="300.0" text="\%" />
+      <Label layoutX="109.0" layoutY="348.0" text="Ellitticità minima:" />
+      <TextField fx:id="Req6PageElliptMinText" layoutX="270.0" layoutY="343.0" prefHeight="26.0" prefWidth="114.0" />
+      <Label layoutX="109.0" layoutY="388.0" text="Ellitticità massima:" />
+      <TextField fx:id="Req6PageElliptMaxText" layoutX="270.0" layoutY="383.0" prefHeight="26.0" prefWidth="114.0" />
+      <Button fx:id="Req6PageSearchButton" layoutX="475.0" layoutY="540.0" mnemonicParsing="false" onAction="#search" prefHeight="41.0" prefWidth="74.0" text="Cerca" />
         <Button fx:id="Req6PageBackButton" layoutX="84.0" layoutY="542.0" mnemonicParsing="false" onAction="#backHome" prefHeight="38.0" prefWidth="41.0">
             <graphic>
                 <ImageView fx:id="Req6PageBackImg" fitHeight="31.0" fitWidth="31.0">
@@ -17,14 +26,5 @@
                     </image>
                 </ImageView>
             </graphic></Button>
-      <Label layoutX="212.0" layoutY="80.0" text="Ricerca Filamento per Contrasto ed Ellitticità" />
-      <Label layoutX="110.0" layoutY="300.0" text="Lower-bound Brillanza:" />
-      <TextField fx:id="Req6PageBrillanzaText" layoutX="270.0" layoutY="295.0" prefHeight="26.0" prefWidth="74.0" />
-      <Button fx:id="Req6PageSearchButton" layoutX="475.0" layoutY="540.0" mnemonicParsing="false" onAction="#search" prefHeight="41.0" prefWidth="74.0" text="Cerca" />
-      <Label layoutX="350.0" layoutY="300.0" text="\%" />
-      <Label layoutX="109.0" layoutY="348.0" text="Ellitticità minima:" />
-      <Label layoutX="109.0" layoutY="388.0" text="Ellitticità massima:" />
-      <TextField fx:id="Req6PageElliptMinText" layoutX="270.0" layoutY="343.0" prefHeight="26.0" prefWidth="114.0" />
-      <TextField fx:id="Req6PageElliptMaxText" layoutX="270.0" layoutY="383.0" prefHeight="26.0" prefWidth="114.0" />
     </children>
 </AnchorPane>

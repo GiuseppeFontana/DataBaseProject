@@ -49,7 +49,6 @@ public class Req_6_Page {
         }
     }
 
-
     public void search(ActionEvent actionEvent) {
         try {
             Double percBrillanza = Double.parseDouble(Req6PageBrillanzaText.getText());

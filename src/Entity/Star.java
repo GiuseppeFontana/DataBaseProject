@@ -2,21 +2,21 @@ package Entity;
 
 public class Star {
 
-    private long id;
+    private int id;
     private String name;
-    private float gLon;
-    private float gLat;
+    private double gLon;
+    private double gLat;
     private double flux;
     private String type;
 
     public Star(){
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -28,19 +28,19 @@ public class Star {
         this.name = name;
     }
 
-    public float getgLon() {
+    public double getgLon() {
         return gLon;
     }
 
-    public void setgLon(float gLon) {
+    public void setgLon(double gLon) {
         this.gLon = gLon;
     }
 
-    public float getgLat() {
+    public double getgLat() {
         return gLat;
     }
 
-    public void setgLat(float gLat) {
+    public void setgLat(double gLat) {
         this.gLat = gLat;
     }
 

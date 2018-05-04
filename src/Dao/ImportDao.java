@@ -39,6 +39,8 @@ public class ImportDao {
             ps2 = conn.prepareStatement(sql2);
             System.out.println(ps2.executeUpdate());
 
+
+            //TODO se non va a buon fine fai rollback
             conn.commit();
 
             // STEP 6: Clean-up dell'ambiente

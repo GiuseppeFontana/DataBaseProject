@@ -2,6 +2,7 @@ package Boundary.Requisito_07;
 
 import Bean.Req7Bean;
 import Control.Controller;
+import Control.DBController;
 import Control.GraphicController;
 import Singletons.SingletonReq7;
 import javafx.collections.FXCollections;
@@ -16,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -37,7 +39,7 @@ public class Req_7_Result {
     @FXML
     private TableColumn<Req7Bean, Integer> columnId = new TableColumn<>("id");
     @FXML
-    private TableColumn<Req7Bean, String> columnName = new TableColumn<>("name");
+    private TableColumn<Req7Bean, String> columnName = new TableColumn<>("nome");
     @FXML
     private TableColumn<Req7Bean, String> columnSatellite = new TableColumn<>("satellite");
     @FXML
@@ -63,9 +65,7 @@ public class Req_7_Result {
     }
 
     public void start() throws Exception {
-        /*
-        TODO sistemare la tableview
-         */
+
         setnCurrentPage(1);
         int size = SingletonReq7.getInstance().getBeans().size();
 
@@ -74,7 +74,7 @@ public class Req_7_Result {
         Scene scene = new Scene(root, 686, 649 );
 
         labelResult = new Label();
-        labelResult.setText("Trovate "+ SingletonReq7.getInstance().getStruttureTrovate() +" strutture.");
+        labelResult.setText("Trovate "+ size +" strutture.");
         labelResult.setLayoutX(220);
         labelResult.setLayoutY(50);
         root.getChildren().addAll(labelResult);
@@ -92,13 +92,13 @@ public class Req_7_Result {
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
 
         columnName.setMinWidth(140);
-        columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columnName.setCellValueFactory(new PropertyValueFactory<>("nome"));
 
         columnSatellite.setMinWidth(140);
         columnSatellite.setCellValueFactory(new PropertyValueFactory<>("satellite"));
 
-        columnNumeroSegmenti.setMinWidth(140);
-        columnNumeroSegmenti.setCellValueFactory(new PropertyValueFactory<>("count"));
+        columnNumeroSegmenti.setMinWidth(80);
+        columnNumeroSegmenti.setCellValueFactory(new PropertyValueFactory<>("segmenti"));
 
         tableView.setPrefSize(537, 510);
         tableView.setLayoutX(100);
@@ -110,14 +110,16 @@ public class Req_7_Result {
 
         riempi();
 
-
-        /*
-        //TODO implementare la view come nel requisito 6
         tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
             String satellite = tableView.getSelectionModel().getSelectedItem().getSatellite();
-            int id = tableView.getSelectionModel().getSelectedItem().getId();
-            System.out.println("id:"+Integer.toString(id)+";\t satellite: "+satellite);
-        }));*/
+            int id = tableView.getSelectionModel().getSelectedItem().getIdStructure();
+            DBController dbController = new DBController();
+            try {
+                dbController.showStruct(id, satellite);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }));
 
         stage.setResizable(false);
         stage.setScene(scene);
@@ -146,7 +148,7 @@ public class Req_7_Result {
                 parseBean(SingletonReq7.getInstance().getBeans().get(i).getIdStructure(),
                         SingletonReq7.getInstance().getBeans().get(i).getNameStructure(),
                         SingletonReq7.getInstance().getBeans().get(i).getSatellite(),
-                        SingletonReq7.getInstance().getBeans().get(i).getnSegmenti());
+                        SingletonReq7.getInstance().getBeans().get(i).getSegmenti());
             }
         }
         else {
@@ -154,7 +156,7 @@ public class Req_7_Result {
                 parseBean(SingletonReq7.getInstance().getBeans().get(i).getIdStructure(),
                         SingletonReq7.getInstance().getBeans().get(i).getNameStructure(),
                         SingletonReq7.getInstance().getBeans().get(i).getSatellite(),
-                        SingletonReq7.getInstance().getBeans().get(i).getnSegmenti());
+                        SingletonReq7.getInstance().getBeans().get(i).getSegmenti());
             }
         }
         System.out.println("Pagina " + getnCurrentPage() + " di " + getnTotalPages());
@@ -164,24 +166,15 @@ public class Req_7_Result {
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
         controller.resetSingleton7();
-        boolean admin = controller.getUserSingleton().getUser().getAdmin();
-        if(!admin){
-            GraphicController graphicController = new GraphicController();
-            graphicController.homeUser();
-        }
-        if (admin){
-            GraphicController graphicController = new GraphicController();
-            graphicController.homeAdmin();
-        }
     }
 
     public void parseBean(Integer id, String name, String satellite, Integer n){
         Controller controller = new Controller();
         list.add(controller.createReq7Bean(id,name,satellite, n));
-        columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columnId.setCellValueFactory(new PropertyValueFactory<>("idStructure"));
+        columnName.setCellValueFactory(new PropertyValueFactory<>("nameStructure"));
         columnSatellite.setCellValueFactory(new PropertyValueFactory<>("satellite"));
-        columnNumeroSegmenti.setCellValueFactory(new PropertyValueFactory<>("count"));
+        columnNumeroSegmenti.setCellValueFactory(new PropertyValueFactory<>("segmenti"));
         tableView.setItems(list);
     }
 }

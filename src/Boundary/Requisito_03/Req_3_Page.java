@@ -13,6 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Req_3_Page {
+    
 
     public void start() throws Exception {
         Stage stage = new Stage();
@@ -62,10 +63,17 @@ public class Req_3_Page {
         GraphicController graphicController = new GraphicController();
         graphicController.req33Page();
     }
+
     public void jumpReq34Page(ActionEvent actionEvent) throws Exception {
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
         GraphicController graphicController = new GraphicController();
         graphicController.req34Page();
+    }
+
+    public void insertStrip(ActionEvent actionEvent) throws Exception{
+        ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        graphicController.InserisciBanda();
     }
 }
 

@@ -1,23 +1,23 @@
 package Control;
 
-import Bean.Req7Bean;
 import Boundary.*;
 import Boundary.Requisito_01.Login;
-import Boundary.Requisito_03.InsertInstrument;
-import Boundary.Requisito_03.InsertSatellite;
-import Boundary.Requisito_03.RegisterPage;
-import Boundary.Requisito_03.Req_3_Page;
+import Boundary.Requisito_03.*;
 import Boundary.Requisito_05.Req_5_Page;
 import Boundary.Requisito_05.Req_5_Result;
 import Boundary.Requisito_06.Req_6_Page;
 import Boundary.Requisito_07.Req_7_Page;
 import Boundary.Requisito_06.Req_6_Result;
 import Boundary.Requisito_07.Req_7_Result;
-import Boundary.ShowElement.ShowStruct;
+import Boundary.Requisito_08.Req_8_Page;
+import Boundary.Requisito_08.Req_8_Result;
+import Boundary.Requisito_09.Req_9_Page;
+import Boundary.Requisito_09.Req_9_Result;
+import Boundary.Requisito_10.Req_10_Page;
+import Boundary.ShowElement.Show_Star;
+import Boundary.ShowElement.Show_Struct;
 import javafx.application.Application;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
 
 public class GraphicController extends Application {
 
@@ -49,11 +49,6 @@ public class GraphicController extends Application {
         req_3_page.start();
     }
 
-    /*public void incorrectPasswords() throws Exception {
-        IncorrectPasswords incorrectPasswords = new IncorrectPasswords();
-        incorrectPasswords.incorrectPasswordsField();
-    }*/
-
     public void req32Page() throws Exception{
         RegisterPage register_page = new RegisterPage();
         register_page.start();
@@ -69,15 +64,19 @@ public class GraphicController extends Application {
         insert_Instrument.start();
     }
 
+    public void InserisciBanda() throws Exception{
+        InsertStrip insertStrip = new InsertStrip();
+        insertStrip.start();
+    }
 
     public void req5page() throws Exception{
         Req_5_Page req_5_page = new Req_5_Page();
         req_5_page.start();
     }
 
-    public void req5result(String input, double[] infoContorno, int n) throws Exception{
+    public void req5result() throws Exception{
         Req_5_Result req_5_result = new Req_5_Result();
-        req_5_result.start(input, infoContorno, n);
+        req_5_result.start();
     }
 
     public void req6page() throws Exception{
@@ -90,6 +89,11 @@ public class GraphicController extends Application {
         prova_req_6_res.start();
     }
 
+    public void showStruct() throws Exception {
+        Show_Struct showStruct = new Show_Struct();
+        showStruct.show();
+    }
+
     public void req7page() throws Exception{
         Req_7_Page req_7_page = new Req_7_Page();
         req_7_page.start();
@@ -100,9 +104,38 @@ public class GraphicController extends Application {
         req_7_result.start();
     }
 
+    public void req8page()  throws Exception{
+        Req_8_Page req_8_page = new Req_8_Page();
+        req_8_page.start();
+    }
 
-    public void showStruct() throws Exception {
-        ShowStruct showStruct = new ShowStruct();
-        showStruct.show();
+    public void req8result() throws Exception{
+        Req_8_Result req_8_result = new Req_8_Result();
+        req_8_result.start();
+    }
+
+    public void req9page() throws Exception{
+        Req_9_Page req_9_page = new Req_9_Page();
+        req_9_page.start();
+    }
+
+    public void req9result() throws Exception{
+        Req_9_Result req_9_result = new Req_9_Result();
+        req_9_result.start();
+    }
+
+    public void showStar() throws Exception{
+        Show_Star showStar = new Show_Star();
+        showStar.show();
+    }
+
+
+    public void req10page() throws Exception{
+        Req_10_Page req_10_page = new Req_10_Page();
+        req_10_page.start();
+    }
+
+    public void req10result() {
+        //TODO finire
     }
 }

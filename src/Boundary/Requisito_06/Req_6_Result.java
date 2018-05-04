@@ -1,9 +1,8 @@
 package Boundary.Requisito_06;
 
-import Bean.Req6Bean;
+import Bean.Req6_8SquareBean;
 import Control.Controller;
 import Control.DBController;
-import Control.GraphicController;
 import Singletons.SingletonReq6;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -37,15 +36,15 @@ public class Req_6_Result {
 
 
     @FXML
-    private javafx.scene.control.TableView<Req6Bean> tableView = new TableView<>();
+    private javafx.scene.control.TableView<Req6_8SquareBean> tableView = new TableView<>();
     @FXML
-    private TableColumn<Req6Bean, Integer> columnId = new TableColumn<>("id");
+    private TableColumn<Req6_8SquareBean, Integer> columnId = new TableColumn<>("id");
     @FXML
-    private TableColumn<Req6Bean, String> columnName = new TableColumn<>("name");
+    private TableColumn<Req6_8SquareBean, String> columnName = new TableColumn<>("name");
     @FXML
-    private TableColumn<Req6Bean, String> columnSatellite = new TableColumn<>("satellite");
+    private TableColumn<Req6_8SquareBean, String> columnSatellite = new TableColumn<>("satellite");
     @FXML
-    private static ObservableList<Req6Bean> list = FXCollections.observableArrayList();
+    private static ObservableList<Req6_8SquareBean> list = FXCollections.observableArrayList();
 
     public int getnCurrentPage() {
         return nCurrentPage;
@@ -162,20 +161,11 @@ public class Req_6_Result {
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
         controller.resetSingleton6();
-        boolean admin = controller.getUserSingleton().getUser().getAdmin();
-        if(!admin){
-            GraphicController graphicController = new GraphicController();
-            graphicController.homeUser();
-        }
-        if (admin){
-            GraphicController graphicController = new GraphicController();
-            graphicController.homeAdmin();
-        }
     }
 
     public void parseBean(Integer id, String name, String satellite){
         Controller controller = new Controller();
-        list.add(controller.createReq6Bean(id,name,satellite));
+        list.add(controller.createReq6_8Bean(id,name,satellite));
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         columnSatellite.setCellValueFactory(new PropertyValueFactory<>("satellite"));

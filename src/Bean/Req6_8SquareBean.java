@@ -1,16 +1,16 @@
 package Bean;
 
-public class Req6Bean {
-    private Integer id;
+public class Req6_8SquareBean {
+    private int id;
     private String name;
     private String satellite;
 
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -30,7 +30,7 @@ public class Req6Bean {
         this.satellite = satellite;
     }
 
-    public Req6Bean(Integer id, String name, String satellite) {
+    public Req6_8SquareBean(Integer id, String name, String satellite) {
         this.id = id;
         this.name = name;
         this.satellite = satellite;

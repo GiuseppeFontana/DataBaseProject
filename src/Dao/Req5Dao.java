@@ -1,8 +1,10 @@
 package Dao;
 
+import Bean.Req5Bean;
 import Control.Controller;
 import Entity.Bound;
 import Entity.Structure;
+import Singletons.SingletonReq5;
 import Utils.Credenziali;
 import Utils.Strings;
 
@@ -10,11 +12,13 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Req5Dao {
-    public static boolean req5(String strumento, String input, double[] infoFilamento, int nSegmenti[]) {
+    public static boolean req5(String strumento, int input) {
 
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
+
+        Double infoFilamento[] = new Double[6];
         try {
             // STEP 2: loading dinamico del driver
             Class.forName("org.postgresql.Driver");
@@ -35,7 +39,7 @@ public class Req5Dao {
             k[3] = "MIN(lat)";
             k[4] = "MAX(lon)";
             k[5] = "MAX(lat)";
-            k[6] = String.format(Strings.strReq52, strumento, input);
+            k[6] = String.format(Strings.strReq52, strumento, Integer.toString(input));
 
             String sql;
             ResultSet resultSets[] = new ResultSet[7];
@@ -50,7 +54,7 @@ public class Req5Dao {
                     return false;
                 }
 
-                infoFilamento[i] = resultSets[i].getFloat(1);
+                infoFilamento[i] = resultSets[i].getDouble(1);
                 System.out.println(k[i] + ": " + infoFilamento[i]);
             }
 
@@ -61,13 +65,21 @@ public class Req5Dao {
                 return false;
             }
 
-            nSegmenti[0] = resultSets[6].getInt("count");
-            System.out.println("nSegmenti: " + nSegmenti[0]);
+            System.out.println("count: " +resultSets[6].getInt("count"));
 
-            if (infoFilamento[2] == infoFilamento[4] || infoFilamento[3] == infoFilamento[5] || nSegmenti[0] == 0) {
+            SingletonReq5.getInstance().setBean(new Req5Bean());
+            SingletonReq5.getInstance().getBean().setnSegmenti(resultSets[6].getInt("count"));
+
+            if (infoFilamento[2] == infoFilamento[4] || infoFilamento[3] == infoFilamento[5] || SingletonReq5.getInstance().getBean().getnSegmenti() == 0) {
                 System.out.println("errore imprevisto accesso db, risultati nulli (filamento non presente?");
                 return false;
             }
+
+            SingletonReq5.getInstance().getBean().setId(input);
+            SingletonReq5.getInstance().getBean().setLonCenter(infoFilamento[0]);
+            SingletonReq5.getInstance().getBean().setLatCenter(infoFilamento[1]);
+            SingletonReq5.getInstance().getBean().setLonExtension(infoFilamento[4]-infoFilamento[2]);
+            SingletonReq5.getInstance().getBean().setLatExtension(infoFilamento[5]-infoFilamento[3]);
 
             conn.commit();
 
@@ -77,6 +89,9 @@ public class Req5Dao {
             }
             stmt.close();
             conn.close();
+
+            System.out.println("Accesso Contorni e Scheletri effettuato con successo");
+            return true;
         } catch (SQLException se) {
             // Errore durante l'apertura della connessione
             se.printStackTrace();
@@ -97,7 +112,7 @@ public class Req5Dao {
                 se.printStackTrace();
             }
         }
-        System.out.println("Accesso Contorni e Scheletri effettuato con successo");
-        return true;
+        System.out.println("Accesso Contorni e Scheletri fallito");
+        return false;
     }
 }

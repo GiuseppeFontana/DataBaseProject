@@ -116,13 +116,22 @@ public class Home_User {
     }
 
 
-    public void jumpReq8Page(ActionEvent actionEvent) {
+    public void jumpReq8Page(ActionEvent actionEvent) throws Exception {
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        graphicController.req8page();
     }
 
-    public void jumpReq9Page(ActionEvent actionEvent) {
+    public void jumpReq9Page(ActionEvent actionEvent) throws Exception {
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        graphicController.req9page();
     }
 
-    public void jumpReq10Page(ActionEvent actionEvent) {
+    public void jumpReq10Page(ActionEvent actionEvent) throws Exception {
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        graphicController.req10page();
     }
 
     public void jumpReq11Page(ActionEvent actionEvent) {

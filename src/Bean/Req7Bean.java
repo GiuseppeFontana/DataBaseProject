@@ -1,12 +1,10 @@
 package Bean;
 
-import Entity.Structure;
-
 public class Req7Bean {
     private int idStructure;
     private String nameStructure;
     private String satellite;
-    private int nSegmenti;
+    private int segmenti;
 
     public Req7Bean(){
     }
@@ -35,11 +33,11 @@ public class Req7Bean {
         this.satellite = satellite;
     }
 
-    public int getnSegmenti() {
-        return nSegmenti;
+    public int getSegmenti() {
+        return segmenti;
     }
 
-    public void setnSegmenti(int nSegmenti) {
-        this.nSegmenti = nSegmenti;
+    public void setSegmenti(int segmenti) {
+        this.segmenti = segmenti;
     }
 }

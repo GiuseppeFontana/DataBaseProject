@@ -6,8 +6,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_03.Req_3_Page">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_03.Req_3_Page">
     <children>
+      <Label layoutX="266.0" layoutY="91.0" text="Opzioni Amministratore" />
+      <Button fx:id="Req3PageReq1Button" layoutX="100.0" layoutY="160.0" mnemonicParsing="false" text="Importa nuovo File" />
+      <Button fx:id="Req3PageReq2Button" layoutX="100.0" layoutY="230.0" mnemonicParsing="false" onAction="#jumpReq32Page" text="Registra un Nuovo Utente" />
+      <Button fx:id="Req3PageReq3Button" layoutX="100.0" layoutY="300.0" mnemonicParsing="false" onAction="#jumpReq33Page" text="Inserisci dati Nuovo Satellite" />
+      <Button fx:id="Req3PageReq4Button" layoutX="100.0" layoutY="370.0" mnemonicParsing="false" onAction="#jumpReq34Page" text="Inserisci dati Nuovo Strumento" />
+      <Button fx:id="InsertStripButton" layoutX="100.0" layoutY="440.0" mnemonicParsing="false" onAction="#insertStrip" text="Inserisci nuova banda per Strumento già esistente" />
         <Button fx:id="Req3PageBackButton" layoutX="84.0" layoutY="542.0" mnemonicParsing="false" onAction="#backHome" prefHeight="38.0" prefWidth="41.0">
             <graphic>
                 <ImageView fx:id="Req3PageBackImg" fitHeight="31.0" fitWidth="31.0">
@@ -16,10 +22,5 @@
                     </image>
                 </ImageView>
             </graphic></Button>
-      <Label layoutX="266.0" layoutY="91.0" text="Opzioni Amministratore" />
-      <Button fx:id="Req3PageReq1Button" layoutX="109.0" layoutY="179.0" mnemonicParsing="false" text="Importa nuovo File" />
-      <Button fx:id="Req3PageReq2Button" layoutX="109.0" layoutY="230.0" mnemonicParsing="false" onAction="#jumpReq32Page" text="Registra un Nuovo Utente" />
-      <Button fx:id="Req3PageReq3Button" layoutX="109.0" layoutY="287.0" mnemonicParsing="false" onAction="#jumpReq33Page" text="Inserisci dati Nuovo Satellite" />
-      <Button fx:id="Req3PageReq4Button" layoutX="109.0" layoutY="348.0" mnemonicParsing="false" onAction="#jumpReq34Page" text="Inserisci dati Nuovo Strumento" />
     </children>
 </AnchorPane>
