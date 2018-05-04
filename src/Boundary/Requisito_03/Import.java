@@ -1,5 +1,6 @@
 package Boundary.Requisito_03;
 
+import Boundary.Alert;
 import Dao.ImportDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +19,7 @@ public class Import {
 
 
     public Button btnChoose;
+
     @FXML
     private TextField textPath;
     @FXML
@@ -36,15 +38,23 @@ public class Import {
     private Button btnImporta;
 
 
-    public String getPath() {
+    /*public String getPath() {
+        return textPath.getText();
+    }
+
+    public void setPath(String path) {
+        this.textPath.setText(path);
+    }*/
+
+
+    /*public String getPath() {
         return path;
     }
 
     public void setPath(String path) {
         this.path = path;
-    }
+    }*/
 
-    private String path;
 
     public void start() throws Exception {
         Stage stage = new Stage();
@@ -64,7 +74,7 @@ public class Import {
         File file = chooser.showOpenDialog(new Stage());
         String path = file.getAbsolutePath();
         System.out.println(path);
-        setPath(path);
+        //setPath(path);
 
         textPath.clear();
         textPath.setText(path);
@@ -76,13 +86,6 @@ public class Import {
         String instrument = null;
         String table = null;
 
-        /*if (!rbHerschel.isSelected() || !rbSpitzer.isSelected() || !rbContorni.isSelected() ||
-                !rbScheletri.isSelected() || !rbStelle.isSelected() || !rbStrutture.isSelected()) {
-            String message = "Inserire tutte le opzioni";
-            Alert alert = new Alert();
-            alert.incorrectLoginField(message);
-        }
-*/
         if (rbHerschel.isSelected()){
             instrument = "Herschel";
         }
@@ -102,8 +105,17 @@ public class Import {
             table="Strutture";
         }
 
-        ImportDao importDao = new ImportDao();
-        importDao.importa(table, instrument, getPath());
+        if (textPath.getText().isEmpty()){
+            Alert alert = new Alert();
+            alert.incorrectLoginField("Inserire il percorso del nuovo file CSV");
+        }else {
 
+            System.out.println("Ecco il path:   " + textPath.getText());
+
+            ImportDao importDao = new ImportDao();
+            importDao.importa(table, instrument, /*getPath() */textPath.getText());
+
+
+        }
     }
 }
