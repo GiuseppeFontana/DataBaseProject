@@ -14,6 +14,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.nio.file.Files;
 
 public class Import {
 
@@ -67,7 +68,7 @@ public class Import {
         stage.show();
     }
 
-    public void newCsv(ActionEvent actionEvent) {
+    public void newCsv(ActionEvent actionEvent) throws Exception {
 
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
@@ -76,9 +77,20 @@ public class Import {
         System.out.println(path);
         //setPath(path);
 
-        textPath.clear();
-        textPath.setText(path);
+        String extension = path.substring(path.lastIndexOf("."));
 
+
+        //---------------------CONTROLLO DELL'ESTENSIONE DEL FILE----------------//
+
+        if (!extension.equals(".csv")){
+
+            Alert alert = new Alert();
+            alert.incorrectLoginField("Il file selezionato non è un csv");
+
+        }else {
+            textPath.clear();
+            textPath.setText(path);
+        }
     }
 
     public void DBInsert(ActionEvent actionEvent) throws Exception {
@@ -110,7 +122,7 @@ public class Import {
             alert.incorrectLoginField("Inserire il percorso del nuovo file CSV");
         }else {
 
-            System.out.println("Ecco il path:   " + textPath.getText());
+            //System.out.println("Ecco il path:   " + textPath.getText());
 
             ImportDao importDao = new ImportDao();
             importDao.importa(table, instrument, /*getPath() */textPath.getText());
