@@ -1,6 +1,8 @@
 package Boundary.Requisito_10;
 import Control.Controller;
+import Control.DBController;
 import Control.GraphicController;
+import Singletons.SingletonReq10;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,7 +47,6 @@ public class Req_10_Page {
         if (!admin) {
             GraphicController graphicController = new GraphicController();
             graphicController.homeUser();
-
         }
         if (admin) {
             GraphicController graphicController = new GraphicController();
@@ -53,6 +54,67 @@ public class Req_10_Page {
         }
     }
 
-    public void search(ActionEvent actionEvent)  {
+    public void search(ActionEvent actionEvent){
+        try{
+//            GraphicController graphicController = new GraphicController();
+//            Controller controller = new Controller();
+//            if ((!RadioHerschel.isSelected() && !RadioSpitzer.isSelected()) ||
+//                    IDStructuresText.getText().equals("")){
+//                String msg = "Input non valido.\nSeleziona un satellite e\nimmetti un ID.";
+//                graphicController.alertError(msg);
+//            }
+//            else {
+//                String satellite = getSatellite();
+//                int id = Integer.parseInt(IDStructuresText.getText());
+//                DBController dbController = new DBController();
+//                if (!dbController.ricercaStelleInStruttura(satellite, id)){
+//                    if (SingletonReq9.getInstance().getStars().size() == 0){
+//                        String msg = "Nessuna stella presente\nnella struttura.";
+//                        graphicController.alertError(msg);
+//                    }
+//                    if (SingletonReq9.getInstance().getStructureBounds() == null){
+//                        String msg = "Punti contorno non trovati.";
+//                        graphicController.alertError(msg);
+//                    }
+//                    controller.resetSingleton9();
+//                }
+//            }
+            double extLat = Double.parseDouble(LatText.getText());
+            double extLon = Double.parseDouble(LonText.getText());
+            double centreLat = Double.parseDouble(CenterLatText.getText());
+            double centreLon = Double.parseDouble(CenterLonText.getText());
+
+            if (extLat<=0 || extLon <=0){
+                GraphicController graphicController = new GraphicController();
+                String msg = "Input scorretto.\nControlla le estensioni.";
+                graphicController.alertError(msg);
+                return;
+            }
+
+            DBController dbController = new DBController();
+            GraphicController graphicController = new GraphicController();
+            if (!dbController.ricercaStelleInRegione(extLon, extLat, centreLon, centreLat)){
+                String msg = "Nessuna stella presente\nnella regione.";
+                graphicController.alertError(msg);
+                Controller controller = new Controller();
+                controller.resetSingleton10();
+            }
+            else {
+                graphicController.req10result();
+            }
+        }
+        catch (NumberFormatException nfe){
+            try{
+                String msg = "Input non valido.\nScrivi numeri interi.";
+                GraphicController graphicController = new GraphicController();
+                graphicController.alertError(msg);
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

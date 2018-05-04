@@ -1,6 +1,6 @@
 package Singletons;
 
-import Bean.Req9Bean;
+import Bean.Req9_10Bean;
 import Entity.Bound;
 import Entity.Star;
 
@@ -10,7 +10,7 @@ public class SingletonReq9 {
     private static SingletonReq9 instance = null;
     private ArrayList<Star> stars;
     private ArrayList<Bound> structureBounds;
-    private ArrayList<Req9Bean> beans;
+    private ArrayList<Req9_10Bean> beans;
 
     private int unbound;
     private int prestellar;
@@ -43,11 +43,11 @@ public class SingletonReq9 {
         this.structureBounds = structureBounds;
     }
 
-    public ArrayList<Req9Bean> getBeans() {
+    public ArrayList<Req9_10Bean> getBeans() {
         return beans;
     }
 
-    public void setBeans(ArrayList<Req9Bean> beans) {
+    public void setBeans(ArrayList<Req9_10Bean> beans) {
         this.beans = beans;
     }
 

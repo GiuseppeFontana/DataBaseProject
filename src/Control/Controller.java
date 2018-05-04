@@ -3,7 +3,7 @@ package Control;
 import Bean.*;
 import Entity.*;
 import Singletons.*;
-import java.math.*;
+
 import java.util.ArrayList;
 
 public class Controller {
@@ -65,14 +65,28 @@ public class Controller {
         SingletonReq9.getInstance().setProtostellar(0);
     }
 
+    public void resetSingleton10(){
+        SingletonReq10.getInstance().setAllBoundsBeans(null);
+        SingletonReq10.getInstance().setBeansToShow(null);
+        SingletonReq10.getInstance().setStarBeans(null);
+        SingletonReq10.getInstance().setStructureBounds(null);
+
+        SingletonReq10.getInstance().setUnbound_false(0);
+        SingletonReq10.getInstance().setUnbound_true(0);
+        SingletonReq10.getInstance().setPrestellar_false(0);
+        SingletonReq10.getInstance().setPrestellar_true(0);
+        SingletonReq10.getInstance().setProtostellar_false(0);
+        SingletonReq10.getInstance().setProtostellar_true(0);
+    }
+
 
 
 
     // requisito 9
-    public void scanStars() {
+    public void scanStars9() {
         //System.out.println("stars before scan:" + SingletonReq9.getInstance().getStars().size());
         for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
-            if (!isInStruct(SingletonReq9.getInstance().getStars().get(i))){
+            if (!isInStruct9(SingletonReq9.getInstance().getStars().get(i))){
                 SingletonReq9.getInstance().getStars().remove(i);
             }
         }
@@ -87,7 +101,7 @@ public class Controller {
         }
     }
 
-    private boolean isInStruct(Star star) {
+    private boolean isInStruct9(Star star) {
 
         double k = 0;
         ArrayList<Bound> array = SingletonReq9.getInstance().getStructureBounds();
@@ -101,15 +115,13 @@ public class Controller {
             k += j;
         }
 
-        /*
-        for (int i = 0; i < SingletonReq9.getInstance().getStructureBounds().size()-1; i++){
-            double j = Math.atan(((SingletonReq9.getInstance().getStructureBounds().get(i).getLongitude()-star.getgLon())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())-
-                    (SingletonReq9.getInstance().getStructureBounds().get(i).getLatitude()-star.getgLat())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLongitude()-star.getgLon()))/
-                    ((SingletonReq9.getInstance().getStructureBounds().get(i).getLongitude()-star.getgLon())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())+
-                            (SingletonReq9.getInstance().getStructureBounds().get(i).getLatitude()-star.getgLat())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())));
-            k += j;
-        }
-         */
+//        for (int i = 0; i < SingletonReq9.getInstance().getStructureBounds().size()-1; i++){
+//            double j = Math.atan(((SingletonReq9.getInstance().getStructureBounds().get(i).getLongitude()-star.getgLon())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())-
+//                    (SingletonReq9.getInstance().getStructureBounds().get(i).getLatitude()-star.getgLat())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLongitude()-star.getgLon()))/
+//                    ((SingletonReq9.getInstance().getStructureBounds().get(i).getLongitude()-star.getgLon())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())+
+//                            (SingletonReq9.getInstance().getStructureBounds().get(i).getLatitude()-star.getgLat())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())));
+//            k += j;
+//        }
 
         if (Math.abs(k) >= 0.01){
             return true;
@@ -120,6 +132,12 @@ public class Controller {
     public double round (double n){
         return (double) ((int)(n*100))/100;
     }
+
+
+
+
+    // requisito 10
+
 
 
 
@@ -188,8 +206,8 @@ public class Controller {
 
     ///////////////     BEANS
 
-    public Req_6_8Square_Bean createReq6_8Bean(Integer id, String name, String satellite){
-        Req_6_8Square_Bean bean = new Req_6_8Square_Bean(id, name, satellite);
+    public Req6_8SquareBean createReq6_8Bean(Integer id, String name, String satellite){
+        Req6_8SquareBean bean = new Req6_8SquareBean(id, name, satellite);
         return bean;
     }
 
@@ -209,10 +227,26 @@ public class Controller {
         return req7Bean;
     }
 
-    public Req9Bean createReq9Bean(int id, String name){
-        Req9Bean bean = new Req9Bean();
+    public Req9_10Bean createReq9Bean(int id, String name){
+        Req9_10Bean bean = new Req9_10Bean();
         bean.setId(id);
         bean.setName(name);
+
+        return bean;
+    }
+
+    public Req10AllBoundsBean createReq10AllBoundsBean(Bound bound, String satellite){
+        Req10AllBoundsBean bean = new Req10AllBoundsBean();
+        bean.setBound(bound);
+        bean.setSatellite(satellite);
+
+        return  bean;
+    }
+
+    public Req10StarBean createReq10StarBean (Star star){
+        // non devo mettere il boolean perchè me lo calcolo dopo la creazione
+        Req10StarBean bean = new Req10StarBean();
+        bean.setStar(star);
 
         return bean;
     }

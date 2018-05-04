@@ -1,13 +1,13 @@
 package Singletons;
 
 import Bean.Req8CircularBean;
-import Bean.Req_6_8Square_Bean;
+import Bean.Req6_8SquareBean;
 
 import java.util.ArrayList;
 
 public class SingletonReq8 {
     private static SingletonReq8 instance = null;
-    private ArrayList<Req_6_8Square_Bean> req_6_8Square_beans;
+    private ArrayList<Req6_8SquareBean> req_6_8Square_beans;
     private ArrayList<Req8CircularBean> req8CircularBeans;
 
     protected SingletonReq8() {
@@ -21,11 +21,11 @@ public class SingletonReq8 {
         return instance;
     }
 
-    public ArrayList<Req_6_8Square_Bean> getBeans() {
+    public ArrayList<Req6_8SquareBean> getBeans() {
         return req_6_8Square_beans;
     }
 
-    public void setBeans(ArrayList<Req_6_8Square_Bean> b) {
+    public void setBeans(ArrayList<Req6_8SquareBean> b) {
         req_6_8Square_beans = b;
     }
 

@@ -29,6 +29,9 @@ sudo service postgresql restart
     valutare se ridondare l'attributo nomefilamento di filamento dentro contorno, per la req.5
     valutare se creare l'attributo numerosegmenti dentro filamento, per la req.7
 
+TODO fare il controllo su tutte le latitudini (tra -90 e 90) e tutte le longitudini (tra 0 e 360)
+https://it.wikipedia.org/wiki/Coordinate_celesti
+
 TODO pagina importazione csv lato admin
 
 TODO valutare la creazione degli indici aggiuntivi

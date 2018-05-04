@@ -1,7 +1,7 @@
 package Dao;
 
 import Bean.Req8CircularBean;
-import Bean.Req_6_8Square_Bean;
+import Bean.Req6_8SquareBean;
 import Control.Controller;
 import Singletons.SingletonReq8;
 import Utils.Credenziali;
@@ -40,14 +40,14 @@ public class Req8Dao {
             }
             else {
                 Controller controller = new Controller();
-                ArrayList<Req_6_8Square_Bean> beans = new ArrayList<>();
+                ArrayList<Req6_8SquareBean> beans = new ArrayList<>();
                 SingletonReq8.getInstance().setBeans(beans);
 
-                Req_6_8Square_Bean bean1 = controller.createReq6_8Bean(rs.getInt("id"), rs.getString("name"),rs.getString("satellite"));
+                Req6_8SquareBean bean1 = controller.createReq6_8Bean(rs.getInt("id"), rs.getString("name"),rs.getString("satellite"));
                 SingletonReq8.getInstance().getBeans().add(bean1);
 
                 while (rs.next()){
-                    Req_6_8Square_Bean bean = controller.createReq6_8Bean(rs.getInt("id"), rs.getString("name"),rs.getString("satellite"));
+                    Req6_8SquareBean bean = controller.createReq6_8Bean(rs.getInt("id"), rs.getString("name"),rs.getString("satellite"));
                     SingletonReq8.getInstance().getBeans().add(bean);
                 }
             }

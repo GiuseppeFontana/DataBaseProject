@@ -1,10 +1,10 @@
 package Bean;
 
-public class Req9Bean {
+public class Req9_10Bean {
     private int id;
     private String name;
 
-    public Req9Bean(){
+    public Req9_10Bean(){
     }
 
     public int getId() {

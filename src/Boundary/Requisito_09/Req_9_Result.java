@@ -1,6 +1,6 @@
 package Boundary.Requisito_09;
 
-import Bean.Req9Bean;
+import Bean.Req9_10Bean;
 import Control.Controller;
 import Control.DBController;
 import Singletons.SingletonReq9;
@@ -44,13 +44,13 @@ public class Req_9_Result {
 
 
     @FXML
-    private javafx.scene.control.TableView<Req9Bean> tableView = new TableView<>();
+    private javafx.scene.control.TableView<Req9_10Bean> tableView = new TableView<>();
     @FXML
-    private TableColumn<Req9Bean, Integer> columnId = new TableColumn<>("id");
+    private TableColumn<Req9_10Bean, Integer> columnId = new TableColumn<>("id");
     @FXML
-    private TableColumn<Req9Bean, String> columnName = new TableColumn<>("name");
+    private TableColumn<Req9_10Bean, String> columnName = new TableColumn<>("name");
     @FXML
-    private static ObservableList<Req9Bean> list = FXCollections.observableArrayList();
+    private static ObservableList<Req9_10Bean> list = FXCollections.observableArrayList();
 
     public int getnCurrentPage() {
         return nCurrentPage;

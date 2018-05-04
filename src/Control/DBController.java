@@ -1,6 +1,6 @@
 package Control;
 
-import Bean.Req_6_8Square_Bean;
+import Bean.Req6_8SquareBean;
 import Dao.*;
 import Dao.SatelliteDao;
 import Singletons.SingletonReq8;
@@ -126,11 +126,11 @@ public class DBController {
                 graphicController.alertError(msg);
                 return;
             }
-            ArrayList<Req_6_8Square_Bean> beans = new ArrayList<>();
+            ArrayList<Req6_8SquareBean> beans = new ArrayList<>();
             SingletonReq8.getInstance().setBeans(beans);
 
             for (int i=0; i<SingletonReq8.getInstance().getReq8CircularBeans().size(); i++){
-                Req_6_8Square_Bean bean = controller.createReq6_8Bean(SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId(),
+                Req6_8SquareBean bean = controller.createReq6_8Bean(SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId(),
                         SingletonReq8.getInstance().getReq8CircularBeans().get(i).getName(),
                         SingletonReq8.getInstance().getReq8CircularBeans().get(i).getSatellite());
 
@@ -152,7 +152,7 @@ public class DBController {
         }
 
         Controller controller = new Controller();
-        controller.scanStars();
+        controller.scanStars9();
 
         if (SingletonReq9.getInstance().getStars().size() == 0){
             return false;
@@ -172,5 +172,20 @@ public class DBController {
         }
     }
 
+    public boolean ricercaStelleInRegione(double extLon, double extLat, double centreLon, double centreLat) {
 
+        double lonMin = centreLon - extLon/2;
+        double lonMax = centreLon + extLon/2;
+        double latMin = centreLat - extLat/2;
+        double latMax = centreLat + extLat/2;
+
+        if (!Req10Dao.searchStarsInArea(lonMin, lonMax, latMin, latMax)){
+            return false;
+        }
+
+
+        //TODO finire
+
+        return true;
+    }
 }

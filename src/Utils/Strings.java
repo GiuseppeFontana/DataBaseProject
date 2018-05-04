@@ -62,4 +62,8 @@ public class Strings {
 
     public static String strReq91 = "SELECT * FROM herschel_stars";
     public static String strReq92 = "SELECT * FROM %s_boundaries WHERE id = '%s'";
+
+
+
+    public static String strReq101 = "SELECT * FROM herschel_stars WHERE lon > %s AND lon < %s AND lat > %s AND lat < %s";
 }

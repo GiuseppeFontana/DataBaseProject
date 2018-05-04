@@ -1,6 +1,6 @@
 package Boundary.Requisito_06;
 
-import Bean.Req_6_8Square_Bean;
+import Bean.Req6_8SquareBean;
 import Control.Controller;
 import Control.DBController;
 import Singletons.SingletonReq6;
@@ -36,15 +36,15 @@ public class Req_6_Result {
 
 
     @FXML
-    private javafx.scene.control.TableView<Req_6_8Square_Bean> tableView = new TableView<>();
+    private javafx.scene.control.TableView<Req6_8SquareBean> tableView = new TableView<>();
     @FXML
-    private TableColumn<Req_6_8Square_Bean, Integer> columnId = new TableColumn<>("id");
+    private TableColumn<Req6_8SquareBean, Integer> columnId = new TableColumn<>("id");
     @FXML
-    private TableColumn<Req_6_8Square_Bean, String> columnName = new TableColumn<>("name");
+    private TableColumn<Req6_8SquareBean, String> columnName = new TableColumn<>("name");
     @FXML
-    private TableColumn<Req_6_8Square_Bean, String> columnSatellite = new TableColumn<>("satellite");
+    private TableColumn<Req6_8SquareBean, String> columnSatellite = new TableColumn<>("satellite");
     @FXML
-    private static ObservableList<Req_6_8Square_Bean> list = FXCollections.observableArrayList();
+    private static ObservableList<Req6_8SquareBean> list = FXCollections.observableArrayList();
 
     public int getnCurrentPage() {
         return nCurrentPage;

@@ -13,6 +13,7 @@ import Boundary.Requisito_08.Req_8_Page;
 import Boundary.Requisito_08.Req_8_Result;
 import Boundary.Requisito_09.Req_9_Page;
 import Boundary.Requisito_09.Req_9_Result;
+import Boundary.Requisito_10.Req_10_Page;
 import Boundary.ShowElement.Show_Star;
 import Boundary.ShowElement.Show_Struct;
 import javafx.application.Application;
@@ -129,4 +130,12 @@ public class GraphicController extends Application {
     }
 
 
+    public void req10page() throws Exception{
+        Req_10_Page req_10_page = new Req_10_Page();
+        req_10_page.start();
+    }
+
+    public void req10result() {
+        //TODO finire
+    }
 }
