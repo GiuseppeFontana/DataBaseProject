@@ -28,7 +28,7 @@ public class Req_3_Page {
         final Label HomeLabel1 = new Label();
 
         HomeLabel1.setText("Benvenuto " + name);
-        HomeLabel1.setLayoutX(320);
+        HomeLabel1.setLayoutX(263);
         HomeLabel1.setLayoutY(42);
         root.getChildren().addAll(HomeLabel1);
 

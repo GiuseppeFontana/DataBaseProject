@@ -1,10 +1,12 @@
 package Boundary.Requisito_03;
 
 import Boundary.Alert;
+import Control.GraphicController;
 import Dao.ImportDao;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -21,6 +23,8 @@ public class Import {
 
     public Button btnChoose;
 
+    @FXML
+    private Button BackButton;
     @FXML
     private TextField textPath;
     @FXML
@@ -56,6 +60,11 @@ public class Import {
         this.path = path;
     }*/
 
+    public void backHome(ActionEvent actionEvent) throws Exception {
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        graphicController.adminReqsPage();
+    }
 
     public void start() throws Exception {
         Stage stage = new Stage();
@@ -130,4 +139,6 @@ public class Import {
 
         }
     }
+
+
 }

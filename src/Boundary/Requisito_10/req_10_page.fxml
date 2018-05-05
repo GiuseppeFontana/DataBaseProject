@@ -11,15 +11,15 @@
     <children>
       <Label layoutX="178.0" layoutY="52.0" text="Ricerca stella all'interno di una regione di cielo" />
       <Label layoutX="75.0" layoutY="164.0" text="Estensione Longitudinale:" />
-      <Label layoutX="76.0" layoutY="225.0" text="Estensione Latitudinale:" />
-      <Label layoutX="78.0" layoutY="373.0" prefHeight="16.0" prefWidth="163.0" text="Latitudine Centroide:" />
-      <Label layoutX="80.0" layoutY="296.0" text="Longitudine Centroide:" />
-      <TextField fx:id="LonText" layoutX="286.0" layoutY="159.0" prefHeight="26.0" prefWidth="208.0" />
-      <TextField fx:id="LatText" layoutX="286.0" layoutY="220.0" prefHeight="26.0" prefWidth="208.0" />
-      <TextField fx:id="CenterLonText" layoutX="286.0" layoutY="291.0" prefHeight="26.0" prefWidth="208.0" />
-      <TextField fx:id="CenterLatText" layoutX="286.0" layoutY="368.0" prefHeight="26.0" prefWidth="208.0" />
+      <Label layoutX="75.0" layoutY="238.0" text="Estensione Latitudinale:" />
+      <Label layoutX="75.0" layoutY="386.0" prefHeight="16.0" prefWidth="163.0" text="Latitudine Centroide:" />
+      <Label layoutX="75.0" layoutY="312.0" text="Longitudine Centroide:" />
+      <TextField fx:id="LonText" layoutX="286.0" layoutY="164.0" prefHeight="26.0" prefWidth="208.0" />
+      <TextField fx:id="LatText" layoutX="286.0" layoutY="238.0" prefHeight="26.0" prefWidth="208.0" />
+      <TextField fx:id="CenterLonText" layoutX="286.0" layoutY="312.0" prefHeight="26.0" prefWidth="208.0" />
+      <TextField fx:id="CenterLatText" layoutX="286.0" layoutY="386.0" prefHeight="26.0" prefWidth="208.0" />
       <Button fx:id="Req10SearchButton" layoutX="525.0" layoutY="540.0" mnemonicParsing="false" onAction="#search" prefHeight="41.0" prefWidth="74.0" text="Cerca" />
-        <Button fx:id="Req10BackButton" layoutX="110.0" layoutY="540.0" mnemonicParsing="false" onAction="#backHome" prefHeight="38.0" prefWidth="41.0">
+        <Button fx:id="Req10BackButton" layoutX="75.0" layoutY="540.0" mnemonicParsing="false" onAction="#backHome" prefHeight="38.0" prefWidth="41.0">
          <graphic>
                 <ImageView fx:id="Req10PageBackImg" fitHeight="31.0" fitWidth="31.0">
                     <image>

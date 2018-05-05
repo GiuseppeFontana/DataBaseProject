@@ -3,6 +3,7 @@ package Boundary.Requisito_09;
 import Bean.Req9_10Bean;
 import Control.Controller;
 import Control.DBController;
+import Control.GraphicController;
 import Singletons.SingletonReq9;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -173,6 +174,15 @@ public class Req_9_Result {
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
         controller.resetSingleton9();
+        boolean admin = controller.getUserSingleton().getUser().getAdmin();
+        if(!admin){
+            GraphicController graphicController = new GraphicController();
+            graphicController.homeUser();
+        }
+        if (admin){
+            GraphicController graphicController = new GraphicController();
+            graphicController.homeAdmin();
+        }
     }
 
     public void next(ActionEvent actionEvent) throws Exception{

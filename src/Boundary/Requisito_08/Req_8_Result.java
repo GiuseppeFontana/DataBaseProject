@@ -3,6 +3,7 @@ package Boundary.Requisito_08;
 import Bean.Req6_8SquareBean;
 import Control.Controller;
 import Control.DBController;
+import Control.GraphicController;
 import Singletons.SingletonReq8;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -145,6 +146,15 @@ public class Req_8_Result {
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
         controller.resetSingleton8();
+        boolean admin = controller.getUserSingleton().getUser().getAdmin();
+        if(!admin){
+            GraphicController graphicController = new GraphicController();
+            graphicController.homeUser();
+        }
+        if (admin){
+            GraphicController graphicController = new GraphicController();
+            graphicController.homeAdmin();
+        }
     }
 
     public void next(ActionEvent actionEvent) throws Exception{

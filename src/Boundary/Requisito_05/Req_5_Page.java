@@ -80,6 +80,7 @@ public class Req_5_Page {
                     GraphicController graphicController = new GraphicController();
                     graphicController.alertError(msg2);
                 }
+
             }
         }catch (NumberFormatException nfe){
             try {

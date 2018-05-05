@@ -166,6 +166,15 @@ public class Req_7_Result {
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
         controller.resetSingleton7();
+        boolean admin = controller.getUserSingleton().getUser().getAdmin();
+        if(!admin){
+            GraphicController graphicController = new GraphicController();
+            graphicController.homeUser();
+        }
+        if (admin){
+            GraphicController graphicController = new GraphicController();
+            graphicController.homeAdmin();
+        }
 
     }
 

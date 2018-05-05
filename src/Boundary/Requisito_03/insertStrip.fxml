@@ -9,15 +9,15 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_03.InsertStrip">
    <children>
-      <Label fx:id="Req34TitleLabel" layoutX="253.0" layoutY="62.0" text="Inserimento Nuova Banda" />
-      <Label fx:id="Req34NameLabel" ellipsisString="" layoutX="79.0" layoutY="189.0" text="Nome Strumento:" />
-      <Label fx:id="Req34StripLabel" layoutX="91.0" layoutY="258.0" text="Banda:" />
-      <TextField fx:id="Req34InstrumentText" layoutX="228.0" layoutY="183.0" prefHeight="26.0" prefWidth="198.0" />
-      <TextField fx:id="Req34StripText" layoutX="231.0" layoutY="253.0" prefHeight="26.0" prefWidth="198.0" />
-      <Button fx:id="Req34InsertButton" layoutX="532.0" layoutY="453.0" mnemonicParsing="false" onAction="#Inserisci" text="Inserisci" />
-      <Button fx:id="Req34BackButton" layoutX="91.0" layoutY="441.0" mnemonicParsing="false" onAction="#backHome">
+      <Label fx:id="Req34TitleLabel" layoutX="253.0" layoutY="74.0" text="Inserimento Nuova Banda" />
+      <Label fx:id="Req34NameLabel" ellipsisString="" layoutX="140.0" layoutY="193.0" text="Nome Strumento:" />
+      <Label fx:id="Req34StripLabel" layoutX="140.0" layoutY="253.0" text="Banda:" />
+      <TextField fx:id="Req34InstrumentText" layoutX="300.0" layoutY="193.0" prefHeight="26.0" prefWidth="198.0" />
+      <TextField fx:id="Req34StripText" layoutX="300.0" layoutY="253.0" prefHeight="26.0" prefWidth="198.0" />
+      <Button fx:id="Req34InsertButton" layoutX="507.0" layoutY="546.0" mnemonicParsing="false" onAction="#Inserisci" text="Inserisci" />
+      <Button fx:id="Req34BackButton" layoutX="74.0" layoutY="524.0" mnemonicParsing="false" onAction="#backHome" prefHeight="50.0" prefWidth="58.0">
          <graphic>
-            <ImageView fx:id="Req33BackImage" fitHeight="40.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="Req33BackImage" fitHeight="31.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../images/back.png" />
                </image>
