@@ -134,9 +134,8 @@ public class Req10Dao {
             System.out.println(sql2);
 
             ResultSet rs1 = stmt1.executeQuery(sql1);
-            ResultSet rs2 = stmt1.executeQuery(sql2);
+            ResultSet rs2 = stmt2.executeQuery(sql2);
 
-            System.out.println(rs1.isClosed());
             //TODO i resultset sono chiusi già da qui, quindi non va avanti
 
             if (!rs1.first() && !rs2.first()) {

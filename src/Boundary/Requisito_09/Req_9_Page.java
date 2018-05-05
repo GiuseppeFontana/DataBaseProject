@@ -72,6 +72,9 @@ public class Req_9_Page {
                     }
                     controller.resetSingleton9();
                 }
+                else {
+                    ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+                }
             }
         }
         catch (NumberFormatException nfe){

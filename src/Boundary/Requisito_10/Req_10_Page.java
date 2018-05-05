@@ -100,6 +100,7 @@ public class Req_10_Page {
                 controller.resetSingleton10();
             }
             else {
+                ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
                 graphicController.req10result();
             }
         }

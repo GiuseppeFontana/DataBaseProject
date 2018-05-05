@@ -66,7 +66,9 @@ public class Req_7_Page {
                     GraphicController graphicController = new GraphicController();
                     graphicController.alertError(msg2);
                 }
-
+                else {
+                    ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+                }
             }
         }
         catch (NumberFormatException nfe){

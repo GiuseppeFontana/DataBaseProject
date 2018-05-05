@@ -72,6 +72,7 @@ public class Req_8_Page {
                 Double dimension = Double.parseDouble(DimensionText.getText());
                 DBController dbController = new DBController();
                 dbController.ricercaInRegione(getTipoRicerca(), dimension, longitude, latitude);
+                ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
             }
         }catch (NumberFormatException nfe){
             try {

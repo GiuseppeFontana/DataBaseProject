@@ -63,6 +63,7 @@ public class Req_6_Page {
             else {
                 DBController dbController = new DBController();
                 dbController.ricercaPerContrastoEdEllitticita(percBrillanza, elliptMin,elliptMax);
+                ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
                 //graphicController.req6Res(percBrillanza,elliptMin, elliptMax);
 
                 /*DBController dbController = new DBController();

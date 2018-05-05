@@ -200,6 +200,7 @@ public class DBController {
                         }
                     }
                 }else {
+                    //TODO c'entra mooooooolto spesso qua dentro
                     System.out.println("Something's gone wrong for this structure.");
                 }
             }
