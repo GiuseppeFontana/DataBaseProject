@@ -136,35 +136,30 @@ public class Req10Dao {
             ResultSet rs1 = stmt1.executeQuery(sql1);
             ResultSet rs2 = stmt1.executeQuery(sql2);
 
+            System.out.println(rs1.isClosed());
+            //TODO i resultset sono chiusi già da qui, quindi non va avanti
+
             if (!rs1.first() && !rs2.first()) {
                 System.out.println("Resultset vuoto.");
                 return false;
-            } else {
+            }
+            else {
 
                 Controller controller = new Controller();
                 ArrayList<Req10AllBoundsBean> array = new ArrayList<>();
                 SingletonReq10.getInstance().setAllBoundsBeans(array);
 
-                if (!rs1.first()) {
-                    Req10AllBoundsBean bean1 = controller.createReq10AllBoundsBean(
-                            rs1.getInt("id"),
-                            satellite1
-                    );
-
+                if (rs1.first()) {
+                    Req10AllBoundsBean bean1 = controller.createReq10AllBoundsBean(rs1.getInt("id"), satellite1);
                     SingletonReq10.getInstance().getAllBoundsBeans().add(bean1);
 
                     while (rs1.next()) {
-                        Req10AllBoundsBean bean = controller.createReq10AllBoundsBean(
-                                rs1.getInt("id"),
-                                satellite1
-                        );
-
+                        Req10AllBoundsBean bean = controller.createReq10AllBoundsBean(rs1.getInt("id"), satellite1);
                         SingletonReq10.getInstance().getAllBoundsBeans().add(bean);
                     }
                 }
 
-                if (!rs2.first()) {
-
+                if (rs2.first()) {
                     Req10AllBoundsBean bean1 = controller.createReq10AllBoundsBean(
                             rs2.getInt("id"),
                             satellite2
@@ -296,5 +291,4 @@ public class Req10Dao {
         return false;
     }
 
-    //TODO finire
 }

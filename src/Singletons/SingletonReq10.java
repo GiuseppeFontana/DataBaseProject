@@ -25,6 +25,9 @@ public class SingletonReq10 {
 
 
     //valori da stampare
+    private int total_false;
+    private int total_true;
+
     private int unbound_false;
     private int prestellar_false;
     private int protostellar_false;
@@ -74,6 +77,22 @@ public class SingletonReq10 {
 
     public void setBeansToShow(ArrayList<Req9_10Bean> beansToShow) {
         this.beansToShow = beansToShow;
+    }
+
+    public int getTotal_false() {
+        return total_false;
+    }
+
+    public void setTotal_false(int total_false) {
+        this.total_false = total_false;
+    }
+
+    public int getTotal_true() {
+        return total_true;
+    }
+
+    public void setTotal_true(int total_true) {
+        this.total_true = total_true;
     }
 
     public int getUnbound_false() {

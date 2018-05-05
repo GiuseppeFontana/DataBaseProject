@@ -71,7 +71,7 @@ public class Req_9_Result {
     public void start() throws Exception{
 
         Controller controller = new Controller();
-        controller.calcolaTipi();
+        controller.calcolaTipi9();
 
         System.out.println("unbound: " + SingletonReq9.getInstance().getUnbound() +
                 "\nprestellar: " + SingletonReq9.getInstance().getPrestellar() +
@@ -81,7 +81,8 @@ public class Req_9_Result {
         int size = SingletonReq9.getInstance().getBeans().size();
 
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(Req_9_Result.class.getResource("req_9_result.fxml"));        AnchorPane root = loader.load();
+        FXMLLoader loader = new FXMLLoader(Req_9_Result.class.getResource("req_9_result.fxml"));
+        AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
 
         labelTotal = new Label();
@@ -162,7 +163,7 @@ public class Req_9_Result {
 
     public void parseBean(Integer id, String name){
         Controller controller = new Controller();
-        list.add(controller.createReq9Bean(id,name));
+        list.add(controller.createReq9_10Bean(id,name));
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
         tableView.setItems(list);

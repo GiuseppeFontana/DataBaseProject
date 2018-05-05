@@ -2,6 +2,7 @@ package Control;
 
 import Bean.Req10StarBean;
 import Bean.Req6_8SquareBean;
+import Bean.Req9_10Bean;
 import Dao.*;
 import Dao.SatelliteDao;
 import Singletons.SingletonReq10;
@@ -204,9 +205,17 @@ public class DBController {
             }
         }
 
-
-
-        //TODO finire
+        ArrayList<Req9_10Bean> beans = new ArrayList<>();
+        SingletonReq10.getInstance().setBeansToShow(beans);
+        Controller controller = new Controller();
+        for (int i = 0; i < SingletonReq10.getInstance().getStarBeans().size(); i++){
+            SingletonReq10.getInstance().getBeansToShow().add(
+                    controller.createReq9_10Bean(
+                            SingletonReq10.getInstance().getStarBeans().get(i).getStar().getId(),
+                            SingletonReq10.getInstance().getStarBeans().get(i).getStar().getName()
+                    )
+            );
+        }
 
         return true;
     }

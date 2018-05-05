@@ -75,6 +75,8 @@ public class Controller {
         SingletonReq10.getInstance().setStarBeans(null);
         SingletonReq10.getInstance().setStructureBounds(null);
 
+        SingletonReq10.getInstance().setTotal_false(0);
+        SingletonReq10.getInstance().setTotal_true(0);
         SingletonReq10.getInstance().setUnbound_false(0);
         SingletonReq10.getInstance().setUnbound_true(0);
         SingletonReq10.getInstance().setPrestellar_false(0);
@@ -100,7 +102,7 @@ public class Controller {
         SingletonReq9.getInstance().setBeans(new ArrayList<>());
         for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
             SingletonReq9.getInstance().getBeans().add(
-                    createReq9Bean(SingletonReq9.getInstance().getStars().get(i).getId(),
+                    createReq9_10Bean(SingletonReq9.getInstance().getStars().get(i).getId(),
                             SingletonReq9.getInstance().getStars().get(i).getName()));
         }
     }
@@ -249,7 +251,7 @@ public class Controller {
         return req7Bean;
     }
 
-    public Req9_10Bean createReq9Bean(int id, String name){
+    public Req9_10Bean createReq9_10Bean(int id, String name){
         Req9_10Bean bean = new Req9_10Bean();
         bean.setId(id);
         bean.setName(name);
@@ -320,7 +322,7 @@ public class Controller {
         return true;
     }
 
-    public void calcolaTipi() {
+    public void calcolaTipi9() {
         for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
             if (SingletonReq9.getInstance().getStars().get(i).getType().equals("UNBOUND")){
                 SingletonReq9.getInstance().setUnbound(SingletonReq9.getInstance().getUnbound()+1);
@@ -331,30 +333,36 @@ public class Controller {
             if (SingletonReq9.getInstance().getStars().get(i).getType().equals("PROTOSTELLAR")) {
                 SingletonReq9.getInstance().setProtostellar(SingletonReq9.getInstance().getProtostellar() + 1);
             }
-
-//            switch (SingletonReq9.getInstance().getStars().get(i).getType()){
-//                case "PROTOSTELLAR":
-//                SingletonReq9.getInstance().setProtostellar(SingletonReq9.getInstance().getProtostellar()+1);
-//                case "UNBOUND":
-//                    SingletonReq9.getInstance().setUnbound(SingletonReq9.getInstance().getUnbound()+1);
-//                case "PRESTELLAR":
-//                    SingletonReq9.getInstance().setPrestellar(SingletonReq9.getInstance().getPrestellar()+1);
-//
-//            }
         }
-
-//        for (Star star : SingletonReq9.getInstance().getStars()){
-//            if (star.getType().equals("UNBOUND")){
-//                SingletonReq9.getInstance().setUnbound(SingletonReq9.getInstance().getUnbound()+1);
-//            }
-//            if (star.getType().equals("PRESTELLAR")){
-//                SingletonReq9.getInstance().setPrestellar(SingletonReq9.getInstance().getPrestellar()+1);
-//            }
-//            if (star.getType().equals("PROTOSTELLAR")){
-//                SingletonReq9.getInstance().setProtostellar(SingletonReq9.getInstance().getProtostellar()+1);
-//            }
-//        }
     }
 
+    public void calcolaTipi10() {
+        for (int i = 0; i < SingletonReq10.getInstance().getStarBeans().size(); i++){
+            if (SingletonReq10.getInstance().getStarBeans().get(i).getStar().getType().equals("UNBOUND")){
+                if (SingletonReq10.getInstance().getStarBeans().get(i).isInStructure()){
+                    SingletonReq10.getInstance().setUnbound_true(SingletonReq10.getInstance().getUnbound_true()+1);
+                }
+                else {
+                    SingletonReq10.getInstance().setUnbound_false(SingletonReq10.getInstance().getUnbound_false()+1);
+                }
+            }
+            if (SingletonReq10.getInstance().getStarBeans().get(i).getStar().getType().equals("PRESTELLAR")){
+                if (SingletonReq10.getInstance().getStarBeans().get(i).isInStructure()){
+                    SingletonReq10.getInstance().setPrestellar_true(SingletonReq10.getInstance().getPrestellar_true()+1);
+                }
+                else {
+                    SingletonReq10.getInstance().setPrestellar_false(SingletonReq10.getInstance().getPrestellar_false()+1);
+                }
+            }
+            if (SingletonReq10.getInstance().getStarBeans().get(i).getStar().getType().equals("PROTOSTELLAR")){
+                if (SingletonReq10.getInstance().getStarBeans().get(i).isInStructure()){
+                    SingletonReq10.getInstance().setProtostellar_true(SingletonReq10.getInstance().getProtostellar_true()+1);
+                }
+                else {
+                    SingletonReq10.getInstance().setProtostellar_false(SingletonReq10.getInstance().getProtostellar_false()+1);
+                }
+            }
+        }
+    }
 
 }
