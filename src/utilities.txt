@@ -37,3 +37,14 @@ TODO pagina importazione csv lato admin
 TODO valutare la creazione degli indici aggiuntivi
 
 TODO inserire chiave esterne al database
+
+TODO
+il requisito 10 non è completamente corretto, se scelgo un rettangolo molto molto piccolo,
+le stelle che contiene sono segnate tutte come fuori struttura, anche quando non è vero;
+metterlo nei documenti.
+
+
+
+
+
+TODO pagine alessia

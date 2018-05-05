@@ -42,6 +42,10 @@ public class Controller {
         SingletonStar.getInstance().setStar(null);
     }
 
+    public void resetingleton5() {
+        SingletonReq5.getInstance().setBean(null);
+    }
+
     public void resetSingleton6(){
         SingletonReq6.getInstance().setBeans(null);
         SingletonReq6.getInstance().setTotaleStrutture(null);
@@ -351,4 +355,6 @@ public class Controller {
 //            }
 //        }
     }
+
+
 }

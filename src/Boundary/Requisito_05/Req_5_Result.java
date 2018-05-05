@@ -1,5 +1,6 @@
 package Boundary.Requisito_05;
 
+import Control.Controller;
 import Singletons.SingletonReq5;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,8 @@ public class Req_5_Result {
 
     public void close(ActionEvent actionEvent) {
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        Controller controller = new Controller();
+        controller.resetingleton5();
     }
 
     public void start() throws Exception {

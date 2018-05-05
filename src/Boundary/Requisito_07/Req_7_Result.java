@@ -166,6 +166,7 @@ public class Req_7_Result {
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
         controller.resetSingleton7();
+
     }
 
     public void parseBean(Integer id, String name, String satellite, Integer n){
