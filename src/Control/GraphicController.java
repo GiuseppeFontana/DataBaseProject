@@ -129,7 +129,6 @@ public class GraphicController extends Application {
         showStar.show();
     }
 
-
     public void req10page() throws Exception{
         Req_10_Page req_10_page = new Req_10_Page();
         req_10_page.start();

@@ -1,8 +1,10 @@
 package Control;
 
+import Bean.Req10StarBean;
 import Bean.Req6_8SquareBean;
 import Dao.*;
 import Dao.SatelliteDao;
+import Singletons.SingletonReq10;
 import Singletons.SingletonReq8;
 import Singletons.SingletonReq9;
 
@@ -183,6 +185,24 @@ public class DBController {
             return false;
         }
 
+        if (Req10Dao.searchBoundsInArea(lonMin, lonMax, latMin, latMax)){
+            Controller controller = new Controller();
+            // vedere quali stelle cadono nelle strutture
+            for (int j = 0; j < SingletonReq10.getInstance().getAllBoundsBeans().size(); j++){
+                // riempire l'array dei bound
+                if (Req10Dao.getBounds(SingletonReq10.getInstance().getAllBoundsBeans().get(j).getId(),
+                        SingletonReq10.getInstance().getAllBoundsBeans().get(j).getSatellite())){
+                    // effettuare il calcolo
+                    for (int k = 0; k < SingletonReq10.getInstance().getStarBeans().size(); k++){
+                        if ((!SingletonReq10.getInstance().getStarBeans().get(k).isInStructure()) && controller.isInStruct10(SingletonReq10.getInstance().getStarBeans().get(k).getStar())){
+                            SingletonReq10.getInstance().getStarBeans().get(k).setInStructure(true);
+                        }
+                    }
+                }else {
+                    System.out.println("Something's gone wrong for this structure.");
+                }
+            }
+        }
 
         //TODO finire
 

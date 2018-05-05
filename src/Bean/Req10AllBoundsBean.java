@@ -3,18 +3,18 @@ package Bean;
 import Entity.Bound;
 
 public class Req10AllBoundsBean {
-    private Bound bound;
+    private int id;
     private String satellite;
 
     public Req10AllBoundsBean(){
     }
 
-    public Bound getBound() {
-        return bound;
+    public int getId() {
+        return id;
     }
 
-    public void setBound(Bound bound) {
-        this.bound = bound;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getSatellite() {

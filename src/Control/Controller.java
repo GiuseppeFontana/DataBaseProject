@@ -138,7 +138,25 @@ public class Controller {
 
     // requisito 10
 
+    public boolean isInStruct10(Star star) {
 
+        double k = 0;
+        ArrayList<Bound> array = SingletonReq10.getInstance().getStructureBounds();
+
+        for (int i = 0; i < array.size()-1; i++){
+            double j = Math.atan(((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())-
+                    (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLongitude()-star.getgLon()))
+                    /
+                    ((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLongitude()-star.getgLon())+
+                            (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLatitude()-star.getgLat())));
+            k += j;
+        }
+
+        if (Math.abs(k) >= 0.01){
+            return true;
+        }
+        return false;
+    }
 
 
 
@@ -235,18 +253,18 @@ public class Controller {
         return bean;
     }
 
-    public Req10AllBoundsBean createReq10AllBoundsBean(Bound bound, String satellite){
+    public Req10AllBoundsBean createReq10AllBoundsBean(int id, String satellite){
         Req10AllBoundsBean bean = new Req10AllBoundsBean();
-        bean.setBound(bound);
+        bean.setId(id);
         bean.setSatellite(satellite);
 
         return  bean;
     }
 
     public Req10StarBean createReq10StarBean (Star star){
-        // non devo mettere il boolean perchè me lo calcolo dopo la creazione
         Req10StarBean bean = new Req10StarBean();
         bean.setStar(star);
+        bean.setInStructure(false);
 
         return bean;
     }
@@ -298,7 +316,6 @@ public class Controller {
         return true;
     }
 
-
     public void calcolaTipi() {
         for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
             if (SingletonReq9.getInstance().getStars().get(i).getType().equals("UNBOUND")){
@@ -311,27 +328,27 @@ public class Controller {
                 SingletonReq9.getInstance().setProtostellar(SingletonReq9.getInstance().getProtostellar() + 1);
             }
 
-            /*switch (SingletonReq9.getInstance().getStars().get(i).getType()){
-                case "PROTOSTELLAR":
-                SingletonReq9.getInstance().setProtostellar(SingletonReq9.getInstance().getProtostellar()+1);
-                case "UNBOUND":
-                    SingletonReq9.getInstance().setUnbound(SingletonReq9.getInstance().getUnbound()+1);
-                case "PRESTELLAR":
-                    SingletonReq9.getInstance().setPrestellar(SingletonReq9.getInstance().getPrestellar()+1);
-
-            }*/
+//            switch (SingletonReq9.getInstance().getStars().get(i).getType()){
+//                case "PROTOSTELLAR":
+//                SingletonReq9.getInstance().setProtostellar(SingletonReq9.getInstance().getProtostellar()+1);
+//                case "UNBOUND":
+//                    SingletonReq9.getInstance().setUnbound(SingletonReq9.getInstance().getUnbound()+1);
+//                case "PRESTELLAR":
+//                    SingletonReq9.getInstance().setPrestellar(SingletonReq9.getInstance().getPrestellar()+1);
+//
+//            }
         }
 
-        /*for (Star star : SingletonReq9.getInstance().getStars()){
-            if (star.getType().equals("UNBOUND")){
-                SingletonReq9.getInstance().setUnbound(SingletonReq9.getInstance().getUnbound()+1);
-            }
-            if (star.getType().equals("PRESTELLAR")){
-                SingletonReq9.getInstance().setPrestellar(SingletonReq9.getInstance().getPrestellar()+1);
-            }
-            if (star.getType().equals("PROTOSTELLAR")){
-                SingletonReq9.getInstance().setProtostellar(SingletonReq9.getInstance().getProtostellar()+1);
-            }
-        }*/
+//        for (Star star : SingletonReq9.getInstance().getStars()){
+//            if (star.getType().equals("UNBOUND")){
+//                SingletonReq9.getInstance().setUnbound(SingletonReq9.getInstance().getUnbound()+1);
+//            }
+//            if (star.getType().equals("PRESTELLAR")){
+//                SingletonReq9.getInstance().setPrestellar(SingletonReq9.getInstance().getPrestellar()+1);
+//            }
+//            if (star.getType().equals("PROTOSTELLAR")){
+//                SingletonReq9.getInstance().setProtostellar(SingletonReq9.getInstance().getProtostellar()+1);
+//            }
+//        }
     }
 }
