@@ -70,9 +70,16 @@ public class Req_8_Page {
                 Double longitude = Double.parseDouble(LongCentreText.getText());
                 Double latitude = Double.parseDouble(LatCentreText.getText());
                 Double dimension = Double.parseDouble(DimensionText.getText());
-                DBController dbController = new DBController();
-                dbController.ricercaInRegione(getTipoRicerca(), dimension, longitude, latitude);
-                ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+                if (latitude<-90 || latitude>90 || longitude<0 || longitude>=360 || dimension>360){
+                    String msg = "Ricontrolla le coordinate;\nlatitudine [-90; 90]\nlongitudine [0;360)\nestensione (0;360]";
+                    GraphicController graphicController = new GraphicController();
+                    graphicController.alertError(msg);
+                }
+                else {
+                    DBController dbController = new DBController();
+                    dbController.ricercaInRegione(getTipoRicerca(), dimension, longitude, latitude);
+                    ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+                }
             }
         }catch (NumberFormatException nfe){
             try {

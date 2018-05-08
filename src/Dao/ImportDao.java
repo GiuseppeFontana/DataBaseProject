@@ -39,7 +39,7 @@ public class ImportDao {
             System.out.println(sql2);
             ps2 = conn.prepareStatement(sql2);
             int resImp = ps2.executeUpdate();
-            System.out.println("Imported "+resImp+" rows...");
+            System.out.println("Imported " + resImp + " rows...");
 
 
             //TODO se non va a buon fine fai rollback

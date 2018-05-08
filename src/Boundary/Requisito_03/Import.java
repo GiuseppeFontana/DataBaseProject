@@ -94,8 +94,11 @@ public class Import {
 
         if (!extension.equals(".csv")){
 
-            Alert alert = new Alert();
-            alert.incorrectLoginField("Il file selezionato non è un csv");
+            String msg = "Il file selezionato non è un csv";
+            GraphicController graphicController = new GraphicController();
+            graphicController.alertError(msg);
+            /*Alert alert = new Alert();
+            alert.incorrectLoginField("Il file selezionato non è un csv");*/
 
         }else {
             textPath.clear();
@@ -128,8 +131,11 @@ public class Import {
         }
 
         if (textPath.getText().isEmpty()){
-            Alert alert = new Alert();
-            alert.incorrectLoginField("Inserire il percorso del nuovo file CSV");
+            String msg = "Inserire il percorso del nuovo file CSV";
+            GraphicController graphicController = new GraphicController();
+            graphicController.alertError(msg);
+            /*Alert alert = new Alert();
+            alert.incorrectLoginField("Inserire il percorso del nuovo file CSV");*/
         }else {
 
             //System.out.println("Ecco il path:   " + textPath.getText());

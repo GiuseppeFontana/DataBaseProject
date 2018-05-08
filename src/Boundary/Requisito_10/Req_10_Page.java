@@ -91,6 +91,14 @@ public class Req_10_Page {
                 return;
             }
 
+            if (centreLat<-90 || centreLat>90 || centreLon<0 || centreLon>=360 ||
+                    extLat>180 || extLon>360){
+                String msg = "Ricontrolla l'input; nell'ordine:\n(0;360]\n(0;180]\n[0;360)\n[-90; 90]";
+                GraphicController graphicController = new GraphicController();
+                graphicController.alertError(msg);
+                return;
+            }
+
             DBController dbController = new DBController();
             GraphicController graphicController = new GraphicController();
             if (!dbController.ricercaStelleInRegione(extLon, extLat, centreLon, centreLat)){
