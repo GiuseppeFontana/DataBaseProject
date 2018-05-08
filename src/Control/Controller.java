@@ -363,6 +363,18 @@ public class Controller {
                 }
             }
         }
+
+        SingletonReq10.getInstance().setTotal_true(
+                SingletonReq10.getInstance().getUnbound_true()+
+                SingletonReq10.getInstance().getPrestellar_true()+
+                SingletonReq10.getInstance().getProtostellar_true()
+        );
+
+        SingletonReq10.getInstance().setTotal_false(
+                SingletonReq10.getInstance().getUnbound_false()+
+                        SingletonReq10.getInstance().getPrestellar_false()+
+                        SingletonReq10.getInstance().getProtostellar_false()
+        );
     }
 
 }

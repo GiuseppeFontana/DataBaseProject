@@ -182,13 +182,17 @@ public class DBController {
         double latMin = centreLat - extLat/2;
         double latMax = centreLat + extLat/2;
 
+        System.out.println("Ricerca stelle nella regione...");
         if (!Req10Dao.searchStarsInArea(lonMin, lonMax, latMin, latMax)){
             return false;
         }
 
+        System.out.println("Ricerca strutture nella regione...");
         if (Req10Dao.searchBoundsInArea(lonMin, lonMax, latMin, latMax)){
+
             Controller controller = new Controller();
             // vedere quali stelle cadono nelle strutture
+            System.out.println("Calcolo appartenenza alle strutture...");
             for (int j = 0; j < SingletonReq10.getInstance().getAllBoundsBeans().size(); j++){
                 // riempire l'array dei bound
                 if (Req10Dao.getBounds(SingletonReq10.getInstance().getAllBoundsBeans().get(j).getId(),
@@ -200,12 +204,12 @@ public class DBController {
                         }
                     }
                 }else {
-                    //TODO c'entra mooooooolto spesso qua dentro
-                    System.out.println("Something's gone wrong for this structure.");
+                    System.out.println("Something's gone wrong.");
                 }
             }
         }
 
+        System.out.println("Inizzializzo la GUI...");
         ArrayList<Req9_10Bean> beans = new ArrayList<>();
         SingletonReq10.getInstance().setBeansToShow(beans);
         Controller controller = new Controller();

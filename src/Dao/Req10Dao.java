@@ -124,19 +124,17 @@ public class Req10Dao {
             stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             stmt2 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
-            String satellite1 = "herschel";
-            String satellite2 = "spitzer";
+            String herschel = "herschel";
+            String spitzer = "spitzer";
 
-            String sql1 = String.format(Strings.strReq102, satellite1, lonMin, lonMax, latMin, latMax);
+            String sql1 = String.format(Strings.strReq102, herschel, lonMin, lonMax, latMin, latMax);
             System.out.println(sql1);
 
-            String sql2 = String.format(Strings.strReq102, satellite1, lonMin, lonMax, latMin, latMax);
+            String sql2 = String.format(Strings.strReq102, spitzer, lonMin, lonMax, latMin, latMax);
             System.out.println(sql2);
 
             ResultSet rs1 = stmt1.executeQuery(sql1);
             ResultSet rs2 = stmt2.executeQuery(sql2);
-
-            //TODO i resultset sono chiusi già da qui, quindi non va avanti
 
             if (!rs1.first() && !rs2.first()) {
                 System.out.println("Resultset vuoto.");
@@ -149,11 +147,13 @@ public class Req10Dao {
                 SingletonReq10.getInstance().setAllBoundsBeans(array);
 
                 if (rs1.first()) {
-                    Req10AllBoundsBean bean1 = controller.createReq10AllBoundsBean(rs1.getInt("id"), satellite1);
+                    Req10AllBoundsBean bean1 = controller.createReq10AllBoundsBean(rs1.getInt("id"),
+                            herschel);
                     SingletonReq10.getInstance().getAllBoundsBeans().add(bean1);
 
                     while (rs1.next()) {
-                        Req10AllBoundsBean bean = controller.createReq10AllBoundsBean(rs1.getInt("id"), satellite1);
+                        Req10AllBoundsBean bean = controller.createReq10AllBoundsBean(rs1.getInt("id"),
+                                herschel);
                         SingletonReq10.getInstance().getAllBoundsBeans().add(bean);
                     }
                 }
@@ -161,7 +161,7 @@ public class Req10Dao {
                 if (rs2.first()) {
                     Req10AllBoundsBean bean1 = controller.createReq10AllBoundsBean(
                             rs2.getInt("id"),
-                            satellite2
+                            spitzer
                     );
 
                     SingletonReq10.getInstance().getAllBoundsBeans().add(bean1);
@@ -169,7 +169,7 @@ public class Req10Dao {
                     while (rs2.next()) {
                         Req10AllBoundsBean bean = controller.createReq10AllBoundsBean(
                                 rs2.getInt("id"),
-                                satellite2
+                                spitzer
                         );
 
                         SingletonReq10.getInstance().getAllBoundsBeans().add(bean);
