@@ -1,6 +1,7 @@
 package Boundary.Requisito_03;
 
 import Boundary.Alert;
+import Control.DBController;
 import Control.GraphicController;
 import Dao.ImportDao;
 import javafx.event.ActionEvent;
@@ -108,22 +109,22 @@ public class Import {
         String table = null;
 
         if (rbHerschel.isSelected()){
-            instrument = "Herschel";
+            instrument = "herschel";
         }
         if (rbSpitzer.isSelected()){
-            instrument="Spitzer";
+            instrument="spitzer";
         }
         if (rbContorni.isSelected()){
-            table="Contorni";
+            table="boundaries";
         }
         if (rbScheletri.isSelected()) {
-            table="Scheletri";
+            table="skeletons";
         }
         if (rbStelle.isSelected()){
-            table="Stelle";
+            table="stars";
         }
         if (rbStrutture.isSelected()){
-            table="Strutture";
+            table="structures";
         }
 
         if (textPath.getText().isEmpty()){
@@ -133,9 +134,11 @@ public class Import {
 
             //System.out.println("Ecco il path:   " + textPath.getText());
 
-            ImportDao importDao = new ImportDao();
-            importDao.importa(table, instrument, /*getPath() */textPath.getText());
-
+            DBController dbController = new DBController();
+            dbController.importaCSV(table, instrument, /*getPath() */textPath.getText());
+            /*ImportDao importDao = new ImportDao();
+            importDao.importa(table, instrument, *//*getPath() *//*textPath.getText());*/
+            // TODO controllo della riuscita ed eventuale chiusura della pagina
 
         }
     }

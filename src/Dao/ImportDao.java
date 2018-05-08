@@ -31,13 +31,15 @@ public class ImportDao {
             String sql1 = String.format(Strings.strDelete, instrument, table);
             System.out.println(sql1);
             ps1 = conn.prepareStatement(sql1);
-            System.out.println(ps1.executeUpdate());
+            int resDel = ps1.executeUpdate();
+            System.out.println("rows deleted: "+resDel);
 
             //"COPY herschel_skeletons FROM '/home/giuseppe/Scrivania/basedati/modded_csv/scheletro_filamenti_Herschel.csv' DELIMITER ','"
             String sql2 =String.format(Strings.strImport, instrument, table, path);
             System.out.println(sql2);
             ps2 = conn.prepareStatement(sql2);
-            System.out.println(ps2.executeUpdate());
+            int resImp = ps2.executeUpdate();
+            System.out.println("Imported "+resImp+" rows...");
 
 
             //TODO se non va a buon fine fai rollback

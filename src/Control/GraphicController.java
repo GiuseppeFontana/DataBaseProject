@@ -141,10 +141,8 @@ public class GraphicController extends Application {
     }
 
     public void CSVImport() throws Exception{
-
         Import Import = new Import();
         Import.start();
-
     }
 
 }

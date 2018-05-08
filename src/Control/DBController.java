@@ -45,6 +45,11 @@ public class DBController {
         return true;
     }
 
+    public void importaCSV(String table, String instrument, String path){
+        ImportDao importDao = new ImportDao();
+        importDao.importa(table, instrument, path);
+    }
+
     public boolean infoDerivateFilamento(String instrument, int input) throws Exception {
 
         if (!Req5Dao.req5(instrument, input)) {

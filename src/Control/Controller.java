@@ -90,14 +90,11 @@ public class Controller {
 
     // requisito 9
     public void scanStars9() {
-        //System.out.println("stars before scan:" + SingletonReq9.getInstance().getStars().size());
         for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
             if (!isInStruct9(SingletonReq9.getInstance().getStars().get(i))){
                 SingletonReq9.getInstance().getStars().remove(i);
             }
         }
-        //TODO dopo lo scan il numero di stelle è quasi sempre lo stesso
-        //System.out.println("stars after scan:" + SingletonReq9.getInstance().getStars().size());
 
         SingletonReq9.getInstance().setBeans(new ArrayList<>());
         for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){

@@ -78,8 +78,10 @@ public class Req_3_Page {
 
     public void newCsv(ActionEvent actionEvent) throws Exception {
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-        Import imp = new Import();
-        imp.start();
+        GraphicController graphicController = new GraphicController();
+        graphicController.CSVImport();
+        /*Import imp = new Import();
+        imp.start();*/
     }
 }
 

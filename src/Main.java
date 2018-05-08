@@ -16,7 +16,7 @@ public class Main {
 /*
         // TODO finire gli import
         ImportDao dao = new ImportDao();
-        dao.importa("boundaries", "spitzer", "/home/giuseppe/Scrivania/basedati/modded_csv/contorni_filamenti_Spitzer.csv");
+        dao.importa("boundaries", "herschel", "/home/giuseppe/Scrivania/basedati/modded_csv/contorni_filamenti_Herschel.csv");
 */
     }
 }
