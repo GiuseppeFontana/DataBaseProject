@@ -272,6 +272,16 @@ public class Controller {
         return bean;
     }
 
+    public Req11_Bean createReq11_Bean(int nSegmenti, int Segmenti){
+        Req11_Bean req11_bean = new Req11_Bean();
+        req11_bean.setSegmenti(Segmenti);
+        req11_bean.setnSegmenti(nSegmenti);
+
+        return req11_bean;
+    }
+
+
+
     public boolean circSearch(Double dimension, Double longitude, Double latitude) {
         /*
         TODO per mattia, ottimizzare

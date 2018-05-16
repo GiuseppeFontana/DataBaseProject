@@ -1,6 +1,5 @@
 package Control;
 
-import Bean.Req10StarBean;
 import Bean.Req6_8SquareBean;
 import Bean.Req9_10Bean;
 import Dao.*;
@@ -11,6 +10,7 @@ import Singletons.SingletonReq9;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class DBController {
 
@@ -228,5 +228,20 @@ public class DBController {
         }
 
         return true;
+    }
+
+    public boolean Req11_segment(String sat, int id, int selection){
+
+        if(selection == 0){
+            return Req11Dao.numeroSegmenti(sat, id);
+
+        }
+        return true;
+    }
+
+    public Optional Req11_distance(int segmento){
+
+        return Req11Dao.coordinate(segmento);
+
     }
 }

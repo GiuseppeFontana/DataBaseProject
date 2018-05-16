@@ -1,7 +1,5 @@
 package Bean;
 
-import Entity.Bound;
-
 public class Req10AllBoundsBean {
     private int id;
     private String satellite;
