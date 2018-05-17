@@ -1,10 +1,12 @@
 package Boundary.Requisito_11;
 
+import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -18,11 +20,7 @@ public class Req_11_Page {
     @FXML
     private RadioButton rbHerschel;
     @FXML
-    private RadioButton rbSpitzer;
-    @FXML
     private TextField TextIDFil;
-    @FXML
-    private Button btnSearch;
 
     public void start() throws Exception{
         Stage stage = new Stage();
@@ -36,33 +34,40 @@ public class Req_11_Page {
 
     public void search(ActionEvent actionEvent) throws Exception {
 
-        /*
-        TODO MATTIA
-        manca il controllo
-        l'utente può non mettere satellite
-        non viene stampato nulla se l'utente sbaglia satellite o id
-        bottone per tornare indietro
-         */
         String sat;
-
         int id = Integer.parseInt(TextIDFil.getText());
-
         if (rbHerschel.isSelected()){
             sat = "herschel";
         }else {
             sat = "spitzer";
         }
+        if (id < 45 || id > 227){
+            Boundary.Alert alert = new Boundary.Alert();
+            alert.incorrectLoginField("Inserire un id compreso tra [45,227]");
+        }
+        else {
 
-        DBController dbController = new DBController();
-        dbController.Req11_segment(sat, id, 0);
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+            DBController dbController = new DBController();
+            dbController.Req11_segment(sat, id);
 
-        GraphicController graphicController = new GraphicController();
-        graphicController.req11result();
+            GraphicController graphicController = new GraphicController();
+            graphicController.req11result();
+        }
+    }
 
-        /*Req11Dao req11Dao = new Req11Dao();
-        req11Dao.numeroSegmenti(sat, id);*/
-
-
+    public void backHome(ActionEvent actionEvent) throws Exception {
+        ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        Controller controller = new Controller();
+        boolean admin = controller.getUserSingleton().getUser().getAdmin();
+        if (!admin) {
+            GraphicController graphicController = new GraphicController();
+            graphicController.homeUser();
+        }
+        if (admin) {
+            GraphicController graphicController = new GraphicController();
+            graphicController.homeAdmin();
+        }
     }
 
 }

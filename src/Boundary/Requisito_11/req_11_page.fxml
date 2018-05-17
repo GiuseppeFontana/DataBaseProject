@@ -4,17 +4,28 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_11.Req_11_Page">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_11.Req_11_Page">
    <children>
-      <RadioButton fx:id="rbSpitzer" layoutX="207.0" layoutY="191.0" mnemonicParsing="false" text="Spitzer">
+      <RadioButton fx:id="rbSpitzer" layoutX="303.0" layoutY="177.0" mnemonicParsing="false" text="Spitzer">
          <toggleGroup>
             <ToggleGroup fx:id="satellite" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="rbHerschel" layoutX="207.0" layoutY="151.0" mnemonicParsing="false" selected="true" text="Herschel" toggleGroup="$satellite" />
-      <TextField fx:id="TextIDFil" layoutX="203.0" layoutY="84.0" promptText="Id Filamento" />
-      <Button fx:id="btnSearch" layoutX="465.0" layoutY="314.0" mnemonicParsing="false" onAction="#search" text="Ok" />
+      <RadioButton fx:id="rbHerschel" layoutX="303.0" layoutY="137.0" mnemonicParsing="false" selected="true" text="Herschel" toggleGroup="$satellite" />
+      <TextField fx:id="TextIDFil" layoutX="258.0" layoutY="84.0" promptText="Id Filamento" />
+      <Button fx:id="btnSearch" layoutX="525.0" layoutY="540.0" mnemonicParsing="false" onAction="#search" prefHeight="41.0" prefWidth="74.0" text="Cerca" />
+      <Button fx:id="Req11BackButton" layoutX="75.0" layoutY="540.0" onAction="#backHome" mnemonicParsing="false" prefHeight="38.0" prefWidth="41.0">
+         <graphic>
+            <ImageView fx:id="Req10PageBackImg" fitHeight="31.0" fitWidth="31.0">
+               <image>
+                  <Image url="@../../images/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

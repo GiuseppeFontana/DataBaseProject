@@ -41,7 +41,6 @@ public class Req11Dao {
             ResultSet nSegmenti = stmt.executeQuery(query);
 
 
-
             ArrayList<Req11_Bean> beans = new ArrayList<>();
             SingletonReq11.getInstance().setBeans(beans);
             Controller controller = new Controller();
@@ -62,7 +61,7 @@ public class Req11Dao {
                 }
 
 
-        }catch (SQLException | ClassNotFoundException e){   //TODO MATTIA perchè classnotfound?
+        }catch (SQLException | ClassNotFoundException e){
             e.printStackTrace();
             return false;
         }
@@ -72,13 +71,15 @@ public class Req11Dao {
 
     //-----------------Trovo le coordinate dei vertici del segmento selezionato--------------------------------//
 
-    public static Optional coordinate(int Segmento){
+    public static ArrayList coordinate(int Segmento){
 
         Statement stmt = null;
         Connection conn = null;
 
+        Optional<Double> distanzaMinima_primo = null;
+        Optional<Double> distanzaMinima_secondo = null;
 
-        Optional<Double> distanzaMinima = null;
+        ArrayList<Optional> distanze = new ArrayList<>();
 
         String sat = SingletonReq11.getInstance().getSat();
         int id = SingletonReq11.getInstance().getId();
@@ -94,7 +95,7 @@ public class Req11Dao {
 
             String query3 = String.format(Strings.strReq11_3, sat, Segmento);  //Trovo n massimo
             ResultSet rs = stmt.executeQuery(query3);
-            ArrayList<Integer> k = new ArrayList<Integer>();
+            ArrayList<Integer> k = new ArrayList<>(); //k contiene il vertice minimo e massimo
 
             if (rs.next()) {
                 k.add(1);
@@ -115,6 +116,7 @@ public class Req11Dao {
                 if (resultSet[i].next()) {
                     LonVertex.add(resultSet[i].getDouble(1));
                 }
+
             }
 
             ResultSet resultSet1[] = new ResultSet[2];
@@ -127,14 +129,11 @@ public class Req11Dao {
                 if (resultSet1[i].next()) {
                     LatVertex.add(resultSet1[i].getDouble(1));
                 }
-
             }
-
-
             //-----------------Trovo le coordinate dei contorni del filamento-----------------------------------//
 
             String query5 = String.format(Strings.strReq11_4, sat, id);
-            String query6 = String.format(Strings.strReq11_4, sat, id);
+            String query6 = String.format(Strings.strReq11_4_1, sat, id);
 
             ResultSet contorniFil_lon = stmt.executeQuery(query5);
             ArrayList<Double> lonContorniFilamento = new ArrayList<>();
@@ -143,7 +142,6 @@ public class Req11Dao {
 
             while (contorniFil_lon.next()) {
                 lonContorniFilamento.add(contorniFil_lon.getDouble(1));
-                //latContorniFilamento.add(contorniFil.getDouble(2));
             }
 
             ResultSet contorniFil_lat = stmt.executeQuery(query6);
@@ -156,29 +154,50 @@ public class Req11Dao {
             //----------------Calcolo la distanza dei vertici del segmento selezionato dal contorno
             //----------------e le metto in array--------------------------------------------------------------//
 
-            ArrayList<Double> distanze = new ArrayList<>();
 
-            for (int i = 0; i<lonContorniFilamento.size(); i++){
+            ArrayList<Double> distanze_primo = new ArrayList<>();
+            ArrayList<Double> distanze_secondo = new ArrayList<>();
 
+            Double lon_primo = LonVertex.get(0);
+            Double lat_primo = LatVertex.get(0);
+
+            for (int i = 0; i<lonContorniFilamento.size(); i++) {
+
+                Double prova = ((lon_primo - lonContorniFilamento.get(i))*(lon_primo - lonContorniFilamento.get(i))) + ((lat_primo - latContorniFilamento.get(i))*(lat_primo - latContorniFilamento.get(i)));
+                Double minima = Math.sqrt(prova);
+                distanze_primo.add(minima);
+
+            }
+            distanzaMinima_primo= distanze_primo.stream().reduce(Double::min);
+
+            Double lon_secondo = LonVertex.get(1);
+            Double lat_secondo = LatVertex.get(1);
+
+            for (int i = 0; i < lonContorniFilamento.size(); i++){
+
+                Double prova = ((lon_secondo - lonContorniFilamento.get(i))*(lon_secondo - lonContorniFilamento.get(i))) + ((lat_secondo - latContorniFilamento.get(i))*(lat_secondo - latContorniFilamento.get(i)));
+                Double minima = Math.sqrt(prova);
+                distanze_secondo.add(minima);
+
+            }
+            distanzaMinima_secondo= distanze_secondo.stream().reduce(Double::min);
+            
+            distanze.add(distanzaMinima_primo);
+            distanze.add(distanzaMinima_secondo);
+
+            /*for (int i = 0; i<lonContorniFilamento.size(); i++){
                 for (int s = 0; s<LatVertex.size(); s++){
-
                     Double prova = ((LonVertex.get(s) - lonContorniFilamento.get(s))*(LonVertex.get(s) - lonContorniFilamento.get(s))-(LatVertex.get(s)) - (latContorniFilamento.get(s))*(LatVertex.get(s) - latContorniFilamento.get(s)));
                     Double minima = Math.sqrt(prova);
                     distanze.add(minima);
                 }
 
-            }
+            }*/
 
-            System.out.println("FINE");
-
-            distanzaMinima= distanze.stream().reduce(Double::min);
-
-            System.out.println("Distanza minima: " + distanzaMinima);
-
-        }catch (SQLException  | ClassNotFoundException e){
+        }catch (Exception e ){
             e.printStackTrace();
         }
-        return distanzaMinima;
+        return distanze;
     }
 
 }

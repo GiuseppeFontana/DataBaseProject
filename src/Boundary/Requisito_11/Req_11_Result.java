@@ -2,12 +2,16 @@ package Boundary.Requisito_11;
 
 import Bean.Req11_Bean;
 import Boundary.Alert;
+import Control.Controller;
 import Control.DBController;
+import Control.GraphicController;
 import Singletons.SingletonReq11;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -39,6 +43,9 @@ public class Req_11_Result {
         ((AnchorPane) scene.getRoot()).getChildren().addAll(tableView);
         tableView.setItems(list);
         tableView.getColumns().addAll(columnName);
+        tableView.setPrefSize(142, 510);
+        tableView.setLayoutX(50);
+        tableView.setLayoutY(25);
 
         stage.setResizable(false);
         stage.setScene(scene);
@@ -49,9 +56,11 @@ public class Req_11_Result {
             try {
                 int segmento = tableView.getSelectionModel().getSelectedItem().getSegmenti();
                 DBController dbController = new DBController();
-                String total2 = String.valueOf(dbController.Req11_distance(segmento));
                 Alert alert = new Alert();
-                alert.incorrectLoginField("Distanza minima = \n" + total2.substring(8));
+                alert.incorrectLoginField("Distanza minima primo vertice \n\n" + String.valueOf(dbController.Req11_distance(segmento).get(0)).substring(8) +
+                "\n\n Distanza minima secondo vertice \n\n" + String.valueOf(dbController.Req11_distance(segmento).get(1)).substring(8));
+
+                        //total2.substring(8)
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -76,6 +85,17 @@ public class Req_11_Result {
 
     }
 
-    //TODO bottone indietro
-
+    public void backHome(ActionEvent actionEvent) throws Exception {
+        ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        Controller controller = new Controller();
+        boolean admin = controller.getUserSingleton().getUser().getAdmin();
+        if (!admin) {
+            GraphicController graphicController = new GraphicController();
+            graphicController.req11page();
+        }
+        if (admin) {
+            GraphicController graphicController = new GraphicController();
+            graphicController.req11page();
+        }
+    }
 }

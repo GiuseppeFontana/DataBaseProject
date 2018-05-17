@@ -230,16 +230,13 @@ public class DBController {
         return true;
     }
 
-    public boolean Req11_segment(String sat, int id, int selection){
+    public boolean Req11_segment(String sat, int id){
 
-        if(selection == 0){
             return Req11Dao.numeroSegmenti(sat, id);
 
-        }
-        return true;
     }
 
-    public Optional Req11_distance(int segmento){
+    public ArrayList Req11_distance(int segmento){
 
         return Req11Dao.coordinate(segmento);
 
