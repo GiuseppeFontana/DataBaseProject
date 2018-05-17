@@ -13,9 +13,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Login extends Application {
+    @FXML
+    private Text usernameLabel;
     @FXML
     private PasswordField loginPassowrdField;
     @FXML
@@ -46,11 +50,13 @@ public class Login extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        //usernameLabel.setFill(Color.WHITE);
         Stage thirdStage = new Stage();
         FXMLLoader loader = new FXMLLoader(Login.class.getResource("login.fxml"));
         //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/login.fxml"));
         AnchorPane root = loader.load();
         thirdStage.setTitle("Interstellar");
+        thirdStage.setResizable(false);
         Scene scene = new Scene(root, 600, 338);
         thirdStage.setScene(scene);
         thirdStage.show();

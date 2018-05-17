@@ -36,6 +36,13 @@ public class Req_11_Page {
 
     public void search(ActionEvent actionEvent) throws Exception {
 
+        /*
+        TODO MATTIA
+        manca il controllo
+        l'utente può non mettere satellite
+        non viene stampato nulla se l'utente sbaglia satellite o id
+        bottone per tornare indietro
+         */
         String sat;
 
         int id = Integer.parseInt(TextIDFil.getText());

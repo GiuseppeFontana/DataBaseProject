@@ -1,6 +1,3 @@
-UTILITIES
-
-
         MODELLO LOGICO
 ---------------AGENZIA(NomeAgenzia)
 SATELLITE (NomeSatellite, InizioAttività, FineAttività*, Agenzia)
@@ -13,29 +10,28 @@ SCHELETRO (IDFilamento, IDSegmento, TipoRamo, Longitudine, Latitudine, NumeroPro
 ---------------SEGMENTO (IDSegmento)
 STELLA (IDSorgente, NomeSorgente, Tipologia, ValoreFlusso, Latitudine, Longitudine)
 
-
-
-COPY country FROM '/usr1/proj/bray/sql/country_data';
-COPY country TO STDOUT (DELIMITER '|');
-
-
 psql postgresql://localhost:5432/dbserver -U postgres
 sudo /etc/init.d/postgresql restart
 sudo service postgresql restart
-
 
 
 3) TODO progettazione fisica
     valutare se ridondare l'attributo nomefilamento di filamento dentro contorno, per la req.5
     valutare se creare l'attributo numerosegmenti dentro filamento, per la req.7
 
-TODO pagina importazione csv lato admin
-
 TODO valutare la creazione degli indici aggiuntivi
 
-TODO inserire chiave esterne al database
+TODO inserire chiavi esterne al database
 
-TODO
-il requisito 10 non è completamente corretto, se scelgo un rettangolo molto molto piccolo,
+TODO il requisito 10 non è completamente corretto,
+se scelgo un rettangolo molto molto piccolo,
 le stelle che contiene sono segnate tutte come fuori struttura, anche quando non è vero;
 metterlo nei documenti.
+
+
+TODO sistemare la grafica
+(sfondo,
+dimensioni uguali per tutte le finestre,
+sfondo e colore label)
+
+686x649

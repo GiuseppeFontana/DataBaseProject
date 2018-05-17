@@ -62,7 +62,7 @@ public class Req11Dao {
                 }
 
 
-        }catch (SQLException | ClassNotFoundException e){
+        }catch (SQLException | ClassNotFoundException e){   //TODO MATTIA perchè classnotfound?
             e.printStackTrace();
             return false;
         }
