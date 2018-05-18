@@ -4,6 +4,7 @@ import Bean.Req6_8SquareBean;
 import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;
+import Singletons.SingletonReq7;
 import Singletons.SingletonReq8;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -28,10 +30,20 @@ public class Req_8_Result {
     @FXML
     private Button ButtonPrev;
 
+
     @FXML
     private static int nCurrentPage;
     @FXML
     private static int nTotalPages;
+
+    @FXML
+    private Button buttonNext = new Button(">>");
+    @FXML
+    private Button buttonPrev = new Button("<<");
+    @FXML
+    private Label labelCurrentPage;
+    @FXML
+    private Label labelTotal;
 
 
     @FXML
@@ -72,6 +84,36 @@ public class Req_8_Result {
         Scene scene = new Scene(root, 686, 649 );
 
         setnCurrentPage(1);
+
+        labelTotal = new Label();
+        labelTotal.relocate(560, 583);
+        labelTotal.setText(" di  "+ SingletonReq7.getInstance().getBeans().size());
+
+        labelCurrentPage = new Label();
+        labelCurrentPage.relocate(520, 583);
+        labelCurrentPage.setText("1");
+
+        buttonNext.relocate(360, 580);
+        buttonPrev.relocate(310, 580);
+
+        buttonNext.setOnAction(event1 -> {
+            try {
+                next(event1);
+                labelCurrentPage.setText(String.valueOf(getnCurrentPage()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        buttonPrev.setOnAction(event -> {
+            try {
+                prev(event);
+                labelCurrentPage.setText(String.valueOf(getnCurrentPage()));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
 
         if (size %20 != 0){
             setnTotalPages(size/20 + 1);

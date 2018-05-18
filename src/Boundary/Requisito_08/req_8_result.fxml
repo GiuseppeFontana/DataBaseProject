@@ -17,7 +17,5 @@
                 </ImageView>
             </graphic></Button>
       <Label layoutX="244.0" layoutY="31.0" text="Ricerca Filamento in Regione" />
-      <Button fx:id="ButtonNext" layoutX="360.0" layoutY="580.0" mnemonicParsing="false" onAction="#next" text="&gt;&gt;" />
-      <Button fx:id="ButtonPrev" layoutX="310.0" layoutY="580.0" mnemonicParsing="false" onAction="#prev" text="&lt;&lt;" />
     </children>
 </AnchorPane>

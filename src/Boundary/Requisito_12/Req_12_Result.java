@@ -34,7 +34,6 @@ public class Req_12_Result {
     private static int nTotalPages;
     @FXML
     private Label labelTotal;
-
     @FXML
     private Label labelCurrentPage;
 

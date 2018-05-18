@@ -6,7 +6,6 @@ import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;
 import Singletons.SingletonReq11;
-import Singletons.SingletonReq9;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
