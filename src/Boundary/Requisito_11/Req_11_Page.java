@@ -8,8 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
+import java.lang.Integer;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -35,24 +34,30 @@ public class Req_11_Page {
     public void search(ActionEvent actionEvent) throws Exception {
 
         String sat;
-        int id = Integer.parseInt(TextIDFil.getText());
-        if (rbHerschel.isSelected()){
-            sat = "herschel";
-        }else {
-            sat = "spitzer";
-        }
-        if (id < 45 || id > 227){
+
+        try {
+            int id = Integer.parseInt(TextIDFil.getText());
+            if (rbHerschel.isSelected()) {
+                sat = "herschel";
+            } else {
+                sat = "spitzer";
+            }
+            if (id < 45 || id > 227) {
+                Boundary.Alert alert = new Boundary.Alert();
+                alert.incorrectLoginField("Inserire un id intero compreso tra [45,227]");
+            } else {
+
+                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+                DBController dbController = new DBController();
+                dbController.Req11_segment(sat, id);
+
+                GraphicController graphicController = new GraphicController();
+                graphicController.req11result();
+            }
+        }catch (NumberFormatException n){
             Boundary.Alert alert = new Boundary.Alert();
-            alert.incorrectLoginField("Inserire un id compreso tra [45,227]");
-        }
-        else {
+            alert.incorrectLoginField("Inserire un id intero positivo");
 
-            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-            DBController dbController = new DBController();
-            dbController.Req11_segment(sat, id);
-
-            GraphicController graphicController = new GraphicController();
-            graphicController.req11result();
         }
     }
 

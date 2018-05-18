@@ -67,7 +67,8 @@ public class Req_8_Result {
         int size = SingletonReq8.getInstance().getBeans().size();
 
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(Req_8_Result.class.getResource("req_8_result.fxml"));        AnchorPane root = loader.load();
+        FXMLLoader loader = new FXMLLoader(Req_8_Result.class.getResource("req_8_result.fxml"));
+        AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
 
         setnCurrentPage(1);

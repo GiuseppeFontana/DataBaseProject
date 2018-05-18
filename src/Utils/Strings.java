@@ -68,7 +68,6 @@ public class Strings {
     public static String strReq101 = "SELECT * FROM herschel_stars WHERE lon > %s AND lon < %s AND lat > %s AND lat < %s";
     public static String strReq102 = "SELECT DISTINCT id FROM %s_boundaries WHERE lon > %s AND lon < %s AND lat > %s AND lat < %s";
 
-    public static String strReq11_0 = "SELECT * FROM %s_boundaries WHERE id='%s'";
     public static String strReq11_1 = "SELECT DISTINCT idbranch FROM %s_skeletons WHERE idfil='%s'";
     public static String strReq11_2 = "SELECT lon FROM %s_skeletons WHERE (idbranch='%s' AND n='%s')";
     public static String strReq11_2_1 = "SELECT lat FROM %s_skeletons WHERE (idbranch='%s' AND n='%s')";
@@ -76,6 +75,12 @@ public class Strings {
     public static String strReq11_3 = "SELECT max(n) FROM %s_skeletons WHERE idbranch='%s'";
     public static String strReq11_4 = "SELECT lon FROM %s_boundaries WHERE id='%s'";
     public static String strReq11_4_1 = "SELECT lat FROM %s_boundaries WHERE id='%s'";
+
+    public static String strReq12 = "SELECT flux FROM herschel_stars WHERE id='%s'";
+    public static String strReq12_lon = "SELECT lon FROM %s_skeletons WHERE type='S'";
+    public static String strReq12_lat = "SELECT lat FROM %s_skeletons WHERE type='S'";
+    public static String strReq13_lon = "SELECT lon FROM herschel_stars WHERE id='%s'";
+    public static String strReq13_lat = "SELECT lat FROM herschel_stars WHERE id='%s'";
 
 
 

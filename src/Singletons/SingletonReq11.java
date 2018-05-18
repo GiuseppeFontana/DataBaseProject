@@ -1,9 +1,7 @@
 package Singletons;
 
 import Bean.Req11_Bean;
-
 import java.util.ArrayList;
-
 
 public class SingletonReq11 {
     private static SingletonReq11 instance = null;
@@ -11,7 +9,6 @@ public class SingletonReq11 {
     private ArrayList<Req11_Bean> beans;
     private String sat;
     private int id;
-
 
     public int getId() {
         return id;

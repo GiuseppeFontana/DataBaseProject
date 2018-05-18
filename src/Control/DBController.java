@@ -241,4 +241,30 @@ public class DBController {
         return Req11Dao.coordinate(segmento);
 
     }
+
+    public boolean Req12(String sat, int id) throws Exception {
+
+        if (!Req9Dao.getStars()){
+            return false;
+        }
+        if (!Req9Dao.getBounds(id, sat)){
+            return false;
+        }
+
+        Controller controller = new Controller();
+        controller.scanStars9();
+
+        if (SingletonReq9.getInstance().getStars().size() == 0){
+            return false;
+        }
+
+        GraphicController graphicController = new GraphicController();
+        graphicController.req12result();
+        return true;
+    }
+
+    public boolean Req12_Distance(String sat, int id) throws Exception{
+        Req12Dao req12Dao = new Req12Dao();
+        return req12Dao.spineDistance(sat, id);
+    }
 }

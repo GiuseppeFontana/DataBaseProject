@@ -138,14 +138,11 @@ public class Home_Admin {
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         GraphicController graphicController = new GraphicController();
         graphicController.req11page();
-
-
-
     }
 
-    public void jumpReq12Page(ActionEvent actionEvent) {
+    public void jumpReq12Page(ActionEvent actionEvent) throws Exception {
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        GraphicController graphicController = new GraphicController();
+        graphicController.req12page();
     }
-
-
-
 }

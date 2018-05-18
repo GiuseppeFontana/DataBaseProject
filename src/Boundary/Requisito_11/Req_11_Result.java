@@ -6,6 +6,7 @@ import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;
 import Singletons.SingletonReq11;
+import Singletons.SingletonReq9;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -13,6 +14,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,16 +27,46 @@ import javafx.stage.Stage;
 public class Req_11_Result {
 
     @FXML
+    private static int nCurrentPage;
+    @FXML
+    private static int nTotalPages;
+
+    @FXML
     private javafx.scene.control.TableView<Req11_Bean> tableView = new TableView<>();
     @FXML
     private TableColumn<Req11_Bean, Integer> columnName = new TableColumn<>("segmenti");
     @FXML
     private static ObservableList<Req11_Bean> list = FXCollections.observableArrayList();
 
+    @FXML
+    private Label labelCurrentPage;
+    @FXML
+    private Label labelTotal;
+    @FXML
+    private Button buttonNext = new Button(">>");
+    @FXML
+    private Button buttonPrev = new Button("<<");
+
+    public int getnCurrentPage() {
+        return nCurrentPage;
+    }
+
+    public void setnCurrentPage(int n) {
+        nCurrentPage = n;
+    }
+
+    public int getnTotalPages() {
+        return nTotalPages;
+    }
+
+    public void setnTotalPages(int n) {
+        nTotalPages = n;
+    }
+
     public void start() throws Exception{
 
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(Req_11_Result.class.getResource("segment_result.fxml"));
+        FXMLLoader loader = new FXMLLoader(Req_11_Result.class.getResource("req_11_result.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649);
 
@@ -46,6 +79,45 @@ public class Req_11_Result {
         tableView.setPrefSize(142, 510);
         tableView.setLayoutX(50);
         tableView.setLayoutY(25);
+
+        labelCurrentPage = new Label();
+        labelCurrentPage.relocate(522, 583);
+        labelCurrentPage.setText("1");
+
+        int size = SingletonReq11.getInstance().getBeans().size();
+
+        labelTotal = new Label();
+        labelTotal.relocate(560, 583);
+        labelTotal.setText(" di  "+ SingletonReq11.getInstance().getBeans().size());
+
+
+        //@TODO MATTIA da sistemare la label del numero totale di pagine
+
+        setnCurrentPage(1);
+
+        buttonNext.relocate(360, 580);
+        buttonPrev.relocate(310, 580);
+
+        root.getChildren().addAll(labelCurrentPage, labelTotal, buttonNext, buttonPrev);
+
+
+        buttonNext.setOnAction(event -> {
+            next(event);
+            labelCurrentPage.setText(String.valueOf(getnCurrentPage()));
+        });
+
+        buttonPrev.setOnAction(event -> {
+            prev(event);
+            labelCurrentPage.setText(String.valueOf(getnCurrentPage()));
+
+        });
+
+        if (size %20 != 0){
+            setnTotalPages(size/20 + 1);
+        }
+        else {
+            setnTotalPages(size/20);
+        }
 
         stage.setResizable(false);
         stage.setScene(scene);
@@ -60,8 +132,6 @@ public class Req_11_Result {
                 alert.incorrectLoginField("Distanza minima primo vertice \n\n" + String.valueOf(dbController.Req11_distance(segmento).get(0)).substring(8) +
                 "\n\n Distanza minima secondo vertice \n\n" + String.valueOf(dbController.Req11_distance(segmento).get(1)).substring(8));
 
-                        //total2.substring(8)
-
             } catch (Exception e) {
                 e.printStackTrace();
                 return;
@@ -71,9 +141,21 @@ public class Req_11_Result {
 
     public void riempi(){
 
-        for (int i = 0; i < SingletonReq11.getInstance().getBeans().size(); i++){
-            parseReq11_Bean(SingletonReq11.getInstance().getBeans().get(i));
+        if (getnTotalPages() != getnCurrentPage() || (getnTotalPages() == getnCurrentPage() && SingletonReq11.getInstance().getBeans().size() %20 == 0)) {
+            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + 20; i++) {
+                parseReq11_Bean(SingletonReq11.getInstance().getBeans().get(i));
+            }
         }
+        else {
+            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + SingletonReq11.getInstance().getBeans().size() %20; i++) {
+                parseReq11_Bean(SingletonReq11.getInstance().getBeans().get(i));
+            }
+        }
+        System.out.println("Pagina " + getnCurrentPage() + " di " + getnTotalPages());
+
+        /*for (int i = 0; i < SingletonReq11.getInstance().getBeans().size(); i++){
+            parseReq11_Bean(SingletonReq11.getInstance().getBeans().get(i));
+        }*/
     }
 
     public void parseReq11_Bean(Req11_Bean segmento){
@@ -98,4 +180,21 @@ public class Req_11_Result {
             graphicController.req11page();
         }
     }
+
+    public void next(ActionEvent actionEvent){
+        if (getnCurrentPage()<getnTotalPages()){
+            setnCurrentPage(getnCurrentPage()+1);
+            list.clear();
+            riempi();
+        }
+    }
+
+    public void prev(ActionEvent actionEvent){
+        if (getnCurrentPage()>1){
+            setnCurrentPage(getnCurrentPage()-1);
+            list.clear();
+            riempi();
+        }
+    }
+
 }

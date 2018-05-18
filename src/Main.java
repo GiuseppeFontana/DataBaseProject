@@ -12,11 +12,9 @@ public class Main {
     public static void main(String args[]){
         Application.launch(GraphicController.class);
 
-        // Application.launch(LabelProva.class);
-/*
+  /*      // Application.launch(LabelProva.class);
         // TODO finire gli import
         ImportDao dao = new ImportDao();
-        dao.importa("boundaries", "herschel", "/home/giuseppe/Scrivania/basedati/modded_csv/contorni_filamenti_Herschel.csv");
-*/
-    }
+        dao.importa("boundaries", "spitzer", "/home/mattia/Scaricati/ProgettoDb_TestDati (1)/Esame Basi Dati/contorni_filamenti_Spitzer.csv");
+    */}
 }

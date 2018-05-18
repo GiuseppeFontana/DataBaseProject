@@ -280,6 +280,12 @@ public class Controller {
         return req11_bean;
     }
 
+    public Req12_Bean createReq12_Bean(){
+        Req12_Bean req12_bean = new Req12_Bean();
+
+        return req12_bean;
+    }
+
 
 
     public boolean circSearch(Double dimension, Double longitude, Double latitude) {
