@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <?import java.net.URL?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_03.InsertStrip">
+<AnchorPane styleClass="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_03.InsertStrip">
    <stylesheets>
       <URL value="@../../images/css1.css" />
    </stylesheets>

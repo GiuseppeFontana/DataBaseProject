@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <?import java.net.URL?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.ShowElement.Show_Star">
+<AnchorPane styleClass="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.ShowElement.Show_Star">
    <stylesheets>
-      <URL value="@../../images/css1.css" />
+      <URL value="@../../images/css3.css" />
    </stylesheets>
    <children>
       <Button fx:id="btnTurnBack" layoutX="225.0" layoutY="450.0" mnemonicParsing="false" onAction="#close" text="Close" />

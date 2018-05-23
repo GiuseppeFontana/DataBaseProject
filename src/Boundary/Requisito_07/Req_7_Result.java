@@ -23,9 +23,8 @@ import javafx.stage.Stage;
 
 public class Req_7_Result {
 
-    public Button ButtonNext;
-    public Button ButtonPrev;
-    public Button BackButton;
+    @FXML
+    private Button BackButton;
 
     @FXML
     private Label labelResult;
@@ -33,6 +32,13 @@ public class Req_7_Result {
     private static int nCurrentPage;
     @FXML
     private static int nTotalPages;
+
+    @FXML
+    private Button buttonNext = new Button(">>");
+    @FXML
+    private Button buttonPrev = new Button("<<");
+    @FXML
+    private Label labelCurrentPage;
 
     @FXML
     private javafx.scene.control.TableView<Req7Bean> tableView = new TableView<>();
@@ -66,8 +72,15 @@ public class Req_7_Result {
 
     public void start() throws Exception {
 
-        setnCurrentPage(1);
         int size = SingletonReq7.getInstance().getBeans().size();
+        setnCurrentPage(1);
+
+        if (size %20 != 0){
+            setnTotalPages(size/20 + 1);
+        }
+        else {
+            setnTotalPages(size/20);
+        }
 
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(Req_7_Result.class.getResource("req_7_result.fxml"));        AnchorPane root = loader.load();
@@ -79,14 +92,34 @@ public class Req_7_Result {
         labelResult.setLayoutY(50);
         root.getChildren().addAll(labelResult);
 
-        setnCurrentPage(1);
+        labelCurrentPage = new Label();
+        labelCurrentPage.relocate(520, 583);
+        labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
 
-        if (size %20 != 0){
-            setnTotalPages(size/20 + 1);
-        }
-        else {
-            setnTotalPages(size/20);
-        }
+        buttonNext.relocate(360, 580);
+        buttonPrev.relocate(310, 580);
+
+        root.getChildren().addAll(buttonNext);
+        root.getChildren().addAll(buttonPrev);
+        root.getChildren().addAll(labelCurrentPage);
+
+        buttonNext.setOnAction(event1 -> {
+            try {
+                next(event1);
+                labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        buttonPrev.setOnAction(event -> {
+            try {
+                prev(event);
+                labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
         columnId.setMinWidth(140);
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -159,7 +192,6 @@ public class Req_7_Result {
                         SingletonReq7.getInstance().getBeans().get(i).getSegmenti());
             }
         }
-        System.out.println("Pagina " + getnCurrentPage() + " di " + getnTotalPages());
     }
 
     public void backHome(ActionEvent actionEvent) throws Exception{

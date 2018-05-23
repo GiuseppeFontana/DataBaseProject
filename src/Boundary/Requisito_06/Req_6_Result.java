@@ -24,16 +24,20 @@ import javafx.stage.Stage;
 public class Req_6_Result {
     @FXML
     private Button Req6ResBackButton;
-    @FXML
-    private Button Req6ResNext;
-    @FXML
-    private Button Req6ResPrev;
+
     @FXML
     private Label labelResult;
     @FXML
     private static int nCurrentPage;
     @FXML
     private static int nTotalPages;
+
+    @FXML
+    private Button buttonNext = new Button(">>");
+    @FXML
+    private Button buttonPrev = new Button("<<");
+    @FXML
+    private Label labelCurrentPage;
 
 
     @FXML
@@ -67,6 +71,12 @@ public class Req_6_Result {
 
         setnCurrentPage(1);
         int size = SingletonReq6.getInstance().getBeans().size();
+        if (size %20 != 0){
+            setnTotalPages(size/20 + 1);
+        }
+        else {
+            setnTotalPages(size/20);
+        }
 
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(Req_6_Result.class.getResource("req_6_result.fxml"));        AnchorPane root = loader.load();
@@ -78,14 +88,34 @@ public class Req_6_Result {
         labelResult.setLayoutY(50);
         root.getChildren().addAll(labelResult);
 
-        setnCurrentPage(1);
+        labelCurrentPage = new Label();
+        labelCurrentPage.relocate(520, 583);
+        labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
 
-        if (size %20 != 0){
-            setnTotalPages(size/20 + 1);
-        }
-        else {
-            setnTotalPages(size/20);
-        }
+        buttonNext.relocate(360, 580);
+        buttonPrev.relocate(310, 580);
+
+        root.getChildren().addAll(buttonNext);
+        root.getChildren().addAll(buttonPrev);
+        root.getChildren().addAll(labelCurrentPage);
+
+        buttonNext.setOnAction(event1 -> {
+            try {
+                next(event1);
+                labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        buttonPrev.setOnAction(event -> {
+            try {
+                prev(event);
+                labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
         columnId.setMinWidth(140);
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -138,7 +168,6 @@ public class Req_6_Result {
                         SingletonReq6.getInstance().getBeans().get(i).getSatellite());
             }
         }
-        System.out.println("Pagina " + getnCurrentPage() + " di " + getnTotalPages());
     }
 
 

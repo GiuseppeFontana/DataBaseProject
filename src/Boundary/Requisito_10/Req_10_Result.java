@@ -24,15 +24,18 @@ import javafx.stage.Stage;
 public class Req_10_Result {
     @FXML
     private Button BackButton;
-    @FXML
-    private Button ButtonNext;
-    @FXML
-    private Button ButtonPrev;
 
     @FXML
     private static int nCurrentPage;
     @FXML
     private static int nTotalPages;
+
+    @FXML
+    private Button buttonNext = new Button(">>");
+    @FXML
+    private Button buttonPrev = new Button("<<");
+    @FXML
+    private Label labelCurrentPage;
 
     @FXML
     private Label label0;
@@ -119,11 +122,46 @@ public class Req_10_Result {
 
         setnCurrentPage(1);
         int size = SingletonReq10.getInstance().getBeansToShow().size();
+        if (size %20 != 0){
+            setnTotalPages(size/20 + 1);
+        }
+        else {
+            setnTotalPages(size/20);
+        }
 
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(Req_10_Result.class.getResource("req_10_result.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
+
+        labelCurrentPage = new Label();
+        labelCurrentPage.relocate(520, 583);
+        labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
+
+        buttonNext.relocate(360, 580);
+        buttonPrev.relocate(310, 580);
+
+        root.getChildren().addAll(buttonNext);
+        root.getChildren().addAll(buttonPrev);
+        root.getChildren().addAll(labelCurrentPage);
+
+        buttonNext.setOnAction(event1 -> {
+            try {
+                next(event1);
+                labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        buttonPrev.setOnAction(event -> {
+            try {
+                prev(event);
+                labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
 
         label0 = new Label();
         label0.relocate(450, 150);
@@ -181,14 +219,6 @@ public class Req_10_Result {
                         (double)(SingletonReq10.getInstance().getTotal_true())*100.0) + " %");
         root.getChildren().addAll(labelProtostellar1);
 
-        setnCurrentPage(1);
-
-        if (size %20 != 0){
-            setnTotalPages(size/20 + 1);
-        }
-        else {
-            setnTotalPages(size/20);
-        }
 
         columnId.setMinWidth(140);
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -234,7 +264,6 @@ public class Req_10_Result {
                         SingletonReq10.getInstance().getBeansToShow().get(i).getName());
             }
         }
-        System.out.println("Pagina " + getnCurrentPage() + " di " + getnTotalPages());
     }
 
     public void parseBean(Integer id, String name){

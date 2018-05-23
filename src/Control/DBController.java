@@ -80,6 +80,7 @@ public class DBController {
     }
 
     public boolean ricercaPerNumeroSegmenti(int min, int max) throws Exception{
+        System.out.println("Inizio ricerca...");
         if (!Req7Dao.req7(min, max)){
             GraphicController graphicController = new GraphicController();
             String msg = "Nessuna Struttura trovata\ncon queste caratteristiche.";
@@ -100,7 +101,7 @@ public class DBController {
         }
     }
 
-    public void ricercaInRegione(String tipoRicerca, Double dimension, Double longitude, Double latitude) throws Exception {
+    public boolean ricercaInRegione(String tipoRicerca, Double dimension, Double longitude, Double latitude) throws Exception {
         if (tipoRicerca.equals("square")){
             Double minLong = longitude - dimension/2;
             Double maxLong = longitude + dimension/2;
@@ -110,13 +111,14 @@ public class DBController {
                 GraphicController graphicController = new GraphicController();
                 String msg = "Nessuna Struttura trovata\ncon queste caratteristiche.";
                 graphicController.alertError(msg);
-                return;
+                return false;
             }
             GraphicController graphicController = new GraphicController();
             graphicController.req8result();
-            return;
+            return true;
         }
-        if (tipoRicerca.equals("circular")){
+        //if (tipoRicerca.equals("circular")){
+        else {
             Double minLong = longitude - dimension;
             Double maxLong = longitude + dimension;
             Double minLat = latitude - dimension;
@@ -125,14 +127,14 @@ public class DBController {
                 GraphicController graphicController = new GraphicController();
                 String msg = "Nessuna Struttura trovata\ncon queste caratteristiche.";
                 graphicController.alertError(msg);
-                return;
+                return false;
             }
             Controller controller = new Controller();
             if (!controller.circSearch(dimension, longitude, latitude)){
                 GraphicController graphicController = new GraphicController();
                 String msg = "Nessuna Struttura trovata\ncon queste caratteristiche.";
                 graphicController.alertError(msg);
-                return;
+                return false;
             }
             ArrayList<Req6_8SquareBean> beans = new ArrayList<>();
             SingletonReq8.getInstance().setBeans(beans);
@@ -147,7 +149,7 @@ public class DBController {
 
             GraphicController graphicController = new GraphicController();
             graphicController.req8result();
-            return;
+            return true;
         }
     }
 

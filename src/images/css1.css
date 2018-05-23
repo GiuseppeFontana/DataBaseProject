@@ -5,11 +5,11 @@
 .label {
     -fx-text-fill: white;
     -fx-background-color: black;
-    -fx-opacity: 0.60;
+    -fx-opacity: 0.65;
 }
 
 .radio-button {
     -fx-text-fill: white;
     -fx-background-color: black;
-    -fx-opacity: 0.60;
+    -fx-opacity: 0.65;
 }

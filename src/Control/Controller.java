@@ -290,7 +290,7 @@ public class Controller {
 
     public boolean circSearch(Double dimension, Double longitude, Double latitude) {
         /*
-        TODO per mattia, ottimizzare
+        TODO indexoutofbound alla riga 300
         scansione e cancellazione
         */
         System.out.println("scansione punti inscritti alla regione;\nAttendere...");

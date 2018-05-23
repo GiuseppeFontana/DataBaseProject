@@ -24,7 +24,7 @@ public class User_Information{
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("user_Information.fxml"));
         AnchorPane root = loader.load();
-        Scene scene = new Scene(root, 326, 189 );
+        Scene scene = new Scene(root, 321, 182 );
 
         User user = SingletonUser.getInstance().getUser();
         String name = user.getName();

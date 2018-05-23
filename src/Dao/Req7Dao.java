@@ -30,6 +30,7 @@ public class Req7Dao {
             String sql = String.format(Strings.strReq7, "herschel","herschel", Integer.toString(min), Integer.toString(max),
                     "spitzer","spitzer", Integer.toString(min), Integer.toString(max));
             System.out.println(sql);
+            System.out.println("Accesso al DataBase...");
 
             ResultSet rs = stmt.executeQuery(sql);
             if (!rs.first()) {

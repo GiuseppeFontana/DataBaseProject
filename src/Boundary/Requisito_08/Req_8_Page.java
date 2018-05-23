@@ -77,8 +77,9 @@ public class Req_8_Page {
                 }
                 else {
                     DBController dbController = new DBController();
-                    dbController.ricercaInRegione(getTipoRicerca(), dimension, longitude, latitude);
-                    ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+                    if(dbController.ricercaInRegione(getTipoRicerca(), dimension, longitude, latitude)){
+                        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+                    }
                 }
             }
         }catch (NumberFormatException nfe){

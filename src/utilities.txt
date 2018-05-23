@@ -34,6 +34,15 @@ TODO sistemare la grafica
 dimensioni uguali per tutte le finestre,
 sfondo e colore label)
 
+TODO eccezioni generate in:
+req 8 ricerca strutture in regione circolate indexoutofbound
 
-TODO non si prende gli sfondi
+
+TODO per mattia
+- togliere il controllo degli id ai requisiti 11 e 12 e solo dopo l'accesso al db
+  stampare che il filamento non è presente;
+- risistemare le posizioni a livello grafico di tutti gli elementi;
+- mettere il bottone indietro
+
+
 686x649
