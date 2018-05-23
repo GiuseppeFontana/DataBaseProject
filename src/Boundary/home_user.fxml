@@ -6,7 +6,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import java.net.URL?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Home_User">
+   <stylesheets>
+      <URL value="@../../images/css2.css" />
+   </stylesheets>
    <children>
       <Button fx:id="btnInformation" layoutX="560.0" layoutY="30.0" mnemonicParsing="false" onAction="#information" prefHeight="38.0" prefWidth="41.0">
          <graphic>

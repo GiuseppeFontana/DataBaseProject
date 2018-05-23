@@ -7,7 +7,11 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import java.net.URL?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_10.Req_10_Page">
+    <stylesheets>
+        <URL value="@../../images/css1.css" />
+    </stylesheets>
     <children>
       <Label layoutX="178.0" layoutY="52.0" text="Ricerca stella all'interno di una regione di cielo" />
       <Label layoutX="75.0" layoutY="164.0" text="Estensione Longitudinale:" />

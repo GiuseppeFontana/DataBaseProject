@@ -7,11 +7,15 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import java.net.URL?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_03.InsertInstrument">
+   <stylesheets>
+      <URL value="@../../images/css1.css" />
+   </stylesheets>
    <children>
-      <Label fx:id="Req34TitleLabel" layoutX="253.0" layoutY="74.0" text="Inserimento Nuovo Strumento" />
-      <Label fx:id="Req34NameLabel" ellipsisString="" layoutX="140.0" layoutY="193.0" text="Nome Strumento:" />
-      <Label fx:id="Req34SatLabel" layoutX="140.0" layoutY="253.0" text="Nome Satellite:" />
+      <Label fx:id="Req34TitleLabel" textFill="WHITE" layoutX="253.0" layoutY="74.0" text="Inserimento Nuovo Strumento" />
+      <Label fx:id="Req34NameLabel" textFill="WHITE" ellipsisString="" layoutX="140.0" layoutY="193.0" text="Nome Strumento:" />
+      <Label fx:id="Req34SatLabel" textFill="WHITE" layoutX="140.0" layoutY="253.0" text="Nome Satellite:" />
       <TextField fx:id="Req34InstrumentText" layoutX="300.0" layoutY="193.0" prefHeight="26.0" prefWidth="198.0" />
 
       <TextField fx:id="Req34SatText" layoutX="300.0" layoutY="253.0" prefHeight="26.0" prefWidth="198.0" />

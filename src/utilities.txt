@@ -34,4 +34,6 @@ TODO sistemare la grafica
 dimensioni uguali per tutte le finestre,
 sfondo e colore label)
 
+
+TODO non si prende gli sfondi
 686x649

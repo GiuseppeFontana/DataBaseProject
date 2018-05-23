@@ -8,13 +8,17 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import java.net.URL?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_03.InsertSatellite">
+   <stylesheets>
+      <URL value="@../../images/css1.css" />
+   </stylesheets>
    <children>
-      <Label fx:id="Req33TitleLabel" layoutX="253.0" layoutY="74.0" text="Inserimento Nuovo Satellite" />
-      <Label fx:id="Req33NameLabel" layoutX="140.0" layoutY="193.0" text="Nome Satellite:" />
-      <Label fx:id="Req33BeginActLabel" layoutX="140.0" layoutY="253.0" text="Inizio Attività:" />
-      <Label fx:id="Req33EndActLabel" layoutX="140.0" layoutY="313.0" text="Fine Attività:" />
-      <Label fx:id="Req33AgencyLabel" layoutX="140.0" layoutY="373.0" text="Agenzia:" />
+      <Label fx:id="Req33TitleLabel" textFill="WHITE" layoutX="253.0" layoutY="74.0" text="Inserimento Nuovo Satellite" />
+      <Label fx:id="Req33NameLabel" textFill="WHITE" layoutX="140.0" layoutY="193.0" text="Nome Satellite:" />
+      <Label fx:id="Req33BeginActLabel" textFill="WHITE" layoutX="140.0" layoutY="253.0" text="Inizio Attività:" />
+      <Label fx:id="Req33EndActLabel" textFill="WHITE" layoutX="140.0" layoutY="313.0" text="Fine Attività:" />
+      <Label fx:id="Req33AgencyLabel" textFill="WHITE" layoutX="140.0" layoutY="373.0" text="Agenzia:" />
       <TextField fx:id="Req33SatelliteText" layoutX="300.0" layoutY="193.0" prefHeight="26.0" prefWidth="198.0" />
       <DatePicker fx:id="Req33BeginActDate" layoutX="300.0" layoutY="253.0" />
       <DatePicker fx:id="Req33EndActDate" layoutX="300.0" layoutY="313.0" />
