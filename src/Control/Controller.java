@@ -311,7 +311,7 @@ public class Controller {
         System.out.println("Cancellazione duplicati;\nAttendere...");
         for (int i = 0; i<SingletonReq8.getInstance().getReq8CircularBeans().size(); i++){
             for (int k = 0; k<SingletonReq8.getInstance().getReq8CircularBeans().size(); k++){
-                if (k!=i &&
+                if (k!= i &&
                         SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId() ==
                                 SingletonReq8.getInstance().getReq8CircularBeans().get(k).getId() &&
                         SingletonReq8.getInstance().getReq8CircularBeans().get(i).getSatellite().equals(
