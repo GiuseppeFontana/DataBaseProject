@@ -307,15 +307,15 @@ public class Controller {
             }
         }
 
-        // cancellazione duplicati      TODO resta qualche duplicato
+        // cancellazione duplicati
         System.out.println("Cancellazione duplicati;\nAttendere...");
-        for (int i = 0; i<SingletonReq8.getInstance().getReq8CircularBeans().size(); i++){
-            for (int k = 0; k<SingletonReq8.getInstance().getReq8CircularBeans().size(); k++){
-                if (k!= i &&
-                        SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId() ==
+
+        for (int i = SingletonReq8.getInstance().getReq8CircularBeans().size()-2; i >= 0; i--){
+            for (int k = SingletonReq8.getInstance().getReq8CircularBeans().size()-1; k > i; k--){
+                if (SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId() ==
                                 SingletonReq8.getInstance().getReq8CircularBeans().get(k).getId() &&
                         SingletonReq8.getInstance().getReq8CircularBeans().get(i).getSatellite().equals(
-                                SingletonReq8.getInstance().getReq8CircularBeans().get(k).getSatellite())){
+                                SingletonReq8.getInstance().getReq8CircularBeans().get(k).getSatellite())) {
                     SingletonReq8.getInstance().getReq8CircularBeans().remove(k);
                 }
             }

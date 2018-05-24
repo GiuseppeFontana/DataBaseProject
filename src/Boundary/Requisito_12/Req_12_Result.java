@@ -47,9 +47,17 @@ public class Req_12_Result {
     private static ObservableList<Req9_10Bean> list = FXCollections.observableArrayList();
 
     @FXML
-    private Button buttonNext = new Button(">>");
+    private Button buttonNext = new Button(">");
     @FXML
-    private Button buttonPrev = new Button("<<");
+    private Button buttonPrev = new Button("<");
+    @FXML
+    private Button buttonP10 = new Button(">>");
+    @FXML
+    private Button buttonM10 = new Button("<<");
+    @FXML
+    private Button buttonBegin = new Button("inizio");
+    @FXML
+    private Button buttonEnd = new Button("fine");
 
 
     public int getnCurrentPage() {
@@ -93,20 +101,76 @@ public class Req_12_Result {
         labelCurrentPage.relocate(522, 583);
         labelCurrentPage.setText("1");
 
-        buttonNext.relocate(360, 580);
-        buttonPrev.relocate(310, 580);
+        buttonBegin.relocate(140, 580);
+        buttonM10.relocate(200, 580);
+        buttonPrev.relocate(250, 580);
+        buttonNext.relocate(285, 580);
+        buttonP10.relocate(325, 580);
+        buttonEnd.relocate(375, 580);
 
-        buttonNext.setOnAction(event -> {
-            next(event);
-            labelCurrentPage.setText(String.valueOf(getnCurrentPage()));
+        root.getChildren().addAll(buttonBegin);
+        root.getChildren().addAll(buttonM10);
+        root.getChildren().addAll(buttonNext);
+        root.getChildren().addAll(buttonPrev);
+        root.getChildren().addAll(buttonP10);
+        root.getChildren().addAll(buttonEnd);
+        root.getChildren().addAll(labelCurrentPage);
+
+        buttonBegin.setOnAction(event -> {
+            try {
+                begin(event);
+                labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        buttonM10.setOnAction(event -> {
+            try {
+                prev10(event);
+                labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
         buttonPrev.setOnAction(event -> {
-            prev(event);
-            labelCurrentPage.setText(String.valueOf(getnCurrentPage()));
+            try {
+                prev(event);
+                labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
 
-        root.getChildren().addAll(labelCurrentPage, labelTotal, buttonNext, buttonPrev);
+        buttonNext.setOnAction(event -> {
+            try {
+                next(event);
+                labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        buttonP10.setOnAction(event -> {
+            try {
+                next10(event);
+                labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        buttonEnd.setOnAction(event -> {
+            try {
+                end(event);
+                labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+
+        root.getChildren().addAll(labelCurrentPage);
 
         setnCurrentPage(1);
 
@@ -212,7 +276,41 @@ public class Req_12_Result {
         }
     }
 
+    public void next10(ActionEvent actionEvent) throws Exception{
+        if (getnCurrentPage()<getnTotalPages()-10){
+            setnCurrentPage(getnCurrentPage()+10);
+            list.clear();
+            riempi();
+        }
+        else {
+            setnCurrentPage(getnTotalPages());
+            list.clear();
+            riempi();
+        }
+    }
 
-    //@TODO MATTIA mancano pulsante indietro e vis 20 a 20
+    public void prev10(ActionEvent actionEvent) throws Exception{
+        if (getnCurrentPage() > 10){
+            setnCurrentPage(getnCurrentPage()-10);
+            list.clear();
+            riempi();
+        }
+        else {
+            setnCurrentPage(1);
+            list.clear();
+            riempi();
+        }
+    }
 
+    public void begin(ActionEvent actionEvent) throws Exception{
+        setnCurrentPage(1);
+        list.clear();
+        riempi();
+    }
+
+    public void end(ActionEvent actionEvent) throws Exception{
+        setnCurrentPage(getnTotalPages());
+        list.clear();
+        riempi();
+    }
 }

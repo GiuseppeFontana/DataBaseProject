@@ -29,8 +29,6 @@ inserire chiavi esterne al database
 creare le view per accelerare le query più pesanti
 
 TODO GIUSEPPE
-aggiungere il nome al requisito 5
-aggiungere pulsanti pagina +-10 e inizio fine
 aggiungere info imput nelle pagin spoglie
 ridimensionare le tabelle
 
@@ -38,5 +36,6 @@ TODO MATTIA
 - togliere il controllo degli id ai requisiti 11 e 12 e solo dopo l'accesso al db stampare che il filamento non è presente;
 - risistemare le posizioni a livello grafico di tutti gli elementi;
 - mettere il bottone indietro
+- cambiare la label con numero e mettere "pag. 1 di 50", come gli altri requisiti
 
 686x649

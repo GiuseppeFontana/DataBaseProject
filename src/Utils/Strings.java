@@ -23,6 +23,7 @@ public class Strings {
     // requisiti
     public static String strReq51 = "SELECT %s FROM %s_boundaries WHERE id = '%s'";
     public static String strReq52 = "SELECT COUNT(DISTINCT idbranch) FROM %s_skeletons WHERE idfil = '%s'";
+    public static String strReq53 = "SELECT name FROM %s_structures WHERE id = '%s'";
 
 
 

@@ -4,6 +4,7 @@ import Entity.Structure;
 
 public class Req5Bean {
     private int id;
+    private String name;
     private Double lonCenter;
     private Double latCenter;
     private Double lonExtension;
@@ -60,5 +61,13 @@ public class Req5Bean {
 
     public void setnSegmenti(int nSegmenti) {
         this.nSegmenti = nSegmenti;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

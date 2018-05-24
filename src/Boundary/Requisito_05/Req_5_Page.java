@@ -28,7 +28,6 @@ public class Req_5_Page {
     public void start() throws Exception{
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(Req_5_Page.class.getResource("req_5_page.fxml"));
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/../Requisito_03/5/req_5_page.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
         stage.setResizable(false);
@@ -52,16 +51,10 @@ public class Req_5_Page {
     }
 
     public void check1(ActionEvent actionEvent) throws Exception{
-        /*if (Req5PageRadio2.isSelected()){
-            Req5PageRadio2.setSelected(false);
-        }*/
         satellite = "herschel";
     }
 
     public void check2(ActionEvent actionEvent) throws Exception {
-        /*if (Req5PageRadio1.isSelected()){
-            Req5PageRadio1.setSelected(false);
-        }*/
         satellite = "spitzer";
     }
 

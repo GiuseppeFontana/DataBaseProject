@@ -15,7 +15,7 @@ public class Req5Dao {
     public static boolean req5(String strumento, int input) {
 
         // STEP 1: dichiarazioni
-        Statement stmt = null;
+        Statement stmt1 = null;
         Connection conn = null;
 
         Double infoFilamento[] = new Double[6];
@@ -30,7 +30,7 @@ public class Req5Dao {
 
 
             // STEP 4: creazione ed esecuzione della query
-            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+            stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
             String k[] = new String[7];
             k[0] = "AVG(lon)";
@@ -47,7 +47,7 @@ public class Req5Dao {
             for (int i = 0; i < 6; i++) {
                 sql = String.format(Strings.strReq51, k[i], strumento, input);
                 System.out.println(sql);
-                resultSets[i] = stmt.executeQuery(sql);
+                resultSets[i] = stmt1.executeQuery(sql);
 
                 if (!resultSets[i].first()) {// rs empty
                     System.out.println("Accesso Contorni fallito");
@@ -59,7 +59,7 @@ public class Req5Dao {
             }
 
             System.out.println(k[6]);
-            resultSets[6] = stmt.executeQuery(k[6]);
+            resultSets[6] = stmt1.executeQuery(k[6]);
             if (!resultSets[6].first()) {// rs empty
                 System.out.println("Accesso Scheletri fallito");
                 return false;
@@ -87,7 +87,18 @@ public class Req5Dao {
             for (int i = 0; i < 7; i++) {
                 resultSets[i].close();
             }
-            stmt.close();
+
+            String sqlName = String.format(Strings.strReq53, strumento, input);
+            ResultSet rsName = stmt1.executeQuery(sqlName);
+            if (!rsName.first()){
+                System.out.println("Nome non trovato.");
+                return false;
+            }
+            String name = rsName.getString("name");
+            SingletonReq5.getInstance().getBean().setName(name);
+
+            rsName.close();
+            stmt1.close();
             conn.close();
 
             System.out.println("Accesso Contorni e Scheletri effettuato con successo");
@@ -100,8 +111,8 @@ public class Req5Dao {
             e.printStackTrace();
         } finally {
             try {
-                if (stmt != null)
-                    stmt.close();
+                if (stmt1 != null)
+                    stmt1.close();
             } catch (SQLException se2) {
                 se2.printStackTrace();
             }
