@@ -1,7 +1,7 @@
 package Boundary.Requisito_12;
 
 import Bean.Req9_10Bean;
-import Boundary.Alert;
+import Boundary.Alerts.Alert;
 import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;
@@ -10,7 +10,6 @@ import Singletons.SingletonReq9;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;

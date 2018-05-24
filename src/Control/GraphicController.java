@@ -1,6 +1,8 @@
 package Control;
 
-import Boundary.*;
+import Boundary.Alerts.Alert;
+import Boundary.Home.Home_Admin;
+import Boundary.Home.Home_User;
 import Boundary.Requisito_01.Login;
 import Boundary.Requisito_03.*;
 import Boundary.Requisito_05.Req_5_Page;

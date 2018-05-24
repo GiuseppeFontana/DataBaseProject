@@ -1,4 +1,4 @@
-package Boundary;
+package Boundary.Alerts;
 
 import Entity.User;
 import Singletons.SingletonUser;
@@ -22,7 +22,7 @@ public class User_Information{
 
     public void start() throws Exception {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("user_Information.fxml"));
+        FXMLLoader loader = new FXMLLoader(User_Information.class.getResource("user_Information.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 321, 182 );
 
