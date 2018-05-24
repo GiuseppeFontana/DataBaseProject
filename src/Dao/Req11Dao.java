@@ -2,6 +2,7 @@ package Dao;
 
 import Bean.Req11_Bean;
 import Control.Controller;
+import Control.GraphicController;
 import Singletons.SingletonReq11;
 import Utils.Credenziali;
 import Utils.Strings;
@@ -37,6 +38,34 @@ public class Req11Dao {
 
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
+            //---------------------Controllo valori inseriti-------------------------//
+
+            int min = 0;
+            int max = 0;
+
+            String minIdfil = String.format(Strings.strReq11_contrMin, sat);
+            ResultSet controlMin = stmt.executeQuery(minIdfil);
+
+            if (controlMin.next()) {
+
+                min = controlMin.getInt(1);
+            }
+
+            String maxIdfil = String.format(Strings.strReq11_contrMax, sat);
+            ResultSet controlMax = stmt.executeQuery(maxIdfil);
+
+            if (controlMax.next()){
+                max = controlMax.getInt(1);
+            }
+
+            if (min > id || max < id){
+
+                GraphicController graphicController = new GraphicController();
+                graphicController.alertError("Inserire un valore compreso tra:\n\n\t " + min + " e " + max);
+                return false;
+
+            }
+
             String query = String.format(Strings.strReq52, sat, id);  //numero segmenti
             ResultSet nSegmenti = stmt.executeQuery(query);
 
@@ -61,7 +90,7 @@ public class Req11Dao {
                 }
 
 
-        }catch (SQLException | ClassNotFoundException e){
+        }catch (Exception e){
             e.printStackTrace();
             return false;
         }

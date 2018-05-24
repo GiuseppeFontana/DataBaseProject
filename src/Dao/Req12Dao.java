@@ -1,6 +1,7 @@
 package Dao;
 
 import Bean.Req12_Bean;
+import Control.GraphicController;
 import Singletons.SingletonReq12;
 import Utils.Credenziali;
 import Utils.Strings;
@@ -13,6 +14,58 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class Req12Dao {
+
+    public static boolean controlValues(String sat, int id){
+
+        Statement stmt = null;
+        Connection conn = null;
+
+        try {
+            Class.forName("org.postgresql.Driver");
+            conn = DriverManager.getConnection(Credenziali.G_DB_URL, Credenziali.G_DB_USER, Credenziali.G_DB_PASS);
+
+            conn.setAutoCommit(false);
+
+            stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+
+            //---------------------Controllo valori inseriti-------------------------//
+
+            int min = 0;
+            int max = 0;
+
+            String minIdfil = String.format(Strings.strReq11_contrMin, sat);
+            ResultSet controlMin = stmt.executeQuery(minIdfil);
+
+
+
+            if (controlMin.next()) {
+
+                min = controlMin.getInt(1);
+            }
+
+            String maxIdfil = String.format(Strings.strReq11_contrMax, sat);
+            ResultSet controlMax = stmt.executeQuery(maxIdfil);
+
+            if (controlMax.next()){
+                max = controlMax.getInt(1);
+            }
+
+            if (min > id || max < id){
+
+                GraphicController graphicController = new GraphicController();
+                graphicController.alertError("Inserire un valore compreso tra:\n\n\t " + min + " e " + max);
+                return false;
+
+            }
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return true;
+    }
 
     public static boolean spineDistance(String sat, int id){
 

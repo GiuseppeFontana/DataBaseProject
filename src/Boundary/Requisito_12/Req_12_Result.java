@@ -91,7 +91,7 @@ public class Req_12_Result {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("req_12_result.fxml"));
         AnchorPane root = loader.load();
-        Scene scene = new Scene(root, 800, 649 );
+        Scene scene = new Scene(root, 686, 649 );
 
         labelTotal = new Label();
         labelTotal.relocate(560, 583);
@@ -170,7 +170,7 @@ public class Req_12_Result {
             }
         });
 
-        root.getChildren().addAll(labelCurrentPage);
+        //root.getChildren().addAll(labelCurrentPage);
 
         setnCurrentPage(1);
 
@@ -187,9 +187,9 @@ public class Req_12_Result {
         columnName.setMinWidth(140);
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-        tableView.setPrefSize(540, 510);
+        tableView.setPrefSize(282, 510);
         tableView.setLayoutX(100);
-        tableView.setLayoutY(65);
+        tableView.setLayoutY(60);
 
         ((AnchorPane) scene.getRoot()).getChildren().addAll(tableView);
         tableView.setItems(list);

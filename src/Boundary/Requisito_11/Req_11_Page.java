@@ -36,24 +36,22 @@ public class Req_11_Page {
         String sat;
 
         try {
+            DBController dbController = new DBController();
+
             int id = Integer.parseInt(TextIDFil.getText());
             if (rbHerschel.isSelected()) {
                 sat = "herschel";
             } else {
                 sat = "spitzer";
             }
-            if (id < 45 || id > 227) {
-                Boundary.Alert alert = new Boundary.Alert();
-                alert.incorrectLoginField("Inserire un id intero compreso tra [45,227]");
-            } else {
 
+            if (dbController.Req11_segment(sat, id)) {
                 ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-                DBController dbController = new DBController();
-                dbController.Req11_segment(sat, id);
 
                 GraphicController graphicController = new GraphicController();
                 graphicController.req11result();
             }
+
         }catch (NumberFormatException n){
             Boundary.Alert alert = new Boundary.Alert();
             alert.incorrectLoginField("Inserire un id intero positivo");

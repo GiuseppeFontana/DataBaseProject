@@ -76,6 +76,9 @@ public class Strings {
     public static String strReq11_3 = "SELECT max(n) FROM %s_skeletons WHERE idbranch='%s'";
     public static String strReq11_4 = "SELECT lon FROM %s_boundaries WHERE id='%s'";
     public static String strReq11_4_1 = "SELECT lat FROM %s_boundaries WHERE id='%s'";
+    public static String strReq11_contrMin = "SELECT min(idfil) FROM %s_skeletons";
+    public static String strReq11_contrMax = "SELECT max(idfil) FROM %s_skeletons";
+
 
     public static String strReq12 = "SELECT flux FROM herschel_stars WHERE id='%s'";
     public static String strReq12_lon = "SELECT lon FROM %s_skeletons WHERE type='S'";

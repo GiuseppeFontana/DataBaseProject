@@ -8,6 +8,8 @@
 
 
 <?import java.net.URL?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane styleClass="anchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Boundary.Requisito_12.Req_12_Page">
    <stylesheets>
       <URL value="@../../images/css1.css" />
@@ -21,5 +23,14 @@
       </RadioButton>
       <RadioButton fx:id="rbSpitzer" layoutX="260.0" layoutY="206.0" mnemonicParsing="false" text="Spitzer" toggleGroup="$rbSat" />
       <Button fx:id="btnSearch" layoutX="554.0" layoutY="570.0" onAction="#search" mnemonicParsing="false" text="Cerca" />
+      <Button fx:id="Req11BackButton" layoutX="75.0" layoutY="540.0" onAction="#backHome" mnemonicParsing="false" prefHeight="38.0" prefWidth="41.0">
+         <graphic>
+            <ImageView fx:id="Req10PageBackImg" fitHeight="31.0" fitWidth="31.0">
+               <image>
+                  <Image url="@../../images/back.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
    </children>
 </AnchorPane>

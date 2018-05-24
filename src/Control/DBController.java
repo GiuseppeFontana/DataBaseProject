@@ -244,6 +244,15 @@ public class DBController {
 
     }
 
+    public boolean req12Controllo(String sat, int id) throws Exception{
+        Req12Dao req12Dao = new Req12Dao();
+        if (req12Dao.controlValues(sat, id)){
+            return Req12(sat, id);
+        }else {
+            return false;
+        }
+    }
+
     public boolean Req12(String sat, int id) throws Exception {
 
         if (!Req9Dao.getStars()){
@@ -265,7 +274,7 @@ public class DBController {
         return true;
     }
 
-    public boolean Req12_Distance(String sat, int id) throws Exception{
+    public boolean Req12_Distance(String sat, int id){
         Req12Dao req12Dao = new Req12Dao();
         return req12Dao.spineDistance(sat, id);
     }

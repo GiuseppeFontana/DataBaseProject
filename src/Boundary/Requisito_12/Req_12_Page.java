@@ -1,6 +1,8 @@
 package Boundary.Requisito_12;
 
+import Control.Controller;
 import Control.DBController;
+import Control.GraphicController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -32,29 +34,36 @@ public class Req_12_Page {
     public void search(ActionEvent actionEvent) throws Exception {
 
         try {
+            DBController dbController = new DBController();
             int id = Integer.parseInt(textFil.getText());
             if (rbHerschel.isSelected()) {
                 sat = "herschel";
             } else {
                 sat = "spitzer";
             }
-            if (id < 45 || id > 227) {
-                Boundary.Alert alert = new Boundary.Alert();
-                alert.incorrectLoginField("");
-            } else {
-
+            if (dbController.req12Controllo(sat, id)){
                 ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-                DBController dbController = new DBController();
                 dbController.Req12(sat, id);
-
-                /*GraphicController graphicController = new GraphicController();
-                //graphicController.req12result();
-                graphicController.req12result();*/
             }
         }catch (NumberFormatException n){
             Boundary.Alert alert = new Boundary.Alert();
             alert.incorrectLoginField("Inserire un id intero positivo");
 
+        }
+    }
+
+    public void backHome(ActionEvent actionEvent) throws Exception{
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        Controller controller = new Controller();
+        controller.resetSingleton8();
+        boolean admin = controller.getUserSingleton().getUser().getAdmin();
+        if(!admin){
+            GraphicController graphicController = new GraphicController();
+            graphicController.homeUser();
+        }
+        if (admin){
+            GraphicController graphicController = new GraphicController();
+            graphicController.homeAdmin();
         }
     }
 
