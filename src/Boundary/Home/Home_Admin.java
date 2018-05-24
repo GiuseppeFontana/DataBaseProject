@@ -1,5 +1,6 @@
-package Boundary;
+package Boundary.Home;
 
+import Boundary.Alerts.User_Information;
 import Control.Controller;
 import Control.GraphicController;
 import Entity.User;
@@ -14,25 +15,24 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class Home_User {
-    
+public class Home_Admin {
 
     @FXML
-    private Button HomeUserReq5Button;
+    private Button HomeAdminReq5Button;
     @FXML
-    private Button HomeUserReq6Button;
+    private Button HomeAdminReq6Button;
     @FXML
-    private Button HomeUserReq7Button;
+    private Button HomeAdminReq7Button;
     @FXML
-    private Button HomeUserReq8Button;
+    private Button HomeAdminReq8Button;
     @FXML
-    private Button HomeUserReq9Button;
+    private Button HomeAdminReq9Button;
     @FXML
-    private Button HomeUserReq10Button;
+    private Button HomeAdminReq10Button;
     @FXML
-    private Button HomeUserReq11Button;
+    private Button HomeAdminReq11Button;
     @FXML
-    private Button HomeUserReq12Button;
+    private Button HomeAdminReq12Button;
 
     @FXML
     private Button btnSystemExit;
@@ -41,11 +41,9 @@ public class Home_User {
     @FXML
     private Button HomeBtnLogOut;
 
-
     public void start() throws Exception{
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/home_user.fxml"));
-        AnchorPane root = loader.load();
+        FXMLLoader loader = new FXMLLoader(Home_Admin.class.getResource("home_admin.fxml"));        AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
 
         User user = SingletonUser.getInstance().getUser();
@@ -84,19 +82,22 @@ public class Home_User {
         Stage stage = null;
         graphicController.start(stage);
 
-
     }
 
     //-----------------PULSANTE CHIUSURA APPLICAZIONE-------------------//
 
     public void systemExit(ActionEvent actionEvent) {
-
         System.exit(0);
-
     }
 
     //--------------Requisiti funzionali-------------------//
 
+
+    public void jumpReq3Page(ActionEvent actionEvent) throws Exception{     //Funzionalità Admin
+        GraphicController graphicController = new GraphicController();
+        graphicController.adminReqsPage();
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+    }
     public void jumpReq5Page(ActionEvent actionEvent) throws Exception{
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         GraphicController graphicController = new GraphicController();
@@ -114,7 +115,6 @@ public class Home_User {
         GraphicController graphicController = new GraphicController();
         graphicController.req7page();
     }
-
 
     public void jumpReq8Page(ActionEvent actionEvent) throws Exception {
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();

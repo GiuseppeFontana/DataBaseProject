@@ -29,7 +29,6 @@ inserire chiavi esterne al database
 creare le view per accelerare le query più pesanti
 
 TODO GIUSEPPE
-aggiungere info imput nelle pagin spoglie
 ridimensionare le tabelle
 
 TODO MATTIA

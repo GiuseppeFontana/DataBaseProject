@@ -1,7 +1,7 @@
 package Boundary.Requisito_11;
 
 import Bean.Req11_Bean;
-import Boundary.Alert;
+import Boundary.Alerts.Alert;
 import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;

@@ -1,5 +1,6 @@
 package Boundary.Requisito_12;
 
+import Boundary.Alerts.Alert;
 import Control.DBController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -39,7 +40,7 @@ public class Req_12_Page {
                 sat = "spitzer";
             }
             if (id < 45 || id > 227) {
-                Boundary.Alert alert = new Boundary.Alert();
+                Alert alert = new Alert();
                 alert.incorrectLoginField("");
             } else {
 
@@ -52,7 +53,7 @@ public class Req_12_Page {
                 graphicController.req12result();*/
             }
         }catch (NumberFormatException n){
-            Boundary.Alert alert = new Boundary.Alert();
+            Alert alert = new Alert();
             alert.incorrectLoginField("Inserire un id intero positivo");
 
         }

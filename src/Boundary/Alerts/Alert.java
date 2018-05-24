@@ -1,4 +1,4 @@
-package Boundary;
+package Boundary.Alerts;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +17,7 @@ public class Alert {
     public void incorrectLoginField(String message) throws Exception {
 
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("alert.fxml"));
+        FXMLLoader loader = new FXMLLoader(Alert.class.getResource("alert.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 321, 182 );
 

@@ -1,5 +1,6 @@
 package Boundary.Requisito_11;
 
+import Boundary.Alerts.Alert;
 import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;
@@ -43,7 +44,7 @@ public class Req_11_Page {
                 sat = "spitzer";
             }
             if (id < 45 || id > 227) {
-                Boundary.Alert alert = new Boundary.Alert();
+                Alert alert = new Alert();
                 alert.incorrectLoginField("Inserire un id intero compreso tra [45,227]");
             } else {
 
@@ -55,7 +56,7 @@ public class Req_11_Page {
                 graphicController.req11result();
             }
         }catch (NumberFormatException n){
-            Boundary.Alert alert = new Boundary.Alert();
+            Alert alert = new Alert();
             alert.incorrectLoginField("Inserire un id intero positivo");
 
         }
