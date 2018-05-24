@@ -41,12 +41,12 @@ public class Req_12_Page {
             } else {
                 sat = "spitzer";
             }
-            if (dbController.req12Controllo(sat, id)){
+            if (dbController.valuesControl(sat, id)){
                 ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
                 dbController.Req12(sat, id);
             }
         }catch (NumberFormatException n){
-            Boundary.Alert alert = new Boundary.Alert();
+            Boundary.Alerts.Alert alert = new Boundary.Alerts.Alert();
             alert.incorrectLoginField("Inserire un id intero positivo");
 
         }

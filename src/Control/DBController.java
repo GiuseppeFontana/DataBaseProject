@@ -232,6 +232,12 @@ public class DBController {
         return true;
     }
 
+    public boolean valuesControl(String sat, int id){
+
+        ValuesControl valuesControl = new ValuesControl();
+        return valuesControl.max_min(sat, id);
+    }
+
     public boolean Req11_segment(String sat, int id){
 
             return Req11Dao.numeroSegmenti(sat, id);
@@ -242,15 +248,6 @@ public class DBController {
 
         return Req11Dao.coordinate(segmento);
 
-    }
-
-    public boolean req12Controllo(String sat, int id) throws Exception{
-        Req12Dao req12Dao = new Req12Dao();
-        if (req12Dao.controlValues(sat, id)){
-            return Req12(sat, id);
-        }else {
-            return false;
-        }
     }
 
     public boolean Req12(String sat, int id) throws Exception {

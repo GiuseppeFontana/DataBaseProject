@@ -45,15 +45,16 @@ public class Req_11_Page {
                 sat = "spitzer";
             }
 
-            if (dbController.Req11_segment(sat, id)) {
+            if (dbController.valuesControl(sat, id)) {
                 ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+                dbController.Req11_segment(sat, id);
 
                 GraphicController graphicController = new GraphicController();
                 graphicController.req11result();
             }
 
         }catch (NumberFormatException n){
-            Boundary.Alert alert = new Boundary.Alert();
+            Boundary.Alerts.Alert alert = new Boundary.Alerts.Alert();
             alert.incorrectLoginField("Inserire un id intero positivo");
 
         }

@@ -21,7 +21,7 @@ public class Req11Dao {
 
 
 
-    public static boolean numeroSegmenti(String sat, int id){
+    public static boolean numeroSegmenti(String sat, int id) {
 
         SingletonReq11.getInstance().setId(id);
         SingletonReq11.getInstance().setSat(sat);
@@ -39,60 +39,31 @@ public class Req11Dao {
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
             //---------------------Controllo valori inseriti-------------------------//
-
-            int min = 0;
-            int max = 0;
-
-            String minIdfil = String.format(Strings.strReq11_contrMin, sat);
-            ResultSet controlMin = stmt.executeQuery(minIdfil);
-
-            if (controlMin.next()) {
-
-                min = controlMin.getInt(1);
-            }
-
-            String maxIdfil = String.format(Strings.strReq11_contrMax, sat);
-            ResultSet controlMax = stmt.executeQuery(maxIdfil);
-
-            if (controlMax.next()){
-                max = controlMax.getInt(1);
-            }
-
-            if (min > id || max < id){
-
-                GraphicController graphicController = new GraphicController();
-                graphicController.alertError("Inserire un valore compreso tra:\n\n\t " + min + " e " + max);
-                return false;
-
-            }
-
-            String query = String.format(Strings.strReq52, sat, id);  //numero segmenti
-            ResultSet nSegmenti = stmt.executeQuery(query);
+                String query = String.format(Strings.strReq52, sat, id);  //numero segmenti
+                ResultSet nSegmenti = stmt.executeQuery(query);
 
 
-            ArrayList<Req11_Bean> beans = new ArrayList<>();
-            SingletonReq11.getInstance().setBeans(beans);
-            Controller controller = new Controller();
+                ArrayList<Req11_Bean> beans = new ArrayList<>();
+                SingletonReq11.getInstance().setBeans(beans);
+                Controller controller = new Controller();
 
-            if (nSegmenti.next()){
-                nSeg = nSegmenti.getInt(1);
+                if (nSegmenti.next()) {
+                    nSeg = nSegmenti.getInt(1);
 
-                System.out.println("Numero segmenti= " + nSeg);
+                    System.out.println("Numero segmenti= " + nSeg);
 
-                String query2 = String.format(Strings.strReq11_1, sat, id);
-                ResultSet segmenti = stmt.executeQuery(query2);
+                    String query2 = String.format(Strings.strReq11_1, sat, id);
+                    ResultSet segmenti = stmt.executeQuery(query2);
 
-                    while (segmenti.next()){
+                    while (segmenti.next()) {
                         System.out.println("Segmento:" + " " + segmenti.getInt(1));
                         SingletonReq11.getInstance().getBeans().add(controller.createReq11_Bean(nSeg, segmenti.getInt(1)));
 
                     }
                 }
 
-
         }catch (Exception e){
             e.printStackTrace();
-            return false;
         }
         return true;
     }

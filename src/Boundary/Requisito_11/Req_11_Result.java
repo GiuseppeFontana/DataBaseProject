@@ -209,11 +209,7 @@ public class Req_11_Result {
             }
         }
         System.out.println("Pagina " + getnCurrentPage() + " di " + getnTotalPages());
-
-        /*for (int i = 0; i < SingletonReq11.getInstance().getBeans().size(); i++){
-            parseReq11_Bean(SingletonReq11.getInstance().getBeans().get(i));
-        }*/
-    }
+        }
 
     public void parseReq11_Bean(Req11_Bean segmento){
 

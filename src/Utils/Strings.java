@@ -79,6 +79,8 @@ public class Strings {
     public static String strReq11_contrMin = "SELECT min(idfil) FROM %s_skeletons";
     public static String strReq11_contrMax = "SELECT max(idfil) FROM %s_skeletons";
 
+    public static String control = "SELECT lon FROM %s_skeletons WHERE idfil='%s'";
+
 
     public static String strReq12 = "SELECT flux FROM herschel_stars WHERE id='%s'";
     public static String strReq12_lon = "SELECT lon FROM %s_skeletons WHERE type='S'";
