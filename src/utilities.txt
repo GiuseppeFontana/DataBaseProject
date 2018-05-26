@@ -21,7 +21,7 @@ le stelle che contiene sono segnate tutte come fuori struttura, anche quando non
 metterlo nei documenti.
 
 TODO eccezioni generate in:
-req 8 ricerca strutture in regione circolare indexoutofbound
+req 8 ricerca strutture in regione circolare indexoutofbound RARAMENTE
 
 TODO ALESSIA
 valutare la creazione degli indici aggiuntivi
