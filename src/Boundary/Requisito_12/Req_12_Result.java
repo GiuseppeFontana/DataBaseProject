@@ -1,5 +1,7 @@
 package Boundary.Requisito_12;
 
+import Bean.Req12_Bean;
+import Bean.Req12_BeanToShow;
 import Bean.Req9_10Bean;
 import Boundary.Alerts.Alert;
 import Control.Controller;
@@ -32,18 +34,18 @@ public class Req_12_Result {
     @FXML
     private static int nTotalPages;
     @FXML
-    private Label labelTotal;
-    @FXML
     private Label labelCurrentPage;
 
     @FXML
-    private javafx.scene.control.TableView<Req9_10Bean> tableView = new TableView<>();
+    private javafx.scene.control.TableView<Req12_BeanToShow> tableView = new TableView<>();
     @FXML
-    private TableColumn<Req9_10Bean, Integer> columnId = new TableColumn<>("id");
+    private TableColumn<Req12_BeanToShow, Integer> columnId = new TableColumn<>("id");
     @FXML
-    private TableColumn<Req9_10Bean, String> columnName = new TableColumn<>("name");
+    private TableColumn<Req12_BeanToShow, Double> columnFlux = new TableColumn<>("flusso");
     @FXML
-    private static ObservableList<Req9_10Bean> list = FXCollections.observableArrayList();
+    private TableColumn<Req12_BeanToShow, Double> columnDistance = new TableColumn<>("distanza");
+    @FXML
+    private static ObservableList<Req12_BeanToShow> list = FXCollections.observableArrayList();
 
     @FXML
     private Button buttonNext = new Button(">");
@@ -77,28 +79,18 @@ public class Req_12_Result {
 
     public void start() throws Exception{
 
-        Controller controller = new Controller();
-        controller.calcolaTipi9();
-
-        System.out.println("unbound: " + SingletonReq9.getInstance().getUnbound() +
-                "\nprestellar: " + SingletonReq9.getInstance().getPrestellar() +
-                "\nprotostellar: " + SingletonReq9.getInstance().getProtostellar());
 
         setnCurrentPage(1);
-        int size = SingletonReq9.getInstance().getBeans().size();
+        int size = SingletonReq12.getInstance().getBeanToShows().size();
 
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("req_12_result.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
 
-        labelTotal = new Label();
-        labelTotal.relocate(560, 583);
-        labelTotal.setText(" di  "+ SingletonReq9.getInstance().getBeans().size());
-
         labelCurrentPage = new Label();
         labelCurrentPage.relocate(522, 583);
-        labelCurrentPage.setText("1");
+        labelCurrentPage.setText("pag. "+ getnCurrentPage() + " di "+ getnTotalPages());
 
         buttonBegin.relocate(140, 580);
         buttonM10.relocate(200, 580);
@@ -180,38 +172,50 @@ public class Req_12_Result {
             setnTotalPages(size/20);
         }
 
-        columnId.setMinWidth(140);
+        columnId.setMinWidth(70);
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
 
-        columnName.setMinWidth(140);
-        columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columnFlux.setMinWidth(90);
+        columnFlux.setCellValueFactory(new PropertyValueFactory<>("flux"));
 
-        tableView.setPrefSize(282, 510);
-        tableView.setLayoutX(100);
+        columnDistance.setMinWidth(250);
+        columnDistance.setCellValueFactory(new PropertyValueFactory<>("distance"));
+
+        tableView.setPrefSize(420, 510);
+        tableView.setLayoutX(50);
         tableView.setLayoutY(60);
 
         ((AnchorPane) scene.getRoot()).getChildren().addAll(tableView);
         tableView.setItems(list);
-        tableView.getColumns().addAll(columnId, columnName);
+        tableView.getColumns().addAll(columnId, columnFlux, columnDistance);
+        tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
+            int id = tableView.getSelectionModel().getSelectedItem().getId();
+            DBController dbController = new DBController();
+            try {
+                dbController.showStar(id);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }));
         riempi();
 
-        tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
+        /*tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
 
             int id = tableView.getSelectionModel().getSelectedItem().getId();
             DBController dbController = new DBController();
             try {
-                dbController.Req12_Distance(sat, id);
+                *//*dbController.Req12_Distance(sat, id);
                 String dist = SingletonReq12.getInstance().getBeans().getDistance();
                 Double flux = SingletonReq12.getInstance().getBeans().getFlux();
                 Alert alert = new Alert();
                 alert.incorrectLoginField("Distanza dalla spina dorsale =\n\n" + String.valueOf(dist) +
-                "\n\nValore del flusso della sorgente =\n\n" + flux);
+                "\n\nValore del flusso della sorgente =\n\n" + flux);*//*
 
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-        }));
+        }));*/
 
         stage.setResizable(false);
         stage.setScene(scene);
@@ -220,27 +224,30 @@ public class Req_12_Result {
     }
 
     private void riempi() {
-        if (getnTotalPages() != getnCurrentPage() || (getnTotalPages() == getnCurrentPage() && SingletonReq9.getInstance().getBeans().size() %20 == 0)) {
+        if (getnTotalPages() != getnCurrentPage() || (getnTotalPages() == getnCurrentPage() && SingletonReq12.getInstance().getBeanToShows().size() %20 == 0)) {
             for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + 20; i++) {
-                parseBean(SingletonReq9.getInstance().getBeans().get(i).getId(),
-                        SingletonReq9.getInstance().getBeans().get(i).getName());
+                parseBean(SingletonReq12.getInstance().getBeanToShows().get(i).getId(),
+                        SingletonReq12.getInstance().getBeanToShows().get(i).getFlux(),
+                        SingletonReq12.getInstance().getBeanToShows().get(i).getDistance());
             }
         }
         else {
-            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + SingletonReq9.getInstance().getBeans().size() %20; i++) {
-                parseBean(SingletonReq9.getInstance().getBeans().get(i).getId(),
-                        SingletonReq9.getInstance().getBeans().get(i).getName());
+            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + SingletonReq12.getInstance().getBeanToShows().size() %20; i++) {
+                parseBean(SingletonReq12.getInstance().getBeanToShows().get(i).getId(),
+                        SingletonReq12.getInstance().getBeanToShows().get(i).getFlux(),
+                        SingletonReq12.getInstance().getBeanToShows().get(i).getDistance());
             }
         }
         System.out.println("Pagina " + getnCurrentPage() + " di " + getnTotalPages());
 
     }
 
-    public void parseBean(Integer id, String name){
+    public void parseBean(Integer id, double flux, double distance){
         Controller controller = new Controller();
-        list.add(controller.createReq9_10Bean(id, name));
+        list.add(controller.createReq12_BeanToShow(id, flux, distance));
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        columnFlux.setCellValueFactory(new PropertyValueFactory<>("flux"));
+        columnDistance.setCellValueFactory(new PropertyValueFactory<>("distance"));
         tableView.setItems(list);
     }
 
@@ -248,6 +255,7 @@ public class Req_12_Result {
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
         controller.resetSingleton9();
+        controller.resetSingleton12();
         boolean admin = controller.getUserSingleton().getUser().getAdmin();
         if(!admin){
             GraphicController graphicController = new GraphicController();

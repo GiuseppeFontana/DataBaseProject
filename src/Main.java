@@ -16,5 +16,10 @@ public class Main {
         ImportDao dao = new ImportDao();
         dao.importa("boundaries", "spitzer", "/home/mattia/Scaricati/ProgettoDb_TestDati (1)/Esame Basi Dati/contorni_filamenti_Spitzer.csv");
         */
+
+        /*String ciao = "ciao123456789";
+        System.out.println(ciao);
+        String a2 = ciao.substring(4, ciao.length()-1);
+        System.out.println(a2);*/
     }
 }

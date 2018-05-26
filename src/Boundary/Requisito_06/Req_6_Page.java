@@ -23,9 +23,7 @@ public class Req_6_Page {
 
     public void start() throws Exception{
         Stage stage = new Stage();
-/*
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/home/giuseppe/IdeaProjects/DataBaseProject2/src/Boundary/Requisito_06/req_6_page.fxml"));
-*/
+
         FXMLLoader loader = new FXMLLoader(Req_6_Page.class.getResource("req_6_page.fxml"));
 
         AnchorPane root = loader.load();
@@ -57,7 +55,7 @@ public class Req_6_Page {
             GraphicController graphicController = new GraphicController();
 
             if (percBrillanza<0.0 || elliptMin <= 1.0 || elliptMax >= 10.0 || elliptMin > elliptMax){
-                String msg1 = "Input non valido.";
+                String msg1 = "Input non valido.\nbrillanza >= 0\nellitticità in (1;10)";
                 graphicController.alertError(msg1);
             }
             else {

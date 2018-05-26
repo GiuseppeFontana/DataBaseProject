@@ -59,12 +59,8 @@ public class Strings {
             "FROM spitzer_structures AS s2 JOIN spitzer_boundaries AS b2 ON s2.id = b2.id " +
             "WHERE (b2.lon < %s OR b2.lon > %s OR b2.lat < %s OR b2.lat > %s)))";
 
-
-
     public static String strReq91 = "SELECT * FROM herschel_stars";
     public static String strReq92 = "SELECT * FROM %s_boundaries WHERE id = '%s'";
-
-
 
     public static String strReq101 = "SELECT * FROM herschel_stars WHERE lon > %s AND lon < %s AND lat > %s AND lat < %s";
     public static String strReq102 = "SELECT DISTINCT id FROM %s_boundaries WHERE lon > %s AND lon < %s AND lat > %s AND lat < %s";
@@ -81,12 +77,7 @@ public class Strings {
 
     public static String control = "SELECT lon FROM %s_skeletons WHERE idfil='%s'";
 
-
-    public static String strReq12 = "SELECT flux FROM herschel_stars WHERE id='%s'";
-    public static String strReq12_lon = "SELECT lon FROM %s_skeletons WHERE type='S'";
-    public static String strReq12_lat = "SELECT lat FROM %s_skeletons WHERE type='S'";
-    public static String strReq13_lon = "SELECT lon FROM herschel_stars WHERE id='%s'";
-    public static String strReq13_lat = "SELECT lat FROM herschel_stars WHERE id='%s'";
+    public static String strReqNew12 = "SELECT * FROM %s_skeletons WHERE idfil = '%s'";
 
 
 

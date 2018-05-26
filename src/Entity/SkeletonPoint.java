@@ -4,7 +4,7 @@ public class SkeletonPoint {
     private int idStructure;
     private int idBranch;
     private int nProgressive;
-    private char type;            //'S' o 'B'
+    private String type;            //'S' o 'B'
     private double longitude;
     private double latitude;
     private double flux;
@@ -36,11 +36,11 @@ public class SkeletonPoint {
         this.nProgressive = nProgressive;
     }
 
-    public char getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(char type) {
+    public void setType(String type) {
         this.type = type;
     }
 

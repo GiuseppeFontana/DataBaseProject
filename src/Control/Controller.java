@@ -5,6 +5,8 @@ import Entity.*;
 import Singletons.*;
 
 import java.util.ArrayList;
+import java.util.Optional;
+import java.util.OptionalDouble;
 
 public class Controller {
 
@@ -86,11 +88,18 @@ public class Controller {
     }
 
 
+    public void resetSingleton12() {
+        SingletonReq12.getInstance().setBeanToShows(null);
+        SingletonReq12.getInstance().setBeans(null);
+        SingletonReq12.getInstance().setSkeletonPoints(null);
+    }
+
+
 
 
     // requisito 9
     public void scanStars9() {
-        for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
+        for (int i = SingletonReq9.getInstance().getStars().size()-1; i>=0; i--){
             if (!isInStruct9(SingletonReq9.getInstance().getStars().get(i))){
                 SingletonReq9.getInstance().getStars().remove(i);
             }
@@ -103,6 +112,24 @@ public class Controller {
                             SingletonReq9.getInstance().getStars().get(i).getName()));
         }
     }
+
+    public void scanStars12() {
+        for (int i = SingletonReq9.getInstance().getStars().size()-1; i>=0; i--){
+            if (!isInStruct9(SingletonReq9.getInstance().getStars().get(i))){
+                SingletonReq9.getInstance().getStars().remove(i);
+            }
+        }
+
+        ArrayList<Req12_Bean> beans = new ArrayList<>();
+        SingletonReq12.getInstance().setBeans(beans);
+        for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
+            SingletonReq12.getInstance().getBeans().add(
+                    createReq12Bean(SingletonReq9.getInstance().getStars().get(i), 0));
+        }
+    }
+
+
+
 
     private boolean isInStruct9(Star star) {
 
@@ -193,7 +220,7 @@ public class Controller {
         return bound;
     }
 
-    public SkeletonPoint createSkeletonPoint(int idStructure, int idBranch, int nProgressive, char type, double longitude, double latitude, double flux){
+    public SkeletonPoint createSkeletonPoint(int idStructure, int idBranch, int nProgressive, String type, double longitude, double latitude, double flux){
 
         SkeletonPoint skeletonPoint = new SkeletonPoint();
         skeletonPoint.setIdStructure(idStructure);
@@ -280,17 +307,27 @@ public class Controller {
         return req11_bean;
     }
 
-    public Req12_Bean createReq12_Bean(){
-        Req12_Bean req12_bean = new Req12_Bean();
+    public Req12_Bean createReq12Bean(Star star, double i) {
+        Req12_Bean bean = new Req12_Bean();
+        bean.setStar(star);
+        bean.setDistance(0);
+        return bean;
+    }
 
-        return req12_bean;
+    public Req12_BeanToShow createReq12_BeanToShow(int id, double flux, double distance){
+        Req12_BeanToShow bean = new Req12_BeanToShow();
+        bean.setId(id);
+        bean.setFlux(flux);
+        bean.setDistance(distance);
+
+        return bean;
     }
 
 
 
     public boolean circSearch(Double dimension, Double longitude, Double latitude) {
         /*
-        TODO indexoutofbound alla riga 300
+        TODO invertire i cicli
         scansione e cancellazione
         */
         System.out.println("scansione punti inscritti alla regione;\nAttendere...");
@@ -389,5 +426,37 @@ public class Controller {
                         SingletonReq10.getInstance().getProtostellar_false()
         );
     }
+
+
+    public void calcolaDistanze12() {
+        ArrayList<Double> distanze = new ArrayList<>();
+
+        for (int i = 0; i < SingletonReq12.getInstance().getBeans().size(); i++){
+            for (int k = 0; k < SingletonReq12.getInstance().getSkeletonPoints().size(); k++){
+                Double distanza_1 = Math.sqrt(
+                        (SingletonReq12.getInstance().getBeans().get(i).getStar().getgLon() - SingletonReq12.getInstance().getSkeletonPoints().get(k).getLongitude())
+                                *
+                                (SingletonReq12.getInstance().getBeans().get(i).getStar().getgLon() - SingletonReq12.getInstance().getSkeletonPoints().get(k).getLongitude())
+                                +
+                                (SingletonReq12.getInstance().getBeans().get(i).getStar().getgLat() - SingletonReq12.getInstance().getSkeletonPoints().get(k).getLatitude())
+                        *
+                        (SingletonReq12.getInstance().getBeans().get(i).getStar().getgLat() - SingletonReq12.getInstance().getSkeletonPoints().get(k).getLatitude()));
+
+                distanze.add(distanza_1);
+            }
+            Optional<Double> distanzaMinima= distanze.stream().reduce(Double::min);
+/*
+            String distance = String.valueOf(distanzaMinima).substring(9);
+*/
+            String distance = String.valueOf(distanzaMinima).substring(
+                    9,
+                    String.valueOf(distanzaMinima).length()-1);
+
+
+
+            SingletonReq12.getInstance().getBeans().get(i).setDistance(Double.parseDouble(distance));
+        }
+    }
+
 
 }

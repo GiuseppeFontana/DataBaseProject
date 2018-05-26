@@ -1,32 +1,25 @@
 package Bean;
 
+import Entity.Star;
+
 public class Req12_Bean {
 
-    private int id;
-    private Double flux;
-    private String distance;
+    private Star star;
+    private double distance;
 
-    public int getId() {
-        return id;
+    public Star getStar() {
+        return star;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setStar(Star star) {
+        this.star = star;
     }
 
-    public Double getFlux() {
-        return flux;
-    }
-
-    public void setFlux(Double flux) {
-        this.flux = flux;
-    }
-
-    public String getDistance() {
+    public double getDistance() {
         return distance;
     }
 
-    public void setDistance(String distance) {
+    public void setDistance(double distance) {
         this.distance = distance;
     }
 

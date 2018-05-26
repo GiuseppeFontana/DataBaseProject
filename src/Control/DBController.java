@@ -1,10 +1,12 @@
 package Control;
 
+import Bean.Req12_Bean;
 import Bean.Req6_8SquareBean;
 import Bean.Req9_10Bean;
 import Dao.*;
 import Dao.SatelliteDao;
 import Singletons.SingletonReq10;
+import Singletons.SingletonReq12;
 import Singletons.SingletonReq8;
 import Singletons.SingletonReq9;
 
@@ -140,7 +142,8 @@ public class DBController {
             SingletonReq8.getInstance().setBeans(beans);
 
             for (int i=0; i<SingletonReq8.getInstance().getReq8CircularBeans().size(); i++){
-                Req6_8SquareBean bean = controller.createReq6_8Bean(SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId(),
+                Req6_8SquareBean bean = controller.createReq6_8Bean(
+                        SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId(),
                         SingletonReq8.getInstance().getReq8CircularBeans().get(i).getName(),
                         SingletonReq8.getInstance().getReq8CircularBeans().get(i).getSatellite());
 
@@ -260,19 +263,36 @@ public class DBController {
         }
 
         Controller controller = new Controller();
-        controller.scanStars9();
+        controller.scanStars12();
 
-        if (SingletonReq9.getInstance().getStars().size() == 0){
+        if (!Req12Dao.riempiSpina(id, sat)){
+            System.out.println("errore accesso riempispina");
             return false;
         }
 
-        GraphicController graphicController = new GraphicController();
-        graphicController.req12result();
+
+        if (SingletonReq12.getInstance().getBeans().size() == 0){
+            System.out.println("array bean vuoto");
+            return false;
+        }
+
+        controller.calcolaDistanze12();
+
+        SingletonReq12.getInstance().setBeanToShows(new ArrayList<>());
+        for (int i = 0; i < SingletonReq12.getInstance().getBeans().size(); i++){
+            SingletonReq12.getInstance().getBeanToShows().add(
+                    controller.createReq12_BeanToShow(
+                            SingletonReq12.getInstance().getBeans().get(i).getStar().getId(),
+                            SingletonReq12.getInstance().getBeans().get(i).getStar().getFlux(),
+                            SingletonReq12.getInstance().getBeans().get(i).getDistance()
+                    )
+            );
+        }
         return true;
     }
 
-    public boolean Req12_Distance(String sat, int id){
+    /*public boolean Req12_Distance(String sat, int id){
         Req12Dao req12Dao = new Req12Dao();
         return req12Dao.spineDistance(sat, id);
-    }
+    }*/
 }

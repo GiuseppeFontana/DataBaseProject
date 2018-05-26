@@ -24,18 +24,14 @@ TODO eccezioni generate in:
 req 8 ricerca strutture in regione circolare indexoutofbound RARAMENTE
 
 TODO ALESSIA
-valutare la creazione degli indici aggiuntivi
-inserire chiavi esterne al database
 creare le view per accelerare le query più pesanti
 
-TODO GIUSEPPE
-aggiungere info input nelle pagine spoglie
-ridimensionare le tabelle
 
-TODO MATTIA
-- togliere il controllo degli id ai requisiti 11 e 12 e solo dopo l'accesso al db stampare che il filamento non è presente;
-- risistemare le posizioni a livello grafico di tutti gli elementi;
-- mettere il bottone indietro
-- cambiare la label con numero e mettere "pag. 1 di 50", come gli altri requisiti
+
+TODO MATTIA e GIUSEPPE
+MATTIA - mettere bottoni per ordinare stelle per flusso o distanza minima
+         (riordinare direttamente l'arraylist BeanToShows dentro il singleton 12)
+
+IMPORTANTE mettere bottone che mostra, scelto il satellite, gli id dei filamenti disponibili
 
 686x649

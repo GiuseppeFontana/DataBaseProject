@@ -31,7 +31,7 @@ public class Req_12_Page {
     }
 
 
-    public void search(ActionEvent actionEvent) throws Exception {
+    public void search(ActionEvent actionEvent){
 
         try {
             DBController dbController = new DBController();
@@ -41,14 +41,33 @@ public class Req_12_Page {
             } else {
                 sat = "spitzer";
             }
-            if (dbController.valuesControl(sat, id)){
+            if (!dbController.valuesControl(sat, id)){
+                System.out.println("error in valuescontrol");
+                return;
+            }
+            if (!dbController.Req12(sat, id)){
+                String msg = "errore1";
+                GraphicController graphicController = new GraphicController();
+                graphicController.alertError(msg);
+            }
+            ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+            GraphicController graphicController = new GraphicController();
+            graphicController.req12result();
+            /*if (dbController.valuesControl(sat, id)){
                 ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
                 dbController.Req12(sat, id);
-            }
+            }*/
         }catch (NumberFormatException n){
-            Boundary.Alerts.Alert alert = new Boundary.Alerts.Alert();
-            alert.incorrectLoginField("Inserire un id intero positivo");
-
+            try {
+                Boundary.Alerts.Alert alert = new Boundary.Alerts.Alert();
+                alert.incorrectLoginField("Inserire un id intero positivo");
+            }
+            catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
     }
 
