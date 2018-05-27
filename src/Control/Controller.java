@@ -94,6 +94,11 @@ public class Controller {
         SingletonReq12.getInstance().setSkeletonPoints(null);
     }
 
+    public void resetSingletonId() {
+        SingletonId.getInstance().setBeans(null);
+        SingletonId.getInstance().setSatellite(null);
+    }
+
 
 
 
@@ -323,6 +328,12 @@ public class Controller {
         return bean;
     }
 
+    public BeanId createBeanId(int i){
+        BeanId b = new BeanId();
+        b.setId(i);
+        return b;
+    }
+
 
 
     public boolean circSearch(Double dimension, Double longitude, Double latitude) {
@@ -330,36 +341,39 @@ public class Controller {
         TODO invertire i cicli
         scansione e cancellazione
         */
-        System.out.println("scansione punti inscritti alla regione;\nAttendere...");
-        for (int i = 0; i<SingletonReq8.getInstance().getReq8CircularBeans().size(); i++){
-            if (!circCheck(SingletonReq8.getInstance().getReq8CircularBeans().get(i), longitude, latitude, dimension)){
-                for (int k = 0; k < SingletonReq8.getInstance().getReq8CircularBeans().size(); k++){
+        try {
+            System.out.println("scansione punti inscritti alla regione;\nAttendere...");
+            for (int i = SingletonReq8.getInstance().getReq8CircularBeans().size() - 1; i >= 0; i--) {
+                if (!circCheck(SingletonReq8.getInstance().getReq8CircularBeans().get(i), longitude, latitude, dimension)) {
+                    for (int k = SingletonReq8.getInstance().getReq8CircularBeans().size() - 1; k > i; k--) {
+                        if (SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId() ==
+                                SingletonReq8.getInstance().getReq8CircularBeans().get(k).getId() &&
+                                SingletonReq8.getInstance().getReq8CircularBeans().get(i).getSatellite().equals(
+                                        SingletonReq8.getInstance().getReq8CircularBeans().get(k).getSatellite())) {
+                            SingletonReq8.getInstance().getReq8CircularBeans().remove(k);
+                        }
+                    }
+                }
+            }
+
+            // cancellazione duplicati
+            System.out.println("Cancellazione duplicati;\nAttendere...");
+            for (int i = SingletonReq8.getInstance().getReq8CircularBeans().size()-2; i >= 0; i--) {
+                for (int k = SingletonReq8.getInstance().getReq8CircularBeans().size()-1; k > i; k--) {
                     if (SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId() ==
                             SingletonReq8.getInstance().getReq8CircularBeans().get(k).getId() &&
                             SingletonReq8.getInstance().getReq8CircularBeans().get(i).getSatellite().equals(
-                                    SingletonReq8.getInstance().getReq8CircularBeans().get(k).getSatellite())){
+                                    SingletonReq8.getInstance().getReq8CircularBeans().get(k).getSatellite())) {
                         SingletonReq8.getInstance().getReq8CircularBeans().remove(k);
                     }
                 }
             }
-        }
-
-        // cancellazione duplicati
-        System.out.println("Cancellazione duplicati;\nAttendere...");
-
-        for (int i = SingletonReq8.getInstance().getReq8CircularBeans().size()-2; i >= 0; i--){
-            for (int k = SingletonReq8.getInstance().getReq8CircularBeans().size()-1; k > i; k--){
-                if (SingletonReq8.getInstance().getReq8CircularBeans().get(i).getId() ==
-                                SingletonReq8.getInstance().getReq8CircularBeans().get(k).getId() &&
-                        SingletonReq8.getInstance().getReq8CircularBeans().get(i).getSatellite().equals(
-                                SingletonReq8.getInstance().getReq8CircularBeans().get(k).getSatellite())) {
-                    SingletonReq8.getInstance().getReq8CircularBeans().remove(k);
-                }
+            if (SingletonReq8.getInstance().getReq8CircularBeans().size() != 0) {
+                return true;
             }
-        }
-
-        if (SingletonReq8.getInstance().getReq8CircularBeans().size() != 0){
-            return true;
+            return false;
+        } catch (IndexOutOfBoundsException i) {
+            i.printStackTrace();
         }
         return false;
     }
@@ -457,6 +471,5 @@ public class Controller {
             SingletonReq12.getInstance().getBeans().get(i).setDistance(Double.parseDouble(distance));
         }
     }
-
 
 }

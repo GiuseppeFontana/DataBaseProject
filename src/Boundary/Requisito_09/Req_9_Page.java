@@ -3,6 +3,7 @@ package Boundary.Requisito_09;
 import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;
+import Singletons.SingletonId;
 import Singletons.SingletonReq9;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,6 +18,8 @@ import javafx.stage.Stage;
 
 public class Req_9_Page {
 
+    @FXML
+    private Button ButtonSearchId;
     @FXML
     private RadioButton RadioHerschel;
     @FXML
@@ -112,5 +115,22 @@ public class Req_9_Page {
 
     public void checkHerschel(ActionEvent actionEvent) throws Exception {
         setSatellite("herschel");
+    }
+
+    public void searchid(ActionEvent actionEvent) throws Exception {
+        if (!RadioHerschel.isSelected() && !RadioSpitzer.isSelected()) {
+            String msg1 = "Seleziona un Satellite.";
+            GraphicController graphicController = new GraphicController();
+            graphicController.alertError(msg1);
+        } else {
+            DBController dbController = new DBController();
+            SingletonId.getInstance().setSatellite(getSatellite());
+            System.out.println("satellite: "+SingletonId.getInstance().getSatellite());
+            if (!dbController.cercaTuttiGliId(getSatellite())) {
+                String msg2 = "Errore imprevisto.";
+                GraphicController graphicController = new GraphicController();
+                graphicController.alertError(msg2);
+            }
+        }
     }
 }

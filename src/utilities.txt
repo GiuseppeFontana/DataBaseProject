@@ -20,13 +20,6 @@ se scelgo un rettangolo molto molto piccolo,
 le stelle che contiene sono segnate tutte come fuori struttura, anche quando non è vero;
 metterlo nei documenti.
 
-TODO eccezioni generate in:
-req 8 ricerca strutture in regione circolare indexoutofbound RARAMENTE
-
-TODO ALESSIA
-creare le view per accelerare le query più pesanti
-
-
 
 TODO MATTIA e GIUSEPPE
 MATTIA - mettere bottoni per ordinare stelle per flusso o distanza minima

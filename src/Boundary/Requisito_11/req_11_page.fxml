@@ -34,5 +34,6 @@
       </Button>
       <Label layoutX="170.0" layoutY="73.0" text="Calcolo Distanza tra segmenti e contorno del Filamento" />
       <Label layoutX="170.0" layoutY="234.0" text="immetti l'ID:" />
+      <Button fx:id="ButtonSearchId" layoutX="301.0" layoutY="184.0" mnemonicParsing="false" onAction="#searchId" text="Visualizza ID disponibili per il Satellite scelto" />
    </children>
 </AnchorPane>

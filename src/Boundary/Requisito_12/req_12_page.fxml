@@ -34,5 +34,6 @@
       </Button>
       <Label layoutX="152.0" layoutY="83.0" text="Calcolo distanza tra stelle e spina dorsale dentro una struttura" />
       <Label layoutX="142.0" layoutY="250.0" text="immetti l'ID:" />
+      <Button fx:id="ButtonSearchId" layoutX="260.0" layoutY="197.0" mnemonicParsing="false" onAction="#searchId" text="Visualizza gli ID disponibili per il Satellite scelto" />
    </children>
 </AnchorPane>

@@ -291,6 +291,17 @@ public class DBController {
         return true;
     }
 
+    public boolean cercaTuttiGliId(String satellite) throws Exception{
+        if(!StructDao.showAllId(satellite)){
+            System.out.println("something's gone wrong.");
+            return false;
+        }else {
+            GraphicController graphicController = new GraphicController();
+            graphicController.showAllIds();
+            return true;
+        }
+    }
+
     /*public boolean Req12_Distance(String sat, int id){
         Req12Dao req12Dao = new Req12Dao();
         return req12Dao.spineDistance(sat, id);

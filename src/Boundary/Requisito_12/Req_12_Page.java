@@ -3,10 +3,13 @@ package Boundary.Requisito_12;
 import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;
+import Singletons.SingletonId;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -19,6 +22,8 @@ public class Req_12_Page {
     public RadioButton rbSpitzer;
 
     public static String sat;
+    @FXML
+    private Button ButtonSearchId;
 
     public void start() throws Exception{
         Stage stage = new Stage();
@@ -87,5 +92,20 @@ public class Req_12_Page {
     }
 
 
+    public void searchId(ActionEvent actionEvent) throws Exception{
+        if (rbHerschel.isSelected()) {
+            SingletonId.getInstance().setSatellite("herschel");
+        }
+        else {
+            SingletonId.getInstance().setSatellite("spitzer");
+        }
 
+        DBController dbController = new DBController();
+        System.out.println("satellite: "+SingletonId.getInstance().getSatellite());
+        if (!dbController.cercaTuttiGliId(SingletonId.getInstance().getSatellite())) {
+            String msg2 = "Errore imprevisto.";
+            GraphicController graphicController = new GraphicController();
+            graphicController.alertError(msg2);
+        }
+    }
 }

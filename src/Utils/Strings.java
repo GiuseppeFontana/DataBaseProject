@@ -5,6 +5,7 @@ public class Strings {
     // show
     public static String strShowStruct = "SELECT * FROM %s_structures WHERE id = '%s'";
     public static String strShowStar = "SELECT * FROM herschel_stars WHERE id = '%s'";
+    public static String strShowAllID = "SELECT id FROM %s_structures";
 
 
     // admin query

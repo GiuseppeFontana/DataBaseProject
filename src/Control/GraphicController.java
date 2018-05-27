@@ -21,6 +21,7 @@ import Boundary.Requisito_11.Req_11_Page;
 import Boundary.Requisito_11.Req_11_Result;
 import Boundary.Requisito_12.Req_12_Page;
 import Boundary.Requisito_12.Req_12_Result;
+import Boundary.ShowElement.Show_All_Structs_Id;
 import Boundary.ShowElement.Show_Star;
 import Boundary.ShowElement.Show_Struct;
 import javafx.application.Application;
@@ -172,4 +173,8 @@ public class GraphicController extends Application {
         Import.start();
     }
 
+    public void showAllIds() throws Exception{
+        Show_All_Structs_Id show = new Show_All_Structs_Id();
+        show.start();
+    }
 }
