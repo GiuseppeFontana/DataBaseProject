@@ -1,6 +1,7 @@
 package Control;
 
 import Bean.Req12_Bean;
+import Bean.Req12_BeanToShow;
 import Bean.Req6_8SquareBean;
 import Bean.Req9_10Bean;
 import Dao.*;
@@ -278,15 +279,14 @@ public class DBController {
 
         controller.calcolaDistanze12();
 
-        SingletonReq12.getInstance().setBeanToShows(new ArrayList<>());
+        ArrayList<Req12_BeanToShow> beanToShows = new ArrayList<>();
+        SingletonReq12.getInstance().setBeanToShows(beanToShows);
         for (int i = 0; i < SingletonReq12.getInstance().getBeans().size(); i++){
             SingletonReq12.getInstance().getBeanToShows().add(
                     controller.createReq12_BeanToShow(
                             SingletonReq12.getInstance().getBeans().get(i).getStar().getId(),
                             SingletonReq12.getInstance().getBeans().get(i).getStar().getFlux(),
-                            SingletonReq12.getInstance().getBeans().get(i).getDistance()
-                    )
-            );
+                            SingletonReq12.getInstance().getBeans().get(i).getDistance()));
         }
         return true;
     }
