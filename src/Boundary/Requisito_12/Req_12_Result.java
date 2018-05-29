@@ -25,6 +25,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
 import static Boundary.Requisito_12.Req_12_Page.sat;
 
 public class Req_12_Result {
@@ -107,6 +112,7 @@ public class Req_12_Result {
         root.getChildren().addAll(buttonEnd);
         root.getChildren().addAll(labelCurrentPage);
 
+
         buttonBegin.setOnAction(event -> {
             try {
                 begin(event);
@@ -181,6 +187,10 @@ public class Req_12_Result {
         columnDistance.setMinWidth(250);
         columnDistance.setCellValueFactory(new PropertyValueFactory<>("distance"));
 
+        columnFlux.setSortable(true);
+        columnDistance.setSortable(true);  //ORDINAMENTO DELLE COLONNE
+        columnId.setSortable(false);
+
         tableView.setPrefSize(420, 510);
         tableView.setLayoutX(50);
         tableView.setLayoutY(60);
@@ -188,7 +198,7 @@ public class Req_12_Result {
         ((AnchorPane) scene.getRoot()).getChildren().addAll(tableView);
         tableView.setItems(list);
         tableView.getColumns().addAll(columnId, columnFlux, columnDistance);
-        tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
+        /*tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
             int id = tableView.getSelectionModel().getSelectedItem().getId();
             DBController dbController = new DBController();
             try {
@@ -196,7 +206,7 @@ public class Req_12_Result {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }));
+        }));*/  //TODO GIUSEPPE Questo click sulla tableview da delle informazioni non necessarie al requisito, giusto?
         riempi();
 
         /*tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
@@ -266,6 +276,16 @@ public class Req_12_Result {
             graphicController.homeAdmin();
         }
     }
+
+    public void sortbyFlux(){
+
+
+    }
+
+    public void sortbyDistance(){
+
+    }
+
 
     public void next(ActionEvent actionEvent){
         if (getnCurrentPage()<getnTotalPages()){
