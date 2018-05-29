@@ -51,9 +51,10 @@ public class Req_12_Page {
                 return;
             }
             if (!dbController.Req12(sat, id)){
-                String msg = "errore1";
+                String msg = "Non ci sono stelle al'interno\n all'interno del filamento scelto";
                 GraphicController graphicController = new GraphicController();
                 graphicController.alertError(msg);
+                return;
             }
             ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
             GraphicController graphicController = new GraphicController();
