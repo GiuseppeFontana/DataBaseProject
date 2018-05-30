@@ -1,14 +1,10 @@
 package Boundary.Requisito_12;
 
-import Bean.Req12_Bean;
 import Bean.Req12_BeanToShow;
-import Bean.Req9_10Bean;
-import Boundary.Alerts.Alert;
 import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;
 import Singletons.SingletonReq12;
-import Singletons.SingletonReq9;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,12 +21,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-
-import static Boundary.Requisito_12.Req_12_Page.sat;
+import java.util.Comparator;
 
 public class Req_12_Result {
 
@@ -65,6 +56,11 @@ public class Req_12_Result {
     @FXML
     private Button buttonEnd = new Button("fine");
 
+    @FXML
+    private Button btnSortFlux = new Button("Flusso");
+    @FXML
+    private Button sortDistance = new Button("Distanza");
+
 
     public int getnCurrentPage() {
         return nCurrentPage;
@@ -88,6 +84,7 @@ public class Req_12_Result {
         setnCurrentPage(1);
         int size = SingletonReq12.getInstance().getBeanToShows().size();
 
+
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("req_12_result.fxml"));
         AnchorPane root = loader.load();
@@ -104,12 +101,19 @@ public class Req_12_Result {
         buttonP10.relocate(325, 580);
         buttonEnd.relocate(375, 580);
 
+        sortDistance.relocate(566, 373);
+        btnSortFlux.relocate(567, 325);
+
         root.getChildren().addAll(buttonBegin);
         root.getChildren().addAll(buttonM10);
         root.getChildren().addAll(buttonNext);
         root.getChildren().addAll(buttonPrev);
         root.getChildren().addAll(buttonP10);
         root.getChildren().addAll(buttonEnd);
+
+        root.getChildren().addAll(sortDistance);
+        root.getChildren().addAll(btnSortFlux);
+
         root.getChildren().addAll(labelCurrentPage);
 
 
@@ -167,6 +171,19 @@ public class Req_12_Result {
             }
         });
 
+        btnSortFlux.setOnAction(event -> {
+            SingletonReq12.getInstance().getBeanToShows().sort(Comparator.comparingDouble(Req12_BeanToShow::getFlux));
+            list.clear();
+                riempi();
+
+        });
+
+        sortDistance.setOnAction(event -> {
+            SingletonReq12.getInstance().getBeanToShows().sort(Comparator.comparingDouble(Req12_BeanToShow::getDistance));
+            list.clear();
+            riempi();
+        });
+
         //root.getChildren().addAll(labelCurrentPage);
 
         setnCurrentPage(1);
@@ -187,8 +204,8 @@ public class Req_12_Result {
         columnDistance.setMinWidth(250);
         columnDistance.setCellValueFactory(new PropertyValueFactory<>("distance"));
 
-        columnFlux.setSortable(true);
-        columnDistance.setSortable(true);  //ORDINAMENTO DELLE COLONNE
+        columnFlux.setSortable(false);
+        columnDistance.setSortable(false);
         columnId.setSortable(false);
 
         tableView.setPrefSize(420, 510);
@@ -198,7 +215,7 @@ public class Req_12_Result {
         ((AnchorPane) scene.getRoot()).getChildren().addAll(tableView);
         tableView.setItems(list);
         tableView.getColumns().addAll(columnId, columnFlux, columnDistance);
-        /*tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
+        tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
             int id = tableView.getSelectionModel().getSelectedItem().getId();
             DBController dbController = new DBController();
             try {
@@ -206,7 +223,7 @@ public class Req_12_Result {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-        }));*/  //TODO GIUSEPPE Questo click sulla tableview da delle informazioni non necessarie al requisito, giusto?
+        }));
         riempi();
 
         /*tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
@@ -250,9 +267,11 @@ public class Req_12_Result {
         }
         System.out.println("Pagina " + getnCurrentPage() + " di " + getnTotalPages());
 
+
     }
 
     public void parseBean(Integer id, double flux, double distance){
+
         Controller controller = new Controller();
         list.add(controller.createReq12_BeanToShow(id, flux, distance));
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -262,6 +281,8 @@ public class Req_12_Result {
     }
 
     public void backHome(ActionEvent actionEvent) throws Exception{
+        list.clear();
+
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
         controller.resetSingleton9();
@@ -275,15 +296,6 @@ public class Req_12_Result {
             GraphicController graphicController = new GraphicController();
             graphicController.homeAdmin();
         }
-    }
-
-    public void sortbyFlux(){
-
-
-    }
-
-    public void sortbyDistance(){
-
     }
 
 

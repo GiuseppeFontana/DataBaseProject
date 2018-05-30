@@ -21,5 +21,6 @@
                 </ImageView>
             </graphic></Button>
         <Label layoutX="212.0" layoutY="30.0" text="Ricerca Stelle all'interno del Filamento" />
+      <Label layoutX="567.0" layoutY="277.0" text="Ordina per" />
     </children>
 </AnchorPane>

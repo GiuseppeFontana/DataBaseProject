@@ -174,6 +174,10 @@ public class Req_8_Result {
         columnSatellite.setMinWidth(140);
         columnSatellite.setCellValueFactory(new PropertyValueFactory<>("satellite"));
 
+        columnId.setSortable(false);
+        columnName.setSortable(false);
+        columnSatellite.setSortable(false);
+
         tableView.setPrefSize(437, 510);
         tableView.setLayoutX(100);
         tableView.setLayoutY(65);
@@ -228,6 +232,8 @@ public class Req_8_Result {
     }
 
     public void backHome(ActionEvent actionEvent) throws Exception{
+        list.clear();
+
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
         controller.resetSingleton8();

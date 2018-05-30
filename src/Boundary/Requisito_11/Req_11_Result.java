@@ -80,6 +80,8 @@ public class Req_11_Result {
         columnName.setMinWidth(140);
         columnName.setCellValueFactory(new PropertyValueFactory<>("segmenti"));
 
+        columnName.setSortable(false);
+
         ((AnchorPane) scene.getRoot()).getChildren().addAll(tableView);
         tableView.setItems(list);
         tableView.getColumns().addAll(columnName);
@@ -89,7 +91,6 @@ public class Req_11_Result {
 
         labelCurrentPage = new Label();
         labelCurrentPage.relocate(522, 583);
-        labelCurrentPage.setText("1");
 
         int size = SingletonReq11.getInstance().getBeans().size();
 
@@ -221,6 +222,8 @@ public class Req_11_Result {
     }
 
     public void backHome(ActionEvent actionEvent) throws Exception {
+        list.clear();
+
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
         boolean admin = controller.getUserSingleton().getUser().getAdmin();

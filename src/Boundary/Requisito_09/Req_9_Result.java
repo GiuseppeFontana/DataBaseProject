@@ -202,6 +202,9 @@ public class Req_9_Result {
         columnName.setMinWidth(140);
         columnName.setCellValueFactory(new PropertyValueFactory<>("name"));
 
+        columnId.setSortable(false);
+        columnName.setSortable(false);
+
         tableView.setPrefSize(300, 510);
         tableView.setLayoutX(100);
         tableView.setLayoutY(65);
@@ -251,6 +254,8 @@ public class Req_9_Result {
     }
 
     public void backHome(ActionEvent actionEvent) throws Exception{
+        list.clear();
+
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
         controller.resetSingleton9();

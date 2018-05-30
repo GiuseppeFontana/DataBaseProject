@@ -280,6 +280,8 @@ public class Req_6_Result {
     }
 
     public void backHome(ActionEvent actionEvent) throws Exception{
+        list.clear();
+
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
         controller.resetSingleton6();

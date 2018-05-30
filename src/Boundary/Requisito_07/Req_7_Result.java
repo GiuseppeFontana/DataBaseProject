@@ -185,6 +185,11 @@ public class Req_7_Result {
         columnNumeroSegmenti.setMinWidth(80);
         columnNumeroSegmenti.setCellValueFactory(new PropertyValueFactory<>("segmenti"));
 
+        columnId.setSortable(false);
+        columnName.setSortable(false);
+        columnSatellite.setSortable(false);
+        columnNumeroSegmenti.setSortable(false);
+
         tableView.setPrefSize(537, 510);
         tableView.setLayoutX(100);
         tableView.setLayoutY(65);
@@ -285,6 +290,7 @@ public class Req_7_Result {
     }
 
     public void backHome(ActionEvent actionEvent) throws Exception{
+        list.clear();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
         controller.resetSingleton7();
