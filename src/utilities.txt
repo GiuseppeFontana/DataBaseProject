@@ -31,7 +31,8 @@ TODO MODIFICHE GENERALI FATTE (MATTIA)
 il requisito (lo stesso) nella table dei risultati era presente il vecchio contenuto della list e quello nuovo appeso.
 
 -In ogni result page sono state settate le colonne "non ordinabili" (nomecolonna.setSortable(false)), in modo da
-disabilitare il click sul nome della colonna, altrimenti se ci si cliccava succedeva un macello (è troppo lungo da scrive)
+disabilitare il click sul nome della colonna, altrimenti se ci si cliccava succedeva un macello
+(è troppo lungo da scrive javistico)
 
 -Aggiunti i bottoni per ordinamento nel req12_result
 
