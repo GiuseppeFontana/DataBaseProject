@@ -127,10 +127,16 @@ public class Controller {
 
         ArrayList<Req12_Bean> beans = new ArrayList<>();
         SingletonReq12.getInstance().setBeans(beans);
+
         for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
             SingletonReq12.getInstance().getBeans().add(
-                    createReq12Bean(SingletonReq9.getInstance().getStars().get(i), 0));
+                    createReq12Bean(SingletonReq9.getInstance().getStars().get(i)));
         }
+
+        System.out.println("SIZE 9: " + SingletonReq9.getInstance().getStars().size());
+
+        System.out.println("SIZE 12: " + SingletonReq12.getInstance().getBeans().size());
+
     }
 
 
@@ -312,7 +318,7 @@ public class Controller {
         return req11_bean;
     }
 
-    public Req12_Bean createReq12Bean(Star star, double i) {
+    public Req12_Bean createReq12Bean(Star star/*, double i*/) {
         Req12_Bean bean = new Req12_Bean();
         bean.setStar(star);
         bean.setDistance(0);

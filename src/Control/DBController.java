@@ -1,6 +1,5 @@
 package Control;
 
-import Bean.Req12_Bean;
 import Bean.Req12_BeanToShow;
 import Bean.Req6_8SquareBean;
 import Bean.Req9_10Bean;
@@ -13,7 +12,6 @@ import Singletons.SingletonReq9;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Optional;
 
 public class DBController {
 
