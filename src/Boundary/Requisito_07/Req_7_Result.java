@@ -190,7 +190,7 @@ public class Req_7_Result {
         columnSatellite.setSortable(false);
         columnNumeroSegmenti.setSortable(false);
 
-        tableView.setPrefSize(537, 510);
+        tableView.setPrefSize(520, 510);
         tableView.setLayoutX(100);
         tableView.setLayoutY(65);
 

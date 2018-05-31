@@ -36,4 +36,7 @@ disabilitare il click sul nome della colonna, altrimenti se ci si cliccava succe
 
 -Aggiunti i bottoni per ordinamento nel req12_result
 
+-Sistemato la registrazione nuovo utente (l'ordine in cui si passavano i parametri alla query non era lo stesso dell'ordine
+delle colonne del DB.
+
 686x649

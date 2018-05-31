@@ -36,6 +36,8 @@ public class Req_12_Page {
     }
 
 
+
+
     public void search(ActionEvent actionEvent){
 
         try {
@@ -51,7 +53,7 @@ public class Req_12_Page {
                 return;
             }
             if (!dbController.Req12(sat, id)){
-                String msg = "Non ci sono stelle al'interno\n all'interno del filamento scelto";
+                String msg = "Non ci sono stelle all'interno\n del filamento scelto";
                 GraphicController graphicController = new GraphicController();
                 graphicController.alertError(msg);
                 return;
@@ -59,10 +61,6 @@ public class Req_12_Page {
             ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
             GraphicController graphicController = new GraphicController();
             graphicController.req12result();
-            /*if (dbController.valuesControl(sat, id)){
-                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-                dbController.Req12(sat, id);
-            }*/
         }catch (NumberFormatException n){
             try {
                 Boundary.Alerts.Alert alert = new Boundary.Alerts.Alert();

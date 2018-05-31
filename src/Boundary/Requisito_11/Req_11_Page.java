@@ -5,6 +5,8 @@ import Control.DBController;
 import Control.GraphicController;
 import Singletons.SingletonId;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -64,6 +66,7 @@ public class Req_11_Page {
 
         }
     }
+
 
     public void backHome(ActionEvent actionEvent) throws Exception {
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();

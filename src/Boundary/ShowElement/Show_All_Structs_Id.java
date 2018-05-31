@@ -1,9 +1,12 @@
 package Boundary.ShowElement;
 
 import Bean.BeanId;
+import Boundary.Requisito_11.Req_11_Page;
 import Control.Controller;
 import Control.DBController;
+import Control.GraphicController;
 import Singletons.SingletonId;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

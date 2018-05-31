@@ -177,4 +177,5 @@ public class GraphicController extends Application {
         Show_All_Structs_Id show = new Show_All_Structs_Id();
         show.start();
     }
+
 }
