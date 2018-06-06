@@ -44,7 +44,7 @@ public class Controller {
         SingletonStar.getInstance().setStar(null);
     }
 
-    public void resetingleton5() {
+    public void resetSingleton5() {
         SingletonReq5.getInstance().setBean(null);
     }
 
@@ -105,6 +105,20 @@ public class Controller {
     public void resetSingletonId() {
         SingletonId.getInstance().setBeans(null);
         SingletonId.getInstance().setSatellite(null);
+    }
+
+    public void resetAllSingleton(){
+        resetStructSingleton();
+        resetStarSingleton();
+        resetSingletonId();
+        resetSingleton5();
+        resetSingleton6();
+        resetSingleton7();
+        resetSingleton8();
+        resetSingleton9();
+        resetSingleton10();
+        resetSingleton11();
+        resetSingleton12();
     }
 
 

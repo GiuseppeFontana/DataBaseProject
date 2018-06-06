@@ -10,12 +10,10 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String args[]){
-        Application.launch(GraphicController.class);
+        //Application.launch(GraphicController.class);
 
-        /*
         ImportDao dao = new ImportDao();
-        dao.importa("boundaries", "spitzer", "/home/mattia/Scaricati/ProgettoDb_TestDati (1)/Esame Basi Dati/contorni_filamenti_Spitzer.csv");
-        */
+        dao.importa("boundaries", "herschel", "/home/giuseppe/Scrivania/basedati/modded_csv/contorni_filamenti_Herschel.csv");
 
         /*String ciao = "ciao123456789";
         System.out.println(ciao);
