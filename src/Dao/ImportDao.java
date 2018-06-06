@@ -1,7 +1,9 @@
 package Dao;
 
+import Control.GraphicController;
 import Utils.Credenziali;
 import Utils.Strings;
+import org.postgresql.util.PSQLException;
 
 import java.sql.*;
 
@@ -28,33 +30,53 @@ public class ImportDao {
 
             // STEP 4: creazione ed esecuzione della query
             //"DELETE FROM herschel_skeletons"
-            String sql1 = String.format(Strings.strDelete, instrument, table);
-            System.out.println(sql1);
-            ps1 = conn.prepareStatement(sql1);
+            String sqlDel = String.format(Strings.strDelete, instrument, table);
+            System.out.println(sqlDel);
+            ps1 = conn.prepareStatement(sqlDel);
             int resDel = ps1.executeUpdate();
             System.out.println("rows deleted: "+resDel);
 
             //"COPY herschel_skeletons FROM '/home/giuseppe/Scrivania/basedati/modded_csv/scheletro_filamenti_Herschel.csv' DELIMITER ','"
-            String sql2 =String.format(Strings.strImport, instrument, table, path);
-            System.out.println(sql2);
+            //String sql =String.format(Strings.strImport, instrument, table, /*instrument, table,*/ path);
+
+            String sql1 = String.format(Strings.strImport1, instrument, table);
+            System.out.println(sql1);
+            ps1 = conn.prepareStatement(sql1);
+            ps1.execute();
+
+            String sql2 = String.format(Strings.strImport2, path);
             ps2 = conn.prepareStatement(sql2);
             int resImp = ps2.executeUpdate();
-            System.out.println("Imported " + resImp + " rows...");
+            System.out.println("Imported " + resImp + " rows into temporary table");
+
+            String sql3 = String.format(Strings.strImport3, instrument, table);
+            ps2 = conn.prepareStatement(sql3);
+            resImp = ps2.executeUpdate();
+            System.out.println("Imported " + resImp + " rows.");
 
 
-            //TODO se non va a buon fine fai rollback
+
             conn.commit();
 
             // STEP 6: Clean-up dell'ambiente
             ps1.close();
             ps2.close();
             conn.close();
-        } catch (SQLException se) {
-            // Errore durante l'apertura della connessione
-            se.printStackTrace();
-        } catch (Exception e) {
-            // Errore nel loading del driver
+        }catch (PSQLException sqle){
+            int k = sqle.getErrorCode();
+            System.out.println("error code: "+ k);
+            sqle.printStackTrace();
+        }
+        catch (Exception e) {
             e.printStackTrace();
+            try{
+                System.out.println("eseguendo il rollback...");
+                conn.rollback();
+                GraphicController gc = new GraphicController();
+                gc.alertError("Import fallito.\nTrovati dei duplicati.");
+            }catch (Exception e2){
+                e2.printStackTrace();
+            }
         } finally {
             try {
                 if (ps1 != null)

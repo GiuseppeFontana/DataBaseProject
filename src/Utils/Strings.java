@@ -17,7 +17,10 @@ public class Strings {
 
     // import
     public static String strDelete = "DELETE FROM %s_%s";
-    public static String strImport = "COPY %s_%s FROM '%s' DELIMITER ','";
+    //public static String strImport = "COPY %s_%s FROM '%s' DELIMITER ','";
+    public static String strImport1 = "CREATE TEMP TABLE tmp_table ON COMMIT DROP AS SELECT * FROM %s_%s WITH NO DATA";
+    public static String strImport2 = "COPY tmp_table FROM '%s' DELIMITER ','";
+    public static String strImport3 = "INSERT INTO %s_%s SELECT DISTINCT * FROM tmp_table";
 
 
 
