@@ -226,24 +226,6 @@ public class Req_12_Result {
         }));
         riempi();
 
-        /*tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
-
-            int id = tableView.getSelectionModel().getSelectedItem().getId();
-            DBController dbController = new DBController();
-            try {
-                *//*dbController.Req12_Distance(sat, id);
-                String dist = SingletonReq12.getInstance().getBeans().getDistance();
-                Double flux = SingletonReq12.getInstance().getBeans().getFlux();
-                Alert alert = new Alert();
-                alert.incorrectLoginField("Distanza dalla spina dorsale =\n\n" + String.valueOf(dist) +
-                "\n\nValore del flusso della sorgente =\n\n" + flux);*//*
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }));*/
-
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

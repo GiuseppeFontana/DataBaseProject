@@ -87,6 +87,14 @@ public class Controller {
         SingletonReq10.getInstance().setProtostellar_true(0);
     }
 
+    public void resetSingleton11(){
+
+        SingletonReq11.getInstance().setBeans(null);
+        SingletonReq11.getInstance().setId(0);
+        SingletonReq11.getInstance().setSat(null);
+
+    }
+
 
     public void resetSingleton12() {
         SingletonReq12.getInstance().setBeanToShows(null);
