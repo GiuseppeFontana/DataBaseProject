@@ -36,13 +36,13 @@ public class Strings {
     public static String strImport = "DELETE FROM %s_%s;\n" +
             "CREATE TEMP TABLE tmp_table AS SELECT * FROM %s_%s WITH NO DATA;\n" +
             "COPY tmp_table FROM '%s' DELIMITER ',';\n" +
-            "INSERT INTO %s_%s SELECT DISTINCT tmp.* FROM tmp_table  AS tmp WHERE NOT exists(SELECT * FROM %s_%s AS tab WHERE %s);\n" +
+            "INSERT INTO %s_%s SELECT DISTINCT tmp.* FROM tmp_table AS tmp WHERE NOT exists(SELECT * FROM %s_%s AS tab WHERE %s);\n" +
             "DROP TABLE tmp_table;";
 
-    public static String strImportBound = "tab.id=tmp.id AND  tab.lon=tmp.lon AND tab.lat=tmp.lat";
-    public static String strImportSkel = "tab.idfil=tmp.idfil AND  tab.idbranch=tmp.idbranch AND tab.type=tmp.type AND tab.lat=tmp.lat AND tab.lon=tmp.lon AND tab.n=tmp.n AND tab.flux=tmp.flux";
-    public static String strImportStar = "tab.id=tmp.id AND  tab.name=tmp.name AND tab.type=tmp.type AND tab.lat=tmp.lat AND tab.lon=tmp.lon AND tab.flux=tmp.flux";
-    public static String strImportStruct = "tab.id=tmp.id AND  tab.name=tmp.name AND tab.meandens=tmp.meandens AND tab.meantemp=tmp.meantemp AND tab.flux=tmp.flux AND tab.ellipt=tmp.ellipt AND tab.contrast=tmp.contrast AND tab.satellite=tmp.satellite AND tab.instrument=tmp.instrument";
+    public static String strImportBound = "tab.id=tmp.id AND tab.lon=tmp.lon AND tab.lat=tmp.lat";
+    public static String strImportSkel = "tab.idfil=tmp.idfil AND tab.idbranch=tmp.idbranch AND tab.lon=tmp.lon AND tab.lat=tmp.lat";
+    public static String strImportStar = "tab.id=tmp.id";
+    public static String strImportStruct = "tab.id=tmp.id";
 
     // requisiti
     public static String strReq51 = "SELECT %s FROM %s_boundaries WHERE id = '%s'";
