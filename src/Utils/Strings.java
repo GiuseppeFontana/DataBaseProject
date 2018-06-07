@@ -16,13 +16,33 @@ public class Strings {
     public static String strInsertStrip = "INSERT INTO strip VALUES ('%s','%s')";
 
     // import
-    public static String strDelete = "DELETE FROM %s_%s";
+    /*public static String strDelete = "DELETE FROM %s_%s";
     //public static String strImport = "COPY %s_%s FROM '%s' DELIMITER ','";
+    public static String strImport = "COPY %s_%s FROM '%s' DELIMITER ',' ON CONFLICT IGNORE";
     public static String strImport1 = "CREATE TEMP TABLE tmp_table ON COMMIT DROP AS SELECT * FROM %s_%s WITH NO DATA";
     public static String strImport2 = "COPY tmp_table FROM '%s' DELIMITER ','";
     public static String strImport3 = "INSERT INTO %s_%s SELECT DISTINCT * FROM tmp_table";
+*/
+    /* TODO
+    DELETE FROM %s_%s;
+    CREATE TEMP TABLE tmp_table AS SELECT * FROM herschel_boundaries WITH NO DATA;
+    COPY tmp_table FROM '/home/giuseppe/Scrivania/basedati/modded_csv/contorni_filamenti_Herschel.csv' DELIMITER ',';
+    INSERT INTO herschel_boundaries SELECT DISTINCT tmp.* FROM tmp_table  AS tmp WHERE
+      NOT exists(SELECT * FROM herschel_boundaries AS tab WHERE
+        tab.id=tmp.id AND  tab.lon=tmp.lon AND tab.lat=tmp.lat);
+    DROP TABLE tmp_table;
+     */
 
+    public static String strImport = "DELETE FROM %s_%s;\n" +
+            "CREATE TEMP TABLE tmp_table AS SELECT * FROM %s_%s WITH NO DATA;\n" +
+            "COPY tmp_table FROM '%s' DELIMITER ',';\n" +
+            "INSERT INTO %s_%s SELECT DISTINCT tmp.* FROM tmp_table  AS tmp WHERE NOT exists(SELECT * FROM %s_%s AS tab WHERE %s);\n" +
+            "DROP TABLE tmp_table;";
 
+    public static String strImportBound = "tab.id=tmp.id AND  tab.lon=tmp.lon AND tab.lat=tmp.lat";
+    public static String strImportSkel = "tab.idfil=tmp.idfil AND  tab.idbranch=tmp.idbranch AND tab.type=tmp.type AND tab.lat=tmp.lat AND tab.lon=tmp.lon AND tab.n=tmp.n AND tab.flux=tmp.flux";
+    public static String strImportStar = "tab.id=tmp.id AND  tab.name=tmp.name AND tab.type=tmp.type AND tab.lat=tmp.lat AND tab.lon=tmp.lon AND tab.flux=tmp.flux";
+    public static String strImportStruct = "tab.id=tmp.id AND  tab.name=tmp.name AND tab.meandens=tmp.meandens AND tab.meantemp=tmp.meantemp AND tab.flux=tmp.flux AND tab.ellipt=tmp.ellipt AND tab.contrast=tmp.contrast AND tab.satellite=tmp.satellite AND tab.instrument=tmp.instrument";
 
     // requisiti
     public static String strReq51 = "SELECT %s FROM %s_boundaries WHERE id = '%s'";
