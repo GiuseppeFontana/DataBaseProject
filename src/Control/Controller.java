@@ -187,11 +187,7 @@ public class Controller {
         return (double) ((int)(n*100))/100;
     }
 
-
-
-
     // requisito 10
-
     public boolean isInStruct10(Star star) {
 
         double k = 0;

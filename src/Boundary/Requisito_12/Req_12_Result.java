@@ -267,8 +267,7 @@ public class Req_12_Result {
 
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
-        controller.resetSingleton9();
-        controller.resetSingleton12();
+        controller.resetAllSingleton();
         boolean admin = controller.getUserSingleton().getUser().getAdmin();
         if(!admin){
             GraphicController graphicController = new GraphicController();

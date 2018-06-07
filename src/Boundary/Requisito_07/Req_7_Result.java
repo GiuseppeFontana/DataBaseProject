@@ -293,7 +293,7 @@ public class Req_7_Result {
         list.clear();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
-        controller.resetSingleton7();
+        controller.resetAllSingleton();
         boolean admin = controller.getUserSingleton().getUser().getAdmin();
         if(!admin){
             GraphicController graphicController = new GraphicController();

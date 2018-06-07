@@ -85,7 +85,7 @@ public class Req_10_Page {
             double centreLat = Double.parseDouble(CenterLatText.getText());
             double centreLon = Double.parseDouble(CenterLonText.getText());
 
-            if (extLat<=0 || extLon <=0){
+            if (extLat<=0 || extLon<=0){
                 GraphicController graphicController = new GraphicController();
                 String msg = "Input scorretto.\nControlla le estensioni.";
                 graphicController.alertError(msg);
@@ -102,10 +102,10 @@ public class Req_10_Page {
 
             DBController dbController = new DBController();
             GraphicController graphicController = new GraphicController();
-            //if (!dbController.ricercaStelleInRegione(extLon, extLat, centreLon, centreLat)){
+            if (!dbController.ricercaStelleInRegione(extLon, extLat, centreLon, centreLat)){
             // ToDO inizio
-            Classona classona = new Classona();
-            if (!classona.ricercaRequisito10(extLat, extLon, centreLat, centreLon)){
+            //Classona classona = new Classona();
+            //if (!classona.ricercaRequisito10(extLat, extLon, centreLat, centreLon)){
                 String msg = "Nessuna stella presente\nnella regione.";
                 graphicController.alertError(msg);
                 Controller controller = new Controller();

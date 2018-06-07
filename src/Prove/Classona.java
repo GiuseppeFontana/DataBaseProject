@@ -34,17 +34,18 @@ public class Classona {
             return false;
         }
 
-        System.out.println("inizio conti; strutture: "+ SingletonReq10.getInstance().getStructuresInBeans().size());
+        System.out.println("inizio conti;\nstrutture: "+ SingletonReq10.getInstance().getStructuresInBeans().size());
 
         int counter = 0;
         for (int i = 0; i< SingletonReq10.getInstance().getStructuresInBeans().size(); i++){
             counter++;
-            if (counter%500==0){
+            if (counter%1000==0){
                 System.out.println("analizzate "+counter+" strutture.");
             }
             recuperaContorni(SingletonReq10.getInstance().getStructuresInBeans().get(i));
             for (int k = 0; k< SingletonReq10.getInstance().getStarBeans().size(); k++){
-                if (checkIn(SingletonReq10.getInstance().getStarBeans().get(k).getStar(),
+                if (!SingletonReq10.getInstance().getStarBeans().get(k).isInStructure()
+                        && checkIn(SingletonReq10.getInstance().getStarBeans().get(k).getStar(),
                         SingletonReq10.getInstance().getStructureBounds())){
                     SingletonReq10.getInstance().getStarBeans().get(k).setInStructure(true);
                 }
@@ -294,7 +295,7 @@ public class Classona {
 
     public static void main(String args[]) throws Exception{
         Classona classona = new Classona();
-        classona.ricercaRequisito10(50,50,10,10);
+        classona.ricercaRequisito10(80,80,10,10);
 
         int in = 0;
         int out = 0;
@@ -302,11 +303,12 @@ public class Classona {
         for (int i= 0; i< SingletonReq10.getInstance().getStarBeans().size(); i++){
             counter++;
             if (counter%100==0){
-                System.out.println("counter\n"+in+"\n\n");
+                System.out.println("dentro "+ in +" dopo " + counter+ " iterazioni");
             }
             if (SingletonReq10.getInstance().getStarBeans().get(i).isInStructure()){
-                System.out.println("trovato.");
-                return;
+                in++;
+            } else {
+                out++;
             }
         }
 

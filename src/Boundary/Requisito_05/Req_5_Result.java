@@ -16,7 +16,8 @@ public class Req_5_Result {
     public void close(ActionEvent actionEvent) {
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
-        controller.resetSingleton5();
+        controller.resetAllSingleton();
+
     }
 
     public void start() throws Exception {
