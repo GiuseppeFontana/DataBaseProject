@@ -144,17 +144,17 @@ public class Req10Dao {
 
                 Controller controller = new Controller();
                 ArrayList<Req10AllBoundsBean> array = new ArrayList<>();
-                SingletonReq10.getInstance().setAllBoundsBeans(array);
+                SingletonReq10.getInstance().setStructuresInBeans(array);
 
                 if (rs1.first()) {
                     Req10AllBoundsBean bean1 = controller.createReq10AllBoundsBean(rs1.getInt("id"),
                             herschel);
-                    SingletonReq10.getInstance().getAllBoundsBeans().add(bean1);
+                    SingletonReq10.getInstance().getStructuresInBeans().add(bean1);
 
                     while (rs1.next()) {
                         Req10AllBoundsBean bean = controller.createReq10AllBoundsBean(rs1.getInt("id"),
                                 herschel);
-                        SingletonReq10.getInstance().getAllBoundsBeans().add(bean);
+                        SingletonReq10.getInstance().getStructuresInBeans().add(bean);
                     }
                 }
 
@@ -164,7 +164,7 @@ public class Req10Dao {
                             spitzer
                     );
 
-                    SingletonReq10.getInstance().getAllBoundsBeans().add(bean1);
+                    SingletonReq10.getInstance().getStructuresInBeans().add(bean1);
 
                     while (rs2.next()) {
                         Req10AllBoundsBean bean = controller.createReq10AllBoundsBean(
@@ -172,7 +172,7 @@ public class Req10Dao {
                                 spitzer
                         );
 
-                        SingletonReq10.getInstance().getAllBoundsBeans().add(bean);
+                        SingletonReq10.getInstance().getStructuresInBeans().add(bean);
                     }
                 }
             }

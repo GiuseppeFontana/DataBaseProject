@@ -2,6 +2,7 @@ package Boundary.Requisito_10;
 import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;
+import Prove.Classona;
 import Singletons.SingletonReq10;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -101,7 +102,10 @@ public class Req_10_Page {
 
             DBController dbController = new DBController();
             GraphicController graphicController = new GraphicController();
-            if (!dbController.ricercaStelleInRegione(extLon, extLat, centreLon, centreLat)){
+            //if (!dbController.ricercaStelleInRegione(extLon, extLat, centreLon, centreLat)){
+            // ToDO inizio
+            Classona classona = new Classona();
+            if (!classona.ricercaRequisito10(extLat, extLon, centreLat, centreLon)){
                 String msg = "Nessuna stella presente\nnella regione.";
                 graphicController.alertError(msg);
                 Controller controller = new Controller();

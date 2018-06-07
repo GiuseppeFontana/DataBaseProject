@@ -191,26 +191,33 @@ public class DBController {
         double latMin = centreLat - extLat/2;
         double latMax = centreLat + extLat/2;
 
-        System.out.println("Ricerca stelle nella regione...");
+        //System.out.println("Ricerca stelle nella regione...");
         if (!Req10Dao.searchStarsInArea(lonMin, lonMax, latMin, latMax)){
             return false;
         }
 
-        System.out.println("Ricerca strutture nella regione...");
+        //System.out.println("Ricerca strutture nella regione...");
         if (Req10Dao.searchBoundsInArea(lonMin, lonMax, latMin, latMax)){
 
             Controller controller = new Controller();
             // vedere quali stelle cadono nelle strutture
-            System.out.println("Calcolo appartenenza alle strutture...");
-            for (int j = 0; j < SingletonReq10.getInstance().getAllBoundsBeans().size(); j++){
+            //System.out.println("Calcolo appartenenza alle strutture...");
+            for (int j = 0; j < SingletonReq10.getInstance().getStructuresInBeans().size(); j++){
                 // riempire l'array dei bound
-                if (Req10Dao.getBounds(SingletonReq10.getInstance().getAllBoundsBeans().get(j).getId(),
-                        SingletonReq10.getInstance().getAllBoundsBeans().get(j).getSatellite())){
+                if (Req10Dao.getBounds(
+                        SingletonReq10.getInstance().getStructuresInBeans().get(j).getId(),
+                        SingletonReq10.getInstance().getStructuresInBeans().get(j).getSatellite())){
                     // effettuare il calcolo
                     for (int k = 0; k < SingletonReq10.getInstance().getStarBeans().size(); k++){
+                        //TODO
                         if ((!SingletonReq10.getInstance().getStarBeans().get(k).isInStructure()) && controller.isInStruct10(SingletonReq10.getInstance().getStarBeans().get(k).getStar())){
                             SingletonReq10.getInstance().getStarBeans().get(k).setInStructure(true);
                         }
+                        /*if ((!SingletonReq10.getInstance().getStarBeans().get(k).isInStructure())){
+                            if (controller.isInStruct10(SingletonReq10.getInstance().getStarBeans().get(k).getStar())){
+                                SingletonReq10.getInstance().getStarBeans().get(k).setInStructure(true);
+                            }
+                        }*/
                     }
                 }else {
                     System.out.println("Something's gone wrong.");
@@ -218,7 +225,6 @@ public class DBController {
             }
         }
 
-        System.out.println("Inizzializzo la GUI...");
         ArrayList<Req9_10Bean> beans = new ArrayList<>();
         SingletonReq10.getInstance().setBeansToShow(beans);
         Controller controller = new Controller();
@@ -230,7 +236,6 @@ public class DBController {
                     )
             );
         }
-
         return true;
     }
 

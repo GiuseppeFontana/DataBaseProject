@@ -6,7 +6,6 @@ import Singletons.*;
 
 import java.util.ArrayList;
 import java.util.Optional;
-import java.util.OptionalDouble;
 
 public class Controller {
 
@@ -72,7 +71,7 @@ public class Controller {
     }
 
     public void resetSingleton10(){
-        SingletonReq10.getInstance().setAllBoundsBeans(null);
+        SingletonReq10.getInstance().setStructuresInBeans(null);
         SingletonReq10.getInstance().setBeansToShow(null);
         SingletonReq10.getInstance().setStarBeans(null);
         SingletonReq10.getInstance().setStructureBounds(null);
@@ -177,14 +176,6 @@ public class Controller {
                             (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLatitude()-star.getgLat())));
             k += j;
         }
-
-//        for (int i = 0; i < SingletonReq9.getInstance().getStructureBounds().size()-1; i++){
-//            double j = Math.atan(((SingletonReq9.getInstance().getStructureBounds().get(i).getLongitude()-star.getgLon())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())-
-//                    (SingletonReq9.getInstance().getStructureBounds().get(i).getLatitude()-star.getgLat())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLongitude()-star.getgLon()))/
-//                    ((SingletonReq9.getInstance().getStructureBounds().get(i).getLongitude()-star.getgLon())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())+
-//                            (SingletonReq9.getInstance().getStructureBounds().get(i).getLatitude()-star.getgLat())*(SingletonReq9.getInstance().getStructureBounds().get(i+1).getLatitude()-star.getgLat())));
-//            k += j;
-//        }
 
         if (Math.abs(k) >= 0.01){
             return true;
@@ -467,6 +458,15 @@ public class Controller {
                         SingletonReq10.getInstance().getPrestellar_false()+
                         SingletonReq10.getInstance().getProtostellar_false()
         );
+
+        System.out.println("total in: "+ SingletonReq10.getInstance().getTotal_true());
+        System.out.println("total unbound in: "+ SingletonReq10.getInstance().getUnbound_true());
+        System.out.println("total pre in: "+ SingletonReq10.getInstance().getPrestellar_true());
+        System.out.println("total proto in: "+ SingletonReq10.getInstance().getProtostellar_true());
+        System.out.println("total out: "+ SingletonReq10.getInstance().getTotal_false());
+        System.out.println("total unbound out: "+ SingletonReq10.getInstance().getUnbound_false());
+        System.out.println("total pre out: "+ SingletonReq10.getInstance().getPrestellar_false());
+        System.out.println("total proto out: "+ SingletonReq10.getInstance().getProtostellar_false());
     }
 
 

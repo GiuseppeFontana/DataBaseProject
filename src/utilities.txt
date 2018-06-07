@@ -1,15 +1,3 @@
-        MODELLO LOGICO
----------------AGENZIA(NomeAgenzia)
-SATELLITE (NomeSatellite, InizioAttività, FineAttività*, Agenzia)
-STRUMENTO (NomeStrumento, Satellite)
-BANDA(Lunghezzad’onda, Strumento)
-FILAMENTO (IDFilamento, NomeFilamento, FlussoTot, DensitàMedia, Ellitticità, ContrastoContorno, TemperaturaMedia, Satellite, Strumento)
-CONTORNO (IDFilamento, Latitudine, Longitudine)
-PUNTO (Latitudine, Longitudine)
-SCHELETRO (IDFilamento, IDSegmento, TipoRamo, Longitudine, Latitudine, NumeroProgressivo, FlussoMis)
----------------SEGMENTO (IDSegmento)
-STELLA (IDSorgente, NomeSorgente, Tipologia, ValoreFlusso, Latitudine, Longitudine)
-
 psql postgresql://localhost:5432/dbserver -U postgres
 sudo /etc/init.d/postgresql restart
 sudo service postgresql restart
@@ -40,3 +28,9 @@ disabilitare il click sul nome della colonna, altrimenti se ci si cliccava succe
 delle colonne del DB.
 
 686x649
+
+
+
+TODO
+errore % stelle al requisito 10
+va in blocco al req 12

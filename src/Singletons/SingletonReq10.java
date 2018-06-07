@@ -11,8 +11,8 @@ public class SingletonReq10 {
 
     private static SingletonReq10 instance = null;
 
-    //array di punti contorni con nome satellite che cadono nella regione
-    private ArrayList<Req10AllBoundsBean> allBoundsBeans;
+    //array di strutture con contorni che cadono nella regione
+    private ArrayList<Req10AllBoundsBean> structuresInBeans;
 
     //array stelle con booleano per indicare se appartiene a struttura
     private ArrayList<Req10StarBean> starBeans;
@@ -47,12 +47,12 @@ public class SingletonReq10 {
         return instance;
     }
 
-    public ArrayList<Req10AllBoundsBean> getAllBoundsBeans() {
-        return allBoundsBeans;
+    public ArrayList<Req10AllBoundsBean> getStructuresInBeans() {
+        return structuresInBeans;
     }
 
-    public void setAllBoundsBeans(ArrayList<Req10AllBoundsBean> allBoundsBeans) {
-        this.allBoundsBeans = allBoundsBeans;
+    public void setStructuresInBeans(ArrayList<Req10AllBoundsBean> structuresInBeans) {
+        this.structuresInBeans = structuresInBeans;
     }
 
     public ArrayList<Req10StarBean> getStarBeans() {
