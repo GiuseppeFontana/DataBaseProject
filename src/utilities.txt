@@ -9,10 +9,6 @@ le stelle che contiene sono segnate tutte come fuori struttura, anche quando non
 metterlo nei documenti.
 
 
-TODO MATTIA e GIUSEPPE
-
-IMPORTANTE mettere bottone che mostra, scelto il satellite, gli id dei filamenti disponibili
-
 TODO MODIFICHE GENERALI FATTE (MATTIA) Le modifiche vengono pushate sul branch "mattia" così abbiamo un backup dell'originale
 
 -Messo un list.clear() in ogni metodo backHome di ogni result page, altrimenti se si tornava indietro e si rilanciava

@@ -119,8 +119,6 @@ public class Import {
 
             DBController dbController = new DBController();
             dbController.importaCSV(table, instrument, textPath.getText());
-            // TODO controllo della riuscita ed eventuale chiusura della pagina
-
         }
     }
 }

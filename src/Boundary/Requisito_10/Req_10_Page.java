@@ -103,9 +103,6 @@ public class Req_10_Page {
             DBController dbController = new DBController();
             GraphicController graphicController = new GraphicController();
             if (!dbController.ricercaStelleInRegione(extLon, extLat, centreLon, centreLat)){
-            // ToDO inizio
-            //Classona classona = new Classona();
-            //if (!classona.ricercaRequisito10(extLat, extLon, centreLat, centreLon)){
                 String msg = "Nessuna stella presente\nnella regione.";
                 graphicController.alertError(msg);
                 Controller controller = new Controller();

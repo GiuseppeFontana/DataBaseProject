@@ -94,7 +94,6 @@ public class Controller {
 
     }
 
-
     public void resetSingleton12() {
         SingletonReq12.getInstance().setBeanToShows(null);
         SingletonReq12.getInstance().setBeans(null);
@@ -120,9 +119,6 @@ public class Controller {
         resetSingleton12();
     }
 
-
-
-
     // requisito 9
     public void scanStars9() {
         for (int i = SingletonReq9.getInstance().getStars().size()-1; i>=0; i--){
@@ -138,30 +134,6 @@ public class Controller {
                             SingletonReq9.getInstance().getStars().get(i).getName()));
         }
     }
-
-    public void scanStars12() {
-        for (int i = SingletonReq9.getInstance().getStars().size()-1; i>=0; i--){
-            if (!isInStruct9(SingletonReq9.getInstance().getStars().get(i))){
-                SingletonReq9.getInstance().getStars().remove(i);
-            }
-        }
-
-        ArrayList<Req12_Bean> beans = new ArrayList<>();
-        SingletonReq12.getInstance().setBeans(beans);
-
-        for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
-            SingletonReq12.getInstance().getBeans().add(
-                    createReq12Bean(SingletonReq9.getInstance().getStars().get(i)));
-        }
-
-        System.out.println("SIZE 9: " + SingletonReq9.getInstance().getStars().size());
-
-        System.out.println("SIZE 12: " + SingletonReq12.getInstance().getBeans().size());
-
-    }
-
-
-
 
     private boolean isInStruct9(Star star) {
 
@@ -205,10 +177,31 @@ public class Controller {
         if (Math.abs(k) >= 0.01){
             return true;
         }
+        // todo
+        System.out.println("star: "+star.getId()+"\tstruct: "+array.get(0).getId());
         return false;
     }
 
+    public void scanStars12() {
+        for (int i = SingletonReq9.getInstance().getStars().size()-1; i>=0; i--){
+            if (!isInStruct9(SingletonReq9.getInstance().getStars().get(i))){
+                SingletonReq9.getInstance().getStars().remove(i);
+            }
+        }
 
+        ArrayList<Req12_Bean> beans = new ArrayList<>();
+        SingletonReq12.getInstance().setBeans(beans);
+
+        for (int i = 0; i < SingletonReq9.getInstance().getStars().size(); i++){
+            SingletonReq12.getInstance().getBeans().add(
+                    createReq12Bean(SingletonReq9.getInstance().getStars().get(i)));
+        }
+
+        System.out.println("SIZE 9: " + SingletonReq9.getInstance().getStars().size());
+
+        System.out.println("SIZE 12: " + SingletonReq12.getInstance().getBeans().size());
+
+    }
 
     ////////////////// ENTITY
 
@@ -349,13 +342,9 @@ public class Controller {
         return b;
     }
 
-
-
     public boolean circSearch(Double dimension, Double longitude, Double latitude) {
-        /*
-        TODO invertire i cicli
-        scansione e cancellazione
-        */
+
+        //scansione e cancellazione
         try {
             System.out.println("scansione punti inscritti alla regione;\nAttendere...");
             for (int i = SingletonReq8.getInstance().getReq8CircularBeans().size() - 1; i >= 0; i--) {
@@ -464,7 +453,6 @@ public class Controller {
         System.out.println("total pre out: "+ SingletonReq10.getInstance().getPrestellar_false());
         System.out.println("total proto out: "+ SingletonReq10.getInstance().getProtostellar_false());
     }
-
 
     public void calcolaDistanze12() {
         ArrayList<Double> distanze = new ArrayList<>();

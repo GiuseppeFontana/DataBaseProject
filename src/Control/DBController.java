@@ -209,15 +209,9 @@ public class DBController {
                         SingletonReq10.getInstance().getStructuresInBeans().get(j).getSatellite())){
                     // effettuare il calcolo
                     for (int k = 0; k < SingletonReq10.getInstance().getStarBeans().size(); k++){
-                        //TODO
                         if ((!SingletonReq10.getInstance().getStarBeans().get(k).isInStructure()) && controller.isInStruct10(SingletonReq10.getInstance().getStarBeans().get(k).getStar())){
                             SingletonReq10.getInstance().getStarBeans().get(k).setInStructure(true);
                         }
-                        /*if ((!SingletonReq10.getInstance().getStarBeans().get(k).isInStructure())){
-                            if (controller.isInStruct10(SingletonReq10.getInstance().getStarBeans().get(k).getStar())){
-                                SingletonReq10.getInstance().getStarBeans().get(k).setInStructure(true);
-                            }
-                        }*/
                     }
                 }else {
                     System.out.println("Something's gone wrong.");

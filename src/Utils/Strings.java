@@ -5,7 +5,7 @@ public class Strings {
     // show
     public static String strShowStruct = "SELECT * FROM %s_structures WHERE id = '%s'";
     public static String strShowStar = "SELECT * FROM herschel_stars WHERE id = '%s'";
-    public static String strShowAllID = "SELECT id FROM %s_structures";
+    public static String strShowAllID = "SELECT id FROM %s_structures ORDER BY id";
 
 
     // admin query
@@ -16,23 +16,6 @@ public class Strings {
     public static String strInsertStrip = "INSERT INTO strip VALUES ('%s','%s')";
 
     // import
-    /*public static String strDelete = "DELETE FROM %s_%s";
-    //public static String strImport = "COPY %s_%s FROM '%s' DELIMITER ','";
-    public static String strImport = "COPY %s_%s FROM '%s' DELIMITER ',' ON CONFLICT IGNORE";
-    public static String strImport1 = "CREATE TEMP TABLE tmp_table ON COMMIT DROP AS SELECT * FROM %s_%s WITH NO DATA";
-    public static String strImport2 = "COPY tmp_table FROM '%s' DELIMITER ','";
-    public static String strImport3 = "INSERT INTO %s_%s SELECT DISTINCT * FROM tmp_table";
-*/
-    /* TODO
-    DELETE FROM %s_%s;
-    CREATE TEMP TABLE tmp_table AS SELECT * FROM herschel_boundaries WITH NO DATA;
-    COPY tmp_table FROM '/home/giuseppe/Scrivania/basedati/modded_csv/contorni_filamenti_Herschel.csv' DELIMITER ',';
-    INSERT INTO herschel_boundaries SELECT DISTINCT tmp.* FROM tmp_table  AS tmp WHERE
-      NOT exists(SELECT * FROM herschel_boundaries AS tab WHERE
-        tab.id=tmp.id AND  tab.lon=tmp.lon AND tab.lat=tmp.lat);
-    DROP TABLE tmp_table;
-     */
-
     public static String strImport = "DELETE FROM %s_%s;\n" +
             "CREATE TEMP TABLE tmp_table AS SELECT * FROM %s_%s WITH NO DATA;\n" +
             "COPY tmp_table FROM '%s' DELIMITER ',';\n" +
@@ -86,8 +69,8 @@ public class Strings {
     public static String strReq91 = "SELECT * FROM herschel_stars";
     public static String strReq92 = "SELECT * FROM %s_boundaries WHERE id = '%s'";
 
-    public static String strReq101 = "SELECT * FROM herschel_stars WHERE lon > %s AND lon < %s AND lat > %s AND lat < %s";
-    public static String strReq102 = "SELECT DISTINCT id FROM %s_boundaries WHERE lon > %s AND lon < %s AND lat > %s AND lat < %s";
+    public static String strReq101 = "SELECT * FROM herschel_stars WHERE lon > %s AND lon < %s AND lat > %s AND lat < %s ORDER BY id";
+    public static String strReq102 = "SELECT DISTINCT id FROM %s_boundaries WHERE lon > %s AND lon < %s AND lat > %s AND lat < %s ORDER BY id";
 
     public static String strReq11_1 = "SELECT DISTINCT idbranch FROM %s_skeletons WHERE idfil='%s'";
     public static String strReq11_2 = "SELECT lon FROM %s_skeletons WHERE (idbranch='%s' AND n='%s')";
