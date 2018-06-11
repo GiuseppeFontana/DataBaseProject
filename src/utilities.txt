@@ -27,6 +27,5 @@ delle colonne del DB.
 
 
 
-TODO
-errore % stelle al requisito 10
-va in blocco al req 12
+TODO controllo csv stelle spitzer
+

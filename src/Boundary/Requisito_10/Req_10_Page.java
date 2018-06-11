@@ -57,29 +57,6 @@ public class Req_10_Page {
 
     public void search(ActionEvent actionEvent){
         try{
-//            GraphicController graphicController = new GraphicController();
-//            Controller controller = new Controller();
-//            if ((!RadioHerschel.isSelected() && !RadioSpitzer.isSelected()) ||
-//                    IDStructuresText.getText().equals("")){
-//                String msg = "Input non valido.\nSeleziona un satellite e\nimmetti un ID.";
-//                graphicController.alertError(msg);
-//            }
-//            else {
-//                String satellite = getSatellite();
-//                int id = Integer.parseInt(IDStructuresText.getText());
-//                DBController dbController = new DBController();
-//                if (!dbController.ricercaStelleInStruttura(satellite, id)){
-//                    if (SingletonReq9.getInstance().getStars().size() == 0){
-//                        String msg = "Nessuna stella presente\nnella struttura.";
-//                        graphicController.alertError(msg);
-//                    }
-//                    if (SingletonReq9.getInstance().getStructureBounds() == null){
-//                        String msg = "Punti contorno non trovati.";
-//                        graphicController.alertError(msg);
-//                    }
-//                    controller.resetSingleton9();
-//                }
-//            }
             double extLat = Double.parseDouble(LatText.getText());
             double extLon = Double.parseDouble(LonText.getText());
             double centreLat = Double.parseDouble(CenterLatText.getText());

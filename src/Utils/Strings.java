@@ -70,7 +70,12 @@ public class Strings {
     public static String strReq92 = "SELECT * FROM %s_boundaries WHERE id = '%s'";
 
     public static String strReq101 = "SELECT * FROM herschel_stars WHERE lon > %s AND lon < %s AND lat > %s AND lat < %s ORDER BY id";
-    public static String strReq102 = "SELECT DISTINCT id FROM %s_boundaries WHERE lon > %s AND lon < %s AND lat > %s AND lat < %s ORDER BY id";
+    //filamenti sul contorno considerati dentro
+    //public static String    strReq102 = "SELECT DISTINCT id FROM %s_boundaries WHERE lon > %s AND lon < %s AND lat > %s AND lat < %s ORDER BY id";
+    //filamenti sul contorno considerati fuori
+    public static String strReq102 = "SELECT DISTINCT id FROM %s_boundaries EXCEPT " +
+            "(SELECT DISTINCT id FROM %s_boundaries WHERE lon < %s AND lon > %s AND lat < %s AND lat > %s) ORDER BY id";
+
 
     public static String strReq11_1 = "SELECT DISTINCT idbranch FROM %s_skeletons WHERE idfil='%s'";
     public static String strReq11_2 = "SELECT lon FROM %s_skeletons WHERE (idbranch='%s' AND n='%s')";

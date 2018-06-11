@@ -1,6 +1,6 @@
 package Entity;
 
-public class Star {
+public class    Star {
 
     private int id;
     private String name;

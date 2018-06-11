@@ -191,17 +191,17 @@ public class DBController {
         double latMin = centreLat - extLat/2;
         double latMax = centreLat + extLat/2;
 
-        //System.out.println("Ricerca stelle nella regione...");
+        System.out.println("Ricerca stelle nella regione...");
         if (!Req10Dao.searchStarsInArea(lonMin, lonMax, latMin, latMax)){
             return false;
         }
 
-        //System.out.println("Ricerca strutture nella regione...");
+        System.out.println("Ricerca strutture nella regione...");
         if (Req10Dao.searchBoundsInArea(lonMin, lonMax, latMin, latMax)){
 
             Controller controller = new Controller();
             // vedere quali stelle cadono nelle strutture
-            //System.out.println("Calcolo appartenenza alle strutture...");
+            System.out.println("Calcolo appartenenza alle strutture...");
             for (int j = 0; j < SingletonReq10.getInstance().getStructuresInBeans().size(); j++){
                 // riempire l'array dei bound
                 if (Req10Dao.getBounds(
@@ -214,8 +214,10 @@ public class DBController {
                         }
                     }
                 }else {
+                    //never reached
                     System.out.println("Something's gone wrong.");
                 }
+
             }
         }
 

@@ -127,10 +127,14 @@ public class Req10Dao {
             String herschel = "herschel";
             String spitzer = "spitzer";
 
-            String sql1 = String.format(Strings.strReq102, herschel, lonMin, lonMax, latMin, latMax);
+            //filamenti sul contorno considerati dentro
+            //String sql1 = String.format(Strings.strReq102, herschel, lonMin, lonMax, latMin, latMax);
+            //filamenti sul contorno considerati fuori
+            String sql1 = String.format(Strings.strReq102,herschel, herschel, lonMin, lonMax, latMin, latMax);
             System.out.println(sql1);
 
-            String sql2 = String.format(Strings.strReq102, spitzer, lonMin, lonMax, latMin, latMax);
+            //String sql2 = String.format(Strings.strReq102, spitzer, lonMin, lonMax, latMin, latMax);
+            String sql2 = String.format(Strings.strReq102, spitzer, spitzer, lonMin, lonMax, latMin, latMax);
             System.out.println(sql2);
 
             ResultSet rs1 = stmt1.executeQuery(sql1);

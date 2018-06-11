@@ -141,12 +141,22 @@ public class Controller {
         ArrayList<Bound> array = SingletonReq9.getInstance().getStructureBounds();
 
         for (int i = 0; i < array.size()-1; i++){
-            double j = Math.atan(((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())-
+            /*double j = Math.atan(((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())-
                     (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLongitude()-star.getgLon()))
                     /
                     ((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLongitude()-star.getgLon())+
                             (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLatitude()-star.getgLat())));
+            k += j;*/
+
+            double e = ((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())-
+                    (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLongitude()-star.getgLon()))
+                    /
+                    ((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLongitude()-star.getgLon())+
+                            (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLatitude()-star.getgLat()));
+
+            double j = Math.atan((e*Math.PI)/180);
             k += j;
+
         }
 
         if (Math.abs(k) >= 0.01){
@@ -166,19 +176,27 @@ public class Controller {
         ArrayList<Bound> array = SingletonReq10.getInstance().getStructureBounds();
 
         for (int i = 0; i < array.size()-1; i++){
-            double j = Math.atan(((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())-
+            /*double j = Math.atan(((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())-
                     (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLongitude()-star.getgLon()))
                     /
                     ((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLongitude()-star.getgLon())+
                             (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLatitude()-star.getgLat())));
+            k += j;*/
+
+            double e = ((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())-
+                    (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLongitude()-star.getgLon()))
+                    /
+                    ((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLongitude()-star.getgLon())+
+                            (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLatitude()-star.getgLat()));
+
+            double j = Math.atan((e*Math.PI)/180);
             k += j;
         }
 
         if (Math.abs(k) >= 0.01){
             return true;
         }
-        // todo
-        System.out.println("star: "+star.getId()+"\tstruct: "+array.get(0).getId());
+        //System.out.println("k:"+k+"\tstar:"+star.getId()+"\tstruct:"+array.get(0).getId());
         return false;
     }
 
@@ -444,14 +462,14 @@ public class Controller {
                         SingletonReq10.getInstance().getProtostellar_false()
         );
 
-        System.out.println("total in: "+ SingletonReq10.getInstance().getTotal_true());
+        /*System.out.println("total in: "+ SingletonReq10.getInstance().getTotal_true());
         System.out.println("total unbound in: "+ SingletonReq10.getInstance().getUnbound_true());
         System.out.println("total pre in: "+ SingletonReq10.getInstance().getPrestellar_true());
         System.out.println("total proto in: "+ SingletonReq10.getInstance().getProtostellar_true());
         System.out.println("total out: "+ SingletonReq10.getInstance().getTotal_false());
         System.out.println("total unbound out: "+ SingletonReq10.getInstance().getUnbound_false());
         System.out.println("total pre out: "+ SingletonReq10.getInstance().getPrestellar_false());
-        System.out.println("total proto out: "+ SingletonReq10.getInstance().getProtostellar_false());
+        System.out.println("total proto out: "+ SingletonReq10.getInstance().getProtostellar_false());*/
     }
 
     public void calcolaDistanze12() {
