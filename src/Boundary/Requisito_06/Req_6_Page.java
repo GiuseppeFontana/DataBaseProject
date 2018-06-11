@@ -3,6 +3,7 @@ package Boundary.Requisito_06;
 import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;
+import Singletons.SingletonReq6;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -61,7 +62,10 @@ public class Req_6_Page {
             else {
                 DBController dbController = new DBController();
                 dbController.ricercaPerContrastoEdEllitticita(percBrillanza, elliptMin,elliptMax);
-                ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+                if (SingletonReq6.getInstance().getBeans()!=null && SingletonReq6.getInstance().getBeans().size()!=0){
+                    ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+                }
+
                 //graphicController.req6Res(percBrillanza,elliptMin, elliptMax);
 
                 /*DBController dbController = new DBController();

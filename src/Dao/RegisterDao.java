@@ -20,7 +20,7 @@ public class RegisterDao {
 
             // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement();
-            String sql = String.format(Strings.strRegister, name, surname, email, type, pass1, username);
+            String sql = String.format(Strings.strRegister, name, surname, username, pass1, email, type);
             System.out.println("query:\n"+sql);
 
             /*

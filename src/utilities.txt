@@ -24,8 +24,3 @@ disabilitare il click sul nome della colonna, altrimenti se ci si cliccava succe
 delle colonne del DB.
 
 686x649
-
-
-
-TODO controllo csv stelle spitzer
-

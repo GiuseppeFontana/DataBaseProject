@@ -115,8 +115,11 @@ public class Import {
             graphicController.alertError(msg);
             /*Alert alert = new Alert();
             alert.incorrectLoginField("Inserire il percorso del nuovo file CSV");*/
-        }else {
-
+        }
+        if (instrument.equals("spitzer") && table.equals("stars")) {
+            GraphicController graphicController = new GraphicController();
+            graphicController.alertError("Tabella Stelle di Spitzer\nnon presente nel DB.");
+        } else {
             DBController dbController = new DBController();
             dbController.importaCSV(table, instrument, textPath.getText());
         }
