@@ -6,7 +6,7 @@ import java.sql.*;
 import java.time.LocalDate;
 
 public class SatelliteDao {
-    public static boolean insertSatellite(String satellite, LocalDate beginact, LocalDate endact, String agency) {
+    public static boolean insertSatellite(String satellite, LocalDate beginact, String endact, String agency) {
         // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
@@ -20,7 +20,13 @@ public class SatelliteDao {
 
             // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement();
-            String sql = String.format(Strings.strInsertSatellite,satellite, beginact, endact, agency);
+            String sql = null;
+            if (!endact.equals("NULL")){
+                sql = String.format(Strings.strInsertSatellite,satellite, beginact, endact, agency);
+            }
+            else {
+                sql = String.format(Strings.strInsertSatellite2,satellite, beginact, endact, agency);
+            }
             System.out.println(sql);
 
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
@@ -120,6 +126,7 @@ public class SatelliteDao {
     public static boolean insertStrip(String instrument, Double strip) {
         // STEP 1: dichiarazioni
         Statement stmt = null;
+        Statement stmt2 = null;
         Connection conn = null;
         try {
             // STEP 2: loading dinamico del driver
@@ -127,21 +134,35 @@ public class SatelliteDao {
 
             // STEP 3: apertura connessione
             conn = DriverManager.getConnection(Credenziali.G_DB_URL, Credenziali.G_DB_USER, Credenziali.G_DB_PASS);
+            conn.setAutoCommit(false);
 
 
             // STEP 4: creazione ed esecuzione della query
-            String sql = String.format(Strings.strInsertStrip, strip, instrument);
-            System.out.println(sql);
+            String sql2 = String.format(Strings.strPickSatellite, instrument);
+            System.out.println(sql2);
 
+
+            stmt2 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            int rs = stmt.executeUpdate(sql);
 
+            //before stmt2
+            ResultSet rs1 = stmt2.executeQuery(sql2);
+            if (!rs1.first()) {
+                System.out.println("Ricerca Satellite fallita");
+                return false;
+            }
+
+            String sql = String.format(Strings.strInsertStrip, strip, instrument, rs1.getString(1));
+            System.out.println(sql);
+            int rs = stmt.executeUpdate(sql);
             if (rs != 1) {
                 System.out.println("Inserimento banda fallito");
                 return false;
             }
 
             // STEP 6: Clean-up dell'ambiente
+            conn.commit();
+            stmt2.close();
             stmt.close();
             conn.close();
 
@@ -158,6 +179,8 @@ public class SatelliteDao {
             try {
                 if (stmt != null)
                     stmt.close();
+                if (stmt2 != null)
+                    stmt2.close();
             } catch (SQLException se2) {
                 se2.printStackTrace();
             }

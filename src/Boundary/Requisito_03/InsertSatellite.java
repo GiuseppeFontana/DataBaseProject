@@ -39,34 +39,40 @@ public class InsertSatellite {
         String satellite = Req33SatelliteText.getText();
         LocalDate beginact = Req33BeginActDate.getValue();
         LocalDate endact = Req33EndActDate.getValue();
+        String Nendact = "NULL";
         String agency = Req33AgencyText.getText();
 
         if (satellite.equals("") || agency.equals("")){
             GraphicController graphicController = new GraphicController();
             String msg1 = "Inserire tutti i campi";
             graphicController.alertError(msg1);
+            return;
         }
-        if (beginact.isAfter(endact)){
+        if (endact != null && beginact.isAfter(endact)){
+                GraphicController graphicController = new GraphicController();
+                String msg1 = "Date cronologicamente scorrette.";
+                graphicController.alertError(msg1);
+                return;
+        }
+
+
+        Nendact = endact.toString();
+        DBController dbController = new DBController();
+        System.out.println(endact);
+        System.out.println(Nendact);
+
+        if (!dbController.inserimentoSatellite(satellite, beginact, Nendact, agency)){
             GraphicController graphicController = new GraphicController();
-            String msg1 = "Date cronologicamente scorrette.";
+            String msg1 = "Inserimento Satellite fallito.";
             graphicController.alertError(msg1);
         }
         else {
-            DBController dbController = new DBController();
-            if (!dbController.inserimentoSatellite(satellite, beginact, endact, agency)){
-                GraphicController graphicController = new GraphicController();
-                String msg1 = "Inserimento Satellite fallito.";
-                graphicController.alertError(msg1);
-            }
-            else {
-                GraphicController graphicController = new GraphicController();
-                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-                graphicController.adminReqsPage();
-                String msg2 = "Inserimento effettuato con successo.";
-                graphicController.alertError(msg2);
-            }
+            GraphicController graphicController = new GraphicController();
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+            graphicController.adminReqsPage();
+            String msg2 = "Inserimento effettuato con successo.";
+            graphicController.alertError(msg2);
         }
-
     }
 
     public void start() throws Exception{

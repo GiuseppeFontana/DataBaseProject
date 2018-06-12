@@ -12,8 +12,11 @@ public class Strings {
     public static String strLogin = "SELECT * FROM users WHERE username = '%s' AND password = '%s';";
     public static String strRegister = "INSERT INTO users VALUES ('%s','%s','%s','%s','%s','%s')";
     public static String strInsertSatellite = "INSERT INTO satellite VALUES ('%s','%s','%s','%s')";
+    public static String strInsertSatellite2 = "INSERT INTO satellite VALUES ('%s','%s',%s,'%s')";
     public static String strInsertInstrument = "INSERT INTO instrument VALUES ('%s','%s')";
-    public static String strInsertStrip = "INSERT INTO strip VALUES ('%s','%s')";
+
+    public static String strPickSatellite = "SELECT satellite FROM instrument WHERE name = '%s'";
+    public static String strInsertStrip = "INSERT INTO strip VALUES ('%s','%s','%s')";
 
     // import
     public static String strImport = "DELETE FROM %s_%s;\n" +

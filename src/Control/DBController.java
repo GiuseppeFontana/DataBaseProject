@@ -28,7 +28,7 @@ public class DBController {
         return RegisterDao.req32(name, surname, username, pass1, email, type);
     }
 
-    public boolean inserimentoSatellite(String satellite, LocalDate beginact, LocalDate endact, String agency) {
+    public boolean inserimentoSatellite(String satellite, LocalDate beginact, String endact, String agency) {
         return SatelliteDao.insertSatellite(satellite, beginact,endact,agency);
     }
 
