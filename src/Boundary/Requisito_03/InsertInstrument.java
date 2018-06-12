@@ -1,6 +1,5 @@
 package Boundary.Requisito_03;
 
-import Boundary.Requisito_06.Req_6_Page;
 import Control.DBController;
 import Control.GraphicController;
 import javafx.event.ActionEvent;

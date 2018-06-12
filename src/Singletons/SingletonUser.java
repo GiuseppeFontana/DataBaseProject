@@ -7,7 +7,6 @@ public class SingletonUser {
    private User user;
 
    protected SingletonUser() {
-      // Exists only to defeat instantiation.
    }
    public static SingletonUser getInstance() {
       if(instance == null) {

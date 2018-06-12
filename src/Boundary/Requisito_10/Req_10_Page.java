@@ -2,23 +2,17 @@ package Boundary.Requisito_10;
 import Control.Controller;
 import Control.DBController;
 import Control.GraphicController;
-import Prove.Classona;
-import Singletons.SingletonReq10;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Req_10_Page {
-    @FXML
-    private Button Req10SearchButton;
-    @FXML
-    private Button Req10BackButton;
+
     @FXML
     private TextField LatText;
     @FXML
@@ -38,8 +32,6 @@ public class Req_10_Page {
         stage.setScene(scene);
         stage.show();
     }
-
-
 
     public void backHome(ActionEvent actionEvent) throws Exception {
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();

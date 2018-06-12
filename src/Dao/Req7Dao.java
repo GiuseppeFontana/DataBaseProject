@@ -12,19 +12,15 @@ import java.util.ArrayList;
 
 public class Req7Dao {
     public static boolean req7(int min, int max) {
-        // STEP 1: dichiarazioni
         Statement stmt = null;
         Connection conn = null;
         try {
-            // STEP 2: loading dinamico del driver
             Class.forName("org.postgresql.Driver");
 
-            // STEP 3: apertura connessione
             conn = DriverManager.getConnection(Credenziali.G_DB_URL, Credenziali.G_DB_USER, Credenziali.G_DB_PASS);
 
             conn.setAutoCommit(false);
 
-            // STEP 4: creazione ed esecuzione della query
             stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
             String sql = String.format(Strings.strReq7, "herschel","herschel", Integer.toString(min), Integer.toString(max),
@@ -40,20 +36,20 @@ public class Req7Dao {
                 ArrayList<Req7Bean> beans = new ArrayList<>();
                 SingletonReq7.getInstance().setBeans(beans);
                 Controller controller = new Controller();
-                SingletonReq7.getInstance().getBeans().add(controller.createReq7Bean(rs.getInt("idfil"), rs.getString("name"), rs.getString("satellite"), rs.getInt("count")));
+                SingletonReq7.getInstance().getBeans().add(controller.createReq7Bean(rs.getInt("idfil"),
+                        rs.getString("name"), rs.getString("satellite"), rs.getInt("count")));
 
                 while (rs.next()) {
-                    SingletonReq7.getInstance().getBeans().add(controller.createReq7Bean(rs.getInt("idfil"), rs.getString("name"), rs.getString("satellite"), rs.getInt("count")));
+                    SingletonReq7.getInstance().getBeans().add(controller.createReq7Bean(rs.getInt("idfil"),
+                            rs.getString("name"), rs.getString("satellite"), rs.getInt("count")));
                 }
             }
             conn.commit();
 
-            // STEP 6: Clean-up dell'ambiente
             rs.close();
             stmt.close();
             conn.close();
         } catch (Exception e) {
-            // Errore nel loading del driver
             e.printStackTrace();
         } finally {
             try {

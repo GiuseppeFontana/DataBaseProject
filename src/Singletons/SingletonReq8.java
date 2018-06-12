@@ -11,7 +11,6 @@ public class SingletonReq8 {
     private ArrayList<Req8CircularBean> req8CircularBeans;
 
     protected SingletonReq8() {
-        // Exists only to defeat instantiation.
     }
 
     public static SingletonReq8 getInstance() {

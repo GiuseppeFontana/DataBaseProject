@@ -10,7 +10,6 @@ public class SingletonReq6 {
     private Integer totaleStrutture;
 
     protected SingletonReq6() {
-        // Exists only to defeat instantiation.
     }
 
     public static SingletonReq6 getInstance() {

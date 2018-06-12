@@ -12,19 +12,15 @@ import java.util.ArrayList;
 
 public class Req8Dao {
     public static boolean req8Square(Double minLong, Double maxLong, Double minLat, Double maxLat) {
-        // STEP 1: dichiarazioni
         Statement stmt1 = null;
         Connection conn = null;
         try {
-            // STEP 2: loading dinamico del driver
             Class.forName("org.postgresql.Driver");
 
-            // STEP 3: apertura connessione
             conn = DriverManager.getConnection(Credenziali.G_DB_URL, Credenziali.G_DB_USER, Credenziali.G_DB_PASS);
 
             conn.setAutoCommit(false);
 
-            // STEP 4: creazione ed esecuzione della query
             stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
             String sql1 = String.format(Strings.strReq81, Double.toString(minLong), Double.toString(maxLong),
@@ -43,18 +39,19 @@ public class Req8Dao {
                 ArrayList<Req6_8SquareBean> beans = new ArrayList<>();
                 SingletonReq8.getInstance().setBeans(beans);
 
-                Req6_8SquareBean bean1 = controller.createReq6_8Bean(rs.getInt("id"), rs.getString("name"),rs.getString("satellite"));
+                Req6_8SquareBean bean1 = controller.createReq6_8Bean(rs.getInt("id"),
+                        rs.getString("name"),rs.getString("satellite"));
                 SingletonReq8.getInstance().getBeans().add(bean1);
 
                 while (rs.next()){
-                    Req6_8SquareBean bean = controller.createReq6_8Bean(rs.getInt("id"), rs.getString("name"),rs.getString("satellite"));
+                    Req6_8SquareBean bean = controller.createReq6_8Bean(rs.getInt("id"),
+                            rs.getString("name"),rs.getString("satellite"));
                     SingletonReq8.getInstance().getBeans().add(bean);
                 }
             }
 
             conn.commit();
 
-            // STEP 6: Clean-up dell'ambiente
             rs.close();
             stmt1.close();
             conn.close();
@@ -63,7 +60,6 @@ public class Req8Dao {
             return true;
 
         } catch (Exception e) {
-            // Errore nel loading del driver
             e.printStackTrace();
         } finally {
             try {
@@ -84,19 +80,15 @@ public class Req8Dao {
     }
 
     public static boolean req8Circ(Double minLong, Double maxLong, Double minLat, Double maxLat) {
-        // STEP 1: dichiarazioni
         Statement stmt1 = null;
         Connection conn = null;
         try {
-            // STEP 2: loading dinamico del driver
             Class.forName("org.postgresql.Driver");
 
-            // STEP 3: apertura connessione
             conn = DriverManager.getConnection(Credenziali.G_DB_URL, Credenziali.G_DB_USER, Credenziali.G_DB_PASS);
 
             conn.setAutoCommit(false);
 
-            // STEP 4: creazione ed esecuzione della query
             stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
             String sql1 = String.format(Strings.strReq82, Double.toString(minLong), Double.toString(maxLong),
@@ -116,18 +108,21 @@ public class Req8Dao {
                 ArrayList<Req8CircularBean> beans = new ArrayList<>();
                 SingletonReq8.getInstance().setReq8CircularBeans(beans);
 
-                Req8CircularBean bean1 = controller.createReq8CircBean(rs.getInt("id"), rs.getString("name"),rs.getString("satellite"), rs.getDouble("lon"), rs.getDouble("lat"));
+                Req8CircularBean bean1 = controller.createReq8CircBean(rs.getInt("id"),
+                        rs.getString("name"),rs.getString("satellite"), rs.getDouble("lon"),
+                        rs.getDouble("lat"));
                 SingletonReq8.getInstance().getReq8CircularBeans().add(bean1);
 
                 while (rs.next()){
-                    Req8CircularBean bean = controller.createReq8CircBean(rs.getInt("id"), rs.getString("name"),rs.getString("satellite"), rs.getDouble("lon"), rs.getDouble("lat"));
+                    Req8CircularBean bean = controller.createReq8CircBean(rs.getInt("id"),
+                            rs.getString("name"),rs.getString("satellite"), rs.getDouble("lon"),
+                            rs.getDouble("lat"));
                     SingletonReq8.getInstance().getReq8CircularBeans().add(bean);
                 }
             }
 
             conn.commit();
 
-            // STEP 6: Clean-up dell'ambiente
             rs.close();
             stmt1.close();
             conn.close();
@@ -136,7 +131,6 @@ public class Req8Dao {
             return true;
 
         } catch (Exception e) {
-            // Errore nel loading del driver
             e.printStackTrace();
         } finally {
             try {

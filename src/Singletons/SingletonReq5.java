@@ -7,7 +7,6 @@ public class SingletonReq5 {
     private Req5Bean bean;
 
     protected SingletonReq5() {
-        // Exists only to defeat instantiation.
     }
 
     public static SingletonReq5 getInstance() {

@@ -13,8 +13,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Show_Star {
-    @FXML
-    private Button btnTurnBack;
 
     public void show() throws Exception{
         Stage stage = new Stage();
@@ -57,7 +55,7 @@ public class Show_Star {
         stage.show();
     }
 
-    public void close(ActionEvent actionEvent) throws Exception {
+    public void close(ActionEvent actionEvent){
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         Controller controller = new Controller();
         controller.resetStarSingleton();

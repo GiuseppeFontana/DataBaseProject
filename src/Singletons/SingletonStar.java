@@ -7,7 +7,6 @@ public class SingletonStar {
     private Star star;
 
     protected SingletonStar() {
-        // Exists only to defeat instantiation.
     }
 
     public static SingletonStar getInstance() {

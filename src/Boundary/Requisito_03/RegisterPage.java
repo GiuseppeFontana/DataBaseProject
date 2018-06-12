@@ -27,10 +27,6 @@ public class RegisterPage {
     private RadioButton Req32Radio1;
     @FXML
     private RadioButton Req32Radio2;
-    @FXML
-    private Button Req32BackButton;
-    @FXML
-    private Button Req32RegisterButton;
 
     private boolean type;   //true:admin
 
@@ -81,7 +77,6 @@ public class RegisterPage {
     public void start() throws Exception{
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(RegisterPage.class.getResource("registerPage.fxml"));
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Requisito_03/registerPage.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
 
@@ -96,14 +91,14 @@ public class RegisterPage {
         graphicController.adminReqsPage();
     }
 
-    public void check1(ActionEvent actionEvent) throws Exception{
+    public void check1(ActionEvent actionEvent){
         if (Req32Radio2.isSelected()){
             Req32Radio2.setSelected(false);
         }
         type = false;
     }
 
-    public void check2(ActionEvent actionEvent) throws Exception {
+    public void check2(ActionEvent actionEvent) {
         if (Req32Radio1.isSelected()){
             Req32Radio1.setSelected(false);
         }

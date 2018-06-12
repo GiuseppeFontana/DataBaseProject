@@ -19,17 +19,11 @@ import javafx.stage.Stage;
 public class Req_9_Page {
 
     @FXML
-    private Button ButtonSearchId;
-    @FXML
     private RadioButton RadioHerschel;
     @FXML
     private RadioButton RadioSpitzer;
     @FXML
     private TextField IDStructuresText;
-    @FXML
-    private Button Req9SearchButton;
-    @FXML
-    private Button Req9BackButton;
 
     private String satellite;
 
@@ -109,11 +103,11 @@ public class Req_9_Page {
         }
     }
 
-    public void checkSpitzer(ActionEvent actionEvent) throws Exception{
+    public void checkSpitzer(ActionEvent actionEvent){
         setSatellite("spitzer");
     }
 
-    public void checkHerschel(ActionEvent actionEvent) throws Exception {
+    public void checkHerschel(ActionEvent actionEvent){
         setSatellite("herschel");
     }
 

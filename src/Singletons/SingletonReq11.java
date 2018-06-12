@@ -27,7 +27,6 @@ public class SingletonReq11 {
     }
 
     protected SingletonReq11() {
-        // Exists only to defeat instantiation.
     }
 
     public static SingletonReq11 getInstance() {

@@ -65,18 +65,6 @@ public class Req_6_Page {
                 if (SingletonReq6.getInstance().getBeans()!=null && SingletonReq6.getInstance().getBeans().size()!=0){
                     ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
                 }
-
-                //graphicController.req6Res(percBrillanza,elliptMin, elliptMax);
-
-                /*DBController dbController = new DBController();
-                if(!dbController.ricercaReq6(percBrillanza, elliptMin, elliptMax)){
-                    String msg2 = "Nessun filamento trovato.";
-                    GraphicController graphicController = new GraphicController();
-                    graphicController.alertError(msg2);
-                }
-                else {
-                    ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-                }*/
             }
         }
         catch (NumberFormatException nfe){

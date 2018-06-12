@@ -18,11 +18,8 @@ import java.io.File;
 
 public class Import {
 
-
     public Button btnChoose;
 
-    @FXML
-    private Button BackButton;
     @FXML
     private TextField textPath;
     @FXML
@@ -37,8 +34,6 @@ public class Import {
     private RadioButton rbStelle;
     @FXML
     private RadioButton rbStrutture;
-    @FXML
-    private Button btnImporta;
 
     public void backHome(ActionEvent actionEvent) throws Exception {
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
@@ -77,8 +72,6 @@ public class Import {
             String msg = "Il file selezionato non è un csv";
             GraphicController graphicController = new GraphicController();
             graphicController.alertError(msg);
-            /*Alert alert = new Alert();
-            alert.incorrectLoginField("Il file selezionato non è un csv");*/
 
         }else {
             textPath.clear();
@@ -114,8 +107,7 @@ public class Import {
             String msg = "Inserire il percorso del nuovo file CSV";
             GraphicController graphicController = new GraphicController();
             graphicController.alertError(msg);
-            /*Alert alert = new Alert();
-            alert.incorrectLoginField("Inserire il percorso del nuovo file CSV");*/
+
         }
         if (instrument.equals("spitzer") && table.equals("stars")) {
             GraphicController graphicController = new GraphicController();

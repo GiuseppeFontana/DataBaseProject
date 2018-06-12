@@ -20,9 +20,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Req_11_Page {
-
-    @FXML
-    private Button ButtonSearchId;
     @FXML
     private RadioButton rbHerschel;
     @FXML

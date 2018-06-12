@@ -184,8 +184,6 @@ public class Req_12_Result {
             riempi();
         });
 
-        //root.getChildren().addAll(labelCurrentPage);
-
         setnCurrentPage(1);
 
         if (size %20 != 0){
@@ -233,7 +231,8 @@ public class Req_12_Result {
     }
 
     private void riempi() {
-        if (getnTotalPages() != getnCurrentPage() || (getnTotalPages() == getnCurrentPage() && SingletonReq12.getInstance().getBeanToShows().size() %20 == 0)) {
+        if (getnTotalPages() != getnCurrentPage() || (getnTotalPages() == getnCurrentPage() &&
+                SingletonReq12.getInstance().getBeanToShows().size() %20 == 0)) {
             for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + 20; i++) {
                 parseBean(SingletonReq12.getInstance().getBeanToShows().get(i).getId(),
                         SingletonReq12.getInstance().getBeanToShows().get(i).getFlux(),
@@ -241,7 +240,8 @@ public class Req_12_Result {
             }
         }
         else {
-            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + SingletonReq12.getInstance().getBeanToShows().size() %20; i++) {
+            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) +
+                    SingletonReq12.getInstance().getBeanToShows().size() %20; i++) {
                 parseBean(SingletonReq12.getInstance().getBeanToShows().get(i).getId(),
                         SingletonReq12.getInstance().getBeanToShows().get(i).getFlux(),
                         SingletonReq12.getInstance().getBeanToShows().get(i).getDistance());
@@ -296,7 +296,7 @@ public class Req_12_Result {
         }
     }
 
-    public void next10(ActionEvent actionEvent) throws Exception{
+    public void next10(ActionEvent actionEvent){
         if (getnCurrentPage()<getnTotalPages()-10){
             setnCurrentPage(getnCurrentPage()+10);
             list.clear();
@@ -309,7 +309,7 @@ public class Req_12_Result {
         }
     }
 
-    public void prev10(ActionEvent actionEvent) throws Exception{
+    public void prev10(ActionEvent actionEvent){
         if (getnCurrentPage() > 10){
             setnCurrentPage(getnCurrentPage()-10);
             list.clear();
@@ -322,13 +322,13 @@ public class Req_12_Result {
         }
     }
 
-    public void begin(ActionEvent actionEvent) throws Exception{
+    public void begin(ActionEvent actionEvent){
         setnCurrentPage(1);
         list.clear();
         riempi();
     }
 
-    public void end(ActionEvent actionEvent) throws Exception{
+    public void end(ActionEvent actionEvent){
         setnCurrentPage(getnTotalPages());
         list.clear();
         riempi();

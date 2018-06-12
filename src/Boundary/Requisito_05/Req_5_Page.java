@@ -17,15 +17,11 @@ import javafx.stage.Stage;
 
 public class Req_5_Page {
     @FXML
-    private Button BtnSearchId;
-    @FXML
     private RadioButton Req5PageRadio1;
     @FXML
     private RadioButton Req5PageRadio2;
     @FXML
     private TextField Req5PageText;
-    /*@FXML
-    private Button Req5PageSearchButton;*/
 
     private String satellite;         // "Herschel" o "Spitzer"
 
@@ -62,13 +58,11 @@ public class Req_5_Page {
         }
     }
 
-    public void check1(ActionEvent actionEvent) throws Exception{
-        //satellite = "herschel";
+    public void check1(ActionEvent actionEvent){
         setSatellite("herschel");
     }
 
-    public void check2(ActionEvent actionEvent) throws Exception {
-        //satellite = "spitzer";
+    public void check2(ActionEvent actionEvent){
         setSatellite("spitzer");
     }
 

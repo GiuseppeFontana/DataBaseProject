@@ -14,22 +14,17 @@ import java.util.ArrayList;
 public class Req5Dao {
     public static boolean req5(String strumento, int input) {
 
-        // STEP 1: dichiarazioni
         Statement stmt1 = null;
         Connection conn = null;
 
         Double infoFilamento[] = new Double[6];
         try {
-            // STEP 2: loading dinamico del driver
             Class.forName("org.postgresql.Driver");
 
-            // STEP 3: apertura connessione
             conn = DriverManager.getConnection(Credenziali.G_DB_URL, Credenziali.G_DB_USER, Credenziali.G_DB_PASS);
 
             conn.setAutoCommit(false);
 
-
-            // STEP 4: creazione ed esecuzione della query
             stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
             String k[] = new String[7];
@@ -49,7 +44,7 @@ public class Req5Dao {
                 System.out.println(sql);
                 resultSets[i] = stmt1.executeQuery(sql);
 
-                if (!resultSets[i].first()) {// rs empty
+                if (!resultSets[i].first()) {
                     System.out.println("Accesso Contorni fallito");
                     return false;
                 }
@@ -60,7 +55,7 @@ public class Req5Dao {
 
             System.out.println(k[6]);
             resultSets[6] = stmt1.executeQuery(k[6]);
-            if (!resultSets[6].first()) {// rs empty
+            if (!resultSets[6].first()) {
                 System.out.println("Accesso Scheletri fallito");
                 return false;
             }
@@ -70,7 +65,8 @@ public class Req5Dao {
             SingletonReq5.getInstance().setBean(new Req5Bean());
             SingletonReq5.getInstance().getBean().setnSegmenti(resultSets[6].getInt("count"));
 
-            if (infoFilamento[2] == infoFilamento[4] || infoFilamento[3] == infoFilamento[5] || SingletonReq5.getInstance().getBean().getnSegmenti() == 0) {
+            if (infoFilamento[2] == infoFilamento[4] || infoFilamento[3] == infoFilamento[5] ||
+                    SingletonReq5.getInstance().getBean().getnSegmenti() == 0) {
                 System.out.println("errore imprevisto accesso db, risultati nulli (filamento non presente?");
                 return false;
             }
@@ -83,7 +79,6 @@ public class Req5Dao {
 
             conn.commit();
 
-            // STEP 6: Clean-up dell'ambiente
             for (int i = 0; i < 7; i++) {
                 resultSets[i].close();
             }
@@ -104,10 +99,8 @@ public class Req5Dao {
             System.out.println("Accesso Contorni e Scheletri effettuato con successo");
             return true;
         } catch (SQLException se) {
-            // Errore durante l'apertura della connessione
             se.printStackTrace();
         } catch (Exception e) {
-            // Errore nel loading del driver
             e.printStackTrace();
         } finally {
             try {

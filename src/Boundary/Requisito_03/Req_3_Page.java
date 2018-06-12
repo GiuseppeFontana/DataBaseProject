@@ -18,7 +18,6 @@ public class Req_3_Page {
     public void start() throws Exception {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(Req_3_Page.class.getResource("req_3_page.fxml"));
-        //FXMLLoader loader = new FXMLLoader(getClass().getResource("../Boundary/Requisito_03/req_3_page.fxml"));
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649);
 
@@ -80,8 +79,6 @@ public class Req_3_Page {
         ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
         GraphicController graphicController = new GraphicController();
         graphicController.CSVImport();
-        /*Import imp = new Import();
-        imp.start();*/
     }
 }
 

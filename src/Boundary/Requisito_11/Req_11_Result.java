@@ -187,8 +187,10 @@ public class Req_11_Result {
                 int segmento = tableView.getSelectionModel().getSelectedItem().getSegmenti();
                 DBController dbController = new DBController();
                 Alert alert = new Alert();
-                alert.incorrectLoginField("Distanza minima primo vertice \n\n" + String.valueOf(dbController.Req11_distance(segmento).get(0)).substring(8) +
-                "\n\n Distanza minima secondo vertice \n\n" + String.valueOf(dbController.Req11_distance(segmento).get(1)).substring(8));
+                alert.incorrectLoginField("Distanza minima primo vertice \n\n" +
+                        String.valueOf(dbController.Req11_distance(segmento).get(0)).substring(8) +
+                "\n\n Distanza minima secondo vertice \n\n" +
+                        String.valueOf(dbController.Req11_distance(segmento).get(1)).substring(8));
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -199,13 +201,15 @@ public class Req_11_Result {
 
     public void riempi(){
 
-        if (getnTotalPages() != getnCurrentPage() || (getnTotalPages() == getnCurrentPage() && SingletonReq11.getInstance().getBeans().size() %20 == 0)) {
+        if (getnTotalPages() != getnCurrentPage() || (getnTotalPages() == getnCurrentPage() &&
+                SingletonReq11.getInstance().getBeans().size() %20 == 0)) {
             for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + 20; i++) {
                 parseReq11_Bean(SingletonReq11.getInstance().getBeans().get(i));
             }
         }
         else {
-            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + SingletonReq11.getInstance().getBeans().size() %20; i++) {
+            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) +
+                    SingletonReq11.getInstance().getBeans().size() %20; i++) {
                 parseReq11_Bean(SingletonReq11.getInstance().getBeans().get(i));
             }
         }
@@ -254,7 +258,7 @@ public class Req_11_Result {
         }
     }
 
-    public void next10(ActionEvent actionEvent) throws Exception{
+    public void next10(ActionEvent actionEvent){
         if (getnCurrentPage()<getnTotalPages()-10){
             setnCurrentPage(getnCurrentPage()+10);
             list.clear();
@@ -267,7 +271,7 @@ public class Req_11_Result {
         }
     }
 
-    public void prev10(ActionEvent actionEvent) throws Exception{
+    public void prev10(ActionEvent actionEvent){
         if (getnCurrentPage() > 10){
             setnCurrentPage(getnCurrentPage()-10);
             list.clear();
@@ -280,13 +284,13 @@ public class Req_11_Result {
         }
     }
 
-    public void begin(ActionEvent actionEvent) throws Exception{
+    public void begin(ActionEvent actionEvent){
         setnCurrentPage(1);
         list.clear();
         riempi();
     }
 
-    public void end(ActionEvent actionEvent) throws Exception{
+    public void end(ActionEvent actionEvent){
         setnCurrentPage(getnTotalPages());
         list.clear();
         riempi();

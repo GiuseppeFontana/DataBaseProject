@@ -18,35 +18,10 @@ import javafx.stage.Stage;
 public class Home_User {
     
 
-    @FXML
-    private Button HomeUserReq5Button;
-    @FXML
-    private Button HomeUserReq6Button;
-    @FXML
-    private Button HomeUserReq7Button;
-    @FXML
-    private Button HomeUserReq8Button;
-    @FXML
-    private Button HomeUserReq9Button;
-    @FXML
-    private Button HomeUserReq10Button;
-    @FXML
-    private Button HomeUserReq11Button;
-    @FXML
-    private Button HomeUserReq12Button;
-
-    @FXML
-    private Button btnSystemExit;
-    @FXML
-    private Button btnInformation;
-    @FXML
-    private Button HomeBtnLogOut;
-
-
     public void start() throws Exception{
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(Home_User.class.getResource("home_user.fxml"));        AnchorPane root = loader.load();
-//        AnchorPane root = loader.load();
+        FXMLLoader loader = new FXMLLoader(Home_User.class.getResource("home_user.fxml"));
+        AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
 
         User user = SingletonUser.getInstance().getUser();

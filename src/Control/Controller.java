@@ -9,8 +9,6 @@ import java.util.Optional;
 
 public class Controller {
 
-    /////////////////// SINGLETONS
-
     public void createUser(String username, String password, String email, String name, String surname, Boolean admin){
 
         User user = new User();
@@ -119,7 +117,6 @@ public class Controller {
         resetSingleton12();
     }
 
-    // requisito 9
     public void scanStars9() {
         for (int i = SingletonReq9.getInstance().getStars().size()-1; i>=0; i--){
             if (!isInStruct9(SingletonReq9.getInstance().getStars().get(i))){
@@ -141,13 +138,6 @@ public class Controller {
         ArrayList<Bound> array = SingletonReq9.getInstance().getStructureBounds();
 
         for (int i = 0; i < array.size()-1; i++){
-            /*double j = Math.atan(((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())-
-                    (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLongitude()-star.getgLon()))
-                    /
-                    ((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLongitude()-star.getgLon())+
-                            (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLatitude()-star.getgLat())));
-            k += j;*/
-
             double e = ((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())-
                     (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLongitude()-star.getgLon()))
                     /
@@ -169,19 +159,12 @@ public class Controller {
         return (double) ((int)(n*100))/100;
     }
 
-    // requisito 10
     public boolean isInStruct10(Star star) {
 
         double k = 0;
         ArrayList<Bound> array = SingletonReq10.getInstance().getStructureBounds();
 
         for (int i = 0; i < array.size()-1; i++){
-            /*double j = Math.atan(((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())-
-                    (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLongitude()-star.getgLon()))
-                    /
-                    ((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLongitude()-star.getgLon())+
-                            (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLatitude()-star.getgLat())));
-            k += j;*/
 
             double e = ((array.get(i).getLongitude()-star.getgLon())*(array.get(i+1).getLatitude()-star.getgLat())-
                     (array.get(i).getLatitude()-star.getgLat())*(array.get(i+1).getLongitude()-star.getgLon()))
@@ -196,7 +179,6 @@ public class Controller {
         if (Math.abs(k) >= 0.01){
             return true;
         }
-        //System.out.println("k:"+k+"\tstar:"+star.getId()+"\tstruct:"+array.get(0).getId());
         return false;
     }
 
@@ -278,11 +260,6 @@ public class Controller {
 
         return star;
     }
-
-
-
-
-
     ///////////////     BEANS
 
     public Req6_8SquareBean createReq6_8Bean(Integer id, String name, String satellite){
@@ -338,7 +315,7 @@ public class Controller {
         return req11_bean;
     }
 
-    public Req12_Bean createReq12Bean(Star star/*, double i*/) {
+    public Req12_Bean createReq12Bean(Star star) {
         Req12_Bean bean = new Req12_Bean();
         bean.setStar(star);
         bean.setDistance(0);
@@ -461,15 +438,6 @@ public class Controller {
                         SingletonReq10.getInstance().getPrestellar_false()+
                         SingletonReq10.getInstance().getProtostellar_false()
         );
-
-        /*System.out.println("total in: "+ SingletonReq10.getInstance().getTotal_true());
-        System.out.println("total unbound in: "+ SingletonReq10.getInstance().getUnbound_true());
-        System.out.println("total pre in: "+ SingletonReq10.getInstance().getPrestellar_true());
-        System.out.println("total proto in: "+ SingletonReq10.getInstance().getProtostellar_true());
-        System.out.println("total out: "+ SingletonReq10.getInstance().getTotal_false());
-        System.out.println("total unbound out: "+ SingletonReq10.getInstance().getUnbound_false());
-        System.out.println("total pre out: "+ SingletonReq10.getInstance().getPrestellar_false());
-        System.out.println("total proto out: "+ SingletonReq10.getInstance().getProtostellar_false());*/
     }
 
     public void calcolaDistanze12() {
@@ -478,26 +446,25 @@ public class Controller {
         for (int i = 0; i < SingletonReq12.getInstance().getBeans().size(); i++){
             for (int k = 0; k < SingletonReq12.getInstance().getSkeletonPoints().size(); k++){
                 Double distanza_1 = Math.sqrt(
-                        (SingletonReq12.getInstance().getBeans().get(i).getStar().getgLon() - SingletonReq12.getInstance().getSkeletonPoints().get(k).getLongitude())
+                        (SingletonReq12.getInstance().getBeans().get(i).getStar().getgLon() -
+                                SingletonReq12.getInstance().getSkeletonPoints().get(k).getLongitude())
                                 *
-                                (SingletonReq12.getInstance().getBeans().get(i).getStar().getgLon() - SingletonReq12.getInstance().getSkeletonPoints().get(k).getLongitude())
+                                (SingletonReq12.getInstance().getBeans().get(i).getStar().getgLon() -
+                                        SingletonReq12.getInstance().getSkeletonPoints().get(k).getLongitude())
                                 +
-                                (SingletonReq12.getInstance().getBeans().get(i).getStar().getgLat() - SingletonReq12.getInstance().getSkeletonPoints().get(k).getLatitude())
+                                (SingletonReq12.getInstance().getBeans().get(i).getStar().getgLat() -
+                                        SingletonReq12.getInstance().getSkeletonPoints().get(k).getLatitude())
                         *
-                        (SingletonReq12.getInstance().getBeans().get(i).getStar().getgLat() - SingletonReq12.getInstance().getSkeletonPoints().get(k).getLatitude()));
+                        (SingletonReq12.getInstance().getBeans().get(i).getStar().getgLat() -
+                                SingletonReq12.getInstance().getSkeletonPoints().get(k).getLatitude()));
 
                 distanze.add(distanza_1);
             }
             Optional<Double> distanzaMinima= distanze.stream().reduce(Double::min);
-/*
-            String distance = String.valueOf(distanzaMinima).substring(9);
-*/
+
             String distance = String.valueOf(distanzaMinima).substring(
                     9,
                     String.valueOf(distanzaMinima).length()-1);
-
-
-
             SingletonReq12.getInstance().getBeans().get(i).setDistance(Double.parseDouble(distance));
         }
     }

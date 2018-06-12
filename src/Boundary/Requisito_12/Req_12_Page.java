@@ -22,8 +22,6 @@ public class Req_12_Page {
     public RadioButton rbSpitzer;
 
     public static String sat;
-    @FXML
-    private Button ButtonSearchId;
 
     public void start() throws Exception{
         Stage stage = new Stage();
@@ -34,9 +32,6 @@ public class Req_12_Page {
         stage.setScene(scene);
         stage.show();
     }
-
-
-
 
     public void search(ActionEvent actionEvent){
 

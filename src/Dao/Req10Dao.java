@@ -13,19 +13,15 @@ import java.util.ArrayList;
 public class Req10Dao {
 
     public static boolean searchStarsInArea(double lonMin, double lonMax, double latMin, double latMax) {
-        // STEP 1: dichiarazioni
         Statement stmt1 = null;
         Connection conn = null;
         try {
-            // STEP 2: loading dinamico del driver
             Class.forName("org.postgresql.Driver");
 
-            // STEP 3: apertura connessione
             conn = DriverManager.getConnection(Credenziali.G_DB_URL, Credenziali.G_DB_USER, Credenziali.G_DB_PASS);
 
             conn.setAutoCommit(false);
 
-            // STEP 4: creazione ed esecuzione della query
             stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
             String sql1 = String.format(Strings.strReq101, lonMin, lonMax, latMin, latMax);
@@ -73,7 +69,6 @@ public class Req10Dao {
 
             conn.commit();
 
-            // STEP 6: Clean-up dell'ambiente
             rs1.close();
             stmt1.close();
             conn.close();
@@ -82,7 +77,6 @@ public class Req10Dao {
             return true;
 
         } catch (Exception e) {
-            // Errore nel loading del driver
             e.printStackTrace();
         } finally {
             try {
@@ -103,33 +97,26 @@ public class Req10Dao {
     }
 
     public static boolean searchBoundsInArea(double lonMin, double lonMax, double latMin, double latMax){
-        // STEP 1: dichiarazioni
         Statement stmt1 = null;
         Statement stmt2 = null;
         Connection conn = null;
         try {
-            // STEP 2: loading dinamico del driver
             Class.forName("org.postgresql.Driver");
 
-            // STEP 3: apertura connessione
             conn = DriverManager.getConnection(Credenziali.G_DB_URL, Credenziali.G_DB_USER, Credenziali.G_DB_PASS);
 
             conn.setAutoCommit(false);
 
-            // STEP 4: creazione ed esecuzione della query
             stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
             stmt2 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
             String herschel = "herschel";
             String spitzer = "spitzer";
 
-            //filamenti sul contorno considerati dentro
-            //String sql1 = String.format(Strings.strReq102, herschel, lonMin, lonMax, latMin, latMax);
-            //filamenti sul contorno considerati fuori
+
             String sql1 = String.format(Strings.strReq102,herschel, herschel, lonMin, lonMax, latMin, latMax);
             System.out.println(sql1);
 
-            //String sql2 = String.format(Strings.strReq102, spitzer, lonMin, lonMax, latMin, latMax);
             String sql2 = String.format(Strings.strReq102, spitzer, spitzer, lonMin, lonMax, latMin, latMax);
             System.out.println(sql2);
 
@@ -180,7 +167,6 @@ public class Req10Dao {
 
             conn.commit();
 
-            // STEP 6: Clean-up dell'ambiente
             rs1.close();
             rs2.close();
             stmt1.close();
@@ -191,7 +177,6 @@ public class Req10Dao {
             return true;
 
         } catch (Exception e) {
-            // Errore nel loading del driver
             e.printStackTrace();
         } finally {
             try {
@@ -218,23 +203,18 @@ public class Req10Dao {
     }
 
     public static boolean getBounds(int id, String satellite) {
-        // STEP 1: dichiarazioni
         Statement stmt1 = null;
         Connection conn = null;
         try {
-            // STEP 2: loading dinamico del driver
             Class.forName("org.postgresql.Driver");
 
-            // STEP 3: apertura connessione
             conn = DriverManager.getConnection(Credenziali.G_DB_URL, Credenziali.G_DB_USER, Credenziali.G_DB_PASS);
 
             conn.setAutoCommit(false);
 
-            // STEP 4: creazione ed esecuzione della query
             stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
 
             String sql1 = String.format(Strings.strReq92, satellite, Integer.toString(id));
-            //System.out.println(sql1);
 
             ResultSet rs = stmt1.executeQuery(sql1);
 
@@ -262,16 +242,13 @@ public class Req10Dao {
 
             conn.commit();
 
-            // STEP 6: Clean-up dell'ambiente
             rs.close();
             stmt1.close();
             conn.close();
 
-            //System.out.println("Accesso Contorni effettuato con successo");
             return true;
 
         } catch (Exception e) {
-            // Errore nel loading del driver
             e.printStackTrace();
         } finally {
             try {
@@ -287,7 +264,6 @@ public class Req10Dao {
                 se.printStackTrace();
             }
         }
-        //System.out.println("Accesso Contorni fallito.");
         return false;
     }
 

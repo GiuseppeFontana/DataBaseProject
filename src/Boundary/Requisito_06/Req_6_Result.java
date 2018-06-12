@@ -23,9 +23,6 @@ import javafx.stage.Stage;
 
 public class Req_6_Result {
     @FXML
-    private Button Req6ResBackButton;
-
-    @FXML
     private Label labelResult;
     @FXML
     private static int nCurrentPage;
@@ -87,7 +84,8 @@ public class Req_6_Result {
         }
 
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(Req_6_Result.class.getResource("req_6_result.fxml"));        AnchorPane root = loader.load();
+        FXMLLoader loader = new FXMLLoader(Req_6_Result.class.getResource("req_6_result.fxml"));
+        AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649 );
 
         labelResult = new Label();
@@ -169,8 +167,6 @@ public class Req_6_Result {
             }
         });
 
-
-
         columnId.setMinWidth(140);
         columnId.setCellValueFactory(new PropertyValueFactory<>("id"));
 
@@ -225,7 +221,7 @@ public class Req_6_Result {
     }
 
 
-    public void next(ActionEvent actionEvent) throws Exception{
+    public void next(ActionEvent actionEvent){
         if (getnCurrentPage()<getnTotalPages()){
             setnCurrentPage(getnCurrentPage()+1);
             list.clear();
@@ -233,7 +229,7 @@ public class Req_6_Result {
         }
     }
 
-    public void prev(ActionEvent actionEvent) throws Exception{
+    public void prev(ActionEvent actionEvent){
         if (getnCurrentPage()>1){
             setnCurrentPage(getnCurrentPage()-1);
             list.clear();
@@ -241,7 +237,7 @@ public class Req_6_Result {
         }
     }
 
-    public void next10(ActionEvent actionEvent) throws Exception{
+    public void next10(ActionEvent actionEvent){
         if (getnCurrentPage()<getnTotalPages()-10){
             setnCurrentPage(getnCurrentPage()+10);
             list.clear();
@@ -254,7 +250,7 @@ public class Req_6_Result {
         }
     }
 
-    public void prev10(ActionEvent actionEvent) throws Exception{
+    public void prev10(ActionEvent actionEvent){
         if (getnCurrentPage() > 10){
             setnCurrentPage(getnCurrentPage()-10);
             list.clear();
@@ -267,13 +263,13 @@ public class Req_6_Result {
         }
     }
 
-    public void begin(ActionEvent actionEvent) throws Exception{
+    public void begin(ActionEvent actionEvent){
         setnCurrentPage(1);
         list.clear();
         riempi();
     }
 
-    public void end(ActionEvent actionEvent) throws Exception{
+    public void end(ActionEvent actionEvent){
         setnCurrentPage(getnTotalPages());
         list.clear();
         riempi();

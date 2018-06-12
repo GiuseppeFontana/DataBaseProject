@@ -8,7 +8,6 @@ public class SingletonReq7 {
     private ArrayList<Req7Bean> beans;
 
     protected SingletonReq7() {
-        // Exists only to defeat instantiation.
     }
 
     public static SingletonReq7 getInstance() {

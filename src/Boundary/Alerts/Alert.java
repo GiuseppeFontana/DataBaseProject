@@ -11,8 +11,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Alert {
-    @FXML
-    private Button btnTurnBack;
 
     public void incorrectLoginField(String message) throws Exception {
 

@@ -10,7 +10,6 @@ public class SingletonId {
     private String satellite;
 
     protected SingletonId() {
-        // Exists only to defeat instantiation.
     }
 
     public static SingletonId getInstance() {

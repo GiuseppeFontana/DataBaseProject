@@ -17,7 +17,6 @@ public class SingletonReq9 {
     private int protostellar;
 
     protected SingletonReq9() {
-        // Exists only to defeat instantiation.
     }
 
     public static SingletonReq9 getInstance() {

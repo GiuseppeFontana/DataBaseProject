@@ -27,11 +27,6 @@ public class InsertSatellite {
     private DatePicker Req33EndActDate;
     @FXML
     private TextField Req33AgencyText;
-    @FXML
-    private Button Req33InsertButton;
-    @FXML
-    private Button Req33BackButton;
-
 
 
     public void Inserisci(ActionEvent actionEvent) throws Exception{

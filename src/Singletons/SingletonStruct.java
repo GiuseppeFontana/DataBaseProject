@@ -9,7 +9,6 @@ public class SingletonStruct {
     private int numeroSegmenti;
 
     protected SingletonStruct() {
-        // Exists only to defeat instantiation.
     }
 
     public static SingletonStruct getInstance() {

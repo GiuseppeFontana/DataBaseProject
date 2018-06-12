@@ -32,7 +32,7 @@ public class DBController {
         return SatelliteDao.insertSatellite(satellite, beginact,endact,agency);
     }
 
-    public boolean inserimentoStrumento(String instrument, String sat) throws Exception{
+    public boolean inserimentoStrumento(String instrument, String sat){
         if (!SatelliteDao.insertInstrument(instrument, sat)){
             return false;
         }
@@ -55,10 +55,7 @@ public class DBController {
 
         if (!Req5Dao.req5(instrument, input)) {
             return false;
-        } else {  //calcola centroide, max e min coordinate e crea l'interfaccia
-
-            /*infoFilamento[6] = infoFilamento[4] - infoFilamento[2];     //estensione longitudinale
-            infoFilamento[7] = infoFilamento[5] - infoFilamento[3];     //estensione latitudinale*/
+        } else {
 
             GraphicController graphicController = new GraphicController();
             graphicController.req5result();
@@ -118,7 +115,6 @@ public class DBController {
             graphicController.req8result();
             return true;
         }
-        //if (tipoRicerca.equals("circular")){
         else {
             Double minLong = longitude - dimension;
             Double maxLong = longitude + dimension;
@@ -244,7 +240,6 @@ public class DBController {
     public boolean Req11_segment(String sat, int id){
 
             return Req11Dao.numeroSegmenti(sat, id);
-
     }
 
     public ArrayList Req11_distance(int segmento){
@@ -253,7 +248,7 @@ public class DBController {
 
     }
 
-    public boolean Req12(String sat, int id) throws Exception {
+    public boolean Req12(String sat, int id){
 
         if (!Req9Dao.getStars()){
             return false;
@@ -269,7 +264,6 @@ public class DBController {
             System.out.println("errore accesso riempispina");
             return false;
         }
-
 
         if (SingletonReq12.getInstance().getBeans().size() == 0){
             System.out.println("array bean vuoto");
@@ -300,9 +294,4 @@ public class DBController {
             return true;
         }
     }
-
-    /*public boolean Req12_Distance(String sat, int id){
-        Req12Dao req12Dao = new Req12Dao();
-        return req12Dao.spineDistance(sat, id);
-    }*/
 }

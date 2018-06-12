@@ -37,7 +37,6 @@ public class SingletonReq10 {
     private int protostellar_true;
 
     protected SingletonReq10() {
-        // Exists only to defeat instantiation.
     }
 
     public static SingletonReq10 getInstance() {

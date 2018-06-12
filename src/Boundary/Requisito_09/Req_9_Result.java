@@ -22,8 +22,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Req_9_Result {
-    @FXML
-    private Button BackButton;
 
     @FXML
     private static int nCurrentPage;
@@ -183,17 +181,20 @@ public class Req_9_Result {
 
         labelUnbound = new Label();
         labelUnbound.relocate(450, 150);
-        labelUnbound.setText("Unbound: "+ controller.round((double)SingletonReq9.getInstance().getUnbound()/(double)(SingletonReq9.getInstance().getBeans().size())*100.0) + " %");
+        labelUnbound.setText("Unbound: "+ controller.round((double)SingletonReq9.getInstance().getUnbound()/
+                (double)(SingletonReq9.getInstance().getBeans().size())*100.0) + " %");
         root.getChildren().addAll(labelUnbound);
 
         labelPrestellar = new Label();
         labelPrestellar.relocate(450, 170);
-        labelPrestellar.setText("Prestellar: "+ controller.round((double)SingletonReq9.getInstance().getPrestellar()/(double)SingletonReq9.getInstance().getBeans().size()*100.0) + " %");
+        labelPrestellar.setText("Prestellar: "+ controller.round((double)SingletonReq9.getInstance().getPrestellar()/
+                (double)SingletonReq9.getInstance().getBeans().size()*100.0) + " %");
         root.getChildren().addAll(labelPrestellar);
 
         labelProtostellar = new Label();
         labelProtostellar.relocate(450, 190);
-        labelProtostellar.setText("Protostellar: "+ controller.round((double)SingletonReq9.getInstance().getProtostellar()/(double)SingletonReq9.getInstance().getBeans().size()*100.0)+" %");
+        labelProtostellar.setText("Protostellar: "+ controller.round((double)SingletonReq9.getInstance().getProtostellar()
+                /(double)SingletonReq9.getInstance().getBeans().size()*100.0)+" %");
         root.getChildren().addAll(labelProtostellar);
 
         columnId.setMinWidth(140);
@@ -231,14 +232,16 @@ public class Req_9_Result {
     }
 
     private void riempi() {
-        if (getnTotalPages() != getnCurrentPage() || (getnTotalPages() == getnCurrentPage() && SingletonReq9.getInstance().getBeans().size() %20 == 0)) {
+        if (getnTotalPages() != getnCurrentPage() || (getnTotalPages() == getnCurrentPage() &&
+                SingletonReq9.getInstance().getBeans().size() %20 == 0)) {
             for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + 20; i++) {
                 parseBean(SingletonReq9.getInstance().getBeans().get(i).getId(),
                         SingletonReq9.getInstance().getBeans().get(i).getName());
             }
         }
         else {
-            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + SingletonReq9.getInstance().getBeans().size() %20; i++) {
+            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) +
+                    SingletonReq9.getInstance().getBeans().size() %20; i++) {
                 parseBean(SingletonReq9.getInstance().getBeans().get(i).getId(),
                         SingletonReq9.getInstance().getBeans().get(i).getName());
             }
@@ -270,7 +273,7 @@ public class Req_9_Result {
         }
     }
 
-    public void next(ActionEvent actionEvent) throws Exception{
+    public void next(ActionEvent actionEvent){
         if (getnCurrentPage()<getnTotalPages()){
             setnCurrentPage(getnCurrentPage()+1);
             list.clear();
@@ -278,7 +281,7 @@ public class Req_9_Result {
         }
     }
 
-    public void prev(ActionEvent actionEvent) throws Exception{
+    public void prev(ActionEvent actionEvent){
         if (getnCurrentPage()>1){
             setnCurrentPage(getnCurrentPage()-1);
             list.clear();
@@ -286,7 +289,7 @@ public class Req_9_Result {
         }
     }
 
-    public void next10(ActionEvent actionEvent) throws Exception{
+    public void next10(ActionEvent actionEvent){
         if (getnCurrentPage()<getnTotalPages()-10){
             setnCurrentPage(getnCurrentPage()+10);
             list.clear();
@@ -299,7 +302,7 @@ public class Req_9_Result {
         }
     }
 
-    public void prev10(ActionEvent actionEvent) throws Exception{
+    public void prev10(ActionEvent actionEvent){
         if (getnCurrentPage() > 10){
             setnCurrentPage(getnCurrentPage()-10);
             list.clear();
@@ -312,13 +315,13 @@ public class Req_9_Result {
         }
     }
 
-    public void begin(ActionEvent actionEvent) throws Exception{
+    public void begin(ActionEvent actionEvent){
         setnCurrentPage(1);
         list.clear();
         riempi();
     }
 
-    public void end(ActionEvent actionEvent) throws Exception{
+    public void end(ActionEvent actionEvent){
         setnCurrentPage(getnTotalPages());
         list.clear();
         riempi();

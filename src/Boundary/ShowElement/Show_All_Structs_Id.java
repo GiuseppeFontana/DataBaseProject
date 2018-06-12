@@ -25,8 +25,6 @@ import javafx.stage.Stage;
 
 public class Show_All_Structs_Id {
     @FXML
-    private Button btnTurnBack;
-    @FXML
     private static int nCurrentPage;
     @FXML
     private static int nTotalPages;
@@ -180,17 +178,6 @@ public class Show_All_Structs_Id {
 
         riempi();
 
-        /*tableView.addEventHandler(MouseEvent.MOUSE_CLICKED, (event -> {
-            String satellite = tableView.getSelectionModel().getSelectedItem().getSatellite();
-            int id = tableView.getSelectionModel().getSelectedItem().getId();
-            DBController dbController = new DBController();
-            try {
-                dbController.showStruct(id, satellite);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }));*/
-
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
@@ -198,13 +185,15 @@ public class Show_All_Structs_Id {
     }
 
     private void riempi() {
-        if (getnTotalPages() != getnCurrentPage() || (getnTotalPages() == getnCurrentPage() && SingletonId.getInstance().getBeans().size() %20 == 0)) {
+        if (getnTotalPages() != getnCurrentPage() || (getnTotalPages() == getnCurrentPage() &&
+                SingletonId.getInstance().getBeans().size() %20 == 0)) {
             for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + 20; i++) {
                 parseBean(SingletonId.getInstance().getBeans().get(i).getId());
             }
         }
         else {
-            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) + SingletonId.getInstance().getBeans().size() %20; i++) {
+            for (int i = (getnCurrentPage() - 1) * 20; i < 20 * (getnCurrentPage() - 1) +
+                    SingletonId.getInstance().getBeans().size() %20; i++) {
                 parseBean(SingletonId.getInstance().getBeans().get(i).getId());
             }
         }
@@ -218,14 +207,14 @@ public class Show_All_Structs_Id {
     }
 
 
-    public void close(ActionEvent actionEvent) throws Exception{
+    public void close(ActionEvent actionEvent){
         list.clear();
         Controller controller = new Controller();
         controller.resetSingletonId();
         ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
-    public void next(ActionEvent actionEvent) throws Exception{
+    public void next(ActionEvent actionEvent){
         if (getnCurrentPage()<getnTotalPages()){
             setnCurrentPage(getnCurrentPage()+1);
             list.clear();
@@ -233,7 +222,7 @@ public class Show_All_Structs_Id {
         }
     }
 
-    public void prev(ActionEvent actionEvent) throws Exception{
+    public void prev(ActionEvent actionEvent){
         if (getnCurrentPage()>1){
             setnCurrentPage(getnCurrentPage()-1);
             list.clear();
@@ -241,7 +230,7 @@ public class Show_All_Structs_Id {
         }
     }
 
-    public void next10(ActionEvent actionEvent) throws Exception{
+    public void next10(ActionEvent actionEvent){
         if (getnCurrentPage()<getnTotalPages()-10){
             setnCurrentPage(getnCurrentPage()+10);
             list.clear();
@@ -254,7 +243,7 @@ public class Show_All_Structs_Id {
         }
     }
 
-    public void prev10(ActionEvent actionEvent) throws Exception{
+    public void prev10(ActionEvent actionEvent){
         if (getnCurrentPage() > 10){
             setnCurrentPage(getnCurrentPage()-10);
             list.clear();
@@ -267,13 +256,13 @@ public class Show_All_Structs_Id {
         }
     }
 
-    public void begin(ActionEvent actionEvent) throws Exception{
+    public void begin(ActionEvent actionEvent){
         setnCurrentPage(1);
         list.clear();
         riempi();
     }
 
-    public void end(ActionEvent actionEvent) throws Exception{
+    public void end(ActionEvent actionEvent){
         setnCurrentPage(getnTotalPages());
         list.clear();
         riempi();

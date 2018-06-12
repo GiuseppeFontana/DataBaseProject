@@ -14,12 +14,6 @@ import javafx.stage.Stage;
 
 public class User_Information{
 
-    @FXML
-    private Button btnOk;
-    @FXML
-    private Label infrLabel;
-
-
     public void start() throws Exception {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(User_Information.class.getResource("user_Information.fxml"));

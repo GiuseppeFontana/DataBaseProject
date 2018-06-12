@@ -47,7 +47,6 @@ public class SingletonReq12 {
     }
 
     protected SingletonReq12() {
-        // Exists only to defeat instantiation.
     }
 
     public static SingletonReq12 getInstance() {

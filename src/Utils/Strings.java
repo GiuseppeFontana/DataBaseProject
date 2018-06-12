@@ -2,13 +2,14 @@ package Utils;
 
 public class Strings {
 
-    // show
+    //---------------------------SHOW---------------------------//
+
     public static String strShowStruct = "SELECT * FROM %s_structures WHERE id = '%s'";
     public static String strShowStar = "SELECT * FROM herschel_stars WHERE id = '%s'";
     public static String strShowAllID = "SELECT id FROM %s_structures ORDER BY id";
 
+    //------------------ADMIN QUERY----------------------------//
 
-    // admin query
     public static String strLogin = "SELECT * FROM users WHERE username = '%s' AND password = '%s';";
     public static String strRegister = "INSERT INTO users VALUES ('%s','%s','%s','%s','%s','%s')";
     public static String strInsertSatellite = "INSERT INTO satellite VALUES ('%s','%s','%s','%s')";
@@ -18,7 +19,8 @@ public class Strings {
     public static String strPickSatellite = "SELECT satellite FROM instrument WHERE name = '%s'";
     public static String strInsertStrip = "INSERT INTO strip VALUES ('%s','%s','%s')";
 
-    // import
+    //---------------------IMPORT-----------------------------//
+
     public static String strImport = "DELETE FROM %s_%s;\n" +
             "CREATE TEMP TABLE tmp_table AS SELECT * FROM %s_%s WITH NO DATA;\n" +
             "COPY tmp_table FROM '%s' DELIMITER ',';\n" +
@@ -30,18 +32,15 @@ public class Strings {
     public static String strImportStar = "tab.id=tmp.id";
     public static String strImportStruct = "tab.id=tmp.id";
 
-    // requisiti
+   //------------------------REQUISITI-----------------------//
+
     public static String strReq51 = "SELECT %s FROM %s_boundaries WHERE id = '%s'";
     public static String strReq52 = "SELECT COUNT(DISTINCT idbranch) FROM %s_skeletons WHERE idfil = '%s'";
     public static String strReq53 = "SELECT name FROM %s_structures WHERE id = '%s'";
 
-
-
     public static String strReq61 = "SELECT id, name, satellite FROM herschel_structures WHERE (contrast > %s AND ellipt >= %s AND ellipt <= %s)\n"
             + "UNION SELECT id, name, satellite FROM spitzer_structures WHERE (contrast > %s AND ellipt >= %s AND ellipt <= %s)";
     public static String strReq62 = "SELECT count(*) FROM %s_structures";
-
-
 
     public static String strReq7 = "(SELECT skeleton.idfil, structure.name, structure.satellite, count(DISTINCT skeleton.idbranch)\n" +
             "FROM (%s_skeletons AS skeleton JOIN %s_structures AS structure ON skeleton.idfil = structure.id)\n" +
@@ -51,8 +50,6 @@ public class Strings {
             "FROM (%s_skeletons AS skeleton JOIN %s_structures AS structure ON skeleton.idfil = structure.id)\n" +
             "GROUP BY skeleton.idfil, structure.name, structure.satellite\n" +
             "HAVING (count(DISTINCT skeleton.idbranch)>= %s AND count(DISTINCT skeleton.idbranch)<= %s))";
-
-
 
     public static String strReq81 = "(SELECT s.id, s.name, s.satellite FROM herschel_structures s EXCEPT " +
             "(SELECT s2.id, s2.name, s2.satellite FROM herschel_structures AS s2 JOIN herschel_boundaries AS b ON s2.id = b.id " +
@@ -73,12 +70,8 @@ public class Strings {
     public static String strReq92 = "SELECT * FROM %s_boundaries WHERE id = '%s'";
 
     public static String strReq101 = "SELECT * FROM herschel_stars WHERE lon > %s AND lon < %s AND lat > %s AND lat < %s ORDER BY id";
-    //filamenti sul contorno considerati dentro
-    //public static String    strReq102 = "SELECT DISTINCT id FROM %s_boundaries WHERE lon > %s AND lon < %s AND lat > %s AND lat < %s ORDER BY id";
-    //filamenti sul contorno considerati fuori
     public static String strReq102 = "SELECT DISTINCT id FROM %s_boundaries EXCEPT " +
             "(SELECT DISTINCT id FROM %s_boundaries WHERE lon < %s AND lon > %s AND lat < %s AND lat > %s) ORDER BY id";
-
 
     public static String strReq11_1 = "SELECT DISTINCT idbranch FROM %s_skeletons WHERE idfil='%s'";
     public static String strReq11_2 = "SELECT lon FROM %s_skeletons WHERE (idbranch='%s' AND n='%s')";
@@ -93,8 +86,5 @@ public class Strings {
     public static String control = "SELECT lon FROM %s_skeletons WHERE idfil='%s'";
 
     public static String strReqNew12 = "SELECT * FROM %s_skeletons WHERE idfil = '%s'";
-
-
-
 
 }

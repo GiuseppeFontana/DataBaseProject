@@ -12,22 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-/*
-REQ-FN-7	Ricerca	di	un	strutture	estese	per	numero	di	segmenti
-L’applicazione	permetterà	di	ricercare	tutte	le	strutture	estese	che	hanno	un	numero	di
-segmenti	totali	compreso	in	un	intervallo	definito	dall’utente.	La	dimensione	minima
-dell’intervallo	accettato	dal	sistema	dovrà	essere	strettamente	maggiore	di	2.
-
-La	GUI	dovrà	riportare	il	numero	totale	di	strutture	e	visualizzerà	al	massimo	20	oggetti	per
-volta.
- */
 
 public class Req_7_Page {
 
-    @FXML
-    private Button Req7PageBackButton;
-    @FXML
-    private Button Req7PageSearchButton;
     @FXML
     private TextField Req7PageMinText;
     @FXML

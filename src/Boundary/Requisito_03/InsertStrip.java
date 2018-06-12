@@ -22,7 +22,7 @@ public class InsertStrip {
         graphicController.adminReqsPage();
     }
 
-    public void Inserisci(ActionEvent actionEvent) throws Exception{
+    public void Inserisci(ActionEvent actionEvent){
         try {
             String instrument = Req34InstrumentText.getText();
             double strip = Double.parseDouble(Req34StripText.getText());

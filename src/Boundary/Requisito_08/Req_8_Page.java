@@ -25,10 +25,6 @@ public class Req_8_Page {
     private TextField LatCentreText;
     @FXML
     private TextField DimensionText;
-    @FXML
-    private Button SearchButton;
-    @FXML
-    private Button BackButton;
 
     private static String tipoRicerca;
 
@@ -60,7 +56,8 @@ public class Req_8_Page {
 
     public void search(ActionEvent actionEvent) {
         try {
-            if (LongCentreText.getText().equals("") || LatCentreText.getText().equals("") || DimensionText.getText().equals("") ||
+            if (LongCentreText.getText().equals("") || LatCentreText.getText().equals("") ||
+                    DimensionText.getText().equals("") ||
                     (!Radio1.isSelected() && !Radio2.isSelected())){
                 String msg1 = "Input non valido.";
                 GraphicController graphicController = new GraphicController();

@@ -185,15 +185,6 @@ public class Req11Dao {
             distanze.add(distanzaMinima_primo);
             distanze.add(distanzaMinima_secondo);
 
-            /*for (int i = 0; i<lonContorniFilamento.size(); i++){
-                for (int s = 0; s<LatVertex.size(); s++){
-                    Double prova = ((LonVertex.get(s) - lonContorniFilamento.get(s))*(LonVertex.get(s) - lonContorniFilamento.get(s))-(LatVertex.get(s)) - (latContorniFilamento.get(s))*(LatVertex.get(s) - latContorniFilamento.get(s)));
-                    Double minima = Math.sqrt(prova);
-                    distanze.add(minima);
-                }
-
-            }*/
-
         }catch (Exception e ){
             e.printStackTrace();
         }
