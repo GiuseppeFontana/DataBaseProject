@@ -71,10 +71,6 @@ public class Req10Dao {
                 }
             }
 
-
-
-
-
             conn.commit();
 
             // STEP 6: Clean-up dell'ambiente

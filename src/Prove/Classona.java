@@ -220,6 +220,40 @@ public class Classona {
 
     }
 
+    public void prova() {
+        Statement stmt1 = null;
+        Connection conn = null;
+        try {
+            // STEP 2: loading dinamico del driver
+            Class.forName("org.postgresql.Driver");
+
+            // STEP 3: apertura connessione
+            conn = DriverManager.getConnection(Credenziali.G_DB_URL, Credenziali.G_DB_USER, Credenziali.G_DB_PASS);
+
+            conn.setAutoCommit(false);
+
+
+            // STEP 4: creazione ed esecuzione della query
+            stmt1 = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+
+            ResultSet rs = stmt1.executeQuery("SELECT username FROM users WHERE username='mattiapica'");
+            if (!rs.first()){
+                return;
+            }else {
+
+                System.out.println("STO QUA: " + rs.getString(1));
+
+
+                while (rs.next()) {
+                    System.out.println(rs.getString(1));
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private boolean recuperaStelle(double minLat, double maxLat, double minLon, double maxLon) {
         // STEP 1: dichiarazioni
         Statement stmt1 = null;
@@ -294,7 +328,7 @@ public class Classona {
     }
 
     public static void main(String args[]) throws Exception{
-        Classona classona = new Classona();
+        /*Classona classona = new Classona();
         classona.ricercaRequisito10(80,80,10,10);
 
         int in = 0;
@@ -314,6 +348,9 @@ public class Classona {
 
         System.out.println("total "+ SingletonReq10.getInstance().getStarBeans().size());
         System.out.println("in "+ in);
-        System.out.println("out "+ out);
+        System.out.println("out "+ out);*/
+
+        Classona classona = new Classona();
+        classona.prova();
     }
 }
