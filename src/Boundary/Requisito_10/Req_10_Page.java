@@ -92,7 +92,7 @@ public class Req_10_Page {
         }
         catch (NumberFormatException nfe){
             try{
-                String msg = "Input non valido.\nScrivi numeri interi.";
+                String msg = "Input non valido.\nScrivi numeri reali.";
                 GraphicController graphicController = new GraphicController();
                 graphicController.alertError(msg);
             }

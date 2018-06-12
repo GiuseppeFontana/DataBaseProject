@@ -19,8 +19,8 @@
     </role>
     <schema id="4" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-06-12.09:39:29.084</IntrospectionTimestamp>
-      <IntrospectionStateNumber>518465</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-06-07.10:46:50.583</IntrospectionTimestamp>
+      <IntrospectionStateNumber>25413</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -71,47 +71,47 @@
     </schema>
     <table id="20" parent="4" name="herschel_boundaries">
       <ObjectId>16775</ObjectId>
-      <StateNumber>518446</StateNumber>
+      <StateNumber>25412</StateNumber>
     </table>
     <table id="21" parent="4" name="herschel_skeletons">
       <ObjectId>16744</ObjectId>
-      <StateNumber>518448</StateNumber>
+      <StateNumber>25408</StateNumber>
     </table>
     <table id="22" parent="4" name="herschel_stars">
       <ObjectId>16731</ObjectId>
-      <StateNumber>518450</StateNumber>
+      <StateNumber>25406</StateNumber>
     </table>
     <table id="23" parent="4" name="herschel_structures">
       <ObjectId>16689</ObjectId>
-      <StateNumber>518452</StateNumber>
+      <StateNumber>25412</StateNumber>
     </table>
     <table id="24" parent="4" name="instrument">
       <ObjectId>16657</ObjectId>
-      <StateNumber>518462</StateNumber>
+      <StateNumber>25411</StateNumber>
     </table>
     <table id="25" parent="4" name="satellite">
       <ObjectId>16649</ObjectId>
-      <StateNumber>518454</StateNumber>
+      <StateNumber>25397</StateNumber>
     </table>
     <table id="26" parent="4" name="spitzer_boundaries">
       <ObjectId>16785</ObjectId>
-      <StateNumber>518456</StateNumber>
+      <StateNumber>25413</StateNumber>
     </table>
     <table id="27" parent="4" name="spitzer_skeletons">
       <ObjectId>16757</ObjectId>
-      <StateNumber>518458</StateNumber>
+      <StateNumber>25409</StateNumber>
     </table>
     <table id="28" parent="4" name="spitzer_structures">
       <ObjectId>16705</ObjectId>
-      <StateNumber>518462</StateNumber>
+      <StateNumber>25413</StateNumber>
     </table>
     <table id="29" parent="4" name="stars_type">
       <ObjectId>16718</ObjectId>
-      <StateNumber>518464</StateNumber>
+      <StateNumber>25406</StateNumber>
     </table>
     <table id="30" parent="4" name="strip">
       <ObjectId>16675</ObjectId>
-      <StateNumber>518464</StateNumber>
+      <StateNumber>25405</StateNumber>
     </table>
     <table id="31" parent="4" name="users">
       <ObjectId>16404</ObjectId>
@@ -154,14 +154,13 @@ lat</ColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="37" parent="20" name="herschel_boundaries_herschel_structures_id_fk">
-      <ObjectId>16953</ObjectId>
+      <ObjectId>16780</ObjectId>
       <ColNames>id</ColNames>
       <RefTableId>16689</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>herschel_structures</RefTableName>
       <RefKeyName>herschel_structures_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <column id="38" parent="21" name="idfil">
       <Position>1</Position>
@@ -230,14 +229,13 @@ lat</ColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="47" parent="21" name="herschel_skeletons_herschel_structures_id_fk">
-      <ObjectId>16958</ObjectId>
+      <ObjectId>16752</ObjectId>
       <ColNames>idfil</ColNames>
       <RefTableId>16689</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>herschel_structures</RefTableName>
       <RefKeyName>herschel_structures_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <column id="48" parent="22" name="id">
       <Position>1</Position>
@@ -293,14 +291,13 @@ lat</ColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="56" parent="22" name="herschel_stars_stars_type_description_fk">
-      <ObjectId>16963</ObjectId>
+      <ObjectId>16739</ObjectId>
       <ColNames>type</ColNames>
       <RefTableId>16718</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>stars_type</RefTableName>
       <RefKeyName>stars_type_pkey</RefKeyName>
       <RefColNames>description</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <column id="57" parent="23" name="id">
       <Position>1</Position>
@@ -377,7 +374,7 @@ lat</ColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="68" parent="23" name="herschel_structures_instrument_name_satellite_fk">
-      <ObjectId>16968</ObjectId>
+      <ObjectId>16697</ObjectId>
       <ColNames>instrument
 satellite</ColNames>
       <RefTableId>16657</RefTableId>
@@ -386,7 +383,6 @@ satellite</ColNames>
       <RefKeyName>instrument_name_satellite_pk</RefKeyName>
       <RefColNames>name
 satellite</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <column id="69" parent="24" name="name">
       <Position>1</Position>
@@ -416,13 +412,14 @@ satellite</ColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="73" parent="24" name="instrument_satellite_name_fk">
-      <ObjectId>16973</ObjectId>
+      <ObjectId>16670</ObjectId>
       <ColNames>satellite</ColNames>
       <RefTableId>16649</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>satellite</RefTableName>
       <RefKeyName>satellite_pkey</RefKeyName>
       <RefColNames>name</RefColNames>
+      <OnDelete>set-null</OnDelete>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <column id="74" parent="25" name="name">
@@ -500,14 +497,13 @@ lat</ColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="85" parent="26" name="spitzer_boundaries_spitzer_structures_id_fk">
-      <ObjectId>16978</ObjectId>
+      <ObjectId>16790</ObjectId>
       <ColNames>id</ColNames>
       <RefTableId>16705</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>spitzer_structures</RefTableName>
       <RefKeyName>spitzer_structures_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <column id="86" parent="27" name="idfil">
       <Position>1</Position>
@@ -576,14 +572,13 @@ lat</ColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="95" parent="27" name="spitzer_skeletons_spitzer_structures_id_fk">
-      <ObjectId>16983</ObjectId>
+      <ObjectId>16765</ObjectId>
       <ColNames>idfil</ColNames>
       <RefTableId>16705</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>spitzer_structures</RefTableName>
       <RefKeyName>spitzer_structures_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <column id="96" parent="28" name="id">
       <Position>1</Position>
@@ -660,7 +655,7 @@ lat</ColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="107" parent="28" name="spitzer_structures_instrument_name_satellite_fk">
-      <ObjectId>16988</ObjectId>
+      <ObjectId>16770</ObjectId>
       <ColNames>instrument
 satellite</ColNames>
       <RefTableId>16657</RefTableId>
@@ -669,7 +664,6 @@ satellite</ColNames>
       <RefKeyName>instrument_name_satellite_pk</RefKeyName>
       <RefColNames>name
 satellite</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <column id="108" parent="29" name="description">
       <Position>1</Position>
@@ -697,14 +691,13 @@ satellite</RefColNames>
       <Primary>1</Primary>
     </key>
     <foreign-key id="112" parent="29" name="stars_type_strip_wavelenght_fk">
-      <ObjectId>16993</ObjectId>
+      <ObjectId>16726</ObjectId>
       <ColNames>strip</ColNames>
       <RefTableId>16675</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>strip</RefTableName>
       <RefKeyName>strip_pkey</RefKeyName>
       <RefColNames>wavelenght</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <column id="113" parent="30" name="wavelenght">
       <Position>1</Position>
@@ -716,15 +709,13 @@ satellite</RefColNames>
     <column id="114" parent="30" name="instrument">
       <Position>2</Position>
       <DataType>varchar|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>518442</StateNumber>
+      <StateNumber>25398</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="115" parent="30" name="satellite">
       <Position>3</Position>
       <DataType>varchar|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>518465</StateNumber>
+      <StateNumber>25398</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="116" parent="30" name="strip_pkey">

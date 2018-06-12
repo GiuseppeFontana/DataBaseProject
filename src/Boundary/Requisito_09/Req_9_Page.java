@@ -70,7 +70,7 @@ public class Req_9_Page {
                         graphicController.alertError(msg);
                     }
                     if (SingletonReq9.getInstance().getStructureBounds() == null){
-                        String msg = "Punti contorno non trovati.";
+                        String msg = "Filamento non trovato.";
                         graphicController.alertError(msg);
                     }
                     controller.resetSingleton9();
