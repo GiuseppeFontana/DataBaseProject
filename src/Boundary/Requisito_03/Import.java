@@ -52,6 +52,7 @@ public class Import {
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 686, 649);
 
+        stage.setTitle("Interstellar");
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();

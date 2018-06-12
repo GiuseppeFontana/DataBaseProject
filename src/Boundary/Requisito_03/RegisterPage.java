@@ -70,6 +70,11 @@ public class RegisterPage {
                 String msg4 = "Registrazione effettuata con successo.";
                 graphicController.alertError(msg4);
             }
+            else {
+                GraphicController graphicController = new GraphicController();
+                String msg4 = "Registrazione fallita.\nUtente già registrato";
+                graphicController.alertError(msg4);
+            }
         }
     }
 
